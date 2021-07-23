@@ -1,0 +1,6020 @@
+# Copyright (C) 2001-2004 Free Software Foundation, Inc.
+# Yuri Syrota <rasta@cvs.gnome.org>, 2001-2004.
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2004-2009.
+# wanderlust <wanderlust@ukr.net>, 2009.
+# Daniel Korostil <ted.korostiled@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
+# Yuri Chornoivan <yurchor@ukr.net>, 2013, 2020, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/nautilus/issues\n"
+"POT-Creation-Date: 2021-03-12 16:52+0000\n"
+"PO-Revision-Date: 2021-03-12 18:58+0200\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 20.11.70\n"
+"X-Project-Style: gnome\n"
+
+#: data/nautilus-autorun-software.desktop.in:3
+msgid "Run Software"
+msgstr "Запустити програму"
+
+#. “Files” is the generic application name and the suffix is
+#. * an arbitrary and deliberately unlocalized string only shown
+#. * in development builds.
+#.
+#: data/org.gnome.Nautilus.appdata.xml.in.in:5
+#: data/org.gnome.Nautilus.desktop.in.in:3 src/nautilus-mime-actions.c:106
+#: src/nautilus-window.c:2953
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:44
+msgid "Files"
+msgstr "Файли"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:6
+#: data/org.gnome.Nautilus.desktop.in.in:4
+msgid "Access and organize files"
+msgstr "Доступ до файлів"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:8
+msgid ""
+"Files, also known as Nautilus, is the default file manager of the GNOME "
+"desktop. It provides a simple and integrated way of managing your files and "
+"browsing your file system."
+msgstr ""
+"Файли, також відомі як Nautilus, — типовий файловий менеджер для "
+"стільничного середовища GNOME. Він дозволяє простий та інтегрований спосіб "
+"упорядкування ваших файлів і переглядання файлової системи."
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:12
+msgid ""
+"Nautilus supports all the basic functions of a file manager and more. It can "
+"search and manage your files and folders, both locally and on a network, "
+"read and write data to and from removable media, run scripts, and launch "
+"applications. It has three views: Icon Grid, Icon List, and Tree List. Its "
+"functions can be extended with plugins and scripts."
+msgstr ""
+"Nautilus підтримує всі базові можливості файлового менеджера і навіть "
+"більше. Він може шукати і впорядковувати ваші файли і теки як локально, так "
+"і в мережі, читати і записувати дані через змінний носій, запускати скрипти "
+"і запускати програми. Він має три режими перегляду: ґратки піктограм, список "
+"піктограм, ієрархічний список. Можливості можна розширити за допомогою "
+"додатків і скриптів."
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:34
+msgid "The GNOME Project"
+msgstr "Проєкт GNOME"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:38
+msgid "Tile View"
+msgstr "Перегляд мозаїкою"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:42 src/nautilus-list-view.c:2421
+msgid "List View"
+msgstr "Перегляд списком"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:46 src/nautilus-query.c:536
+#: src/nautilus-search-directory-file.c:175
+#: src/nautilus-search-directory-file.c:232
+#: src/nautilus-search-directory-file.c:272
+#: src/resources/ui/nautilus-search-popover.ui:341
+#: src/resources/ui/nautilus-toolbar.ui:510
+msgid "Search"
+msgstr "Пошук"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:50 src/nautilus-bookmark.c:111
+#: src/nautilus-file.c:4464 src/nautilus-file-utilities.c:323
+#: src/nautilus-pathbar.c:333
+msgid "Other Locations"
+msgstr "Інші адреси"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Nautilus.desktop.in.in:6
+msgid "folder;manager;explore;disk;filesystem;nautilus;"
+msgstr ""
+"тека;менеджер;папка;диск;файл;керування;folder;manager;explore;disk;"
+"filesystem;nautilus;наутилус;"
+
+#: data/org.gnome.Nautilus.desktop.in.in:20
+#: src/resources/ui/nautilus-toolbar.ui:27
+msgid "New Window"
+msgstr "Нове вікно"
+
+#: data/org.gnome.nautilus.gschema.xml:84
+msgid "Where to position newly open tabs in browser windows"
+msgstr "Де відкривати нові вкладки у вікнах переглядача"
+
+#: data/org.gnome.nautilus.gschema.xml:85
+msgid ""
+"If set to “after-current-tab”, then new tabs are inserted after the current "
+"tab. If set to “end”, then new tabs are appended to the end of the tab list."
+msgstr ""
+"Якщо позначено \"after_current_tab\", тоді нові вкладки вставляються після "
+"чинної. Якщо позначено «end», нові вкладки додаються наприкінці списку "
+"вкладок."
+
+#: data/org.gnome.nautilus.gschema.xml:89
+msgid "Always use the location entry, instead of the pathbar"
+msgstr "Завжди використовувати поле адреси, замість панелі шляху"
+
+#: data/org.gnome.nautilus.gschema.xml:90
+msgid ""
+"If set to true, then Nautilus browser windows will always use a textual "
+"input entry for the location toolbar, instead of the pathbar."
+msgstr ""
+"Якщо позначено, вікна Nautilus будуть завжди використовувати поле вводу "
+"тексту для панелі адреси, замість панелі шляху."
+
+#: data/org.gnome.nautilus.gschema.xml:94
+msgid "Where to perform recursive search"
+msgstr "Де виконувати рекурсивний пошук"
+
+#: data/org.gnome.nautilus.gschema.xml:95
+msgid ""
+"In which locations Nautilus should search on subfolders. Available values "
+"are “local-only”, “always”, “never”."
+msgstr ""
+"Де слід шукати у підтеках. Доступні значення: «local-only», «always», "
+"«never»."
+
+#: data/org.gnome.nautilus.gschema.xml:99
+msgid "Filter the search dates using either last used or last modified"
+msgstr ""
+"Відсіяти з пошуку використовуючи або дату останнього вжитку, або дату "
+"останньої зміни"
+
+#: data/org.gnome.nautilus.gschema.xml:100
+msgid "Filter the search dates using either last used or last modified."
+msgstr ""
+"Відсіяти з пошуку використовуючи або дату останнього вжитку, або дату "
+"останньої зміни."
+
+#: data/org.gnome.nautilus.gschema.xml:104
+msgid "Whether to show a context menu item to delete permanently"
+msgstr "Чи показувати пункт остаточного вилучення в контекстному меню"
+
+#: data/org.gnome.nautilus.gschema.xml:105
+msgid ""
+"If set to true, then Nautilus will show a delete permanently context menu "
+"item to bypass the Trash."
+msgstr ""
+"Якщо зазначено, в контекстному меню з'явиться можливість вилучати остаточно, "
+"оминувши смітник."
+
+#: data/org.gnome.nautilus.gschema.xml:109
+msgid ""
+"Whether to show context menu items to create links from copied or selected "
+"files"
+msgstr ""
+"Чи показувати пункт створення посилання з скопійованих або вибраних файлів у "
+"контекстному меню"
+
+#: data/org.gnome.nautilus.gschema.xml:110
+msgid ""
+"If set to true, then Nautilus will show context menu items to create links "
+"from the copied or selected files."
+msgstr ""
+"Якщо зазначено, в контекстному меню з'явиться можливість створювати "
+"посилання з скопійованих і вибраних файлів."
+
+#: data/org.gnome.nautilus.gschema.xml:115
+msgid "When to show number of items in a folder"
+msgstr "Коли показувати кількість об'єктів у теці"
+
+#: data/org.gnome.nautilus.gschema.xml:116
+msgid ""
+"Speed tradeoff for when to show the number of items in a folder. If set to "
+"“always” then always show item counts, even if the folder is on a remote "
+"server. If set to “local-only” then only show counts for local file systems. "
+"If set to “never” then never bother to compute item counts."
+msgstr ""
+"Співвідношення швидкості для показу кількості об'єктів у теці. Якщо вказано "
+"«always», то завжди показуватиметься кількість об'єктів, навіть якщо теку "
+"розміщено на віддаленому сервері. Якщо вказано «local-only», то "
+"показуватиметься кількість лише локальних файлів у системі. Якщо вказано "
+"«never», то обидва не рахуватимуть кількість об'єктів."
+
+#: data/org.gnome.nautilus.gschema.xml:120
+msgid "Type of click used to launch/open files"
+msgstr "Тип клацання, що використовується для запуску/відкривання файлів"
+
+#: data/org.gnome.nautilus.gschema.xml:121
+msgid ""
+"Possible values are “single” to launch files on a single click, or “double” "
+"to launch them on a double click."
+msgstr ""
+"Можливими значеннями є «single» для запуску файлів одинарним клацанням, або "
+"«double» для запуску файлів подвійним клацанням."
+
+#: data/org.gnome.nautilus.gschema.xml:125
+msgid "Show the package installer for unknown MIME types"
+msgstr "Показувати встановлення пакунків для невідомих типів MIME"
+
+#: data/org.gnome.nautilus.gschema.xml:126
+msgid ""
+"Whether to show the user a package installer dialog in case an unknown MIME "
+"type is opened, in order to search for an application to handle it."
+msgstr ""
+"Чи показувати користувачу вікно встановлення пакунків у разі відкриття файла "
+"з невідомим типом MIME, щоб знайти програму для роботи з ним."
+
+#: data/org.gnome.nautilus.gschema.xml:130
+msgid "Use extra mouse button events in Nautilus’ browser window"
+msgstr "Чи використовувати додаткові кнопки миші у вікні Nautilus"
+
+#: data/org.gnome.nautilus.gschema.xml:131
+msgid ""
+"For users with mice that have “Forward” and “Back” buttons, this key will "
+"determine if any action is taken inside of Nautilus when either is pressed."
+msgstr ""
+"Для користувачів з мишею, що має кнопки «Вперед» та «Назад», ця клавіша "
+"визначатиме, чи виконувати якісь дії у Nautilus при натисканні однієї цих з "
+"кнопок."
+
+#: data/org.gnome.nautilus.gschema.xml:135
+msgid "Mouse button to activate the “Forward” command in browser window"
+msgstr "Кнопка миші, що здійснює команду «Вперед» у вікні переглядача"
+
+#: data/org.gnome.nautilus.gschema.xml:136
+msgid ""
+"For users with mice that have buttons for “Forward” and “Back”, this key "
+"will set which button activates the “Forward” command in a browser window. "
+"Possible values range between 6 and 14."
+msgstr ""
+"Для користувачів з мишею, що має кнопки «Вперед» та «Назад», ця клавіша "
+"визначатиме, яка кнопка здійснює команду «Вперед» у вікні переглядача. "
+"Можливі значення у діапазоні від 6 до 14."
+
+#: data/org.gnome.nautilus.gschema.xml:140
+msgid "Mouse button to activate the “Back” command in browser window"
+msgstr "Кнопка миші, що здійснює команду «Назад» у вікні переглядача"
+
+#: data/org.gnome.nautilus.gschema.xml:141
+msgid ""
+"For users with mice that have buttons for “Forward” and “Back”, this key "
+"will set which button activates the “Back” command in a browser window. "
+"Possible values range between 6 and 14."
+msgstr ""
+"Для користувачів з мишею, що має кнопки «Вперед» та «Назад», ця клавіша "
+"визначатиме, яка кнопка здійснює команду «Назад» у вікні переглядача. "
+"Можливі значення у діапазоні від 6 до 14."
+
+#: data/org.gnome.nautilus.gschema.xml:146
+msgid "When to show thumbnails of files"
+msgstr "Коли показувати мініатюри для файлів"
+
+#: data/org.gnome.nautilus.gschema.xml:147
+msgid ""
+"Speed trade-off for when to show a file as a thumbnail. If set to “always” "
+"then always thumbnail, even if the folder is on a remote server. If set to "
+"“local-only” then only show thumbnails for local file systems. If set to "
+"“never” then never bother to thumbnail files, just use a generic icon. "
+"Despite what the name may suggest, this applies to any previewable file type."
+msgstr ""
+"Відношення швидкості для показу зображень як мініатюр. Якщо вказано "
+"«always», то будуть завжди мініатюри, навіть якщо теку розміщено на "
+"віддаленому сервері. Якщо вказано «local-only», то показуватимуться "
+"мініатюри лише для локальних файлів у системі. Якщо вказано «never», то в "
+"обох випадках буде показано загальні піктограми. Попри рекомендовані назви, "
+"це застосовується до будь-який типів файлів, які можна переглянути."
+
+#: data/org.gnome.nautilus.gschema.xml:152
+msgid "Maximum image size for thumbnailing"
+msgstr "Максимальний розмір зображення для побудови мініатюр"
+
+#: data/org.gnome.nautilus.gschema.xml:153
+msgid ""
+"Images over this size (in megabytes) won’t be thumbnailed. The purpose of "
+"this setting is to avoid thumbnailing large images that may take a long time "
+"to load or use lots of memory."
+msgstr ""
+"Для зображень, розмір яких перевищує заданий (в мегабайтах), файли мініатюр "
+"створюватись не буде. Мета цих налаштувань — уникнути створення мініатюр для "
+"великих зображень, що могло б зайняти значний час або потребувати велику "
+"кількість пам'яті."
+
+#: data/org.gnome.nautilus.gschema.xml:160
+msgid "Default sort order"
+msgstr "Типове впорядкування"
+
+#: data/org.gnome.nautilus.gschema.xml:161
+msgid ""
+"The default sort-order for items in the icon view. Possible values are "
+"“name”, “size”, “type”, “mtime”, “atime” and “starred”."
+msgstr ""
+"Типовий порядок для об'єктів у перегляді піктограм. Доступні значення — "
+"«name», «size», «type», «mtime», «atime» і «starred»."
+
+#: data/org.gnome.nautilus.gschema.xml:165
+msgid "Reverse sort order in new windows"
+msgstr "Використовувати зворотне впорядкування для нових вікон"
+
+#: data/org.gnome.nautilus.gschema.xml:166
+msgid ""
+"If true, files in new windows will be sorted in reverse order. I.e., if "
+"sorted by name, then instead of sorting the files from “a” to “z”, they will "
+"be sorted from “z” to “a”; if sorted by size, instead of being incrementally "
+"they will be sorted decrementally."
+msgstr ""
+"Якщо зазначено, файли в нових вікнах будуть упорядковуватись у зворотному "
+"порядку. Наприклад, якщо впорядковано за назвою, замість впорядкування "
+"файлів у порядку від «а» до «я», файли впорядковуватимуться у порядку від "
+"«я» до «а»; якщо впорядковано за розміром, замість порядку від меншого до "
+"більшого, буде використано порядок від більшого до меншого."
+
+#: data/org.gnome.nautilus.gschema.xml:176
+msgid "Default folder viewer"
+msgstr "Типовий переглядач тек"
+
+#: data/org.gnome.nautilus.gschema.xml:177
+msgid ""
+"When a folder is visited this viewer is used unless you have selected "
+"another view for that particular folder. Possible values are “list-view”, "
+"and “icon-view”."
+msgstr ""
+"Коли відвідується нова тека, буде використовуватись цей режим перегляду, "
+"якщо ви не вибрали інший режим перегляду для цієї окремої теки. Можливі "
+"варіанти — «list-view» і «icon-view»."
+
+#: data/org.gnome.nautilus.gschema.xml:181
+msgid "Whether to show hidden files"
+msgstr "Чи показувати приховані файли"
+
+#: data/org.gnome.nautilus.gschema.xml:182
+msgid ""
+"This key is deprecated and ignored. The “show-hidden” key from “org.gtk."
+"Settings.FileChooser” is now used instead."
+msgstr ""
+"Цей ключ застарів і не працює. Натомість використовується ключ «show-hidden» "
+"з «org.gtk.Settings.FileChooser»."
+
+#: data/org.gnome.nautilus.gschema.xml:186
+msgid "What viewer should be used when searching"
+msgstr "Який перегляд слід вжити під час пошуку"
+
+#: data/org.gnome.nautilus.gschema.xml:187
+msgid ""
+"When searching Nautilus will switch to the type of view in this setting."
+msgstr ""
+"Коли шукаєте, перегляд буде змінено до того типу, що вказано в цьому "
+"параметрі."
+
+#: data/org.gnome.nautilus.gschema.xml:191
+msgid ""
+"Whether to open the hovered folder after a timeout when drag and drop "
+"operation"
+msgstr ""
+"Чи відкривати наведену теку після певної затримки під час дії з перетягування"
+
+#: data/org.gnome.nautilus.gschema.xml:192
+msgid ""
+"If this is set to true, when performing a drag and drop operation the "
+"hovered folder will open automatically after a timeout."
+msgstr ""
+"Якщо вказано, то операції перетягування на наведеній теці автоматично "
+"відкриватимуть її після певного часу."
+
+#: data/org.gnome.nautilus.gschema.xml:196
+msgid "Enable new experimental views"
+msgstr "Увімкнути новий експериментальний перегляд"
+
+#: data/org.gnome.nautilus.gschema.xml:197
+msgid ""
+"Whether to use the new experimental views using the latest GTK+ widgets to "
+"help giving feedback and shaping their future."
+msgstr ""
+"Чи використовувати новий експериментальний перегляд за допомогою найновіших "
+"віджетів GTK+, щоб допомогти випробувати і надати зворотний зв'язок."
+
+#: data/org.gnome.nautilus.gschema.xml:201
+msgid ""
+"Whether to have full text search enabled by default when opening a new "
+"window/tab"
+msgstr ""
+"Визначає, чи слід типово вмикати поле повнотекстового пошуку при відкритті "
+"нового вікна або вкладки"
+
+#: data/org.gnome.nautilus.gschema.xml:202
+msgid ""
+"If set to true, then Nautilus will also match the file contents besides the "
+"name. This toggles the default active state, which can still be overridden "
+"in the search popover"
+msgstr ""
+"Якщо встановлено значення «true», Nautilus встановлюватиме відповідність за "
+"вмістом файлів, а не лише за назвою. Цей параметр визначає типово "
+"активований стан, який можна перевизначити на панелі пошуку."
+
+#: data/org.gnome.nautilus.gschema.xml:209
+msgid "Default format for compressing files"
+msgstr "Типовий формат для стиснення файлів"
+
+#: data/org.gnome.nautilus.gschema.xml:210
+msgid "The format that will be selected when compressing files."
+msgstr "Формат, який буде використовуватись для стиснення файлів."
+
+#: data/org.gnome.nautilus.gschema.xml:217
+msgid "List of possible captions on icons"
+msgstr "Перелік можливих підписів до піктограм"
+
+#: data/org.gnome.nautilus.gschema.xml:218
+msgid ""
+"A list of captions below an icon in the icon view. The actual number of "
+"captions shown depends on the zoom level. Some possible values are: “size”, "
+"“type”, “date_modified”, “owner”, “group”, “permissions”, and “mime_type”."
+msgstr ""
+"Перелік підписів до піктограм нижче для перегляду піктограм. Справжня "
+"кількість підписів залежить від масштабу зображення. Деякі доступні "
+"значення: «size, «type», «date_modified», «owner», «group», «permissions» та "
+"«mime_type»."
+
+#: data/org.gnome.nautilus.gschema.xml:222
+msgid "Default icon view zoom level"
+msgstr "Типовий масштаб при перегляді піктограм"
+
+#: data/org.gnome.nautilus.gschema.xml:226
+msgid "Text Ellipsis Limit"
+msgstr "Обмеження опускання у тексті"
+
+#: data/org.gnome.nautilus.gschema.xml:227
+msgid ""
+"A string specifying how parts of overlong file names should be replaced by "
+"ellipses, depending on the zoom level. Each of the list entries is of the "
+"form “Zoom Level:Integer”. For each specified zoom level, if the given "
+"integer is larger than 0, the file name will not exceed the given number of "
+"lines. If the integer is 0 or smaller, no limit is imposed on the specified "
+"zoom level. A default entry of the form “Integer” without any specified zoom "
+"level is also allowed. It defines the maximum number of lines for all other "
+"zoom levels. Examples: 0 — always display overlong file names; 3 — shorten "
+"file names if they exceed three lines; smallest:5,smaller:4,0 — shorten file "
+"names if they exceed five lines for zoom level “smallest”. Shorten file "
+"names if they exceed four lines for zoom level “smaller”. Do not shorten "
+"file names for other zoom levels. Available zoom levels: small, standard, "
+"large."
+msgstr ""
+"Рядок, що визначає, як частини довгих назв файлів будуть замінюватись "
+"крапками, залежно від масштабу. Кожен запис списку у формі \"Масштаб:цифра"
+"\". Для кожного масштабу, якщо ціле більше за 0, назва файла не "
+"перевищуватиме вказану кількість ліній. Якщо ціле дорівнює 0 або менше, для "
+"вказаного масштабу не накладається обмежень. Типовий вивід у формі \"Ціле\" "
+"без будь-якого вказаного рівня масштабу також допускається. Воно визначає "
+"максимальне число рядків для усіх інших масштабів. Наприклад: 0 — завжди "
+"показуються довгі назви файлів; 3 — назви файлів скорочуються, якщо назва "
+"перевищує три рядки; smallest:5,smaller:4,0 — скоротити назви файлів, якщо "
+"вони перевищують п'ять рядків для масштабу «smallest». Скорочувати назви "
+"файлів, якщо вони перевищують чотири рядки для масштабу «smaller». Не "
+"скорочувати назви файлів для інших масштабів. Доступні масштаби: small, "
+"standard, large."
+
+#: data/org.gnome.nautilus.gschema.xml:234
+msgid "Default list view zoom level"
+msgstr "Типовий масштаб при перегляді списку"
+
+#: data/org.gnome.nautilus.gschema.xml:238
+msgid "Columns visible in list view"
+msgstr "Стовпчики, які буде показано при перегляді списку"
+
+#: data/org.gnome.nautilus.gschema.xml:242
+msgid "Column order in list view"
+msgstr "Порядок стовпчиків при перегляді списку"
+
+#: data/org.gnome.nautilus.gschema.xml:246
+msgid "Use tree view"
+msgstr "У вигляді дерева"
+
+#: data/org.gnome.nautilus.gschema.xml:247
+msgid ""
+"Whether a tree should be used for list view navigation instead of a flat "
+"list."
+msgstr ""
+"Чи слід використовувати дерево для перегляду списком замість плоского списку."
+
+#: data/org.gnome.nautilus.gschema.xml:254
+msgid "Initial size of the window"
+msgstr "Початкові розміри вікна"
+
+#: data/org.gnome.nautilus.gschema.xml:255
+msgid ""
+"A tuple containing the initial width and height of the application window."
+msgstr "Кортеж, що містить початкову ширину і висоту вікна програми."
+
+#: data/org.gnome.nautilus.gschema.xml:259
+msgid "Whether the navigation window should be maximized"
+msgstr "Чи вікно навігації типово повинне бути розгорнутим"
+
+#: data/org.gnome.nautilus.gschema.xml:260
+msgid "Whether the navigation window should be maximized by default."
+msgstr "Чи вікно навігації типово повинне бути розгорнутим."
+
+#: data/org.gnome.nautilus.gschema.xml:264
+msgid "Width of the side pane"
+msgstr "Ширина бічної панелі"
+
+#: data/org.gnome.nautilus.gschema.xml:265
+msgid "The default width of the side pane in new windows."
+msgstr "Типова ширина бокової панелі у нових вікнах."
+
+#: data/org.gnome.nautilus.gschema.xml:269
+msgid "Show location bar in new windows"
+msgstr "Показувати панель адреси у нових вікнах"
+
+#: data/org.gnome.nautilus.gschema.xml:270
+msgid ""
+"If set to true, newly opened windows will have the location bar visible."
+msgstr "Якщо позначено, нововідкриті вікна матимуть видиму панель адреси."
+
+#: data/org.gnome.nautilus.gschema.xml:274
+msgid "Show side pane in new windows"
+msgstr "Показувати бічну панель у нових вікнах"
+
+#: data/org.gnome.nautilus.gschema.xml:275
+msgid "If set to true, newly opened windows will have the side pane visible."
+msgstr "Якщо позначено, нововідкриті вікна матимуть видиму бічну панель."
+
+#: eel/eel-canvas.c:1324 eel/eel-canvas.c:1325
+msgid "X"
+msgstr "X"
+
+#: eel/eel-canvas.c:1331 eel/eel-canvas.c:1332
+msgid "Y"
+msgstr "Y"
+
+#. Put up the timed wait window.
+#. Add buttons
+#: eel/eel-stock-dialogs.c:204 src/nautilus-file-conflict-dialog.c:347
+#: src/nautilus-file-operations.c:255 src/nautilus-files-view.c:1210
+#: src/nautilus-files-view.c:1763 src/nautilus-files-view.c:6035
+#: src/nautilus-files-view.c:6496 src/nautilus-location-entry.c:284
+#: src/nautilus-mime-actions.c:586 src/nautilus-mime-actions.c:590
+#: src/nautilus-mime-actions.c:977 src/nautilus-mime-actions.c:1317
+#: src/nautilus-mime-actions.c:1672 src/nautilus-properties-window.c:5297
+#: src/nautilus-search-popover.c:583
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:12
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:13
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: eel/eel-stock-dialogs.c:213
+msgid "You can stop this operation by clicking cancel."
+msgstr "Можете зупинити цю дію, клацнувши на «Скасувати»."
+
+#. Title
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:105
+msgctxt "Title"
+msgid "Unknown"
+msgstr "Невідомий"
+
+#. Artist
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:107
+msgctxt "Artist"
+msgid "Unknown"
+msgstr "Невідомий"
+
+#. Album
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:109
+msgctxt "Album"
+msgid "Unknown"
+msgstr "Невідомий"
+
+#. Year
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:111
+msgctxt "Year"
+msgid "Unknown"
+msgstr "Невідомий"
+
+#. Container
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:117
+msgctxt "Media container"
+msgid "Unknown"
+msgstr "Невідомий"
+
+#. Dimensions
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:120
+msgctxt "Dimensions"
+msgid "N/A"
+msgstr "н/д"
+
+#. Video Codec
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:122
+msgctxt "Video codec"
+msgid "N/A"
+msgstr "н/д"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:125
+msgctxt "Video bit rate"
+msgid "N/A"
+msgstr "н/д"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:128
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:236
+msgctxt "Frame rate"
+msgid "N/A"
+msgstr "н/д"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:132
+msgctxt "Audio bit rate"
+msgid "N/A"
+msgstr "н/д"
+
+#. Audio Codec
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:134
+msgctxt "Audio codec"
+msgid "N/A"
+msgstr "н/д"
+
+#. Sample rate
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:136
+msgid "0 Hz"
+msgstr "0 Гц"
+
+#. Channels
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:138
+msgid "0 Channels"
+msgstr "0 каналів"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:154
+#, c-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d година"
+msgstr[1] "%d години"
+msgstr[2] "%d годин"
+msgstr[3] "%d година"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:156
+#, c-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d хвилина"
+msgstr[1] "%d хвилини"
+msgstr[2] "%d хвилин"
+msgstr[3] "%d хвилина"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:159
+#, c-format
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d секунда"
+msgstr[1] "%d секунди"
+msgstr[2] "%d секунд"
+msgstr[3] "%d секунда"
+
+#. 5 hours 2 minutes 12 seconds
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:165
+#, c-format
+msgctxt "time"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. 2 minutes 12 seconds
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:168
+#, c-format
+msgctxt "time"
+msgid "%s %s"
+msgstr "%s: %s"
+
+#. 0 seconds
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:174
+msgid "0 seconds"
+msgstr "0 секунд"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:234
+#, c-format
+msgid "%0.2f frame per second"
+msgid_plural "%0.2f frames per second"
+msgstr[0] "%0.2f кадр за секунду"
+msgstr[1] "%0.2f кадри за секунду"
+msgstr[2] "%0.2f кадрів за секунду"
+msgstr[3] "%0.2f кадр за секунду"
+
+#: extensions/audio-video-properties/totem-properties-main.c:116
+#: extensions/audio-video-properties/totem-properties-view.c:275
+msgid "Audio/Video"
+msgstr "Звук/відео"
+
+#: extensions/audio-video-properties/totem-properties-view.c:133
+msgid "N/A"
+msgstr "н/д"
+
+#: extensions/audio-video-properties/totem-properties-view.c:162
+msgctxt "Stream bit rate"
+msgid "N/A"
+msgstr "н/д"
+
+#: extensions/audio-video-properties/totem-properties-view.c:165
+#, c-format
+msgid "%d kbps"
+msgstr "%d кб/с"
+
+#: extensions/audio-video-properties/totem-properties-view.c:182
+#, c-format
+msgid "%d × %d"
+msgstr "%d × %d"
+
+#: extensions/audio-video-properties/totem-properties-view.c:214
+#, c-format
+msgid "%d Hz"
+msgstr "%d Гц"
+
+#: extensions/audio-video-properties/totem-properties-view.c:222
+msgctxt "Sample rate"
+msgid "N/A"
+msgstr "н/д"
+
+#: extensions/audio-video-properties/totem-properties-view.c:230
+msgid "Surround"
+msgstr "Об'ємний"
+
+#: extensions/audio-video-properties/totem-properties-view.c:232
+msgid "Mono"
+msgstr "Моно"
+
+#: extensions/audio-video-properties/totem-properties-view.c:234
+msgid "Stereo"
+msgstr "Стерео"
+
+#: extensions/audio-video-properties/totem-properties-view.c:245
+msgctxt "Number of audio channels"
+msgid "N/A"
+msgstr "н/д"
+
+#: extensions/audio-video-properties/totem-properties-view.c:277
+#: extensions/audio-video-properties/resources/ui/properties.ui:512
+#: src/nautilus-file.c:7484
+msgid "Audio"
+msgstr "Звук"
+
+#: extensions/audio-video-properties/totem-properties-view.c:279
+#: extensions/audio-video-properties/resources/ui/properties.ui:321
+#: src/nautilus-file.c:7492 src/nautilus-mime-actions.c:209
+msgid "Video"
+msgstr "Відео"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:23
+#: src/resources/ui/nautilus-preferences-window.ui:9
+#: src/resources/ui/nautilus-preferences-window.ui:13
+msgid "General"
+msgstr "Загальне"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:47
+msgid "Title:"
+msgstr "Заголовок:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:67
+msgid "Artist:"
+msgstr "Виконавець:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:87
+msgid "Duration:"
+msgstr "Тривалість:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:107
+msgid "Year:"
+msgstr "Рік:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:127
+msgid "Album:"
+msgstr "Альбом:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:235
+msgid "Comment:"
+msgstr "Коментар:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:273
+msgid "Container:"
+msgstr "Контейнер: "
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:345
+msgid "Dimensions:"
+msgstr "Розміри:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:365
+#: extensions/audio-video-properties/resources/ui/properties.ui:609
+msgid "Codec:"
+msgstr "Кодек:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:385
+msgid "Frame rate:"
+msgstr "Частота кадрів:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:405
+#: extensions/audio-video-properties/resources/ui/properties.ui:572
+msgid "Bit rate:"
+msgstr "Бітова швидкість:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:536
+msgid "Sample rate:"
+msgstr "Частота дискретизації:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:646
+msgid "Channels:"
+msgstr "Канали:"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:129
+#: src/nautilus-files-view.c:405 src/nautilus-list-model.c:471
+#: src/nautilus-window-slot.c:1032
+msgid "Loading…"
+msgstr "Завантаження…"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:151
+msgid "Image Type"
+msgstr "Тип зображення"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:170
+#: extensions/image-properties/nautilus-image-properties-page.c:178
+#, c-format
+msgid "%d pixel"
+msgid_plural "%d pixels"
+msgstr[0] "%d точка"
+msgstr[1] "%d точки"
+msgstr[2] "%d точок"
+msgstr[3] "%d точка"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:175
+msgid "Width"
+msgstr "Ширина"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:183
+msgid "Height"
+msgstr "Висота"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:247
+msgid "Camera Brand"
+msgstr "Марка фотоапарату"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:248
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:28
+msgid "Camera Model"
+msgstr "Модель фотоапарату"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:249
+msgid "Exposure Time"
+msgstr "Час експозиції"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:250
+msgid "Exposure Program"
+msgstr "Програма експозиції"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:251
+msgid "Aperture Value"
+msgstr "Діафрагма"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:252
+msgid "ISO Speed Rating"
+msgstr "Одиниці ISO"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:253
+msgid "Flash Fired"
+msgstr "Спалах"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:254
+msgid "Metering Mode"
+msgstr "Режим вимірювання"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:255
+msgid "Focal Length"
+msgstr "Фокусна відстань"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:256
+msgid "Software"
+msgstr "Програми"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:257
+#: src/nautilus-batch-rename-dialog.h:163
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:53
+msgid "Title"
+msgstr "Заголовок"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:258
+msgid "Description"
+msgstr "Опис"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:259
+msgid "Keywords"
+msgstr "Ключові слова"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:260
+msgid "Creator"
+msgstr "Автор"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:261
+msgid "Created On"
+msgstr "Створено"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:262
+msgid "Copyright"
+msgstr "Авторські права"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:263
+msgid "Rating"
+msgstr "Рейтинг"
+
+#. Translators: These are the coordinates of a position where a picture was taken.
+#: extensions/image-properties/nautilus-image-properties-page.c:270
+#, c-format
+msgid "%f N / %f W (%.0f m)"
+msgstr "%f пн. ш./%f зх. д. (%.0f м)"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:272
+msgid "Coordinates"
+msgstr "Координати"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:296
+msgid "Failed to load image information"
+msgstr "Не вдалось завантажити інформацію про зображення"
+
+#: extensions/image-properties/nautilus-image-properties-page-provider.c:100
+#: src/nautilus-file.c:7486
+msgid "Image"
+msgstr "Зображення"
+
+#: extensions/sendto/nautilus-nste.c:105 extensions/sendto/nautilus-nste.c:112
+msgid "Send to…"
+msgstr "Надіслати…"
+
+#: extensions/sendto/nautilus-nste.c:106
+msgid "Send file by mail…"
+msgstr "Надіслати файл електронною поштою…"
+
+#: extensions/sendto/nautilus-nste.c:113
+msgid "Send files by mail…"
+msgstr "Надіслати файли електронною поштою…"
+
+#. Some sort of failure occurred. How 'bout we tell the user?
+#: src/nautilus-application.c:183 src/nautilus-window-slot.c:1698
+msgid "Oops! Something went wrong."
+msgstr "Отакої! Щось не так."
+
+#: src/nautilus-application.c:186
+#, c-format
+msgid ""
+"Unable to create a required folder. Please create the following folder, or "
+"set permissions such that it can be created:\n"
+"%s"
+msgstr ""
+"Не вдалося створити потрібну теку. Створіть таку теку або вкажіть права, щоб "
+"було можна її створити:\n"
+"%s"
+
+#: src/nautilus-application.c:193
+#, c-format
+msgid ""
+"Unable to create required folders. Please create the following folders, or "
+"set permissions such that they can be created:\n"
+"%s"
+msgstr ""
+"Не вдалося створити потрібну теку. Створіть такі теки або вкажіть права, щоб "
+"було можна її створити:\n"
+"%s"
+
+#: src/nautilus-application.c:608
+msgid "--check cannot be used with other options."
+msgstr "--check неможливо використати з іншими параметрами."
+
+#: src/nautilus-application.c:616
+msgid "--quit cannot be used with URIs."
+msgstr "--quit неможливо використати з URI."
+
+#: src/nautilus-application.c:625
+msgid "--select must be used with at least an URI."
+msgstr "--select потрібно використати щонайменше з URI."
+
+#: src/nautilus-application.c:778
+#, c-format
+msgid ""
+"There was an error displaying help: \n"
+"%s"
+msgstr ""
+"Помилка показу довідки: \n"
+"%s"
+
+#: src/nautilus-application.c:970
+#, c-format
+msgid ""
+"“%s” is an internal protocol. Opening this location directly is not "
+"supported."
+msgstr ""
+"«%s» є внутрішнім протоколом. Безпосереднього відкриття цієї адреси не "
+"передбачено."
+
+#: src/nautilus-application.c:1070
+msgid "Perform a quick set of self-check tests."
+msgstr "Здійснити швидку самоперевірку."
+
+#: src/nautilus-application.c:1073
+msgid "Show the version of the program."
+msgstr "Показати версію програми."
+
+#: src/nautilus-application.c:1075
+msgid "Always open a new window for browsing specified URIs"
+msgstr "Завжди відкривати нове вікно для навігації вказаними URI"
+
+#: src/nautilus-application.c:1077
+msgid "Quit Nautilus."
+msgstr "Вийти з Nautilus."
+
+#: src/nautilus-application.c:1079
+msgid "Select specified URI in parent folder."
+msgstr "Вибрати вказану URI у батьківській теці."
+
+#: src/nautilus-application.c:1080
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/nautilus-autorun-software.c:143 src/nautilus-autorun-software.c:146
+#, c-format
+msgid ""
+"Unable to start the program:\n"
+"%s"
+msgstr ""
+"Не вдалось запустити програму:\n"
+"%s"
+
+#: src/nautilus-autorun-software.c:149
+#, c-format
+msgid "Unable to locate the program"
+msgstr "Не вдалось знайти програму"
+
+#: src/nautilus-autorun-software.c:159
+msgid "Oops! There was a problem running this software."
+msgstr "Отакої! Трапилась проблема з роботою цієї програми."
+
+#: src/nautilus-autorun-software.c:188
+#, c-format
+msgid ""
+"“%s” contains software intended to be automatically started. Would you like "
+"to run it?"
+msgstr ""
+"«%s» містить програми, призначені для автоматичного запуску. Запустити їх?"
+
+#: src/nautilus-autorun-software.c:192
+msgid "If you don’t trust this location or aren’t sure, press Cancel."
+msgstr ""
+"Якщо ви не довіряєте цій адресі або не впевнені, натисніть «Скасувати»."
+
+#: src/nautilus-autorun-software.c:223
+msgid "_Run"
+msgstr "_Запустити"
+
+#: src/nautilus-batch-rename-dialog.c:821
+#, c-format
+msgid "“%s” would not be a unique new name."
+msgstr "«%s» не буде унікальною новою назвою."
+
+#: src/nautilus-batch-rename-dialog.c:827
+#, c-format
+msgid "“%s” would conflict with an existing file."
+msgstr "«%s» буде суперечити наявному файлу."
+
+#: src/nautilus-batch-rename-dialog.c:1314
+msgid "Name cannot be empty."
+msgstr "Назва не може бути порожньою."
+
+#: src/nautilus-batch-rename-dialog.c:1320
+msgid "Name cannot contain “/”."
+msgstr "Назва файла не може містити «/»."
+
+#: src/nautilus-batch-rename-dialog.c:1326
+msgid "“.” is not a valid name."
+msgstr "«.» не є коректною назвою."
+
+#: src/nautilus-batch-rename-dialog.c:1332
+msgid "“..” is not a valid name."
+msgstr "«..» не є коректною назвою."
+
+#: src/nautilus-batch-rename-dialog.c:2067
+#, c-format
+msgid "Rename %d Folder"
+msgid_plural "Rename %d Folders"
+msgstr[0] "Перейменувати %d теку"
+msgstr[1] "Перейменувати %d теки"
+msgstr[2] "Перейменувати %d тек"
+msgstr[3] "Перейменувати %d теку"
+
+#: src/nautilus-batch-rename-dialog.c:2075
+#, c-format
+msgid "Rename %d File"
+msgid_plural "Rename %d Files"
+msgstr[0] "Перейменувати %d файл"
+msgstr[1] "Перейменувати %d файли"
+msgstr[2] "Перейменувати %d файлів"
+msgstr[3] "Перейменувати %d файл"
+
+#. To translators: %d is the total number of files and folders.
+#. * Singular case of the string is never used
+#: src/nautilus-batch-rename-dialog.c:2085
+#, c-format
+msgid "Rename %d File and Folder"
+msgid_plural "Rename %d Files and Folders"
+msgstr[0] "Перейменувати %d файл і теку"
+msgstr[1] "Перейменувати %d файли і теки"
+msgstr[2] "Перейменувати %d файлів і тек"
+msgstr[3] "Перейменувати %d файл і теку"
+
+#: src/nautilus-batch-rename-dialog.h:87
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:73
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:187
+msgid "Original Name (Ascending)"
+msgstr "Оригінальна назва (зростання)"
+
+#: src/nautilus-batch-rename-dialog.h:92
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:78
+msgid "Original Name (Descending)"
+msgstr "Оригінальна назва (спадання)"
+
+#: src/nautilus-batch-rename-dialog.h:97
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:83
+msgid "First Modified"
+msgstr "Перша змінена"
+
+#: src/nautilus-batch-rename-dialog.h:102
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:88
+msgid "Last Modified"
+msgstr "Остання змінена"
+
+#: src/nautilus-batch-rename-dialog.h:107
+msgid "First Created"
+msgstr "Перше створена"
+
+#: src/nautilus-batch-rename-dialog.h:112
+msgid "Last Created"
+msgstr "Остання створена"
+
+#: src/nautilus-batch-rename-dialog.h:121
+msgid "Camera model"
+msgstr "Модель фотоапарату"
+
+#: src/nautilus-batch-rename-dialog.h:128
+msgid "Creation date"
+msgstr "Дата створення"
+
+#: src/nautilus-batch-rename-dialog.h:135
+msgid "Season number"
+msgstr "Номер сезону"
+
+#: src/nautilus-batch-rename-dialog.h:142
+msgid "Episode number"
+msgstr "Номер епізоду"
+
+#: src/nautilus-batch-rename-dialog.h:149
+msgid "Track number"
+msgstr "Номер доріжки"
+
+#: src/nautilus-batch-rename-dialog.h:156
+msgid "Artist name"
+msgstr "Назва виконавця"
+
+#: src/nautilus-batch-rename-dialog.h:170
+msgid "Album name"
+msgstr "Назва альбому"
+
+#: src/nautilus-batch-rename-dialog.h:177
+msgid "Original file name"
+msgstr "Оригінальна назва файла"
+
+#: src/nautilus-batch-rename-dialog.h:188
+msgid "1, 2, 3"
+msgstr "1, 2, 3"
+
+#: src/nautilus-batch-rename-dialog.h:195
+msgid "01, 02, 03"
+msgstr "01, 02, 03"
+
+#: src/nautilus-batch-rename-dialog.h:202
+msgid "001, 002, 003"
+msgstr "001, 002, 003"
+
+#: src/nautilus-bookmark.c:115 src/nautilus-file-utilities.c:304
+#: src/nautilus-list-view.c:1943 src/nautilus-pathbar.c:328
+#: src/nautilus-shell-search-provider.c:315 src/nautilus-window.c:193
+msgid "Home"
+msgstr "Домівка"
+
+#: src/nautilus-canvas-container.c:1772
+msgid "The selection rectangle"
+msgstr "Прямокутник виділення"
+
+#: src/nautilus-canvas-view-container.c:366
+msgid "Icon View"
+msgstr "Перегляд піктограм"
+
+#: src/nautilus-column-chooser.c:433
+msgid "Reset to De_fault"
+msgstr "_Типово"
+
+#: src/nautilus-column-chooser.c:435
+msgid "Replace the current List Columns settings with the default settings"
+msgstr "Замінити поточні параметри стовпців списку на типові параметри"
+
+#: src/nautilus-column-utilities.c:59 src/nautilus-list-view.c:2286
+#: src/resources/ui/nautilus-rename-file-popover.ui:23
+msgid "Name"
+msgstr "Назва"
+
+#: src/nautilus-column-utilities.c:60
+msgid "The name and icon of the file."
+msgstr "Назва та програма файла."
+
+#: src/nautilus-column-utilities.c:66
+#: src/resources/ui/nautilus-properties-window.ui:234
+msgid "Size"
+msgstr "Розмір"
+
+#: src/nautilus-column-utilities.c:67
+msgid "The size of the file."
+msgstr "Розмір файла."
+
+#: src/nautilus-column-utilities.c:73
+#: src/resources/ui/nautilus-properties-window.ui:141
+msgid "Type"
+msgstr "Тип"
+
+#: src/nautilus-column-utilities.c:74
+msgid "The type of the file."
+msgstr "Тип файла."
+
+#: src/nautilus-column-utilities.c:80
+#: src/resources/ui/nautilus-properties-window.ui:424
+msgid "Modified"
+msgstr "Змінено"
+
+#: src/nautilus-column-utilities.c:81 src/nautilus-column-utilities.c:148
+msgid "The date the file was modified."
+msgstr "Дата останньої зміни файла."
+
+#: src/nautilus-column-utilities.c:89
+msgid "Detailed Type"
+msgstr "Докладно щодо типу"
+
+#: src/nautilus-column-utilities.c:90
+msgid "The detailed type of the file."
+msgstr "Докладно щодо типу файла."
+
+#: src/nautilus-column-utilities.c:96
+#: src/resources/ui/nautilus-properties-window.ui:398
+msgid "Accessed"
+msgstr "Дата доступу"
+
+#: src/nautilus-column-utilities.c:97
+msgid "The date the file was accessed."
+msgstr "Дата останнього доступу до файла."
+
+#: src/nautilus-column-utilities.c:105
+#: src/resources/ui/nautilus-properties-window.ui:288
+msgid "Created"
+msgstr "Створено"
+
+#: src/nautilus-column-utilities.c:106
+msgid "The date the file was created."
+msgstr "Дата, коли файл було створено."
+
+#: src/nautilus-column-utilities.c:115
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:72
+msgid "Owner"
+msgstr "Власник"
+
+#: src/nautilus-column-utilities.c:116
+msgid "The owner of the file."
+msgstr "Власник файла."
+
+#: src/nautilus-column-utilities.c:123
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:107
+msgid "Group"
+msgstr "Група"
+
+#: src/nautilus-column-utilities.c:124
+msgid "The group of the file."
+msgstr "Група файла."
+
+#: src/nautilus-column-utilities.c:131
+#: src/resources/ui/nautilus-properties-window.ui:1281
+msgid "Permissions"
+msgstr "Права"
+
+#: src/nautilus-column-utilities.c:132
+msgid "The permissions of the file."
+msgstr "Права доступу на файл."
+
+#: src/nautilus-column-utilities.c:139
+msgid "Location"
+msgstr "Адреса"
+
+#: src/nautilus-column-utilities.c:140
+msgid "The location of the file."
+msgstr "Адреса файла."
+
+#: src/nautilus-column-utilities.c:147
+msgid "Modified — Time"
+msgstr "Змінено — Час"
+
+#: src/nautilus-column-utilities.c:156
+msgid "Recency"
+msgstr "Свіжість"
+
+#: src/nautilus-column-utilities.c:157
+msgid "The date the file was accessed by the user."
+msgstr "Дата останнього доступу до файла користувачем."
+
+#: src/nautilus-column-utilities.c:166
+msgid "Star"
+msgstr "Зірка"
+
+#: src/nautilus-column-utilities.c:167
+msgid "Shows if file is starred."
+msgstr "Показує, чи було файл позначено зірками."
+
+#: src/nautilus-column-utilities.c:212
+msgid "Trashed On"
+msgstr "Викинуто"
+
+#: src/nautilus-column-utilities.c:213
+msgid "Date when file was moved to the Trash"
+msgstr "Дата, коли файл перенесли в смітник"
+
+#: src/nautilus-column-utilities.c:220
+msgid "Original Location"
+msgstr "Початкова адреса"
+
+#: src/nautilus-column-utilities.c:221
+msgid "Original location of file before moved to the Trash"
+msgstr "Адреса файла перед його переміщенням у смітник"
+
+#: src/nautilus-column-utilities.c:239
+msgid "Relevance"
+msgstr "За відповідністю"
+
+#: src/nautilus-column-utilities.c:240
+msgid "Relevance rank for search"
+msgstr "Пошук видавати за відповідністю"
+
+#: src/nautilus-compress-dialog-controller.c:62
+msgid "Archive names cannot contain “/”."
+msgstr "Назва архівів не може містити «/»."
+
+#: src/nautilus-compress-dialog-controller.c:67
+msgid "An archive cannot be called “.”."
+msgstr "Архів не можна називати як «.»."
+
+#: src/nautilus-compress-dialog-controller.c:72
+msgid "An archive cannot be called “..”."
+msgstr "Архів не можна називати як «..»."
+
+#: src/nautilus-compress-dialog-controller.c:77
+msgid "Archive name is too long."
+msgstr "Назва архіву є надто довгою."
+
+#. We must warn about the side effect
+#: src/nautilus-compress-dialog-controller.c:83
+msgid "Archives with “.” at the beginning of their name are hidden."
+msgstr "Файли архівів, назви яких починаються із символу «.», є прихованими."
+
+#. Translators: this is of the format "hostname (uri-scheme)"
+#: src/nautilus-directory.c:673
+#, c-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: src/nautilus-dnd.c:794
+msgid "_Move Here"
+msgstr "Пере_містити сюди"
+
+#: src/nautilus-dnd.c:799
+msgid "_Copy Here"
+msgstr "_Копіювати сюди"
+
+#: src/nautilus-dnd.c:804
+msgid "_Link Here"
+msgstr "_Сполучити сюди"
+
+#: src/nautilus-dnd.c:811 src/nautilus-file-operations.c:8415
+#: src/resources/ui/nautilus-compress-dialog.ui:165
+#: src/resources/ui/nautilus-create-folder-dialog.ui:63
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: src/nautilus-error-reporting.c:85
+#, c-format
+msgid "You do not have the permissions necessary to view the contents of “%s”."
+msgstr "Ви не маєте прав, потрібних для перегляду вмісту «%s»."
+
+#: src/nautilus-error-reporting.c:92
+#, c-format
+msgid "“%s” could not be found. Perhaps it has recently been deleted."
+msgstr "Не вдалось знайти «%s». Можливо, його щойно вилучено."
+
+#: src/nautilus-error-reporting.c:104
+#, c-format
+msgid "Sorry, could not display all the contents of “%s”: %s"
+msgstr "Вибачте, не вдалось показати ввесь вміст «%s»: %s"
+
+#: src/nautilus-error-reporting.c:115
+msgid "This location could not be displayed."
+msgstr "Цю адресу неможливо показати."
+
+#: src/nautilus-error-reporting.c:142
+#, c-format
+msgid "You do not have the permissions necessary to change the group of “%s”."
+msgstr "Ви не маєте достатньо прав для зміни групи «%s»."
+
+#. fall through
+#: src/nautilus-error-reporting.c:165
+#, c-format
+msgid "Sorry, could not change the group of “%s”: %s"
+msgstr "Вибачте, не вдалось змінити групу для «%s»: %s"
+
+#: src/nautilus-error-reporting.c:170
+msgid "The group could not be changed."
+msgstr "Групу неможливо змінити."
+
+#: src/nautilus-error-reporting.c:191
+#, c-format
+msgid "Sorry, could not change the owner of “%s”: %s"
+msgstr "Вибачте, не вдалось змінити власника «%s»: %s"
+
+#: src/nautilus-error-reporting.c:194
+msgid "The owner could not be changed."
+msgstr "Власника неможливо змінити."
+
+#: src/nautilus-error-reporting.c:215
+#, c-format
+msgid "Sorry, could not change the permissions of “%s”: %s"
+msgstr "Вибачте не вдалось змінити права на «%s»: %s"
+
+#: src/nautilus-error-reporting.c:218
+msgid "The permissions could not be changed."
+msgstr "Права неможливо змінити."
+
+#: src/nautilus-error-reporting.c:253
+#, c-format
+msgid ""
+"The name “%s” is already used in this location. Please use a different name."
+msgstr ""
+"Назва «%s» вже використовується у цій адресі. Будь ласка, виберіть іншу."
+
+#: src/nautilus-error-reporting.c:261
+#, c-format
+msgid ""
+"There is no “%s” in this location. Perhaps it was just moved or deleted?"
+msgstr "У цій теці немає «%s». Може, його перенесено або вилучено?"
+
+#: src/nautilus-error-reporting.c:269
+#, c-format
+msgid "You do not have the permissions necessary to rename “%s”."
+msgstr "Ви не маєте прав потрібних для перейменування «%s»."
+
+#: src/nautilus-error-reporting.c:278
+#, c-format
+msgid ""
+"The name “%s” is not valid because it contains the character “/”. Please use "
+"a different name."
+msgstr ""
+"Назва «%s» — неправильна, бо містить символ «/». Будь ласка, використайте "
+"іншу назву."
+
+#: src/nautilus-error-reporting.c:284
+#, c-format
+msgid "The name “%s” is not valid. Please use a different name."
+msgstr "Назва «%s» — неправильна. Будь ласка, виберіть іншу назву."
+
+#: src/nautilus-error-reporting.c:293
+#, c-format
+msgid "The name “%s” is too long. Please use a different name."
+msgstr "Назва «%s» — надто довга. Будь ласка, виберіть іншу назву."
+
+#. fall through
+#: src/nautilus-error-reporting.c:317
+#, c-format
+msgid "Sorry, could not rename “%s” to “%s”: %s"
+msgstr "Вибачте, не вдалось перейменувати «%s» на «%s»: %s"
+
+#: src/nautilus-error-reporting.c:322
+msgid "The item could not be renamed."
+msgstr "Об'єкт неможливо перейменувати."
+
+#: src/nautilus-error-reporting.c:431
+#, c-format
+msgid "Renaming “%s” to “%s”."
+msgstr "Перейменування «%s» на «%s»."
+
+#: src/nautilus-file.c:1344 src/nautilus-vfs-file.c:380
+msgid "This file cannot be mounted"
+msgstr "Цей файл неможливо змонтувати"
+
+#: src/nautilus-file.c:1398
+msgid "This file cannot be unmounted"
+msgstr "Цей файл неможливо демонтувати"
+
+#: src/nautilus-file.c:1441
+msgid "This file cannot be ejected"
+msgstr "Цей файл неможливо витягнути"
+
+#: src/nautilus-file.c:1482 src/nautilus-vfs-file.c:571
+msgid "This file cannot be started"
+msgstr "Цей файл неможливо запустити"
+
+#: src/nautilus-file.c:1541 src/nautilus-file.c:1581
+msgid "This file cannot be stopped"
+msgstr "Цей файл неможливо зупинити"
+
+#: src/nautilus-file.c:1960
+#, c-format
+msgid "Slashes are not allowed in filenames"
+msgstr "У назвах файлів не можна використовувати похилу риску"
+
+#: src/nautilus-file.c:2003
+#, c-format
+msgid "Toplevel files cannot be renamed"
+msgstr "Неможливо перейменувати файли верхнього рівня"
+
+#: src/nautilus-file.c:2087
+#, c-format
+msgid "File not found"
+msgstr "Файл не знайдено"
+
+#: src/nautilus-file.c:4468 src/nautilus-file-utilities.c:327
+#: src/nautilus-pathbar.c:338
+msgid "Starred"
+msgstr "З зірочками"
+
+#. Translators: Time in 24h format
+#: src/nautilus-file.c:5531
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#. Translators: Time in 12h format
+#: src/nautilus-file.c:5536
+msgid "%l:%M %p"
+msgstr "%l:%M %p"
+
+#: src/nautilus-file.c:5545
+#, no-c-format
+msgid "Yesterday"
+msgstr "Учора"
+
+#. Translators: this is the word Yesterday followed by
+#. * a time in 24h format. i.e. "Yesterday 23:04"
+#: src/nautilus-file.c:5554
+#, no-c-format
+msgid "Yesterday %H:%M"
+msgstr "Учора %H:%M"
+
+#. Translators: this is the word Yesterday followed by
+#. * a time in 12h format. i.e. "Yesterday 9:04 PM"
+#: src/nautilus-file.c:5561
+#, no-c-format
+msgid "Yesterday %l:%M %p"
+msgstr "Учора %l:%M %p"
+
+#: src/nautilus-file.c:5571
+#, no-c-format
+msgid "%a"
+msgstr "%a"
+
+#. Translators: this is the name of the week day followed by
+#. * a time in 24h format. i.e. "Monday 23:04"
+#: src/nautilus-file.c:5580
+#, no-c-format
+msgid "%a %H:%M"
+msgstr "%a %H:%M"
+
+#. Translators: this is the week day name followed by
+#. * a time in 12h format. i.e. "Monday 9:04 PM"
+#: src/nautilus-file.c:5587
+#, no-c-format
+msgid "%a %l:%M %p"
+msgstr "%a, %I:%M %p"
+
+#. Translators: this is the day of the month followed
+#. * by the abbreviated month name i.e. "3 Feb"
+#: src/nautilus-file.c:5598
+#, no-c-format
+msgid "%-e %b"
+msgstr "%-e %b"
+
+#. Translators: this is the day of the month followed
+#. * by the abbreviated month name followed by a time in
+#. * 24h format i.e. "3 Feb 23:04"
+#: src/nautilus-file.c:5608
+#, no-c-format
+msgid "%-e %b %H:%M"
+msgstr "%-e %b %H:%M"
+
+#. Translators: this is the day of the month followed
+#. * by the abbreviated month name followed by a time in
+#. * 12h format i.e. "3 Feb 9:04"
+#: src/nautilus-file.c:5616
+#, no-c-format
+msgid "%-e %b %l:%M %p"
+msgstr "%-e %b %l:%M %p"
+
+#. Translators: this is the day of the month followed by the abbreviated
+#. * month name followed by the year i.e. "3 Feb 2015"
+#: src/nautilus-file.c:5627
+#, no-c-format
+msgid "%-e %b %Y"
+msgstr "%-e %b %Y"
+
+#. Translators: this is the day number followed
+#. * by the abbreviated month name followed by the year followed
+#. * by a time in 24h format i.e. "3 Feb 2015 23:04"
+#: src/nautilus-file.c:5637
+#, no-c-format
+msgid "%-e %b %Y %H:%M"
+msgstr "%-e %b %Y %H:%M"
+
+#. Translators: this is the day number followed
+#. * by the abbreviated month name followed by the year followed
+#. * by a time in 12h format i.e. "3 Feb 2015 9:04 PM"
+#: src/nautilus-file.c:5645
+#, no-c-format
+msgid "%-e %b %Y %l:%M %p"
+msgstr "%-e %b %Y %l:%M %p"
+
+#: src/nautilus-file.c:5657
+#, no-c-format
+msgid "%c"
+msgstr "%c"
+
+#: src/nautilus-file.c:6083
+#, c-format
+msgid "Not allowed to set permissions"
+msgstr "Заборонено надавати права"
+
+#: src/nautilus-file.c:6406
+#, c-format
+msgid "Not allowed to set owner"
+msgstr "Заборонено вказувати власника"
+
+#: src/nautilus-file.c:6425
+#, c-format
+msgid "Specified owner “%s” doesn’t exist"
+msgstr "Вказаний власник «%s» не існує"
+
+#: src/nautilus-file.c:6710
+#, c-format
+msgid "Not allowed to set group"
+msgstr "Заборонено вказувати групу"
+
+#: src/nautilus-file.c:6729
+#, c-format
+msgid "Specified group “%s” doesn’t exist"
+msgstr "Вказана група «%s» не існує"
+
+#. Translators: "Me" is used to indicate the file is owned by me (the current user)
+#: src/nautilus-file.c:6871
+msgid "Me"
+msgstr "Моє"
+
+#: src/nautilus-file.c:6903
+#, c-format
+msgid "%'u item"
+msgid_plural "%'u items"
+msgstr[0] "%'u пункт"
+msgstr[1] "%'u пункти"
+msgstr[2] "%'u пунктів"
+msgstr[3] "%'u пункт"
+
+#: src/nautilus-file.c:6904
+#, c-format
+msgid "%'u folder"
+msgid_plural "%'u folders"
+msgstr[0] "%'u тека"
+msgstr[1] "%'u теки"
+msgstr[2] "%'u тек"
+msgstr[3] "%'u тека"
+
+#: src/nautilus-file.c:6905
+#, c-format
+msgid "%'u file"
+msgid_plural "%'u files"
+msgstr[0] "%'u файл"
+msgstr[1] "%'u файли"
+msgstr[2] "%'u файлів"
+msgstr[3] "%'u файл"
+
+#. This means no contents at all were readable
+#: src/nautilus-file.c:7394
+msgid "? bytes"
+msgstr "? байтів"
+
+#. This means no contents at all were readable
+#: src/nautilus-file.c:7406
+msgid "? items"
+msgstr "? пунктів"
+
+#: src/nautilus-file.c:7414
+msgid "Unknown"
+msgstr "Невідомо"
+
+#. Fallback, use for both unknown attributes and attributes
+#. * for which we have no more appropriate default.
+#.
+#: src/nautilus-file.c:7445 src/nautilus-properties-window.c:1268
+msgid "unknown"
+msgstr "невідомо"
+
+#: src/nautilus-file.c:7483 src/nautilus-file.c:7491 src/nautilus-file.c:7550
+msgid "Program"
+msgstr "Програма"
+
+#: src/nautilus-file.c:7485
+msgid "Font"
+msgstr "Шрифт"
+
+#: src/nautilus-file.c:7487
+msgid "Archive"
+msgstr "Архів"
+
+#: src/nautilus-file.c:7488
+msgid "Markup"
+msgstr "Розмітка"
+
+#: src/nautilus-file.c:7489 src/nautilus-file.c:7490
+msgid "Text"
+msgstr "Текст"
+
+#: src/nautilus-file.c:7493
+msgid "Contacts"
+msgstr "Контакти"
+
+#: src/nautilus-file.c:7494
+msgid "Calendar"
+msgstr "Календар"
+
+#: src/nautilus-file.c:7495
+msgid "Document"
+msgstr "Документи"
+
+#: src/nautilus-file.c:7496 src/nautilus-mime-actions.c:183
+msgid "Presentation"
+msgstr "Презентація"
+
+#: src/nautilus-file.c:7497 src/nautilus-mime-actions.c:191
+msgid "Spreadsheet"
+msgstr "Електронна таблиця"
+
+#. Refers to a file type which is known but not one of the basic types
+#: src/nautilus-file.c:7524
+msgid "Other"
+msgstr "Інше"
+
+#: src/nautilus-file.c:7552
+msgid "Binary"
+msgstr "Бінарник"
+
+#: src/nautilus-file.c:7557
+msgid "Folder"
+msgstr "Тека"
+
+#: src/nautilus-file.c:7596
+msgid "Link"
+msgstr "Посилання"
+
+#. Note to localizers: convert file type string for file
+#. * (e.g. "folder", "plain text") to file type for symbolic link
+#. * to that kind of file (e.g. "link to folder").
+#.
+#. appended to new link file
+#: src/nautilus-file.c:7602 src/nautilus-file-operations.c:486
+#, c-format
+msgid "Link to %s"
+msgstr "Посилання на %s"
+
+#: src/nautilus-file.c:7620 src/nautilus-file.c:7636 src/nautilus-file.c:7652
+msgid "Link (broken)"
+msgstr "Посилання (пошкоджено)"
+
+#. Setup the expander for the rename action
+#: src/nautilus-file-conflict-dialog.c:313
+msgid "_Select a new name for the destination"
+msgstr "_Введіть нову назву для призначення"
+
+#: src/nautilus-file-conflict-dialog.c:328
+#: src/resources/ui/nautilus-properties-window.ui:1332
+msgid "Reset"
+msgstr "Скинути"
+
+#. Setup the checkbox to apply the action to all files
+#: src/nautilus-file-conflict-dialog.c:339
+msgid "Apply this action to all files and folders"
+msgstr "Застосувати цю дію до всіх файлів і тек"
+
+#: src/nautilus-file-conflict-dialog.c:350 src/nautilus-file-operations.c:256
+msgid "_Skip"
+msgstr "_Пропустити"
+
+#: src/nautilus-file-conflict-dialog.c:354
+msgid "Re_name"
+msgstr "Перей_менувати"
+
+#: src/nautilus-file-conflict-dialog.c:360
+msgid "Re_place"
+msgstr "За_мінити"
+
+#: src/nautilus-file-name-widget-controller.c:143
+#: src/nautilus-rename-file-popover-controller.c:110
+msgid "File names cannot contain “/”."
+msgstr "Назви файла не може містити «/»."
+
+#: src/nautilus-file-name-widget-controller.c:148
+#: src/nautilus-rename-file-popover-controller.c:122
+msgid "A file cannot be called “.”."
+msgstr "Файл не можна називати як «.»."
+
+#: src/nautilus-file-name-widget-controller.c:153
+#: src/nautilus-rename-file-popover-controller.c:134
+msgid "A file cannot be called “..”."
+msgstr "Файл не можна називати як «..»."
+
+#: src/nautilus-file-name-widget-controller.c:158
+#: src/nautilus-rename-file-popover-controller.c:146
+msgid "File name is too long."
+msgstr "Назва файла є надто довгою."
+
+#. We must warn about the side effect
+#: src/nautilus-file-name-widget-controller.c:164
+#: src/nautilus-rename-file-popover-controller.c:159
+msgid "Files with “.” at the beginning of their name are hidden."
+msgstr "Файли, назви яких починаються із символу «.», є прихованими."
+
+#: src/nautilus-file-name-widget-controller.c:186
+msgid "A folder with that name already exists."
+msgstr "Тека з такою ж назвою вже існує."
+
+#: src/nautilus-file-name-widget-controller.c:191
+msgid "A file with that name already exists."
+msgstr "Файл з такою ж назвою вже існує."
+
+#: src/nautilus-file-operations.c:257
+msgid "S_kip All"
+msgstr "_Пропустити все"
+
+#: src/nautilus-file-operations.c:258
+msgid "_Retry"
+msgstr "Пов_торити"
+
+#: src/nautilus-file-operations.c:259
+msgid "_Delete"
+msgstr "В_илучити"
+
+#: src/nautilus-file-operations.c:260
+msgid "Delete _All"
+msgstr "В_илучити все"
+
+#: src/nautilus-file-operations.c:261
+msgid "_Replace"
+msgstr "За_мінити"
+
+#: src/nautilus-file-operations.c:262
+msgid "Replace _All"
+msgstr "Замінити _все"
+
+#: src/nautilus-file-operations.c:263
+msgid "_Merge"
+msgstr "_Об'єднати"
+
+#: src/nautilus-file-operations.c:264
+msgid "Merge _All"
+msgstr "Об'єднати _все"
+
+#: src/nautilus-file-operations.c:265
+msgid "Copy _Anyway"
+msgstr "О_днаково копіювати"
+
+#: src/nautilus-file-operations.c:266 src/nautilus-file-operations.c:3012
+msgid "Empty _Trash"
+msgstr "О_чистити смітник"
+
+#: src/nautilus-file-operations.c:366
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d секунда"
+msgstr[1] "%'d секунди"
+msgstr[2] "%'d секунд"
+msgstr[3] "%'d секунда"
+
+#: src/nautilus-file-operations.c:372 src/nautilus-file-operations.c:384
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d хвилина"
+msgstr[1] "%'d хвилини"
+msgstr[2] "%'d хвилин"
+msgstr[3] "%'d хвилина"
+
+#: src/nautilus-file-operations.c:383 src/nautilus-file-operations.c:391
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d година"
+msgstr[1] "%'d години"
+msgstr[2] "%'d годин"
+msgstr[3] "%'d година"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:493
+#, c-format
+msgid "Another link to %s"
+msgstr "Інше посилання на %s"
+
+#. Localizers: Feel free to leave out the "st" suffix
+#. * if there's no way to do that nicely for a
+#. * particular language.
+#.
+#: src/nautilus-file-operations.c:514
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d-е посилання на %s"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:521
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d-є посилання на %s"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:528
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d-е посилання на %s"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:535
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d-е посилання на %s"
+
+#. Localizers:
+#. * Feel free to leave out the st, nd, rd and th suffix or
+#. * make some or all of them match.
+#.
+#. localizers: tag used to detect the first copy of a file
+#: src/nautilus-file-operations.c:587
+msgid " (copy)"
+msgstr " (копія)"
+
+#. localizers: tag used to detect the second copy of a file
+#: src/nautilus-file-operations.c:589
+msgid " (another copy)"
+msgstr " (інша копія)"
+
+#. localizers: tag used to detect the x11th copy of a file
+#. localizers: tag used to detect the x12th copy of a file
+#. localizers: tag used to detect the x13th copy of a file
+#. localizers: tag used to detect the xxth copy of a file
+#: src/nautilus-file-operations.c:592 src/nautilus-file-operations.c:594
+#: src/nautilus-file-operations.c:596 src/nautilus-file-operations.c:606
+msgid "th copy)"
+msgstr "-а копія)"
+
+#. localizers: tag used to detect the x1st copy of a file
+#: src/nautilus-file-operations.c:599
+msgid "st copy)"
+msgstr "-а копія)"
+
+#. localizers: tag used to detect the x2nd copy of a file
+#: src/nautilus-file-operations.c:601
+msgid "nd copy)"
+msgstr "-а копія)"
+
+#. localizers: tag used to detect the x3rd copy of a file
+#: src/nautilus-file-operations.c:603
+msgid "rd copy)"
+msgstr "-я копія)"
+
+#. localizers: appended to first file copy
+#: src/nautilus-file-operations.c:620
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (копія)%s"
+
+#. localizers: appended to second file copy
+#: src/nautilus-file-operations.c:622
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (інша копія)%s"
+
+#. localizers: appended to x11th file copy
+#. localizers: appended to x12th file copy
+#. localizers: appended to x13th file copy
+#. localizers: appended to xxth file copy
+#: src/nautilus-file-operations.c:625 src/nautilus-file-operations.c:627
+#: src/nautilus-file-operations.c:629 src/nautilus-file-operations.c:643
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (%'d-а копія)%s"
+
+#. localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
+#. * plurals, you can leave the st, nd, rd suffixes out and just make all the translated
+#. * strings look like "%s (copy %'d)%s".
+#.
+#. localizers: appended to x1st file copy
+#: src/nautilus-file-operations.c:637
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (%'d-а копія)%s"
+
+#. localizers: appended to x2nd file copy
+#: src/nautilus-file-operations.c:639
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (%'d-а копія)%s"
+
+#. localizers: appended to x3rd file copy
+#: src/nautilus-file-operations.c:641
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (%'d-я копія)%s"
+
+#. localizers: opening parentheses to match the "th copy)" string
+#: src/nautilus-file-operations.c:756
+msgid " ("
+msgstr " ("
+
+#. localizers: opening parentheses of the "th copy)" string
+#: src/nautilus-file-operations.c:766
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: src/nautilus-file-operations.c:1657
+#, c-format
+msgid "Are you sure you want to permanently delete “%s” from the trash?"
+msgstr "Остаточно вилучити «%s» зі смітника?"
+
+#: src/nautilus-file-operations.c:1662
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] "Остаточно вилучити %'d виділений пункт зі смітника?"
+msgstr[1] "Остаточно вилучити %'d виділені пункти зі смітника?"
+msgstr[2] "Остаточно вилучити %'d виділених пунктів зі смітника?"
+msgstr[3] "Остаточно вилучити %'d виділений пункт зі смітника?"
+
+#: src/nautilus-file-operations.c:1672 src/nautilus-file-operations.c:1735
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Якщо вилучите пункт, його буде безповоротно втрачено."
+
+#: src/nautilus-file-operations.c:1687
+msgid "Empty all items from Trash?"
+msgstr "Очистити всі пункти зі смітника?"
+
+#: src/nautilus-file-operations.c:1691
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Якщо вилучите пункти в смітнику, вилучите їх безповоротно."
+
+#: src/nautilus-file-operations.c:1721
+#, c-format
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Остаточно вилучити «%s»?"
+
+#: src/nautilus-file-operations.c:1726
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural "Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Остаточно вилучити %'d вибраний пункт?"
+msgstr[1] "Остаточно вилучити %'d вибрані пункти?"
+msgstr[2] "Остаточно вилучити %'d вибраних пунктів?"
+msgstr[3] "Остаточно вилучити %'d вибраний пункт?"
+
+#: src/nautilus-file-operations.c:1787
+#, c-format
+msgid "Deleted “%s”"
+msgstr "Вилучено «%s»"
+
+#: src/nautilus-file-operations.c:1791
+#, c-format
+msgid "Deleting “%s”"
+msgstr "Вилучення «%s»"
+
+#: src/nautilus-file-operations.c:1802
+#, c-format
+msgid "Deleted %'d file"
+msgid_plural "Deleted %'d files"
+msgstr[0] "Вилучено %'d файл"
+msgstr[1] "Вилучено %'d файли"
+msgstr[2] "Вилучено %'d файлів"
+msgstr[3] "Вилучено %'d файл"
+
+#: src/nautilus-file-operations.c:1808
+#, c-format
+msgid "Deleting %'d file"
+msgid_plural "Deleting %'d files"
+msgstr[0] "Вилучення %'d файла"
+msgstr[1] "Вилучення %'d файлів"
+msgstr[2] "Вилучення %'d файлів"
+msgstr[3] "Вилучення %'d файла"
+
+#. To translators: %'d is the number of files completed for the operation,
+#. * so it will be something like 2/14.
+#: src/nautilus-file-operations.c:1836 src/nautilus-file-operations.c:1844
+#: src/nautilus-file-operations.c:1884 src/nautilus-file-operations.c:2227
+#: src/nautilus-file-operations.c:2235 src/nautilus-file-operations.c:2275
+#: src/nautilus-file-operations.c:4153 src/nautilus-file-operations.c:4161
+#: src/nautilus-file-operations.c:4232 src/nautilus-file-operations.c:8799
+#: src/nautilus-file-operations.c:8867
+#, c-format
+msgid "%'d / %'d"
+msgstr "%'d / %'d"
+
+#. To translators: %s will expand to a time duration like "2 minutes".
+#. * So the whole thing will be something like "1 / 5 -- 2 hours left (4 files/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#: src/nautilus-file-operations.c:1863 src/nautilus-file-operations.c:2254
+#, c-format
+msgid "%'d / %'d — %s left"
+msgid_plural "%'d / %'d — %s left"
+msgstr[0] "%'d / %'d — залишилось %s"
+msgstr[1] "%'d / %'d — залишилось %s"
+msgstr[2] "%'d / %'d — залишилось %s"
+msgstr[3] "%'d / %'d — залишилось %s"
+
+#: src/nautilus-file-operations.c:1867 src/nautilus-file-operations.c:2257
+#, c-format
+msgid "(%d file/sec)"
+msgid_plural "(%d files/sec)"
+msgstr[0] "(%d файл/с)"
+msgstr[1] "(%d файли/с)"
+msgstr[2] "(%d файлів/с)"
+msgstr[3] "(%d файл/с)"
+
+#: src/nautilus-file-operations.c:2026 src/nautilus-file-operations.c:3333
+msgid "Error while deleting."
+msgstr "Помилка при вилученні."
+
+#: src/nautilus-file-operations.c:2037
+#, c-format
+msgid "There was an error deleting the folder “%s”."
+msgstr "Помилка вилучення теки «%s»."
+
+#: src/nautilus-file-operations.c:2040
+#, c-format
+msgid "You do not have sufficient permissions to delete the folder “%s”."
+msgstr "Ви не маєте достатніх прав для вилучення теки «%s»."
+
+#: src/nautilus-file-operations.c:2047
+#, c-format
+msgid "There was an error deleting the file “%s”."
+msgstr "Помилка вилучення файла «%s»."
+
+#: src/nautilus-file-operations.c:2050
+#, c-format
+msgid "You do not have sufficient permissions to delete the file “%s”."
+msgstr "Ви не маєте достатніх прав для вилучення файла «%s»."
+
+#: src/nautilus-file-operations.c:2177
+#, c-format
+msgid "Trashing “%s”"
+msgstr "Викидання «%s»"
+
+#: src/nautilus-file-operations.c:2181
+#, c-format
+msgid "Trashed “%s”"
+msgstr "Викинуто «%s»"
+
+#: src/nautilus-file-operations.c:2192
+#, c-format
+msgid "Trashing %'d file"
+msgid_plural "Trashing %'d files"
+msgstr[0] "Викидання %'d файла"
+msgstr[1] "Викидання %'d файлів"
+msgstr[2] "Викидання %'d файлів"
+msgstr[3] "Викидання %'d файла"
+
+#: src/nautilus-file-operations.c:2198
+#, c-format
+msgid "Trashed %'d file"
+msgid_plural "Trashed %'d files"
+msgstr[0] "Викинуто %'d файл"
+msgstr[1] "Викинуто %'d файли"
+msgstr[2] "Викинуто %'d файлів"
+msgstr[3] "Викинуто %'d файл"
+
+#. Translators: %s is a file name
+#: src/nautilus-file-operations.c:2347
+#, c-format
+msgid "“%s” can’t be put in the trash. Do you want to delete it immediately?"
+msgstr "Неможливо перемістити «%s» у смітник. Остаточно його вилучити?"
+
+#: src/nautilus-file-operations.c:2359
+msgid "This remote location does not support sending items to the trash."
+msgstr "Ця віддалена адреса не підтримує надсилання об'єктів у смітник."
+
+#: src/nautilus-file-operations.c:2656
+msgid "Trashing Files"
+msgstr "Викидання файлів"
+
+#: src/nautilus-file-operations.c:2660
+msgid "Deleting Files"
+msgstr "Вилучення файлів"
+
+#: src/nautilus-file-operations.c:2817
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Не вдалось витягнути %s"
+
+#: src/nautilus-file-operations.c:2822
+#, c-format
+msgid "Unable to unmount %s"
+msgstr "Неможливо демонтувати %s"
+
+#: src/nautilus-file-operations.c:3002
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "Очистити смітник перед демонтуванням?"
+
+#: src/nautilus-file-operations.c:3004
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Для звільнення місця на цьому пристрої треба очистити смітник. Всі пункти, "
+"що в смітнику на цьому томі, буде остаточно втрачено. "
+
+#: src/nautilus-file-operations.c:3010
+msgid "Do _not Empty Trash"
+msgstr "_Не очищати смітник"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-file-operations.c:3152 src/nautilus-files-view.c:6852
+#, c-format
+msgid "Unable to access “%s”"
+msgstr "Не вдалось доступитись до «%s»"
+
+#: src/nautilus-file-operations.c:3237
+#, c-format
+msgid "Preparing to copy %'d file (%s)"
+msgid_plural "Preparing to copy %'d files (%s)"
+msgstr[0] "Підготовлення до копіювання %'d файла (%s)"
+msgstr[1] "Підготовлення до копіювання %'d файлів (%s)"
+msgstr[2] "Підготовлення до копіювання %'d файлів (%s)"
+msgstr[3] "Підготовлення до копіювання %'d файла (%s)"
+
+#: src/nautilus-file-operations.c:3250
+#, c-format
+msgid "Preparing to move %'d file (%s)"
+msgid_plural "Preparing to move %'d files (%s)"
+msgstr[0] "Підготовлення до переміщення %'d файла (%s)"
+msgstr[1] "Підготовлення до переміщення %'d файлів (%s)"
+msgstr[2] "Підготовлення до переміщення %'d файлів (%s)"
+msgstr[3] "Підготовлення до переміщення %'d файла (%s)"
+
+#: src/nautilus-file-operations.c:3263
+#, c-format
+msgid "Preparing to delete %'d file (%s)"
+msgid_plural "Preparing to delete %'d files (%s)"
+msgstr[0] "Підготовлення до вилучення %'d файла (%s)"
+msgstr[1] "Підготовлення до вилучення %'d файлів (%s)"
+msgstr[2] "Підготовлення до вилучення %'d файлів (%s)"
+msgstr[3] "Підготовлення до вилучення %'d файла (%s)"
+
+#: src/nautilus-file-operations.c:3273
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Підготовлення до викидання %'d файла"
+msgstr[1] "Підготовлення до викидання %'d файлів"
+msgstr[2] "Підготовлення до викидання %'d файлів"
+msgstr[3] "Підготовлення до викидання %'d файла"
+
+#: src/nautilus-file-operations.c:3281
+#, c-format
+msgid "Preparing to compress %'d file"
+msgid_plural "Preparing to compress %'d files"
+msgstr[0] "Підготовлення до стиснення %'d файла"
+msgstr[1] "Підготовлення до стиснення %'d файлів"
+msgstr[2] "Підготовлення до стиснення %'d файлів"
+msgstr[3] "Підготовлення до стиснення %'d файла"
+
+#: src/nautilus-file-operations.c:3323 src/nautilus-file-operations.c:4756
+#: src/nautilus-file-operations.c:4948 src/nautilus-file-operations.c:5030
+#: src/nautilus-file-operations.c:5313
+msgid "Error while copying."
+msgstr "Помилка при копіюванні."
+
+#: src/nautilus-file-operations.c:3328 src/nautilus-file-operations.c:4944
+#: src/nautilus-file-operations.c:5026 src/nautilus-file-operations.c:5309
+msgid "Error while moving."
+msgstr "Помилка при перенесенні."
+
+#: src/nautilus-file-operations.c:3338
+msgid "Error while moving files to trash."
+msgstr "Помилка при переміщенні файлів до смітника."
+
+#: src/nautilus-file-operations.c:3342
+msgid "Error while compressing files."
+msgstr "Помилка стиснення файлів."
+
+#: src/nautilus-file-operations.c:3433
+#, c-format
+msgid ""
+"Files in the folder “%s” cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Неможливо обробити файли у теці «%s», бо ви не маєте прав на їхній перегляд."
+
+#: src/nautilus-file-operations.c:3439 src/nautilus-file-operations.c:4960
+#, c-format
+msgid ""
+"There was an error getting information about the files in the folder “%s”."
+msgstr "Помилка одержання інформації про файли у теці «%s»."
+
+#: src/nautilus-file-operations.c:3494
+#, c-format
+msgid ""
+"The folder “%s” cannot be handled because you do not have permissions to "
+"read it."
+msgstr "Неможливо обробити теку «%s», бо ви не маєте прав на її читання."
+
+#: src/nautilus-file-operations.c:3500 src/nautilus-file-operations.c:5042
+#, c-format
+msgid "There was an error reading the folder “%s”."
+msgstr "Помилка читання теки «%s»."
+
+#: src/nautilus-file-operations.c:3610
+#, c-format
+msgid ""
+"The file “%s” cannot be handled because you do not have permissions to read "
+"it."
+msgstr "Неможливо обробити файл «%s», бо ви не маєте прав на його читання."
+
+#: src/nautilus-file-operations.c:3615
+#, c-format
+msgid "There was an error getting information about “%s”."
+msgstr "Помилка одержання інформації про «%s»."
+
+#: src/nautilus-file-operations.c:3737 src/nautilus-file-operations.c:3799
+#: src/nautilus-file-operations.c:3846 src/nautilus-file-operations.c:3890
+#, c-format
+msgid "Error while copying to “%s”."
+msgstr "Помилка копіювання до «%s»."
+
+#: src/nautilus-file-operations.c:3742
+msgid "You do not have permissions to access the destination folder."
+msgstr "Ви не маєте прав доступу до призначеної теки."
+
+#: src/nautilus-file-operations.c:3746
+msgid "There was an error getting information about the destination."
+msgstr "Помилка при отриманні інформації про призначення."
+
+#: src/nautilus-file-operations.c:3800
+msgid "The destination is not a folder."
+msgstr "Призначення не є текою."
+
+#: src/nautilus-file-operations.c:3847
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Недостатньо місця на призначеному пристрої. Спробуйте вилучити якісь файли, "
+"щоб звільнити місце."
+
+#: src/nautilus-file-operations.c:3851
+#, c-format
+msgid "%s more space is required to copy to the destination."
+msgstr "Потрібно ще %s, щоб усе скопіювати."
+
+#: src/nautilus-file-operations.c:3891
+msgid "The destination is read-only."
+msgstr "Призначений пристрій доступний лише для читання."
+
+#: src/nautilus-file-operations.c:3968
+#, c-format
+msgid "Moving “%s” to “%s”"
+msgstr "Переміщення «%s» до «%s»"
+
+#: src/nautilus-file-operations.c:3972
+#, c-format
+msgid "Moved “%s” to “%s”"
+msgstr "Переміщено «%s» в «%s»"
+
+#: src/nautilus-file-operations.c:3979
+#, c-format
+msgid "Copying “%s” to “%s”"
+msgstr "Копіювання «%s» до «%s»"
+
+#: src/nautilus-file-operations.c:3983
+#, c-format
+msgid "Copied “%s” to “%s”"
+msgstr "Скопійовано «%s» в «%s»"
+
+#: src/nautilus-file-operations.c:4017
+#, c-format
+msgid "Duplicating “%s”"
+msgstr "Дублювання «%s»"
+
+#: src/nautilus-file-operations.c:4021
+#, c-format
+msgid "Duplicated “%s”"
+msgstr "Подвоєно «%s»"
+
+#: src/nautilus-file-operations.c:4040
+#, c-format
+msgid "Moving %'d file to “%s”"
+msgid_plural "Moving %'d files to “%s”"
+msgstr[0] "Переміщення %'d файла в «%s»"
+msgstr[1] "Переміщення %'d файлів в «%s»"
+msgstr[2] "Переміщення %'d файлів в «%s»"
+msgstr[3] "Переміщення %'d файла в «%s»"
+
+#: src/nautilus-file-operations.c:4046
+#, c-format
+msgid "Copying %'d file to “%s”"
+msgid_plural "Copying %'d files to “%s”"
+msgstr[0] "Копіювання %'d файла в «%s»"
+msgstr[1] "Копіювання %'d файлів в «%s»"
+msgstr[2] "Копіювання %'d файлів в «%s»"
+msgstr[3] "Копіювання %'d файла в «%s»"
+
+#: src/nautilus-file-operations.c:4065
+#, c-format
+msgid "Moved %'d file to “%s”"
+msgid_plural "Moved %'d files to “%s”"
+msgstr[0] "Переміщено %'d файл в «%s»"
+msgstr[1] "Переміщено %'d файли в «%s»"
+msgstr[2] "Переміщено %'d файлів в «%s»"
+msgstr[3] "Переміщено %'d файл в «%s»"
+
+#: src/nautilus-file-operations.c:4071
+#, c-format
+msgid "Copied %'d file to “%s”"
+msgid_plural "Copied %'d files to “%s”"
+msgstr[0] "Скопійовано %'d файл в «%s»"
+msgstr[1] "Скопійовано %'d файли в «%s»"
+msgstr[2] "Скопійовано %'d файлів в «%s»"
+msgstr[3] "Скопійовано %'d файл в «%s»"
+
+#: src/nautilus-file-operations.c:4094
+#, c-format
+msgid "Duplicating %'d file in “%s”"
+msgid_plural "Duplicating %'d files in “%s”"
+msgstr[0] "Подвоєння %'d файла в «%s»"
+msgstr[1] "Подвоєння %'d файлів в «%s»"
+msgstr[2] "Подвоєння %'d файлів в «%s»"
+msgstr[3] "Подвоєння %'d файла в «%s»"
+
+#: src/nautilus-file-operations.c:4104
+#, c-format
+msgid "Duplicated %'d file in “%s”"
+msgid_plural "Duplicated %'d files in “%s”"
+msgstr[0] "Подвоєно %'d файл в «%s»"
+msgstr[1] "Подвоєно %'d файли в «%s»"
+msgstr[2] "Подвоєно %'d файлів у «%s»"
+msgstr[3] "Подвоєно %'d файл в «%s»"
+
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", so something like "4 kb / 4 MB"
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB".
+#. To translators: %s will expand to a size like "2 bytes" or
+#. * "3 MB", so something like "4 kb / 4 MB"
+#.
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", so something like "4 kb / 4 MB"
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB".
+#: src/nautilus-file-operations.c:4143 src/nautilus-file-operations.c:4203
+#: src/nautilus-file-operations.c:8274 src/nautilus-file-operations.c:8536
+#: src/nautilus-file-operations.c:8794 src/nautilus-file-operations.c:8837
+#, c-format
+msgid "%s / %s"
+msgstr "%s / %s"
+
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", %s to a time duration like
+#. * "2 minutes". So the whole thing will be something like "2 kb / 4 MB -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#. To translators: %s will expand to a size like "2 bytes" or
+#. * "3 MB", %s to a time duration like "2 minutes". So the whole
+#. * thing will be something like
+#. * "2 kb / 4 MB -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the
+#. * remaining time (i.e. the %s argument).
+#.
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", %s to a time duration like
+#. * "2 minutes". So the whole thing will be something like "2 kb / 4 MB -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#: src/nautilus-file-operations.c:4187 src/nautilus-file-operations.c:8292
+#: src/nautilus-file-operations.c:8826
+#, c-format
+msgid "%s / %s — %s left (%s/sec)"
+msgid_plural "%s / %s — %s left (%s/sec)"
+msgstr[0] "%s/ %s — залишилось %s (%s/с)"
+msgstr[1] "%s / %s — залишилось %s (%s/с)"
+msgstr[2] "%s / %s — залишилось %s (%s/с)"
+msgstr[3] "%s/ %s — залишилось %s (%s/с)"
+
+#. To translators: %s will expand to a time duration like "2 minutes".
+#. * So the whole thing will be something like "1 / 5 -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#: src/nautilus-file-operations.c:4221 src/nautilus-file-operations.c:8856
+#, c-format
+msgid "%'d / %'d — %s left (%s/sec)"
+msgid_plural "%'d / %'d — %s left (%s/sec)"
+msgstr[0] "%'d / %'d — залишилось %s (%s/с)"
+msgstr[1] "%'d / %'d — залишилось %s (%s/с)"
+msgstr[2] "%'d / %'d — залишилось %s (%s/с)"
+msgstr[3] "%'d / %'d — залишилось %s (%s/с)"
+
+#: src/nautilus-file-operations.c:4762
+#, c-format
+msgid ""
+"The folder “%s” cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Неможливо скопіювати теку «%s», бо ви не маєте прав на її створення за цим "
+"призначенням."
+
+#: src/nautilus-file-operations.c:4768
+#, c-format
+msgid "There was an error creating the folder “%s”."
+msgstr "Помилка створення теки «%s»."
+
+#: src/nautilus-file-operations.c:4955
+#, c-format
+msgid ""
+"Files in the folder “%s” cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Неможливо скопіювати файли з теки «%s», бо у вас немає прав на їхній "
+"перегляд."
+
+#: src/nautilus-file-operations.c:4971
+msgid "_Skip files"
+msgstr "_Пропустити файли"
+
+#: src/nautilus-file-operations.c:5037
+#, c-format
+msgid ""
+"The folder “%s” cannot be copied because you do not have permissions to read "
+"it."
+msgstr "Неможливо скопіювати теку «%s», бо ви не маєте прав на її читання."
+
+#: src/nautilus-file-operations.c:5102 src/nautilus-file-operations.c:5727
+#: src/nautilus-file-operations.c:6428
+#, c-format
+msgid "Error while moving “%s”."
+msgstr "Помилка перенесення «%s»."
+
+#: src/nautilus-file-operations.c:5103
+msgid "Could not remove the source folder."
+msgstr "Неможливо вилучити первинну теку."
+
+#: src/nautilus-file-operations.c:5315
+msgid "There was an error getting information about the source."
+msgstr "Помилка при отриманні інформації щодо джерела."
+
+#. the run_warning() frees all strings passed in automatically
+#: src/nautilus-file-operations.c:5417 src/nautilus-file-operations.c:6230
+msgid "You cannot move a folder into itself."
+msgstr "Неможливо перемістити теку в саму себе."
+
+#: src/nautilus-file-operations.c:5418 src/nautilus-file-operations.c:6231
+msgid "You cannot copy a folder into itself."
+msgstr "Неможливо скопіювати теку у саму себе."
+
+#: src/nautilus-file-operations.c:5419 src/nautilus-file-operations.c:6232
+msgid "The destination folder is inside the source folder."
+msgstr "Призначена тека є в середині первинної теки."
+
+#. the run_warning() frees all strings passed in automatically
+#: src/nautilus-file-operations.c:5459
+msgid "You cannot move a file over itself."
+msgstr "Неможливо перемістити файл сам у себе."
+
+#: src/nautilus-file-operations.c:5460
+msgid "You cannot copy a file over itself."
+msgstr "Неможливо скопіювати файл сам у себе."
+
+#: src/nautilus-file-operations.c:5461
+msgid "The source file would be overwritten by the destination."
+msgstr "Початковий файл буде перезаписано призначенням."
+
+#: src/nautilus-file-operations.c:5731 src/nautilus-file-operations.c:5819
+#, c-format
+msgid "Error while copying “%s”."
+msgstr "Помилка копіювання «%s»."
+
+#: src/nautilus-file-operations.c:5734
+#, c-format
+msgid "Could not remove the already existing file with the same name in %s."
+msgstr "Не вдалось вилучити вже наявний файл з такою самою назвою у %s."
+
+#: src/nautilus-file-operations.c:5821
+#, c-format
+msgid "There was an error copying the file into %s."
+msgstr "Помилка при копіюванні файла в %s."
+
+#: src/nautilus-file-operations.c:6011
+msgid "Copying Files"
+msgstr "Копіювання файлів"
+
+#: src/nautilus-file-operations.c:6131
+#, c-format
+msgid "Preparing to move to “%s”"
+msgstr "Підготовлення до переміщення в «%s»"
+
+#: src/nautilus-file-operations.c:6135
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Підготовлення до переміщення %'d файла"
+msgstr[1] "Підготовлення до переміщення %'d файлів"
+msgstr[2] "Підготовлення до переміщення %'d файлів"
+msgstr[3] "Підготовлення до переміщення %'d файла"
+
+#: src/nautilus-file-operations.c:6430
+#, c-format
+msgid "There was an error moving the file into %s."
+msgstr "Помилка при переміщенні файла в %s."
+
+#: src/nautilus-file-operations.c:6678
+msgid "Moving Files"
+msgstr "Переміщення файлів"
+
+#: src/nautilus-file-operations.c:6784
+#, c-format
+msgid "Creating links in “%s”"
+msgstr "Створення сполучень з «%s»"
+
+#: src/nautilus-file-operations.c:6788
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Створення посилання на %'d файл"
+msgstr[1] "Створення посилання на %'d файли"
+msgstr[2] "Створення посилань на %'d файлів"
+msgstr[3] "Створення посилання на %'d файл"
+
+#: src/nautilus-file-operations.c:6938
+#, c-format
+msgid "Error while creating link to %s."
+msgstr "Помилка при створенні посилання на %s."
+
+#: src/nautilus-file-operations.c:6942
+msgid "Symbolic links only supported for local files"
+msgstr "Символьні посилання підтримуються лише для локальних файлів"
+
+#: src/nautilus-file-operations.c:6947
+msgid "The target doesn’t support symbolic links."
+msgstr "Ціль не підтримує символьні посилання."
+
+#: src/nautilus-file-operations.c:6955
+#, c-format
+msgid "There was an error creating the symlink in %s."
+msgstr "Помилка створення символьного посилання у %s."
+
+#: src/nautilus-file-operations.c:7285
+msgid "Setting permissions"
+msgstr "Налаштування прав"
+
+#. localizers: the initial name of a new folder
+#: src/nautilus-file-operations.c:7564
+msgid "Untitled Folder"
+msgstr "Неназвана тека"
+
+#. localizers: the initial name of a new empty document
+#: src/nautilus-file-operations.c:7579
+msgid "Untitled Document"
+msgstr "Неназваний документ"
+
+#: src/nautilus-file-operations.c:7862
+#, c-format
+msgid "Error while creating directory %s."
+msgstr "Помилка створення каталогу %s."
+
+#: src/nautilus-file-operations.c:7867
+#, c-format
+msgid "Error while creating file %s."
+msgstr "Помилка створення файла %s."
+
+#: src/nautilus-file-operations.c:7871
+#, c-format
+msgid "There was an error creating the directory in %s."
+msgstr "Помилка створення каталогу в %s."
+
+#: src/nautilus-file-operations.c:8146
+msgid "Emptying Trash"
+msgstr "Очищення смітника"
+
+#: src/nautilus-file-operations.c:8188
+msgid "Verifying destination"
+msgstr "Перевіряння призначення"
+
+#: src/nautilus-file-operations.c:8232
+#, c-format
+msgid "Extracting “%s”"
+msgstr "Розпакування «%s»"
+
+#: src/nautilus-file-operations.c:8336 src/nautilus-file-operations.c:8486
+#, c-format
+msgid "Error extracting “%s”"
+msgstr "Помилка розпакування «%s»."
+
+#: src/nautilus-file-operations.c:8340
+#, c-format
+msgid "There was an error while extracting “%s”."
+msgstr "Помилка розпакування «%s»."
+
+#: src/nautilus-file-operations.c:8412
+msgid "Password Required"
+msgstr "Потрібен пароль"
+
+#: src/nautilus-file-operations.c:8416
+msgid "Extract"
+msgstr "Видобути"
+
+#: src/nautilus-file-operations.c:8428
+#, c-format
+msgid "“%s” is password-protected."
+msgstr "«%s» захищено паролем."
+
+#: src/nautilus-file-operations.c:8438
+msgid "Enter password…"
+msgstr "Введіть пароль…"
+
+#: src/nautilus-file-operations.c:8489
+#, c-format
+msgid "Not enough free space to extract %s"
+msgstr "Недостатньо вільного місця для видобування %s"
+
+#: src/nautilus-file-operations.c:8519
+#, c-format
+msgid "Extracted “%s” to “%s”"
+msgstr "Розпаковано «%s» в «%s»"
+
+#: src/nautilus-file-operations.c:8525
+#, c-format
+msgid "Extracted %'d file to “%s”"
+msgid_plural "Extracted %'d files to “%s”"
+msgstr[0] "Розпаковано %'d файл в «%s»"
+msgstr[1] "Розпаковано %'d файли в «%s»"
+msgstr[2] "Розпаковано %'d файлів в «%s»"
+msgstr[3] "Розпаковано %'d файл в «%s»"
+
+#: src/nautilus-file-operations.c:8559
+msgid "Preparing to extract"
+msgstr "Підготовлення до розпакування"
+
+#: src/nautilus-file-operations.c:8691
+msgid "Extracting Files"
+msgstr "Розпакування файлів"
+
+#: src/nautilus-file-operations.c:8750
+#, c-format
+msgid "Compressing “%s” into “%s”"
+msgstr "Стиснення «%s» в «%s»"
+
+#: src/nautilus-file-operations.c:8756
+#, c-format
+msgid "Compressing %'d file into “%s”"
+msgid_plural "Compressing %'d files into “%s”"
+msgstr[0] "Стиснення %'d файла в «%s»"
+msgstr[1] "Стиснення %'d файлів в «%s»"
+msgstr[2] "Стиснення %'d файлів в «%s»"
+msgstr[3] "Стиснення %'d файла в «%s»"
+
+#: src/nautilus-file-operations.c:8904
+#, c-format
+msgid "Error compressing “%s” into “%s”"
+msgstr "Помилка стиснення «%s» в «%s»"
+
+#: src/nautilus-file-operations.c:8910
+#, c-format
+msgid "Error compressing %'d file into “%s”"
+msgid_plural "Error compressing %'d files into “%s”"
+msgstr[0] "Помилка стиснення %'d файла в «%s»"
+msgstr[1] "Помилка стиснення %'d файлів в «%s»"
+msgstr[2] "Помилка стиснення %'d файлів в «%s»"
+msgstr[3] "Помилка стиснення %'d файла в «%s»"
+
+#: src/nautilus-file-operations.c:8920
+msgid "There was an error while compressing files."
+msgstr "Помилка стиснення файлів."
+
+#: src/nautilus-file-operations.c:8945
+#, c-format
+msgid "Compressed “%s” into “%s”"
+msgstr "Стиснено «%s» в «%s»"
+
+#: src/nautilus-file-operations.c:8951
+#, c-format
+msgid "Compressed %'d file into “%s”"
+msgid_plural "Compressed %'d files into “%s”"
+msgstr[0] "Стиснено %'d файл в «%s»"
+msgstr[1] "Стиснено %'d файли в «%s»"
+msgstr[2] "Стиснено %'d файлів в «%s»"
+msgstr[3] "Стиснено %'d файл в «%s»"
+
+#: src/nautilus-file-operations.c:9043
+msgid "Compressing Files"
+msgstr "Стиснення файлів"
+
+#: src/nautilus-files-view.c:405
+msgid "Searching…"
+msgstr "Пошук…"
+
+#: src/nautilus-files-view.c:1198 src/nautilus-mime-actions.c:965
+#: src/nautilus-mime-actions.c:1668
+msgid "Are you sure you want to open all files?"
+msgstr "Відкрити всі файли?"
+
+#: src/nautilus-files-view.c:1201
+#, c-format
+msgid "This will open %'d separate tab."
+msgid_plural "This will open %'d separate tabs."
+msgstr[0] "Буде відкрито %'d вкладку."
+msgstr[1] "Буде відкрито %'d окремі вкладки."
+msgstr[2] "Буде відкрито %'d окремих вкладок."
+msgstr[3] "Буде відкрито %'d вкладку."
+
+#: src/nautilus-files-view.c:1206
+#, c-format
+msgid "This will open %'d separate window."
+msgid_plural "This will open %'d separate windows."
+msgstr[0] "Буде відкрито %'d вікно."
+msgstr[1] "Буде відкрито %'d окремі вікна."
+msgstr[2] "Буде відкрито %'d окремих вікон."
+msgstr[3] "Буде відкрито %'d вікно."
+
+#: src/nautilus-files-view.c:1210 src/nautilus-location-entry.c:284
+#: src/nautilus-mime-actions.c:977 src/nautilus-mime-actions.c:1163
+#: src/nautilus-mime-actions.c:1672
+msgid "_OK"
+msgstr "_Гаразд"
+
+#: src/nautilus-files-view.c:1760
+msgid "Select Items Matching"
+msgstr "Виберіть відповідні об'єкти"
+
+#: src/nautilus-files-view.c:1765 src/nautilus-files-view.c:6036
+#: src/nautilus-files-view.c:6497
+msgid "_Select"
+msgstr "_Вибрати"
+
+#: src/nautilus-files-view.c:1773
+msgid "_Pattern:"
+msgstr "_Шаблон:"
+
+#: src/nautilus-files-view.c:1779
+msgid "Examples: "
+msgstr "Приклади: "
+
+#: src/nautilus-files-view.c:2752
+msgid "Could not paste files"
+msgstr "Не вдалося вставити файли"
+
+#: src/nautilus-files-view.c:2753
+msgid "Permissions do not allow pasting files in this directory"
+msgstr "Права доступу забороняють вставлення файлів до цього каталогу"
+
+#: src/nautilus-files-view.c:2917
+msgid ""
+"Nautilus 3.6 deprecated this directory and tried migrating this "
+"configuration to ~/.local/share/nautilus"
+msgstr ""
+"Nautilus 3.6 вважає цей каталог застарілим і спробував перемістити "
+"налаштування в ~/.local/share/nautilus"
+
+#: src/nautilus-files-view.c:3415 src/nautilus-files-view.c:3462
+#, c-format
+msgid "“%s” selected"
+msgstr "Вибрано «%s»"
+
+#: src/nautilus-files-view.c:3419
+#, c-format
+msgid "%'d folder selected"
+msgid_plural "%'d folders selected"
+msgstr[0] "Вибрано %'d тека"
+msgstr[1] "Вибрано %'d теки"
+msgstr[2] "Вибрано %'d тек"
+msgstr[3] "Вибрано %'d тека"
+
+#: src/nautilus-files-view.c:3433
+#, c-format
+msgid "(containing %'d item)"
+msgid_plural "(containing %'d items)"
+msgstr[0] "(містить %'d об'єкт)"
+msgstr[1] "(містить %'d об'єкти)"
+msgstr[2] "(містить %'d об'єктів)"
+msgstr[3] "(містить %'d об'єкт)"
+
+#. translators: this is preceded with a string of form 'N folders' (N more than 1)
+#: src/nautilus-files-view.c:3448
+#, c-format
+msgid "(containing a total of %'d item)"
+msgid_plural "(containing a total of %'d items)"
+msgstr[0] "(загалом містить %'d об'єкт)"
+msgstr[1] "(загалом містить %'d об'єкти)"
+msgstr[2] "(загалом містить %'d об'єктів)"
+msgstr[3] "(загалом містить %'d об'єкт)"
+
+#: src/nautilus-files-view.c:3467
+#, c-format
+msgid "%'d item selected"
+msgid_plural "%'d items selected"
+msgstr[0] "Вибрано %'d об'єкт"
+msgstr[1] "Вибрано %'d об'єкти"
+msgstr[2] "Вибрано %'d об'єктів"
+msgstr[3] "Вибрано %'d об'єкт"
+
+#. Folders selected also, use "other" terminology
+#: src/nautilus-files-view.c:3476
+#, c-format
+msgid "%'d other item selected"
+msgid_plural "%'d other items selected"
+msgstr[0] "Вибрано %'d інший об'єкт"
+msgstr[1] "Вибрано %'d інші об'єкти"
+msgstr[2] "Вибрано %'d інших об'єктів"
+msgstr[3] "Вибрано %'d інший об'єкт"
+
+#. This is marked for translation in case a localiser
+#. * needs to use something other than parentheses. The
+#. * the message in parentheses is the size of the selected items.
+#.
+#: src/nautilus-files-view.c:3491
+#, c-format
+msgid "(%s)"
+msgstr "(%s)"
+
+#. This is marked for translation in case a localizer
+#. * needs to change ", " to something else. The comma
+#. * is between the message about the number of folders
+#. * and the number of items in those folders and the
+#. * message about the number of other items and the
+#. * total size of those items.
+#.
+#: src/nautilus-files-view.c:3524
+#, c-format
+msgid "%s %s, %s %s"
+msgstr "%s %s, %s %s"
+
+#: src/nautilus-files-view.c:6023
+msgid "Select Move Destination"
+msgstr "Виберіть ціль для перенесення"
+
+#: src/nautilus-files-view.c:6027
+msgid "Select Copy Destination"
+msgstr "Виберіть ціль для копіювання"
+
+#: src/nautilus-files-view.c:6493
+msgid "Select Extract Destination"
+msgstr "Виберіть ціль для розпакування"
+
+#: src/nautilus-files-view.c:6791
+msgid "Wallpapers"
+msgstr "Фонові зображення"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-files-view.c:6882
+#, c-format
+msgid "Unable to remove “%s”"
+msgstr "Неможливо вилучити «%s»"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-files-view.c:6912
+#, c-format
+msgid "Unable to eject “%s”"
+msgstr "Неможливо витягнути «%s»"
+
+#: src/nautilus-files-view.c:6937
+msgid "Unable to stop drive"
+msgstr "Неможливо зупинити пристрій"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-files-view.c:7050
+#, c-format
+msgid "Unable to start “%s”"
+msgstr "Неможливо запустити «%s»"
+
+#: src/nautilus-files-view.c:8015
+#, c-format
+msgid "New Folder with Selection (%'d Item)"
+msgid_plural "New Folder with Selection (%'d Items)"
+msgstr[0] "Створити теку з вибраним (%'d об'єкт)"
+msgstr[1] "Створити теку з вибраним (%'d об'єкти)"
+msgstr[2] "Створити теку з вибраним (%'d об'єктів)"
+msgstr[3] "Створити теку з вибраним (%'d об'єкт)"
+
+#: src/nautilus-files-view.c:8073
+#, c-format
+msgid "Open With %s"
+msgstr "Відкрити за допомогою %s"
+
+#: src/nautilus-files-view.c:8085
+msgid "Run"
+msgstr "Запустити"
+
+#: src/nautilus-files-view.c:8090
+msgid "Extract Here"
+msgstr "Розпакувати сюди"
+
+#: src/nautilus-files-view.c:8091
+msgid "Extract to…"
+msgstr "Розпакувати в…"
+
+#: src/nautilus-files-view.c:8095
+msgid "Open"
+msgstr "Відкрити"
+
+#: src/nautilus-files-view.c:8151
+#: src/resources/ui/nautilus-files-view-context-menus.ui:109
+msgid "_Start"
+msgstr "З_апустити"
+
+#: src/nautilus-files-view.c:8157 src/gtk/nautilusgtkplacesview.c:1750
+msgid "_Connect"
+msgstr "_З'єднатись"
+
+#: src/nautilus-files-view.c:8163
+msgid "_Start Multi-disk Drive"
+msgstr "З_апустити багатодисковий пристрій"
+
+#: src/nautilus-files-view.c:8169
+msgid "U_nlock Drive"
+msgstr "_Розблокувати пристрій"
+
+#: src/nautilus-files-view.c:8187
+msgid "Stop Drive"
+msgstr "Зупинити пристрій"
+
+#: src/nautilus-files-view.c:8193
+msgid "_Safely Remove Drive"
+msgstr "_Безпечне вилучення пристрою"
+
+#: src/nautilus-files-view.c:8199 src/gtk/nautilusgtkplacesview.c:1740
+msgid "_Disconnect"
+msgstr "_Від'єднатись"
+
+#: src/nautilus-files-view.c:8205
+msgid "_Stop Multi-disk Drive"
+msgstr "З_упинити багатодисковий пристрій"
+
+#: src/nautilus-files-view.c:8211
+msgid "_Lock Drive"
+msgstr "За_блокувати пристрій"
+
+#: src/nautilus-files-view.c:9976
+msgid "Content View"
+msgstr "Перегляд вмісту"
+
+#: src/nautilus-files-view.c:9977
+msgid "View of the current folder"
+msgstr "Перегляд теперішньої теки"
+
+#: src/nautilus-files-view-dnd.c:61 src/nautilus-files-view-dnd.c:95
+#: src/nautilus-files-view-dnd.c:157
+msgid "Drag and drop is not supported."
+msgstr "Перетягування не підтримується."
+
+#: src/nautilus-files-view-dnd.c:62
+msgid "Drag and drop is only supported on local file systems."
+msgstr ""
+"Перетягування та вставка підтримується лише на локальних файлових системах."
+
+#: src/nautilus-files-view-dnd.c:96 src/nautilus-files-view-dnd.c:158
+msgid "An invalid drag type was used."
+msgstr "Було використано неправильний тип перетягування."
+
+#. Translator: This is the filename used for when you dnd text to a directory
+#: src/nautilus-files-view-dnd.c:249
+msgid "Dropped Text.txt"
+msgstr "Перетягнутий текст.txt"
+
+#. Translator: This is the filename used for when you dnd raw
+#. * data to a directory, if the source didn't supply a name.
+#.
+#: src/nautilus-files-view-dnd.c:340
+msgid "dropped data"
+msgstr "відкинуті дані"
+
+#: src/nautilus-file-undo-operations.c:176
+#: src/resources/ui/nautilus-window.ui:82
+msgid "Undo"
+msgstr "Повернути"
+
+#: src/nautilus-file-undo-operations.c:180
+msgid "Undo last action"
+msgstr "Повернути останню дію"
+
+#: src/nautilus-file-undo-operations.c:185
+msgid "Redo"
+msgstr "Повторити"
+
+#: src/nautilus-file-undo-operations.c:189
+msgid "Redo last undone action"
+msgstr "Повторити останню незроблену дію"
+
+#: src/nautilus-file-undo-operations.c:452
+#, c-format
+msgid "Move %d item back to “%s”"
+msgid_plural "Move %d items back to “%s”"
+msgstr[0] "Перемістити %d об'єкт назад у «%s»"
+msgstr[1] "Перемістити %d об'єкта назад у «%s»"
+msgstr[2] "Перемістити %d об'єктів назад у «%s»"
+msgstr[3] "Перемістити %d об'єкт назад у «%s»"
+
+#: src/nautilus-file-undo-operations.c:455
+#, c-format
+msgid "Move %d item to “%s”"
+msgid_plural "Move %d items to “%s”"
+msgstr[0] "Переміщено %'d файл в «%s»"
+msgstr[1] "Переміщено %'d файли в «%s»"
+msgstr[2] "Переміщено %'d файлів в «%s»"
+msgstr[3] "Переміщено %'d файл в «%s»"
+
+#: src/nautilus-file-undo-operations.c:459
+#, c-format
+msgid "_Undo Move %d item"
+msgid_plural "_Undo Move %d items"
+msgstr[0] "По_вернути переміщення %d об'єкта"
+msgstr[1] "По_вернути переміщення %d об'єктів"
+msgstr[2] "По_вернути переміщення %d об'єктів"
+msgstr[3] "По_вернути переміщення %d об'єкта"
+
+#: src/nautilus-file-undo-operations.c:462
+#, c-format
+msgid "_Redo Move %d item"
+msgid_plural "_Redo Move %d items"
+msgstr[0] "_Повторити переміщення %d об'єкта"
+msgstr[1] "_Повторити переміщення %d об'єктів"
+msgstr[2] "_Повторити переміщення %d об'єктів"
+msgstr[3] "_Повторити переміщення %d об'єкта"
+
+#: src/nautilus-file-undo-operations.c:468
+#, c-format
+msgid "Move “%s” back to “%s”"
+msgstr "Переміщено «%s» в «%s»"
+
+#: src/nautilus-file-undo-operations.c:469
+#, c-format
+msgid "Move “%s” to “%s”"
+msgstr "Переміщено «%s» в «%s»"
+
+#: src/nautilus-file-undo-operations.c:471
+msgid "_Undo Move"
+msgstr "По_вернути переміщення"
+
+#: src/nautilus-file-undo-operations.c:472
+msgid "_Redo Move"
+msgstr "_Повторити переміщення"
+
+#: src/nautilus-file-undo-operations.c:477
+msgid "_Undo Restore from Trash"
+msgstr "По_вернути відновлення зі смітника"
+
+#: src/nautilus-file-undo-operations.c:478
+msgid "_Redo Restore from Trash"
+msgstr "_Повторити відновлення зі смітника"
+
+#: src/nautilus-file-undo-operations.c:482
+#, c-format
+msgid "Move %d item back to trash"
+msgid_plural "Move %d items back to trash"
+msgstr[0] "Перемістити %d об'єкт назад у смітник"
+msgstr[1] "Перемістити %d об'єкти назад у смітник"
+msgstr[2] "Перемістити %d об'єктів назад у смітник"
+msgstr[3] "Перемістити %d об'єкт назад у смітник"
+
+#: src/nautilus-file-undo-operations.c:485
+#: src/nautilus-file-undo-operations.c:1610
+#, c-format
+msgid "Restore %d item from trash"
+msgid_plural "Restore %d items from trash"
+msgstr[0] "Відновити %d об'єкт зі смітника"
+msgstr[1] "Відновити %d об'єкти зі смітника"
+msgstr[2] "Відновити %d об'єктів зі смітника"
+msgstr[3] "Відновити %d об'єкт зі смітника"
+
+#: src/nautilus-file-undo-operations.c:491
+#, c-format
+msgid "Move “%s” back to trash"
+msgstr "Перемістити «%s» назад у смітник"
+
+#: src/nautilus-file-undo-operations.c:492
+#, c-format
+msgid "Restore “%s” from trash"
+msgstr "Відновити «%s» зі смітника"
+
+#: src/nautilus-file-undo-operations.c:499
+#, c-format
+msgid "Delete %d copied item"
+msgid_plural "Delete %d copied items"
+msgstr[0] "Вилучити %d скопійований об'єкт "
+msgstr[1] "Вилучити %d скопійовані об'єкти"
+msgstr[2] "Вилучити %d скопійованих об'єктів"
+msgstr[3] "Вилучити %d скопійований об'єкт "
+
+#: src/nautilus-file-undo-operations.c:502
+#, c-format
+msgid "Copy %d item to “%s”"
+msgid_plural "Copy %d items to “%s”"
+msgstr[0] "Копіювати %d об'єкт у «%s»"
+msgstr[1] "Копіювати %d об'єкти у «%s»"
+msgstr[2] "Копіювати %d об'єктів у «%s»"
+msgstr[3] "Копіювати %d об'єкт у «%s»"
+
+#: src/nautilus-file-undo-operations.c:506
+#, c-format
+msgid "_Undo Copy %d item"
+msgid_plural "_Undo Copy %d items"
+msgstr[0] "По_вернути копіювання %d об'єкта"
+msgstr[1] "По_вернути копіювання %d об'єктів"
+msgstr[2] "По_вернути копіювання %d об'єктів"
+msgstr[3] "По_вернути копіювання %d об'єкта"
+
+#: src/nautilus-file-undo-operations.c:509
+#, c-format
+msgid "_Redo Copy %d item"
+msgid_plural "_Redo Copy %d items"
+msgstr[0] "_Повторити копіювання %d об'єкта"
+msgstr[1] "_Повторити копіювання %d об'єктів"
+msgstr[2] "_Повторити копіювання %d об'єктів"
+msgstr[3] "_Повторити копіювання %d об'єкта"
+
+#: src/nautilus-file-undo-operations.c:515
+#: src/nautilus-file-undo-operations.c:542
+#: src/nautilus-file-undo-operations.c:826
+#: src/nautilus-file-undo-operations.c:2367
+#: src/nautilus-file-undo-operations.c:2529
+#, c-format
+msgid "Delete “%s”"
+msgstr "Вилучено «%s»"
+
+#: src/nautilus-file-undo-operations.c:516
+#, c-format
+msgid "Copy “%s” to “%s”"
+msgstr "Копіювання «%s» до «%s»"
+
+#: src/nautilus-file-undo-operations.c:518
+msgid "_Undo Copy"
+msgstr "По_вернути копіювання"
+
+#: src/nautilus-file-undo-operations.c:519
+msgid "_Redo Copy"
+msgstr "_Повторити копіювання"
+
+#: src/nautilus-file-undo-operations.c:526
+#, c-format
+msgid "Delete %d duplicated item"
+msgid_plural "Delete %d duplicated items"
+msgstr[0] "Вилучити %d дубльований об'єкт"
+msgstr[1] "Вилучити %d дубльовані об'єкти"
+msgstr[2] "Вилучити %d дубльованих об'єктів"
+msgstr[3] "Вилучити %d дубльований об'єкт"
+
+#: src/nautilus-file-undo-operations.c:529
+#, c-format
+msgid "Duplicate %d item in “%s”"
+msgid_plural "Duplicate %d items in “%s”"
+msgstr[0] "Подвоєно %'d файл в «%s»"
+msgstr[1] "Подвоєно %'d файли в «%s»"
+msgstr[2] "Подвоєно %'d файлів у «%s»"
+msgstr[3] "Подвоєно %'d файл в «%s»"
+
+#: src/nautilus-file-undo-operations.c:533
+#, c-format
+msgid "_Undo Duplicate %d item"
+msgid_plural "_Undo Duplicate %d items"
+msgstr[0] "По_вернути дублювання %d об'єкта"
+msgstr[1] "По_вернути дублювання %d об'єктів"
+msgstr[2] "По_вернути дублювання %d об'єктів"
+msgstr[3] "По_вернути дублювання %d об'єкта"
+
+#: src/nautilus-file-undo-operations.c:536
+#, c-format
+msgid "_Redo Duplicate %d item"
+msgid_plural "_Redo Duplicate %d items"
+msgstr[0] "_Повернути дублювання %d об'єкта"
+msgstr[1] "_Повернути дублювання %d об'єктів"
+msgstr[2] "_Повернути дублювання %d об'єктів"
+msgstr[3] "_Повернути дублювання %d об'єкта"
+
+#: src/nautilus-file-undo-operations.c:543
+#, c-format
+msgid "Duplicate “%s” in “%s”"
+msgstr "Подвоєно «%s» файл в «%s»"
+
+#: src/nautilus-file-undo-operations.c:546
+msgid "_Undo Duplicate"
+msgstr "По_вернути дублювання"
+
+#: src/nautilus-file-undo-operations.c:547
+msgid "_Redo Duplicate"
+msgstr "_Повторити дублювання"
+
+#: src/nautilus-file-undo-operations.c:554
+#, c-format
+msgid "Delete links to %d item"
+msgid_plural "Delete links to %d items"
+msgstr[0] "Вилучити посилання на %d об'єкт"
+msgstr[1] "Вилучити посилання на %d об'єкти"
+msgstr[2] "Вилучити посилання на %d об'єктів"
+msgstr[3] "Вилучити посилання на %d об'єкт"
+
+#: src/nautilus-file-undo-operations.c:557
+#, c-format
+msgid "Create links to %d item"
+msgid_plural "Create links to %d items"
+msgstr[0] "Створити посилання на %d об'єкт"
+msgstr[1] "Створити посилання на %d об'єкти"
+msgstr[2] "Створити посилання на %d об'єктів"
+msgstr[3] "Створити посилання на %d об'єкт"
+
+#: src/nautilus-file-undo-operations.c:563
+#, c-format
+msgid "Delete link to “%s”"
+msgstr "Вилучити посилання на «%s»"
+
+#: src/nautilus-file-undo-operations.c:564
+#, c-format
+msgid "Create link to “%s”"
+msgstr "Створити посилання на «%s»"
+
+#: src/nautilus-file-undo-operations.c:566
+msgid "_Undo Create Link"
+msgstr "По_вернути створення посилання"
+
+#: src/nautilus-file-undo-operations.c:567
+msgid "_Redo Create Link"
+msgstr "_Повторити створення посилання"
+
+#: src/nautilus-file-undo-operations.c:830
+#, c-format
+msgid "Create an empty file “%s”"
+msgstr "Створити порожній файл «%s»"
+
+#: src/nautilus-file-undo-operations.c:832
+msgid "_Undo Create Empty File"
+msgstr "По_вернути створення порожнього файла"
+
+#: src/nautilus-file-undo-operations.c:833
+msgid "_Redo Create Empty File"
+msgstr "_Повторити створення порожнього файла"
+
+#: src/nautilus-file-undo-operations.c:837
+#, c-format
+msgid "Create a new folder “%s”"
+msgstr "Створити нову теку «%s»"
+
+#: src/nautilus-file-undo-operations.c:839
+msgid "_Undo Create Folder"
+msgstr "По_вернути створення теки"
+
+#: src/nautilus-file-undo-operations.c:840
+msgid "_Redo Create Folder"
+msgstr "_Повторити створення теки"
+
+#: src/nautilus-file-undo-operations.c:844
+#, c-format
+msgid "Create new file “%s” from template "
+msgstr "Створити новий файл «%s» зі шаблону"
+
+#: src/nautilus-file-undo-operations.c:846
+msgid "_Undo Create from Template"
+msgstr "По_вернути створення зі шаблону"
+
+#: src/nautilus-file-undo-operations.c:847
+msgid "_Redo Create from Template"
+msgstr "_Повторити створення зі шаблону"
+
+#: src/nautilus-file-undo-operations.c:1047
+#: src/nautilus-file-undo-operations.c:1048
+#, c-format
+msgid "Rename “%s” as “%s”"
+msgstr "Перейменування «%s» на «%s»."
+
+#: src/nautilus-file-undo-operations.c:1050
+msgid "_Undo Rename"
+msgstr "По_вернути перейменування"
+
+#: src/nautilus-file-undo-operations.c:1051
+msgid "_Redo Rename"
+msgstr "_Повторити перейменування"
+
+#: src/nautilus-file-undo-operations.c:1166
+#: src/nautilus-file-undo-operations.c:1170
+#, c-format
+msgid "Batch rename %d file"
+msgid_plural "Batch rename %d files"
+msgstr[0] "Групове перейменування %d файла"
+msgstr[1] "Групове перейменування %d файлів"
+msgstr[2] "Групове перейменування %d файлів"
+msgstr[3] "Групове перейменування %d файла"
+
+#: src/nautilus-file-undo-operations.c:1175
+msgid "_Undo Batch Rename"
+msgstr "По_вернути групове перейменування"
+
+#: src/nautilus-file-undo-operations.c:1176
+msgid "_Redo Batch Rename"
+msgstr "По_вторити групове перейменування"
+
+#: src/nautilus-file-undo-operations.c:1392
+#: src/nautilus-file-undo-operations.c:1409
+#, c-format
+msgid "Unstar %d file"
+msgid_plural "Unstar %d files"
+msgstr[0] "Скасувати позначення зірками %d файла"
+msgstr[1] "Скасувати позначення зірками %d файлів"
+msgstr[2] "Скасувати позначення зірками %d файлів"
+msgstr[3] "Скасувати позначення зірками %d файла"
+
+#: src/nautilus-file-undo-operations.c:1396
+#: src/nautilus-file-undo-operations.c:1405
+#, c-format
+msgid "Star %d file"
+msgid_plural "Star %d files"
+msgstr[0] "Позначити зірками %d файл"
+msgstr[1] "Позначити зірками %d файли"
+msgstr[2] "Позначити зірками %d файлів"
+msgstr[3] "Позначити зірками %d файл"
+
+#: src/nautilus-file-undo-operations.c:1400
+msgid "_Undo Starring"
+msgstr "С_касувати позначення зірками"
+
+#: src/nautilus-file-undo-operations.c:1401
+msgid "_Redo Starring"
+msgstr "Пов_торити позначення зірками"
+
+#: src/nautilus-file-undo-operations.c:1413
+msgid "_Undo Unstarring"
+msgstr "С_касувати скасування позначення зірками"
+
+#: src/nautilus-file-undo-operations.c:1414
+msgid "_Redo Unstarring"
+msgstr "Пов_торити скасування позначення зірками"
+
+#: src/nautilus-file-undo-operations.c:1613
+#, c-format
+msgid "Move %d item to trash"
+msgid_plural "Move %d items to trash"
+msgstr[0] "Перемістити %d об'єкт у смітник"
+msgstr[1] "Перемістити %d об'єкти у смітник"
+msgstr[2] "Перемістити %d об'єктів у смітник"
+msgstr[3] "Перемістити %d об'єкт у смітник"
+
+#: src/nautilus-file-undo-operations.c:1627
+#, c-format
+msgid "Restore “%s” to “%s”"
+msgstr "Перейменування «%s» на «%s»"
+
+#: src/nautilus-file-undo-operations.c:1634
+#, c-format
+msgid "Move “%s” to trash"
+msgstr "Перемістити «%s» у смітник"
+
+#: src/nautilus-file-undo-operations.c:1639
+msgid "_Undo Trash"
+msgstr "По_вернути викидання"
+
+#: src/nautilus-file-undo-operations.c:1640
+msgid "_Redo Trash"
+msgstr "_Повторити викидання"
+
+#: src/nautilus-file-undo-operations.c:1935
+#, c-format
+msgid "Restore original permissions of items enclosed in “%s”"
+msgstr "Відновити початкові права на об'єкти у «%s»"
+
+#: src/nautilus-file-undo-operations.c:1936
+#, c-format
+msgid "Set permissions of items enclosed in “%s”"
+msgstr "Вказати права на об'єкти у «%s»"
+
+#: src/nautilus-file-undo-operations.c:1938
+#: src/nautilus-file-undo-operations.c:2091
+msgid "_Undo Change Permissions"
+msgstr "По_вернути змінення прав"
+
+#: src/nautilus-file-undo-operations.c:1939
+#: src/nautilus-file-undo-operations.c:2092
+msgid "_Redo Change Permissions"
+msgstr "По_вторити змінення прав"
+
+#: src/nautilus-file-undo-operations.c:2088
+#, c-format
+msgid "Restore original permissions of “%s”"
+msgstr "Відновити початкові права на «%s»"
+
+#: src/nautilus-file-undo-operations.c:2089
+#, c-format
+msgid "Set permissions of “%s”"
+msgstr "Вказати права на «%s»"
+
+#: src/nautilus-file-undo-operations.c:2201
+#, c-format
+msgid "Restore group of “%s” to “%s”"
+msgstr "Відновити групу «%s» на «%s»"
+
+#: src/nautilus-file-undo-operations.c:2203
+#, c-format
+msgid "Set group of “%s” to “%s”"
+msgstr "Перейменування «%s» на «%s»"
+
+#: src/nautilus-file-undo-operations.c:2206
+msgid "_Undo Change Group"
+msgstr "По_вернути змінення групи"
+
+#: src/nautilus-file-undo-operations.c:2207
+msgid "_Redo Change Group"
+msgstr "По_вторити змінення групи"
+
+#: src/nautilus-file-undo-operations.c:2211
+#, c-format
+msgid "Restore owner of “%s” to “%s”"
+msgstr "Відновити власника «%s» на «%s»"
+
+#: src/nautilus-file-undo-operations.c:2213
+#, c-format
+msgid "Set owner of “%s” to “%s”"
+msgstr "Змінити власника «%s» на «%s»."
+
+#: src/nautilus-file-undo-operations.c:2216
+msgid "_Undo Change Owner"
+msgstr "По_вернути змінення власника"
+
+#: src/nautilus-file-undo-operations.c:2217
+msgid "_Redo Change Owner"
+msgstr "По_вторити змінення власника"
+
+#: src/nautilus-file-undo-operations.c:2353
+msgid "_Undo Extract"
+msgstr "По_вернути розпакування"
+
+#: src/nautilus-file-undo-operations.c:2354
+msgid "_Redo Extract"
+msgstr "По_вторити розпакування"
+
+#: src/nautilus-file-undo-operations.c:2371
+#, c-format
+msgid "Delete %d extracted file"
+msgid_plural "Delete %d extracted files"
+msgstr[0] "Вилучити %d розпакований файл"
+msgstr[1] "Вилучити %d розпакованих файли"
+msgstr[2] "Вилучити %d розпакованих файлів"
+msgstr[3] "Вилучити %d розпакований файл"
+
+#: src/nautilus-file-undo-operations.c:2385
+#, c-format
+msgid "Extract “%s”"
+msgstr "Розпакувати «%s»"
+
+#: src/nautilus-file-undo-operations.c:2389
+#, c-format
+msgid "Extract %d file"
+msgid_plural "Extract %d files"
+msgstr[0] "Розпакувати %d файл"
+msgstr[1] "Розпакувати %d файли"
+msgstr[2] "Розпакувати %d файлів"
+msgstr[3] "Розпакувати %d файл"
+
+#: src/nautilus-file-undo-operations.c:2540
+#, c-format
+msgid "Compress “%s”"
+msgstr "Стиснути «%s»"
+
+#: src/nautilus-file-undo-operations.c:2544
+#, c-format
+msgid "Compress %d file"
+msgid_plural "Compress %d files"
+msgstr[0] "Стиснути %d файл"
+msgstr[1] "Стиснути %d файли"
+msgstr[2] "Стиснути %d файлів"
+msgstr[3] "Стиснути %d файл"
+
+#: src/nautilus-file-undo-operations.c:2550
+msgid "_Undo Compress"
+msgstr "По_вернути стиснення"
+
+#: src/nautilus-file-undo-operations.c:2551
+msgid "_Redo Compress"
+msgstr "По_вторити стиснення"
+
+#: src/nautilus-file-utilities.c:882
+#, c-format
+msgid "Could not determine original location of “%s” "
+msgstr "Неможливо визначити початкову адресу «%s» "
+
+#: src/nautilus-file-utilities.c:886
+msgid "The item cannot be restored from trash"
+msgstr "Пункт неможливо відновити зі смітника."
+
+#. translators: these describe the contents of removable media
+#: src/nautilus-file-utilities.c:1001
+msgid "Audio CD"
+msgstr "Звуковий CD"
+
+#: src/nautilus-file-utilities.c:1005
+msgid "Audio DVD"
+msgstr "Звуковий DVD"
+
+#: src/nautilus-file-utilities.c:1009
+msgid "Video DVD"
+msgstr "DVD з відеозаписами"
+
+#: src/nautilus-file-utilities.c:1013
+msgid "Video CD"
+msgstr "CD з відеозаписами"
+
+#: src/nautilus-file-utilities.c:1017
+msgid "Super Video CD"
+msgstr "CD із супер відеозаписами"
+
+#: src/nautilus-file-utilities.c:1021
+msgid "Photo CD"
+msgstr "CD з фотографіями"
+
+#: src/nautilus-file-utilities.c:1025
+msgid "Picture CD"
+msgstr "CD з малюнками"
+
+#: src/nautilus-file-utilities.c:1029 src/nautilus-file-utilities.c:1077
+msgid "Contains digital photos"
+msgstr "Містить цифрові світлини"
+
+#: src/nautilus-file-utilities.c:1033
+msgid "Contains music"
+msgstr "Містить музику"
+
+#: src/nautilus-file-utilities.c:1037
+msgid "Contains software to run"
+msgstr "Містить програми для запуску"
+
+#: src/nautilus-file-utilities.c:1041
+msgid "Contains software to install"
+msgstr "Містить програми для встановлення"
+
+#. fallback to generic greeting
+#: src/nautilus-file-utilities.c:1046
+#, c-format
+msgid "Detected as “%s”"
+msgstr "Виявлено як «%s»"
+
+#. translators: these describe the contents of removable media
+#: src/nautilus-file-utilities.c:1069
+msgid "Contains music and photos"
+msgstr "Містить музику й світлини"
+
+#: src/nautilus-file-utilities.c:1073
+msgid "Contains photos and music"
+msgstr "Містить світлини і музику"
+
+#: src/nautilus-list-model.c:467
+msgid "(Empty)"
+msgstr "(Порожнє)"
+
+#: src/nautilus-list-view.c:1594
+msgid "Use Default"
+msgstr "Типово"
+
+#: src/nautilus-list-view.c:3410
+#, c-format
+msgid "%s Visible Columns"
+msgstr "%s видимих стовпчиків"
+
+#: src/nautilus-list-view.c:3430
+msgid "Choose the order of information to appear in this folder:"
+msgstr "Виберіть порядок, в якому з'являтиметься інформація у цій теці:"
+
+#: src/nautilus-location-entry.c:269
+#, c-format
+msgid "Do you want to view %d location?"
+msgid_plural "Do you want to view %d locations?"
+msgstr[0] "Переглянути %d в окремому вікні?"
+msgstr[1] "Переглянути %d в окремих вікнах?"
+msgstr[2] "Переглянути %d в окремих вікнах?"
+msgstr[3] "Переглянути %d в окремому вікні?"
+
+#: src/nautilus-location-entry.c:273 src/nautilus-mime-actions.c:973
+#, c-format
+msgid "This will open %d separate window."
+msgid_plural "This will open %d separate windows."
+msgstr[0] "Це призведе до відкривання %d окремого вікна."
+msgstr[1] "Це призведе до відкривання %d окремих вікон."
+msgstr[2] "Це призведе до відкривання %d окремих вікон."
+msgstr[3] "Це призведе до відкривання %d окремого вікна."
+
+#: src/nautilus-mime-actions.c:102
+#: src/resources/ui/nautilus-search-popover.ui:275
+msgid "Anything"
+msgstr "Будь-що"
+
+#: src/nautilus-mime-actions.c:112
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:58
+msgid "Folders"
+msgstr "Теки"
+
+#: src/nautilus-mime-actions.c:116
+msgid "Documents"
+msgstr "Документи"
+
+#: src/nautilus-mime-actions.c:133
+msgid "Illustration"
+msgstr "Ілюстрація"
+
+#: src/nautilus-mime-actions.c:145
+msgid "Music"
+msgstr "Музика"
+
+#: src/nautilus-mime-actions.c:158
+msgid "PDF / PostScript"
+msgstr "PDF / PostScript"
+
+#: src/nautilus-mime-actions.c:165
+msgid "Picture"
+msgstr "Малюнок"
+
+#: src/nautilus-mime-actions.c:206
+msgid "Text File"
+msgstr "Текстовий файл"
+
+#: src/nautilus-mime-actions.c:564
+#, c-format
+msgid "The link “%s” is broken. Move it to Trash?"
+msgstr "Посилання «%s» зіпсовано. Перемістити його в смітник?"
+
+#: src/nautilus-mime-actions.c:568
+#, c-format
+msgid "The link “%s” is broken."
+msgstr "Неправильне посилання «%s»."
+
+#: src/nautilus-mime-actions.c:575
+msgid "This link cannot be used because it has no target."
+msgstr "Це посилання неможливо використати, бо воно не має цілі."
+
+#: src/nautilus-mime-actions.c:579
+#, c-format
+msgid "This link cannot be used because its target “%s” doesn’t exist."
+msgstr "Це посилання неможливо використати, бо цілі «%s» не існує."
+
+#: src/nautilus-mime-actions.c:590
+#: src/resources/ui/nautilus-files-view-context-menus.ui:158
+msgid "Mo_ve to Trash"
+msgstr "Пере_містити у смітник"
+
+#: src/nautilus-mime-actions.c:968
+#, c-format
+msgid "This will open %d separate tab."
+msgid_plural "This will open %d separate tabs."
+msgstr[0] "Це призведе до відкривання %d окремого вікна."
+msgstr[1] "Це призведе до відкривання %d окремих вікон."
+msgstr[2] "Це призведе до відкривання %d окремих вікон."
+msgstr[3] "Це призведе до відкривання %d окремого вікна."
+
+#: src/nautilus-mime-actions.c:1040
+#, c-format
+msgid "Could Not Display “%s”"
+msgstr "Не вдалося показати «%s»"
+
+#: src/nautilus-mime-actions.c:1143
+msgid "The file is of an unknown type"
+msgstr "Файл невідомого типу"
+
+#: src/nautilus-mime-actions.c:1148
+#, c-format
+msgid "There is no application installed for “%s” files"
+msgstr "Для файлів типу «%s» не встановлено програми"
+
+#: src/nautilus-mime-actions.c:1161
+msgid "_Select Application"
+msgstr "_Виберіть програму"
+
+#: src/nautilus-mime-actions.c:1199
+msgid "There was an internal error trying to search for applications:"
+msgstr "Внутрішня помилка при спробі пошуку програм:"
+
+#: src/nautilus-mime-actions.c:1201
+msgid "Unable to search for application"
+msgstr "Не вдалось виконати пошук програми"
+
+#: src/nautilus-mime-actions.c:1312
+#, c-format
+msgid ""
+"There is no application installed for “%s” files. Do you want to search for "
+"an application to open this file?"
+msgstr ""
+"Немає встановленої програми для файлів типу «%s». Знайти придатну програму "
+"для відкривання цього файла?"
+
+#: src/nautilus-mime-actions.c:1318
+msgid "_Search in Software"
+msgstr "_Шукати у «Програмах»"
+
+#: src/nautilus-mime-actions.c:1669
+#, c-format
+#| msgid "This will open %d separate tab."
+#| msgid_plural "This will open %d separate tabs."
+msgid "This will open %d separate application."
+msgid_plural "This will open %d separate applications."
+msgstr[0] "Це призведе до відкривання %d окремого вікна програми."
+msgstr[1] "Це призведе до відкривання %d окремих вікон програм."
+msgstr[2] "Це призведе до відкривання %d окремих вікон програм."
+msgstr[3] "Це призведе до відкривання окремого вікна програми."
+
+#. if it wasn't cancelled show a dialog
+#: src/nautilus-mime-actions.c:1729 src/nautilus-mime-actions.c:2028
+#: src/gtk/nautilusgtkplacesview.c:1231 src/gtk/nautilusgtkplacesview.c:1320
+msgid "Unable to access location"
+msgstr "Не вдалося доступитися до адреси"
+
+#: src/nautilus-mime-actions.c:2119
+msgid "Unable to start location"
+msgstr "Не вдалось запустити адресу"
+
+#: src/nautilus-mime-actions.c:2212
+#, c-format
+msgid "Opening “%s”."
+msgstr "Відкривається «%s»."
+
+#: src/nautilus-mime-actions.c:2217
+#, c-format
+msgid "Opening %d item."
+msgid_plural "Opening %d items."
+msgstr[0] "Відкривається %d об'єкт."
+msgstr[1] "Відкривається %d об'єкти."
+msgstr[2] "Відкривається %d об'єктів."
+msgstr[3] "Відкривається %d об'єкт."
+
+#: src/nautilus-new-folder-dialog-controller.c:55
+#: src/nautilus-rename-file-popover-controller.c:106
+msgid "Folder names cannot contain “/”."
+msgstr "Назви теки не можуть містити «/»."
+
+#: src/nautilus-new-folder-dialog-controller.c:60
+#: src/nautilus-rename-file-popover-controller.c:118
+msgid "A folder cannot be called “.”."
+msgstr "Теку не можна називати як «.»."
+
+#: src/nautilus-new-folder-dialog-controller.c:65
+#: src/nautilus-rename-file-popover-controller.c:130
+msgid "A folder cannot be called “..”."
+msgstr "Теку не можна називати як «..»."
+
+#: src/nautilus-new-folder-dialog-controller.c:70
+#: src/nautilus-rename-file-popover-controller.c:142
+msgid "Folder name is too long."
+msgstr "Назва теки є надто довгою."
+
+#. We must warn about the side effect
+#: src/nautilus-new-folder-dialog-controller.c:76
+#: src/nautilus-rename-file-popover-controller.c:155
+msgid "Folders with “.” at the beginning of their name are hidden."
+msgstr "Теки, назви яких починаються із символу «.», є прихованими."
+
+#: src/nautilus-new-folder-dialog-controller.c:145
+#: src/resources/ui/nautilus-compress-dialog.ui:173
+msgid "Create"
+msgstr "Створити"
+
+#: src/nautilus-new-folder-dialog-controller.c:146
+#: src/nautilus-rename-file-popover-controller.c:380
+msgid "Folder name"
+msgstr "Назва теки"
+
+#: src/nautilus-new-folder-dialog-controller.c:147
+#: src/resources/ui/nautilus-toolbar.ui:71
+msgid "New Folder"
+msgstr "Нову теку"
+
+#: src/nautilus-notebook.c:373
+msgid "Close tab"
+msgstr "Закрити вкладку"
+
+#: src/nautilus-operations-ui-manager.c:144
+#, c-format
+msgid ""
+"You are trying to replace the destination folder “%s” with a symbolic link."
+msgstr "Ви намагаєтеся замінити теку призначення «%s» символічним посиланням."
+
+#: src/nautilus-operations-ui-manager.c:146
+#, c-format
+msgid ""
+"This is not allowed in order to avoid the deletion of the destination "
+"folder’s contents."
+msgstr "Таку дію заборонено, щоб запобігти вилученню вмісту теки призначення."
+
+#: src/nautilus-operations-ui-manager.c:147
+msgid "Please rename the symbolic link or press the skip button."
+msgstr ""
+"Будь ласка, перейменуйте символічне посилання або натисніть кнопку "
+"«Пропустити»."
+
+#: src/nautilus-operations-ui-manager.c:151
+#, c-format
+msgid "Merge folder “%s”?"
+msgstr "Об'єднати теку «%s»?"
+
+#: src/nautilus-operations-ui-manager.c:154
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Об'єднання вимагає підтвердження перед заміщенням будь-яких файлів у теці, "
+"яка конфліктує з копійованими файлами."
+
+#: src/nautilus-operations-ui-manager.c:159
+#, c-format
+msgid "An older folder with the same name already exists in “%s”."
+msgstr "Старіша тека з такою ж назвою вже існує в «%s»."
+
+#: src/nautilus-operations-ui-manager.c:164
+#, c-format
+msgid "A newer folder with the same name already exists in “%s”."
+msgstr "Новіша тека з такою ж назвою вже існує в «%s»."
+
+#: src/nautilus-operations-ui-manager.c:169
+#, c-format
+msgid "Another folder with the same name already exists in “%s”."
+msgstr "Інша тека з такою ж назвою вже існує в «%s»."
+
+#: src/nautilus-operations-ui-manager.c:175
+#, c-format
+msgid "Replace folder “%s”?"
+msgstr "Замінити теку «%s»?"
+
+#: src/nautilus-operations-ui-manager.c:177
+msgid "Replacing it will remove all files in the folder."
+msgstr "Замінивши, ви вилучите всі файли в теці."
+
+#: src/nautilus-operations-ui-manager.c:178
+#, c-format
+msgid "A folder with the same name already exists in “%s”."
+msgstr "Тека з такою ж назвою вже існує в «%s»."
+
+#: src/nautilus-operations-ui-manager.c:184
+#, c-format
+msgid "Replace file “%s”?"
+msgstr "Замінити файл «%s»?"
+
+#: src/nautilus-operations-ui-manager.c:187
+msgid "Replacing it will overwrite its content."
+msgstr "Замінивши, ви перезапишете увесь вміст."
+
+#: src/nautilus-operations-ui-manager.c:191
+#, c-format
+msgid "An older file with the same name already exists in “%s”."
+msgstr "Старіший файл з такою ж назвою вже існує в «%s»."
+
+#: src/nautilus-operations-ui-manager.c:196
+#, c-format
+msgid "A newer file with the same name already exists in “%s”."
+msgstr "Новіший файл з такою ж назвою вже існує «%s»."
+
+#: src/nautilus-operations-ui-manager.c:201
+#, c-format
+msgid "Another file with the same name already exists in “%s”."
+msgstr "Інший файл з такою ж назвою вже існує в «%s»."
+
+#: src/nautilus-operations-ui-manager.c:276
+#: src/resources/ui/nautilus-properties-window.ui:314
+msgid "Original folder"
+msgstr "Початкова тека"
+
+#: src/nautilus-operations-ui-manager.c:277
+#: src/nautilus-operations-ui-manager.c:309
+msgid "Contents:"
+msgstr "Вміст:"
+
+#: src/nautilus-operations-ui-manager.c:281
+msgid "Original file"
+msgstr "Початковий файл"
+
+#: src/nautilus-operations-ui-manager.c:282
+#: src/nautilus-operations-ui-manager.c:314
+msgid "Size:"
+msgstr "Розмір:"
+
+#: src/nautilus-operations-ui-manager.c:287
+#: src/nautilus-operations-ui-manager.c:319
+msgid "Type:"
+msgstr "Тип:"
+
+#: src/nautilus-operations-ui-manager.c:290
+#: src/nautilus-operations-ui-manager.c:322
+msgid "Last modified:"
+msgstr "Остання зміна:"
+
+#: src/nautilus-operations-ui-manager.c:308
+msgid "Merge with"
+msgstr "Об'єднати з"
+
+#: src/nautilus-operations-ui-manager.c:308
+#: src/nautilus-operations-ui-manager.c:313
+msgid "Replace with"
+msgstr "Замінити на"
+
+#: src/nautilus-operations-ui-manager.c:365
+msgid "Merge"
+msgstr "Об'єднати"
+
+#: src/nautilus-operations-ui-manager.c:389
+msgid "Merge Folder"
+msgstr "Об'єднати теку"
+
+#: src/nautilus-operations-ui-manager.c:390
+#: src/nautilus-operations-ui-manager.c:395
+msgid "File and Folder conflict"
+msgstr "Конфлікт файлів і тек"
+
+#: src/nautilus-operations-ui-manager.c:396
+msgid "File conflict"
+msgstr "Конфлікт файлів"
+
+#: src/nautilus-operations-ui-manager.c:540
+msgid ""
+"Password-protected archives are not yet supported. This list contains "
+"applications that can open the archive."
+msgstr ""
+"Підтримки архівів, які захищено паролями, ще не передбачено. У цьому списку "
+"містяться програми, які можуть відкрити архів."
+
+#. Translators: This is the label used in the pathbar when seeing
+#. * the root directory (also known as /)
+#: src/nautilus-pathbar.c:316 src/gtk/nautilusgtkplacesview.c:1121
+msgid "Computer"
+msgstr "Комп'ютер"
+
+#. Translators: This is the filesystem root directory (also known
+#. * as /) when seen as administrator
+#: src/nautilus-pathbar.c:323
+msgid "Administrator Root"
+msgstr "Адміністративний корінь"
+
+#. Translators: this is referred to captions under icons.
+#. Translators: this is referred to the permissions
+#. * the user has in a directory.
+#.
+#: src/nautilus-preferences-window.c:97 src/nautilus-properties-window.c:3604
+#: src/nautilus-properties-window.c:3634
+msgid "None"
+msgstr "Немає"
+
+#: src/nautilus-preferences-window.c:336
+msgid "Single click"
+msgstr "Одинарне клацання"
+
+#: src/nautilus-preferences-window.c:336
+msgid "Double click"
+msgstr "Подвійне клацання"
+
+#: src/nautilus-preferences-window.c:338 src/nautilus-preferences-window.c:340
+#: src/nautilus-preferences-window.c:342
+msgid "On this computer only"
+msgstr "Тільки на цьому комп'ютері"
+
+#: src/nautilus-preferences-window.c:338
+msgid "All locations"
+msgstr "Усюди"
+
+#: src/nautilus-preferences-window.c:338 src/nautilus-preferences-window.c:340
+#: src/nautilus-preferences-window.c:342
+msgid "Never"
+msgstr "Ніколи"
+
+#: src/nautilus-preferences-window.c:340
+msgid "All files"
+msgstr "Усі файли"
+
+#: src/nautilus-preferences-window.c:342
+msgid "All folders"
+msgstr "Усі теки"
+
+#: src/nautilus-program-choosing.c:379
+msgid "Sorry, but you cannot execute commands from a remote site."
+msgstr "Вибачте, але не можна виконувати команди з віддаленого сайту."
+
+#: src/nautilus-program-choosing.c:380
+msgid "This is disabled due to security considerations."
+msgstr "Це заборонено з міркувань безпеки."
+
+#: src/nautilus-program-choosing.c:392 src/nautilus-program-choosing.c:469
+#: src/nautilus-properties-window.c:2616
+msgid "There was an error launching the application."
+msgstr "Помилка при запуску програми."
+
+#. all files are non-local
+#. some files are non-local
+#: src/nautilus-program-choosing.c:421 src/nautilus-program-choosing.c:433
+msgid "This drop target only supports local files."
+msgstr "Ціль підтримує перетягування лише локальних файлів."
+
+#: src/nautilus-program-choosing.c:422
+msgid ""
+"To open non-local files copy them to a local folder and then drop them again."
+msgstr ""
+"Щоб відкрити віддалені файли, скопіюйте їх у локальну теку та перетягніть їх "
+"знову."
+
+#: src/nautilus-program-choosing.c:434
+msgid ""
+"To open non-local files copy them to a local folder and then drop them "
+"again. The local files you dropped have already been opened."
+msgstr ""
+"Щоб відкрити нелокальні файли скопіюйте їх у локальну теку та перетягніть "
+"знову. Локальні файли, що ви перетягнули, вже відкрито."
+
+#: src/nautilus-program-choosing.c:468
+msgid "Details: "
+msgstr "Подробиці: "
+
+#: src/nautilus-progress-info.c:306
+msgid "Canceled"
+msgstr "Скасовано"
+
+#: src/nautilus-progress-info.c:353 src/nautilus-progress-info.c:374
+msgid "Preparing"
+msgstr "Підготовлення"
+
+#: src/nautilus-progress-persistence-handler.c:106
+#: src/nautilus-progress-persistence-handler.c:146
+msgid "File Operations"
+msgstr "Дії над файлами"
+
+#: src/nautilus-progress-persistence-handler.c:108
+msgid "Show Details"
+msgstr "Показати подробиці"
+
+#: src/nautilus-progress-persistence-handler.c:111
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "Триває %'d дія над файлами"
+msgstr[1] "Тривають %'d дії над файлами"
+msgstr[2] "Тривають %'d дій над файлами"
+msgstr[3] "Триває %'d дія над файлами"
+
+#: src/nautilus-progress-persistence-handler.c:148
+msgid "All file operations have been successfully completed"
+msgstr "Всі дії над файлами успішно виконано"
+
+#: src/nautilus-properties-window.c:543
+msgid "You cannot assign more than one custom icon at a time!"
+msgstr "Неможливо зв'язати понад одну вказану піктограму за раз!"
+
+#: src/nautilus-properties-window.c:544
+msgid "Please drop just one image to set a custom icon."
+msgstr "Перетягніть лише одне зображення, щоб встановити іншу піктограму."
+
+#: src/nautilus-properties-window.c:561
+msgid "The file that you dropped is not local."
+msgstr "Вказаний файл не є локальним."
+
+#: src/nautilus-properties-window.c:562 src/nautilus-properties-window.c:569
+msgid "You can only use local images as custom icons."
+msgstr "Для піктограм можна використовувати лише локальні зображення."
+
+#: src/nautilus-properties-window.c:568
+msgid "The file that you dropped is not an image."
+msgstr "Вказаний файл не є зображенням."
+
+#: src/nautilus-properties-window.c:651
+#: src/resources/ui/nautilus-properties-window.ui:91
+msgid "_Name"
+msgid_plural "_Names"
+msgstr[0] "_Назви"
+msgstr[1] "_Назви"
+msgstr[2] "_Назви"
+msgstr[3] "_Назва"
+
+#. To translators: %s is the name of the folder.
+#: src/nautilus-properties-window.c:897
+#, c-format
+msgctxt "folder"
+msgid "%s Properties"
+msgstr "Властивості %s"
+
+#. To translators: %s is the name of the file.
+#: src/nautilus-properties-window.c:903
+#, c-format
+msgctxt "file"
+msgid "%s Properties"
+msgstr "Властивості %s"
+
+#: src/nautilus-properties-window.c:911
+#, c-format
+msgid "Properties"
+msgstr "Властивості"
+
+#: src/nautilus-properties-window.c:1326
+#, c-format
+msgctxt "MIME type description (MIME type)"
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: src/nautilus-properties-window.c:1393
+msgid "Cancel Group Change?"
+msgstr "Скасувати зміну групи?"
+
+#: src/nautilus-properties-window.c:1762
+msgid "Cancel Owner Change?"
+msgstr "Скасувати зміну власника?"
+
+#: src/nautilus-properties-window.c:2090
+msgid "nothing"
+msgstr "нічого"
+
+#: src/nautilus-properties-window.c:2094
+msgid "unreadable"
+msgstr "нечіткий"
+
+#: src/nautilus-properties-window.c:2106
+#, c-format
+msgid "%'d item, with size %s"
+msgid_plural "%'d items, totalling %s"
+msgstr[0] "%'d об'єкт, обсяг %s"
+msgstr[1] "%'d об'єкти, обсяг %s"
+msgstr[2] "%'d об'єктів, обсяг %s"
+msgstr[3] "%'d об'єкт, обсяг %s"
+
+#: src/nautilus-properties-window.c:2116
+msgid "(some contents unreadable)"
+msgstr "(деякий вміст не зчитується)"
+
+#: src/nautilus-properties-window.c:2615
+#, c-format
+msgid "Details: %s"
+msgstr "Подробиці: %s"
+
+#. translators: this gets concatenated to "no read",
+#. * "no access", etc. (see following strings)
+#.
+#: src/nautilus-properties-window.c:3508 src/nautilus-properties-window.c:3523
+#: src/nautilus-properties-window.c:3540
+msgid "no "
+msgstr "ні"
+
+#: src/nautilus-properties-window.c:3512
+msgid "list"
+msgstr "список"
+
+#: src/nautilus-properties-window.c:3516
+msgid "read"
+msgstr "читання"
+
+#: src/nautilus-properties-window.c:3527
+msgid "create/delete"
+msgstr "створити/вилучити"
+
+#: src/nautilus-properties-window.c:3531
+msgid "write"
+msgstr "запис"
+
+#: src/nautilus-properties-window.c:3542
+msgid "access"
+msgstr "доступ"
+
+#: src/nautilus-properties-window.c:3611
+msgid "List files only"
+msgstr "Лише список файлів"
+
+#: src/nautilus-properties-window.c:3617
+msgid "Access files"
+msgstr "Доступ до файлів"
+
+#: src/nautilus-properties-window.c:3623
+msgid "Create and delete files"
+msgstr "Створення та вилучення файлів"
+
+#: src/nautilus-properties-window.c:3641
+msgid "Read-only"
+msgstr "Лише читання"
+
+#: src/nautilus-properties-window.c:3647
+msgid "Read and write"
+msgstr "Читання та запис"
+
+#: src/nautilus-properties-window.c:4191
+#, c-format
+msgid "The permissions of “%s” could not be determined."
+msgstr "Неможливо визначити права на «%s»."
+
+#: src/nautilus-properties-window.c:4435
+#, c-format
+msgid "Error while adding “%s”: %s"
+msgstr "Помилка додавання «%s»: %s"
+
+#: src/nautilus-properties-window.c:4437
+msgid "Could not add application"
+msgstr "Неможливо додати програму"
+
+#: src/nautilus-properties-window.c:4466
+msgid "Could not forget association"
+msgstr "Неможливо забути асоціацію"
+
+#: src/nautilus-properties-window.c:4489
+msgid "Forget association"
+msgstr "Забути асоціацію"
+
+#: src/nautilus-properties-window.c:4529
+#, c-format
+msgid "Error while setting “%s” as default application: %s"
+msgstr "Помилка налаштування «%s» як типової програми: %s"
+
+#: src/nautilus-properties-window.c:4531
+msgid "Could not set as default"
+msgstr "Неможливо встановити типову програму"
+
+#. Translators: the %s here is a file extension
+#: src/nautilus-properties-window.c:4607
+#, c-format
+msgid "%s document"
+msgstr "Документ %s"
+
+#. Translators; %s here is a mime-type description
+#: src/nautilus-properties-window.c:4617
+#, c-format
+msgid "Open all files of type “%s” with"
+msgstr "Відкрити всі файли типу «%s» за допомогою"
+
+#. Translators: first %s is filename, second %s is mime-type description
+#: src/nautilus-properties-window.c:4626
+#, c-format
+msgid "Select an application to open “%s” and other files of type “%s”"
+msgstr "Виберіть програму для відкривання «%s» та інших файлів типу «%s»"
+
+#: src/nautilus-properties-window.c:5075
+msgid "Creating Properties window."
+msgstr "Створення вікна властивостей."
+
+#: src/nautilus-properties-window.c:5294
+msgid "Select Custom Icon"
+msgstr "Вибрати власну піктограму"
+
+#: src/nautilus-properties-window.c:5296
+msgid "_Revert"
+msgstr "Від_новити"
+
+#. Open item is always present
+#: src/nautilus-properties-window.c:5298 src/gtk/nautilusgtkplacesview.c:1695
+msgid "_Open"
+msgstr "_Відкрити"
+
+#: src/nautilus-query.c:539
+#, c-format
+msgid "Search for “%s”"
+msgstr "Пошук «%s»"
+
+#: src/nautilus-rename-file-popover-controller.c:381
+msgid "File name"
+msgstr "Назва файла"
+
+#: src/nautilus-search-engine.c:353
+msgid "Unable to complete the requested search"
+msgstr "Не вдалось завершити вказаний пошук"
+
+#: src/nautilus-search-popover.c:301
+msgid "Show a list to select the date"
+msgstr "Показати перелік, щоб вибрати теку"
+
+#: src/nautilus-search-popover.c:307
+#: src/resources/ui/nautilus-search-popover.ui:96
+msgid "Show a calendar to select the date"
+msgstr "Показати календар, щоб вибрати дату"
+
+#. Add the no date filter element first
+#: src/nautilus-search-popover.c:423
+msgid "Any time"
+msgstr "Будь-коли"
+
+#. Other types
+#: src/nautilus-search-popover.c:520
+msgid "Other Type…"
+msgstr "Інший тип…"
+
+#: src/nautilus-search-popover.c:580
+msgid "Select type"
+msgstr "Вибрати тип"
+
+#: src/nautilus-search-popover.c:584
+msgid "Select"
+msgstr "Вибрати"
+
+#: src/nautilus-search-popover.c:669
+#: src/resources/ui/nautilus-search-popover.ui:51
+msgid "Select Dates…"
+msgstr "Вибрати дати…"
+
+#. trash
+#: src/nautilus-shell-search-provider.c:320 src/nautilus-trash-bar.c:201
+msgid "Trash"
+msgstr "Смітник"
+
+#: src/nautilus-special-location-bar.c:56
+msgid "Put files in this folder to use them as templates for new documents."
+msgstr ""
+"Покладіть файли у цю теку, щоб використовувати їх як шаблони для нових "
+"документів."
+
+#: src/nautilus-special-location-bar.c:57
+msgid ""
+"<a href=\"help:gnome-help/files-templates\" title=\"GNOME help for templates"
+"\">Learn more…</a>"
+msgstr ""
+"<a href=\"help:gnome-help/files-templates\" title=\"GNOME help for templates"
+"\">Дізнайтесь більше…</a>"
+
+#: src/nautilus-special-location-bar.c:63
+msgid "Executable files in this folder will appear in the Scripts menu."
+msgstr "Всі виконувані файли у цій теці з'являтимуться у меню «Скрипти»."
+
+#: src/nautilus-toolbar.c:840 src/resources/ui/nautilus-toolbar.ui:396
+msgid "_Undo"
+msgstr "_Повернути"
+
+#: src/nautilus-toolbar.c:847 src/resources/ui/nautilus-toolbar.ui:410
+msgid "_Redo"
+msgstr "Пов_торити"
+
+#: src/nautilus-trash-bar.c:209
+msgid "_Restore"
+msgstr "_Відновити"
+
+#: src/nautilus-trash-bar.c:212
+msgid "Restore selected items to their original position"
+msgstr "Відновити вибрані об'єкти до їхніх початкових позицій"
+
+#. Translators: "Empty" is an action (for the trash) , not a state
+#: src/nautilus-trash-bar.c:216
+msgid "_Empty…"
+msgstr "С_порожнити…"
+
+#: src/nautilus-trash-bar.c:219
+msgid "Delete all items in the Trash"
+msgstr "Вилучити всі об'єкти у смітнику"
+
+#: src/nautilus-ui-utilities.c:186
+#, c-format
+msgid "Since %d day ago"
+msgid_plural "Since %d days ago"
+msgstr[0] "%d день тому"
+msgstr[1] "%d дні тому"
+msgstr[2] "%d днів тому"
+msgstr[3] "%d день тому"
+
+#: src/nautilus-ui-utilities.c:187
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d день тому"
+msgstr[1] "%d дні тому"
+msgstr[2] "%d днів тому"
+msgstr[3] "%d день тому"
+
+#: src/nautilus-ui-utilities.c:193
+#, c-format
+msgid "Since last week"
+msgid_plural "Since %d weeks ago"
+msgstr[0] "%d тиждень тому"
+msgstr[1] "%d тижні тому"
+msgstr[2] "%d тижнів тому"
+msgstr[3] "%d тиждень тому"
+
+#: src/nautilus-ui-utilities.c:194
+#, c-format
+msgid "Last week"
+msgid_plural "%d weeks ago"
+msgstr[0] "%d тиждень тому"
+msgstr[1] "%d тижні тому"
+msgstr[2] "%d тижнів тому"
+msgstr[3] "%d тиждень тому"
+
+#: src/nautilus-ui-utilities.c:200
+#, c-format
+msgid "Since last month"
+msgid_plural "Since %d months ago"
+msgstr[0] "%d місяць тому"
+msgstr[1] "%d місяці тому"
+msgstr[2] "%d місяців тому"
+msgstr[3] "%d місяць тому"
+
+#: src/nautilus-ui-utilities.c:201
+#, c-format
+msgid "Last month"
+msgid_plural "%d months ago"
+msgstr[0] "%d місяць тому"
+msgstr[1] "%d місяці тому"
+msgstr[2] "%d місяців тому"
+msgstr[3] "%d місяць тому"
+
+#: src/nautilus-ui-utilities.c:206
+#, c-format
+msgid "Since last year"
+msgid_plural "Since %d years ago"
+msgstr[0] "%d рік тому"
+msgstr[1] "%d роки тому"
+msgstr[2] "%d років тому"
+msgstr[3] "%d рік тому"
+
+#: src/nautilus-ui-utilities.c:207
+#, c-format
+msgid "Last year"
+msgid_plural "%d years ago"
+msgstr[0] "%d рік тому"
+msgstr[1] "%d роки тому"
+msgstr[2] "%d років тому"
+msgstr[3] "%d рік тому"
+
+#: src/nautilus-view.c:154
+msgid "Show grid"
+msgstr "Показати як таблицю"
+
+#: src/nautilus-view.c:158
+msgid "Show list"
+msgstr "Показати як список"
+
+#: src/nautilus-view.c:162
+msgid "Show List"
+msgstr "Показати як список"
+
+#: src/nautilus-window.c:192 src/resources/ui/nautilus-properties-window.ui:260
+msgid "Parent folder"
+msgstr "Батьківська тека"
+
+#: src/nautilus-window.c:194
+msgid "New tab"
+msgstr "Нова вкладка"
+
+#: src/nautilus-window.c:195
+msgid "Close current view"
+msgstr "Закрити поточний перегляд"
+
+#: src/nautilus-window.c:196
+msgid "Back"
+msgstr "Назад"
+
+#: src/nautilus-window.c:197
+msgid "Forward"
+msgstr "Вперед"
+
+#: src/nautilus-window.c:1331
+msgid "Empty _Trash…"
+msgstr "С_порожнити смітник…"
+
+#: src/nautilus-window.c:1350
+#: src/resources/ui/nautilus-pathbar-context-menu.ui:14
+msgid "_Properties"
+msgstr "В_ластивості"
+
+#: src/nautilus-window.c:1362
+msgid "_Format…"
+msgstr "_Форматувати…"
+
+#. Translators: only one item has been deleted and %s is its name.
+#: src/nautilus-window.c:1617
+#, c-format
+msgid "“%s” deleted"
+msgstr "«%s» вилучено"
+
+#. Translators: one or more items might have been deleted, and %d
+#. * is the count.
+#: src/nautilus-window.c:1624
+#, c-format
+msgid "%d file deleted"
+msgid_plural "%d files deleted"
+msgstr[0] "%d файл вилучено"
+msgstr[1] "%d файла вилучено"
+msgstr[2] "%d файлів вилучено"
+msgstr[3] "%d файл вилучено"
+
+#. Translators: one item has been unstarred and %s is its name.
+#: src/nautilus-window.c:1645
+#, c-format
+msgid "“%s” unstarred"
+msgstr "Знято позначення зірками «%s»"
+
+#. Translators: one or more items have been unstarred, and %d
+#. * is the count.
+#: src/nautilus-window.c:1651
+#, c-format
+msgid "%d file unstarred"
+msgid_plural "%d files unstarred"
+msgstr[0] "Скасовано позначення зірками %d файла"
+msgstr[1] "Скасовано позначення зірками %d файлів"
+msgstr[2] "Скасовано позначення зірками %d файлів"
+msgstr[3] "Скасовано позначення зірками %d файла"
+
+#: src/nautilus-window.c:1794
+#, c-format
+msgid "Open %s"
+msgstr "Відкрити %s"
+
+#: src/nautilus-window.c:1872
+msgid "_New Tab"
+msgstr "_Нова вкладка"
+
+#: src/nautilus-window.c:1882
+msgid "Move Tab _Left"
+msgstr "Перемістити вкладку _ліворуч"
+
+#: src/nautilus-window.c:1890
+msgid "Move Tab _Right"
+msgstr "Перемістити вкладку _праворуч"
+
+#: src/nautilus-window.c:1901
+msgid "_Close Tab"
+msgstr "_Закрити вкладку"
+
+#: src/nautilus-window.c:2958
+msgid "Access and organize your files\nFork by cheesits456"
+msgstr "Доступ і упорядковування ваших файлів"
+
+#. Translators should localize the following string
+#. * which will be displayed at the bottom of the about
+#. * box to give credit to the translator(s).
+#.
+#: src/nautilus-window.c:2969
+msgid "translator-credits"
+msgstr ""
+"Юрій Сирота <yuri@renome.rovno.ua>\n"
+"Максим Дзюманенко <dziumanenko@gmail.com>\n"
+"Daniel Korostil <ted.korostiled@gmail.com>"
+
+#: src/nautilus-window-slot.c:1168
+msgid "Searching locations only"
+msgstr "Шукає тільки адрес"
+
+#: src/nautilus-window-slot.c:1172
+msgid "Searching network locations only"
+msgstr "Шукає тільки мережевих адрес"
+
+#: src/nautilus-window-slot.c:1177
+msgid "Remote location — only searching the current folder"
+msgstr "Віддалена адреса — шукає лише в поточній теці"
+
+#: src/nautilus-window-slot.c:1181
+msgid "Only searching the current folder"
+msgstr "Шукає лише в поточній теці"
+
+#: src/nautilus-window-slot.c:1704
+msgid "Unable to display the contents of this folder."
+msgstr "Не вдалось показати вміст цієї теки."
+
+#: src/nautilus-window-slot.c:1708
+msgid "This location doesn’t appear to be a folder."
+msgstr "Ця адреса не видається текою."
+
+#: src/nautilus-window-slot.c:1717
+msgid ""
+"Unable to find the requested file. Please check the spelling and try again."
+msgstr ""
+"Не вдалось знайти потрібний файл. Перевірте орфографію і спробуйте ще раз."
+
+#: src/nautilus-window-slot.c:1726
+#, c-format
+msgid "“%s” locations are not supported."
+msgstr "Адреси «%s» не підтримуються."
+
+#: src/nautilus-window-slot.c:1731
+msgid "Unable to handle this kind of location."
+msgstr "Не вдалось обробити цей тип адреси."
+
+#: src/nautilus-window-slot.c:1739
+msgid "Unable to access the requested location."
+msgstr "Не вдалось доступитись до потрібної адреси."
+
+#: src/nautilus-window-slot.c:1745
+msgid "Don’t have permission to access the requested location."
+msgstr "Ви не маєте прав, щоб доступитись до потрібної адреси."
+
+#. This case can be hit for user-typed strings like "foo" due to
+#. * the code that guesses web addresses when there's no initial "/".
+#. * But this case is also hit for legitimate web addresses when
+#. * the proxy is set up wrong.
+#.
+#: src/nautilus-window-slot.c:1756
+msgid ""
+"Unable to find the requested location. Please check the spelling or the "
+"network settings."
+msgstr ""
+"Не вдалося знайти потрібну адресу. Перевірте орфографію або налаштування "
+"мережі."
+
+#. This case can be hit when server application is not installed
+#. * or is inactive in the system user is trying to connect to.
+#.
+#: src/nautilus-window-slot.c:1765
+msgid ""
+"The server has refused the connection. Typically this means that the "
+"firewall is blocking access or that the remote service is not running."
+msgstr ""
+"Сервер відмовив у встановленні з'єднання. Типово, це означає, що доступ "
+"заблоковано брандмауером або що віддалену службу не запущено."
+
+#: src/nautilus-window-slot.c:1784
+#, c-format
+msgid "Unhandled error message: %s"
+msgstr "Повідомлення необробної помилки: %s"
+
+#: src/nautilus-window-slot.c:1959
+#, c-format
+msgid "Unable to load location"
+msgstr "Не вдалось завантажити адресу"
+
+#: src/nautilus-x-content-bar.c:141
+msgid "Open with:"
+msgstr "Відкрити з:"
+
+#: src/resources/gtk/help-overlay.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Загальне"
+
+#: src/resources/gtk/help-overlay.ui:17
+msgctxt "shortcut window"
+msgid "New window"
+msgstr "Нове вікно"
+
+#: src/resources/gtk/help-overlay.ui:24
+msgctxt "shortcut window"
+msgid "Close window or tab"
+msgstr "Закрити вікно або вкладку"
+
+#: src/resources/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Вийти"
+
+#: src/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Пошук"
+
+#: src/resources/gtk/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Bookmark current location"
+msgstr "Закласти поточну адресу"
+
+#: src/resources/gtk/help-overlay.ui:52
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Показати довідку"
+
+#: src/resources/gtk/help-overlay.ui:59
+msgctxt "shortcut window"
+msgid "Shortcuts"
+msgstr "Скорочення"
+
+#: src/resources/gtk/help-overlay.ui:66
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr "Повернути"
+
+#: src/resources/gtk/help-overlay.ui:73
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr "Повторити"
+
+#: src/resources/gtk/help-overlay.ui:82
+msgctxt "shortcut window"
+msgid "Opening"
+msgstr "Відкриття"
+
+#: src/resources/gtk/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Відкрити"
+
+#: src/resources/gtk/help-overlay.ui:93
+msgctxt "shortcut window"
+msgid "Open in new tab"
+msgstr "Відкрити у новій вкладці"
+
+#: src/resources/gtk/help-overlay.ui:100
+msgctxt "shortcut window"
+msgid "Open in new window"
+msgstr "Відкрити у новому вікні"
+
+#: src/resources/gtk/help-overlay.ui:107
+msgctxt "shortcut window"
+msgid "Open item location (search and recent only)"
+msgstr "Відкрити адресу (пошук і нещодавні тільки)"
+
+#: src/resources/gtk/help-overlay.ui:114
+msgctxt "shortcut window"
+msgid "Open file and close window"
+msgstr "Відкрити файл і закрити вікно"
+
+#: src/resources/gtk/help-overlay.ui:121
+msgctxt "shortcut window"
+msgid "Open with default application"
+msgstr "Відкрити типовою програмою"
+
+#: src/resources/gtk/help-overlay.ui:130
+msgctxt "shortcut window"
+msgid "Tabs"
+msgstr "Вкладки"
+
+#: src/resources/gtk/help-overlay.ui:134
+msgctxt "shortcut window"
+msgid "New tab"
+msgstr "Нова вкладка"
+
+#: src/resources/gtk/help-overlay.ui:141
+msgctxt "shortcut window"
+msgid "Go to previous tab"
+msgstr "Перейти до попередньої вкладки"
+
+#: src/resources/gtk/help-overlay.ui:148
+msgctxt "shortcut window"
+msgid "Go to next tab"
+msgstr "Перейти до наступної вкладки"
+
+#: src/resources/gtk/help-overlay.ui:155
+msgctxt "shortcut window"
+msgid "Open tab"
+msgstr "Відкрити вкладку"
+
+#: src/resources/gtk/help-overlay.ui:162
+msgctxt "shortcut window"
+msgid "Move tab left"
+msgstr "Пересунути вкладку ліворуч"
+
+#: src/resources/gtk/help-overlay.ui:169
+msgctxt "shortcut window"
+msgid "Move tab right"
+msgstr "Перемістити вкладку праворуч"
+
+#: src/resources/gtk/help-overlay.ui:176
+msgctxt "shortcut window"
+msgid "Restore tab"
+msgstr "Відновити вкладку"
+
+#: src/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Пересування"
+
+#: src/resources/gtk/help-overlay.ui:189
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr "Назад"
+
+#: src/resources/gtk/help-overlay.ui:196
+msgctxt "shortcut window"
+msgid "Go forward"
+msgstr "Уперед"
+
+#: src/resources/gtk/help-overlay.ui:203
+msgctxt "shortcut window"
+msgid "Go up"
+msgstr "Догори"
+
+#: src/resources/gtk/help-overlay.ui:210
+msgctxt "shortcut window"
+msgid "Go down"
+msgstr "Додолу"
+
+#: src/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Go to home folder"
+msgstr "Перейти до домівки"
+
+#: src/resources/gtk/help-overlay.ui:224
+msgctxt "shortcut window"
+msgid "Enter location"
+msgstr "Увести адресу"
+
+#: src/resources/gtk/help-overlay.ui:231
+msgctxt "shortcut window"
+msgid "Location bar with root location"
+msgstr "Смужка адреси з адресою кореня"
+
+#: src/resources/gtk/help-overlay.ui:238
+msgctxt "shortcut window"
+msgid "Location bar with home location"
+msgstr "Смужка адреси з адресою домівки"
+
+#: src/resources/gtk/help-overlay.ui:247
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Перегляд"
+
+#: src/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Зблизити"
+
+#: src/resources/gtk/help-overlay.ui:258
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Віддалити"
+
+#: src/resources/gtk/help-overlay.ui:265
+msgctxt "shortcut window"
+msgid "Reset zoom"
+msgstr "Відновити масштаб"
+
+#: src/resources/gtk/help-overlay.ui:272
+msgctxt "shortcut window"
+msgid "Refresh view"
+msgstr "Оновити перегляд"
+
+#: src/resources/gtk/help-overlay.ui:279
+msgctxt "shortcut window"
+msgid "Show/hide hidden files"
+msgstr "Показувати/ховати приховані файли"
+
+#: src/resources/gtk/help-overlay.ui:286
+msgctxt "shortcut window"
+msgid "Show/hide sidebar"
+msgstr "Показувати/ховати бічну панель"
+
+#: src/resources/gtk/help-overlay.ui:293
+msgctxt "shortcut window"
+msgid "Show/hide action menu"
+msgstr "Показувати/ховати меню дій"
+
+#: src/resources/gtk/help-overlay.ui:300
+msgctxt "shortcut window"
+msgid "List view"
+msgstr "Перегляд списком"
+
+#: src/resources/gtk/help-overlay.ui:307
+msgctxt "shortcut window"
+msgid "Grid view"
+msgstr "Перегляд ґраткою"
+
+#: src/resources/gtk/help-overlay.ui:316
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Редагування"
+
+#: src/resources/gtk/help-overlay.ui:320
+msgctxt "shortcut window"
+msgid "Create folder"
+msgstr "Створити теку"
+
+#: src/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Rename"
+msgstr "Перейменувати"
+
+#: src/resources/gtk/help-overlay.ui:334
+msgctxt "shortcut window"
+msgid "Move to trash"
+msgstr "Пересунути у смітник"
+
+#: src/resources/gtk/help-overlay.ui:341
+msgctxt "shortcut window"
+msgid "Delete permanently"
+msgstr "Вилучити остаточно"
+
+#: src/resources/gtk/help-overlay.ui:348
+msgctxt "shortcut window"
+msgid "Create link to copied item"
+msgstr "Створити посилання на скопійований об'єкт"
+
+#: src/resources/gtk/help-overlay.ui:355
+msgctxt "shortcut window"
+msgid "Create link to selected item"
+msgstr "Створити посилання на позначений об'єкт"
+
+#: src/resources/gtk/help-overlay.ui:362
+msgctxt "shortcut window"
+msgid "Cut"
+msgstr "Вирізати"
+
+#: src/resources/gtk/help-overlay.ui:369
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Копіювати"
+
+#: src/resources/gtk/help-overlay.ui:376
+msgctxt "shortcut window"
+msgid "Paste"
+msgstr "Вставити"
+
+#: src/resources/gtk/help-overlay.ui:383
+msgctxt "shortcut window"
+msgid "Select all"
+msgstr "Вибрати все"
+
+#: src/resources/gtk/help-overlay.ui:390
+msgctxt "shortcut window"
+msgid "Invert selection"
+msgstr "Нічого не вибирати"
+
+#: src/resources/gtk/help-overlay.ui:397
+msgctxt "shortcut window"
+msgid "Select items matching"
+msgstr "Вибрати відповідні об'єкти"
+
+#: src/resources/gtk/help-overlay.ui:404
+msgctxt "shortcut window"
+msgid "Show item properties"
+msgstr "Показати властивості об'єкту"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:6
+msgid "Automatic Numbers"
+msgstr "Автоматична нумерація"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:8
+msgid "1, 2, 3, 4"
+msgstr "1, 2, 3, 4"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:12
+msgid "01, 02, 03, 04"
+msgstr "01, 02, 03, 04"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:16
+msgid "001, 002, 003, 004"
+msgstr "001, 002, 003, 004"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:21
+msgid "Metadata"
+msgstr "Метадані"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:23
+msgid "Creation Date"
+msgstr "Дата створення"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:33
+msgid "Season Number"
+msgstr "Номер сезону"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:38
+msgid "Episode Number"
+msgstr "Номер епізоду"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:43
+msgid "Track Number"
+msgstr "Номер доріжки"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:48
+msgid "Artist Name"
+msgstr "Назва виконавця"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:58
+msgid "Album Name"
+msgstr "Назва альбому"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:65
+msgid "Original File Name"
+msgstr "Оригінальна назва файла"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:20
+#: src/resources/ui/nautilus-rename-file-popover.ui:48
+msgid "_Rename"
+msgstr "Перей_менувати"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:55
+msgid "Rename _using a template"
+msgstr "Перейменувати _через шаблон"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:66
+msgid "Find and replace _text"
+msgstr "Знайти і замінити _текст"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:139
+msgid "Add"
+msgstr "Додати"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:169
+msgid "Automatic Numbering Order"
+msgstr "Автоматичний порядок нумерування"
+
+#. Translators: This is a noun, not a verb
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:214
+msgid "Format"
+msgstr "Форматувати"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:231
+msgid "Existing Text"
+msgstr "Наявний текст"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:260
+msgid "Replace With"
+msgstr "Замінити на"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:287
+msgctxt "title"
+msgid "Replace"
+msgstr "Замінити"
+
+#: src/resources/ui/nautilus-compress-dialog.ui:5
+msgid "Create Archive"
+msgstr "Створити архів"
+
+#: src/resources/ui/nautilus-compress-dialog.ui:22
+msgid "Archive name"
+msgstr "Назва архіву"
+
+#: src/resources/ui/nautilus-compress-dialog.ui:118
+msgid "Compatible with all operating systems."
+msgstr "Сумісно з усіма операційними системами."
+
+#: src/resources/ui/nautilus-compress-dialog.ui:131
+msgid "Smaller archives but Linux and Mac only."
+msgstr "Менші архіви, але тільки для Linux та Mac."
+
+#: src/resources/ui/nautilus-compress-dialog.ui:144
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr "Менші архіви, але треба встановити на Windows і Mac."
+
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:5
+msgid "Change Permissions for Enclosed Files"
+msgstr "Змінити права для вкладених файлів"
+
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:20
+msgid "C_hange"
+msgstr "З_мінити"
+
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:162
+#: src/resources/ui/nautilus-properties-window.ui:1071
+msgid "Others"
+msgstr "Інші"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:5
+msgid "New _Folder"
+msgstr "Створити _теку"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:9
+msgid "New _Document"
+msgstr "Створити _документ"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:14
+msgid "Add to _Bookmarks"
+msgstr "_Додати до закладок"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:19
+#: src/resources/ui/nautilus-files-view-context-menus.ui:135
+#: src/resources/ui/nautilus-preferences-window.ui:71
+msgid "Create _Link"
+msgstr "Створити _посилання"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:26
+msgid "_Paste"
+msgstr "Вст_авити"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:30
+msgid "Select _All"
+msgstr "Виді_лити все"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:38
+#: src/resources/ui/nautilus-files-view-context-menus.ui:241
+msgid "P_roperties"
+msgstr "В_ластивості"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:50
+msgid "_Scripts"
+msgstr "С_крипти"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:55
+msgid "_Open Scripts Folder"
+msgstr "_Відкрити теку скриптів"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:63
+msgid "_Open Item Location"
+msgstr "Відкрити _адресу об'єкта"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:68
+msgid "Open In New _Tab"
+msgstr "Відкрити у новій в_кладці"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:73
+msgid "Open In New _Window"
+msgstr "Відкрити у новому _вікні"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:80
+msgid "Open With Other _Application"
+msgstr "Відкрити через іншу п_рограму"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:87
+msgid "_Run as a Program"
+msgstr "З_апустити як програму"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:94
+#: src/gtk/nautilusgtkplacesview.c:1750
+msgid "_Mount"
+msgstr "_Змонтувати"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:99
+#: src/gtk/nautilusgtkplacesview.c:1740
+msgid "_Unmount"
+msgstr "_Демонтувати"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:104
+msgid "_Eject"
+msgstr "Вит_ягнути"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:114
+msgid "_Stop"
+msgstr "З_упинити"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:119
+msgid "_Detect Media"
+msgstr "Ви_явити носій"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:126
+msgid "Cu_t"
+msgstr "Ви_різати"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:130
+msgid "_Copy"
+msgstr "_Копіювати"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:141
+msgid "_Paste Into Folder"
+msgstr "Вст_авити у теку"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:148
+msgid "Move to…"
+msgstr "Перемістити в…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:152
+msgid "Copy to…"
+msgstr "Скопіювати в…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:163
+msgid "_Delete from Trash"
+msgstr "_Вилучити зі смітника"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:168
+#: src/resources/ui/nautilus-files-view-context-menus.ui:173
+msgid "_Delete Permanently…"
+msgstr "В_илучити остаточно…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:178
+msgid "_Restore From Trash"
+msgstr "Від_новити зі смітника"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:185
+msgid "Rena_me…"
+msgstr "Пере_йменувати…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:191
+msgid "Set As Wallpaper"
+msgstr "Встановити як шпалери"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:198
+msgid "_Remove from Recent"
+msgstr "Ви_лучити із нещодавніх"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:205
+msgid "_Extract Here"
+msgstr "_Розпакувати сюди"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:210
+msgid "E_xtract to…"
+msgstr "_Розпакувати в…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:215
+msgid "C_ompress…"
+msgstr "_Стиснути…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:224
+msgid "Tags"
+msgstr "Мітки"
+
+#. Marks a file as starred (starred)
+#: src/resources/ui/nautilus-files-view-context-menus.ui:229
+msgctxt "menu item"
+msgid "Star"
+msgstr "Позначити зірками"
+
+#. Unmarks a file as starred (starred)
+#: src/resources/ui/nautilus-files-view-context-menus.ui:234
+msgctxt "menu item"
+msgid "Unstar"
+msgstr "Скасувати позначення зірками"
+
+#: src/resources/ui/nautilus-folder-is-empty.ui:32
+msgid "Folder is Empty"
+msgstr "Тека — порожня"
+
+#: src/resources/ui/nautilus-no-search-results.ui:31
+msgid "No Results Found"
+msgstr "Не знайдено жодного результату"
+
+#: src/resources/ui/nautilus-no-search-results.ui:46
+#: src/gtk/nautilusgtkplacesview.ui:274
+msgid "Try a different search"
+msgstr "Спробуйте пошукати по-іншому"
+
+#: src/resources/ui/nautilus-pathbar-context-menu.ui:6
+#: src/gtk/nautilusgtkplacesview.c:1716
+msgid "Open in New _Window"
+msgstr "_Відкрити у новому вікні"
+
+#: src/resources/ui/nautilus-pathbar-context-menu.ui:10
+#: src/gtk/nautilusgtkplacesview.c:1705
+msgid "Open in New _Tab"
+msgstr "Відкрити у новій в_кладці"
+
+#: src/resources/ui/nautilus-preferences-window.ui:19
+msgid "Sort _Folders Before Files"
+msgstr "Впорядковувати _теки перед файлами"
+
+#: src/resources/ui/nautilus-preferences-window.ui:37
+msgid "_Expandable Folders in List View"
+msgstr "П_ридатні до розгортання теки у перегляді списком"
+
+#: src/resources/ui/nautilus-preferences-window.ui:54
+msgid "Action to Open Items"
+msgstr "Дія для відкриття записів"
+
+#: src/resources/ui/nautilus-preferences-window.ui:64
+msgid "Optional Context Menu Actions"
+msgstr "Додаткові пункти контекстного меню"
+
+#: src/resources/ui/nautilus-preferences-window.ui:65
+msgid ""
+"Show more actions in the menus. Keyboard shortcuts can be used even if the "
+"actions are not shown."
+msgstr ""
+"Показувати додаткові пункти дій у меню. Клавіатурними скороченнями можна "
+"скористатися, навіть якщо пункти дій не показано."
+
+#: src/resources/ui/nautilus-preferences-window.ui:89
+msgid "_Delete Permanently"
+msgstr "В_илучити остаточно"
+
+#: src/resources/ui/nautilus-preferences-window.ui:107
+msgid "Performance"
+msgstr "Швидкодія"
+
+#: src/resources/ui/nautilus-preferences-window.ui:108
+msgid ""
+"These features may cause slowdowns and excess network usage, especially when "
+"browsing files outside this computer, such as on a remote server."
+msgstr ""
+"Ці можливості можуть спричиняти сповільнення системи та надмірне "
+"навантаження на мережу, особливо при навігації файловими системами поза цим "
+"комп'ютером, зокрема на віддалених серверах."
+
+#: src/resources/ui/nautilus-preferences-window.ui:113
+msgid "Search in Subfolders"
+msgstr "Пошук у підтеках"
+
+#: src/resources/ui/nautilus-preferences-window.ui:122
+msgid "Show Thumbnails"
+msgstr "Показувати мініатюри"
+
+#: src/resources/ui/nautilus-preferences-window.ui:131
+msgid "Count Number of Files in Folders"
+msgstr "Обчислювати кількість файлів у теках"
+
+#: src/resources/ui/nautilus-preferences-window.ui:141
+msgid ""
+"Add information to be displayed beneath file and folder names. More "
+"information will appear when zooming closer."
+msgstr ""
+"Додати інформацію, яку показувати під назвою файла і теки. Докладніше "
+"дізнатись можна, якщо збільшити масштаб."
+
+#: src/resources/ui/nautilus-preferences-window.ui:142
+msgid "Icon View Captions"
+msgstr "Перегляд підписів піктограм"
+
+#. Translators: This is an ordinal number
+#: src/resources/ui/nautilus-preferences-window.ui:147
+msgctxt "the n-th position of an icon caption"
+msgid "First"
+msgstr "Перший"
+
+#. Translators: This is an ordinal number
+#: src/resources/ui/nautilus-preferences-window.ui:156
+msgctxt "the n-th position of an icon caption"
+msgid "Second"
+msgstr "Другий"
+
+#. Translators: This is an ordinal number
+#: src/resources/ui/nautilus-preferences-window.ui:165
+msgctxt "the n-th position of an icon caption"
+msgid "Third"
+msgstr "Третій"
+
+#: src/resources/ui/nautilus-properties-window.ui:169
+msgid "Link target"
+msgstr "Ціль посилання"
+
+#: src/resources/ui/nautilus-properties-window.ui:198
+msgid "Contents"
+msgstr "Вміст"
+
+#: src/resources/ui/nautilus-properties-window.ui:342
+msgid "Volume"
+msgstr "Том"
+
+#: src/resources/ui/nautilus-properties-window.ui:370
+msgid "Trashed on"
+msgstr "Викинуто"
+
+#: src/resources/ui/nautilus-properties-window.ui:450
+msgid "Free space"
+msgstr "Вільний простір"
+
+#: src/resources/ui/nautilus-properties-window.ui:554
+msgid "Total capacity"
+msgstr "Загальна місткість"
+
+#: src/resources/ui/nautilus-properties-window.ui:571
+msgid "Filesystem type"
+msgstr "Тип файлової системи"
+
+#. Refers to the capacity of the filesystem
+#: src/resources/ui/nautilus-properties-window.ui:640
+msgid "used"
+msgstr "зайнято"
+
+#. Refers to the capacity of the filesystem
+#: src/resources/ui/nautilus-properties-window.ui:653
+msgid "free"
+msgstr "вільно"
+
+#: src/resources/ui/nautilus-properties-window.ui:688
+msgid "Open in Disks"
+msgstr "Відкрити у «Дисках»"
+
+#: src/resources/ui/nautilus-properties-window.ui:764
+msgid "Basic"
+msgstr "Основні"
+
+#: src/resources/ui/nautilus-properties-window.ui:778
+msgid "You are not the owner, so you cannot change these permissions."
+msgstr "Ви не власник, тож не можете змінювати ці права."
+
+#: src/resources/ui/nautilus-properties-window.ui:805
+msgid "The permissions of the selected file could not be determined."
+msgstr "Не вдалось визначити визначити права доступу на вибраний файл."
+
+#: src/resources/ui/nautilus-properties-window.ui:827
+msgid "_Owner"
+msgstr "В_ласник"
+
+#: src/resources/ui/nautilus-properties-window.ui:877
+#: src/resources/ui/nautilus-properties-window.ui:1000
+#: src/resources/ui/nautilus-properties-window.ui:1085
+msgid "Access"
+msgstr "Доступ"
+
+#: src/resources/ui/nautilus-properties-window.ui:891
+#: src/resources/ui/nautilus-properties-window.ui:1014
+#: src/resources/ui/nautilus-properties-window.ui:1099
+msgid "Folder access"
+msgstr "Доступ до теки"
+
+#: src/resources/ui/nautilus-properties-window.ui:905
+#: src/resources/ui/nautilus-properties-window.ui:1028
+#: src/resources/ui/nautilus-properties-window.ui:1113
+msgid "File access"
+msgstr "Доступ до файла"
+
+#: src/resources/ui/nautilus-properties-window.ui:948
+msgid "_Group"
+msgstr "_Група"
+
+#: src/resources/ui/nautilus-properties-window.ui:1155
+msgid "Execute"
+msgstr "Виконати"
+
+#: src/resources/ui/nautilus-properties-window.ui:1170
+msgid "Security context"
+msgstr "Контекст безпеки"
+
+#: src/resources/ui/nautilus-properties-window.ui:1200
+msgid "Change Permissions for Enclosed Files…"
+msgstr "Змінити права для вкладених файлів…"
+
+#: src/resources/ui/nautilus-properties-window.ui:1219
+msgid "Allow _executing file as program"
+msgstr "Дозволити _виконання файла як програми"
+
+#: src/resources/ui/nautilus-properties-window.ui:1346
+msgid "_Add"
+msgstr "_Додати"
+
+#: src/resources/ui/nautilus-properties-window.ui:1360
+msgid "Set as default"
+msgstr "Встановити як типову"
+
+#: src/resources/ui/nautilus-properties-window.ui:1388
+msgid "Open With"
+msgstr "Відкрити за допомогою"
+
+#: src/resources/ui/nautilus-search-popover.ui:18
+msgid "When"
+msgstr "Коли"
+
+#: src/resources/ui/nautilus-search-popover.ui:45
+msgid "Select a date"
+msgstr "Виберіть дату"
+
+#: src/resources/ui/nautilus-search-popover.ui:67
+msgid "Clear the currently selected date"
+msgstr "Очистити вибрану дату"
+
+#: src/resources/ui/nautilus-search-popover.ui:127
+msgid "Since…"
+msgstr "Починаючи…"
+
+#: src/resources/ui/nautilus-search-popover.ui:194
+msgid "Last _modified"
+msgstr "_Остання зміна"
+
+#: src/resources/ui/nautilus-search-popover.ui:211
+msgid "Last _used"
+msgstr "Востаннє _використано"
+
+#: src/resources/ui/nautilus-search-popover.ui:240
+msgid "What"
+msgstr "Що"
+
+#: src/resources/ui/nautilus-search-popover.ui:264
+msgid "Which file types will be searched"
+msgstr "Який тип файла шукати"
+
+#: src/resources/ui/nautilus-search-popover.ui:360
+msgid "Full Text"
+msgstr "Повноцінний текст"
+
+#: src/resources/ui/nautilus-search-popover.ui:364
+msgid "Search on the file content and name"
+msgstr "Пошук серед вмісту та назв файлів"
+
+#: src/resources/ui/nautilus-search-popover.ui:379
+msgid "File Name"
+msgstr "Назва файла"
+
+#: src/resources/ui/nautilus-search-popover.ui:383
+msgid "Search only on the file name"
+msgstr "Шукати тільки серед назв файлів"
+
+#: src/resources/ui/nautilus-starred-is-empty.ui:32
+msgid "Starred files will appear here"
+msgstr "Тут буде показано позначені зірками файли"
+
+#: src/resources/ui/nautilus-toolbar.ui:49
+msgid "New Tab"
+msgstr "Нова вкладка"
+
+#: src/resources/ui/nautilus-toolbar.ui:120
+msgid "Edit"
+msgstr "Змінити"
+
+#: src/resources/ui/nautilus-toolbar.ui:133
+msgid "Cut"
+msgstr "Вирізати"
+
+#. Translators: This is a verb
+#: src/resources/ui/nautilus-toolbar.ui:157
+msgid "Copy"
+msgstr "Копіювати"
+
+#: src/resources/ui/nautilus-toolbar.ui:180
+msgid "Paste"
+msgstr "Вставити"
+
+#: src/resources/ui/nautilus-toolbar.ui:224
+msgid "Select All"
+msgstr "Позначити все"
+
+#: src/resources/ui/nautilus-toolbar.ui:250
+msgid "Show _Hidden Files"
+msgstr "Показувати с_ховані файли"
+
+#: src/resources/ui/nautilus-toolbar.ui:265
+msgid "Show _Sidebar"
+msgstr "Показати _бічну панель"
+
+#: src/resources/ui/nautilus-toolbar.ui:291
+msgid "_Preferences"
+msgstr "_Налаштування"
+
+#: src/resources/ui/nautilus-toolbar.ui:305
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавіатурні скорочення"
+
+#: src/resources/ui/nautilus-toolbar.ui:319
+msgid "_Help"
+msgstr "_Довідка"
+
+#: src/resources/ui/nautilus-toolbar.ui:333
+msgid "_About Files"
+msgstr "_Про файли"
+
+#: src/resources/ui/nautilus-toolbar.ui:546
+msgid "Go back"
+msgstr "Перейти назад"
+
+#: src/resources/ui/nautilus-toolbar.ui:573
+msgid "Go forward"
+msgstr "Перейти вперед"
+
+#: src/resources/ui/nautilus-toolbar.ui:617
+msgid "Show operations"
+msgstr "Показати операції"
+
+#: src/resources/ui/nautilus-toolbar.ui:656
+msgid "Toggle view"
+msgstr "Перемкнути перегляд"
+
+#. “View” is a noun
+#: src/resources/ui/nautilus-toolbar.ui:680
+msgid "View options"
+msgstr "Параметри перегляду"
+
+#. Translators: a menu item in a group of sorting options in a toolbar menu, with criterions such as "A-Z" or "Last Modified".
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:33
+msgctxt "menu item"
+msgid "Sort"
+msgstr "Критерій упорядковування"
+
+#. This is used to sort by name in the toolbar view menu
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:52
+msgctxt "Sort Criterion"
+msgid "_A-Z"
+msgstr "_А-Я"
+
+#. This is used to sort by name, in descending order in the toolbar view menu
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:67
+msgctxt "Sort Criterion"
+msgid "_Z-A"
+msgstr "_Я-А"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:82
+msgid "Last _Modified"
+msgstr "_Остання зміна"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:97
+msgid "_First Modified"
+msgstr "_Перша змінена"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:112
+msgid "_Size"
+msgstr "_Розмір"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:127
+msgid "_Type"
+msgstr "Т_ип"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:141
+msgid "Last _Trashed"
+msgstr "Востаннє _очищено"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:174
+msgid "_Visible Columns…"
+msgstr "Видимі с_товпчики…"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:188
+msgid "R_eload"
+msgstr "Пере_завантажити"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:201
+msgid "St_op"
+msgstr "_Зупинити"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:225
+msgid "Zoom out"
+msgstr "Віддалити"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:247
+msgid "Reset zoom"
+msgstr "Відновити масштаб"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:268
+msgid "Zoom in"
+msgstr "Наблизити"
+
+#: src/resources/ui/nautilus-trash-is-empty.ui:32
+msgid "Trash is Empty"
+msgstr "Тека — порожня"
+
+#: src/resources/ui/nautilus-window.ui:5
+msgid "_Files"
+msgstr "_Файли"
+
+#: src/gtk/nautilusgtkplacesview.c:897
+msgid "Searching for network locations"
+msgstr "Пошук у мережевих адресах"
+
+#: src/gtk/nautilusgtkplacesview.c:904
+msgid "No network locations found"
+msgstr "Не знайдено жодної мережевої адреси"
+
+#. Restore from Cancel to Connect
+#: src/gtk/nautilusgtkplacesview.c:1249 src/gtk/nautilusgtkplacesview.ui:317
+msgid "Con_nect"
+msgstr "З'_єднатись"
+
+#. if it wasn't cancelled show a dialog
+#: src/gtk/nautilusgtkplacesview.c:1383
+msgid "Unable to unmount volume"
+msgstr "Неможливо демонтувати том"
+
+#. Allow to cancel the operation
+#: src/gtk/nautilusgtkplacesview.c:1484
+msgid "Cance_l"
+msgstr "_Скасувати"
+
+#: src/gtk/nautilusgtkplacesview.c:1647
+msgid "AppleTalk"
+msgstr "AppleTalk"
+
+#. Translators: do not translate ftp:// and ftps://
+#: src/gtk/nautilusgtkplacesview.c:1651
+msgid "File Transfer Protocol"
+msgstr "Протокол обміну файлами"
+
+#: src/gtk/nautilusgtkplacesview.c:1651
+msgid "ftp:// or ftps://"
+msgstr "ftp:// або ftps://"
+
+#: src/gtk/nautilusgtkplacesview.c:1654
+msgid "Network File System"
+msgstr "Мережеві файлові системи"
+
+#: src/gtk/nautilusgtkplacesview.c:1657
+msgid "Samba"
+msgstr "Samba"
+
+#. Translators: do not translate sftp:// and ssh://
+#: src/gtk/nautilusgtkplacesview.c:1661
+msgid "SSH File Transfer Protocol"
+msgstr "Протокол обміну файлами SSH"
+
+#: src/gtk/nautilusgtkplacesview.c:1661
+msgid "sftp:// or ssh://"
+msgstr "sftp:// або ssh://"
+
+#. Translators: do not translate dav:// and davs://
+#: src/gtk/nautilusgtkplacesview.c:1665
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: src/gtk/nautilusgtkplacesview.c:1665
+msgid "dav:// or davs://"
+msgstr "dav:// або davs://"
+
+#: src/gtk/nautilusgtkplacesview.c:1891
+msgid "Unable to get remote server location"
+msgstr "Неможливо одержати адресу віддаленого сервера"
+
+#: src/gtk/nautilusgtkplacesview.c:2086 src/gtk/nautilusgtkplacesview.c:2095
+msgid "Networks"
+msgstr "Мережі"
+
+#: src/gtk/nautilusgtkplacesview.c:2086 src/gtk/nautilusgtkplacesview.c:2095
+msgid "On This Computer"
+msgstr "На цьому комп'ютері"
+
+#. Translators: respectively, free and total space of the drive. The plural form
+#. * should be based on the free space available.
+#. * i.e. 1 GB / 24 GB available.
+#.
+#: src/gtk/nautilusgtkplacesviewrow.c:136
+#, c-format
+msgid "%s / %s available"
+msgid_plural "%s / %s available"
+msgstr[0] "%s / %s доступно"
+msgstr[1] "%s / %s доступно"
+msgstr[2] "%s / %s доступно"
+msgstr[3] "%s / %s доступно"
+
+#: src/gtk/nautilusgtkplacesviewrow.c:483
+msgid "Disconnect"
+msgstr "Від'єднатись"
+
+#: src/gtk/nautilusgtkplacesviewrow.c:483
+#: src/gtk/nautilusgtkplacesviewrow.ui:72
+msgid "Unmount"
+msgstr "Демонтувати"
+
+#: src/gtk/nautilusgtkplacesview.ui:30
+msgid "Server Addresses"
+msgstr "Серверні адреси"
+
+#: src/gtk/nautilusgtkplacesview.ui:43
+msgid ""
+"Server addresses are made up of a protocol prefix and an address. Examples:"
+msgstr "Серверні адреси складаються з префіксів протоколу і адреси. Приміром:"
+
+#: src/gtk/nautilusgtkplacesview.ui:78
+msgid "Available Protocols"
+msgstr "Доступні протоколи"
+
+#: src/gtk/nautilusgtkplacesview.ui:92
+msgid "Prefix"
+msgstr "Префікс"
+
+#. Translators: Server as any successfully connected network address
+#: src/gtk/nautilusgtkplacesview.ui:135
+msgid "No recent servers found"
+msgstr "Не знайдено жодного сервера"
+
+#: src/gtk/nautilusgtkplacesview.ui:158
+msgid "Recent Servers"
+msgstr "Недавні сервери"
+
+#: src/gtk/nautilusgtkplacesview.ui:261
+msgid "No results found"
+msgstr "Нічого не знайдено"
+
+#: src/gtk/nautilusgtkplacesview.ui:307
+msgid "Connect to _Server"
+msgstr "З'єднання з _сервером"
+
+#: src/gtk/nautilusgtkplacesview.ui:340
+msgid "Enter server address…"
+msgstr "Уведіть адресу сервера…"
+
+#~ msgid "%d MB"
+#~ msgstr "%d МБ"
+
+#~ msgid "Preferences"
+#~ msgstr "Параметри"
+
+#~ msgid "_Show sidebar"
+#~ msgstr "По_казати бічну панель"
+
+#~ msgctxt "preferences"
+#~ msgid "Sort"
+#~ msgstr "Сортування"
+
+#~ msgid "Allow folders to be _expanded"
+#~ msgstr "Дозволити текам _розгортатись"
+
+#~ msgid "Views"
+#~ msgstr "Перегляд"
+
+#~ msgid "Open Action"
+#~ msgstr "Відкрити дію"
+
+#~ msgid "_Single click to open items"
+#~ msgstr "Активація об'єктів _одинарним клацанням"
+
+#~ msgid "Link Creation"
+#~ msgstr "Створення посилання"
+
+#~ msgid "Show action to create symbolic _links"
+#~ msgstr "Показати дію для створення символічних _посилань"
+
+#~ msgid "Show action to _permanently delete files and folders"
+#~ msgstr "Показувати дію _остаточного вилучення файлів і тек"
+
+#~ msgid "Behavior"
+#~ msgstr "Поведінка"
+
+#~ msgid "Choose the order of information to appear in the list view."
+#~ msgstr "Виберіть порядок, в якому інформація з'являтиметься у списку."
+
+#~ msgid "List Columns"
+#~ msgstr "Стовпчики списку"
+
+#~ msgid "_Never"
+#~ msgstr "_Ніколи"
+
+#~ msgid "Thumbnails"
+#~ msgstr "Мініатюри"
+
+#~ msgid "_Files on this computer only"
+#~ msgstr "_Файли лише на цьому комп'ютері"
+
+#~ msgid "N_ever"
+#~ msgstr "Н_іколи"
+
+#~ msgid "Onl_y for files smaller than:"
+#~ msgstr "_Лише файли менші за:"
+
+#~ msgid "File count"
+#~ msgstr "Кількість файлів"
+
+#~ msgid "F_olders on this computer only"
+#~ msgstr "Те_ки тільки на цьому комп'ютері"
+
+#~ msgid "Ne_ver"
+#~ msgstr "Н_іколи"
+
+#~ msgid "Search & Preview"
+#~ msgstr "Пошук і перегляд"
+
+#~ msgid "Always"
+#~ msgstr "Завжди"
+
+#~ msgid "Local Files Only"
+#~ msgstr "Лише локальні файли"
+
+#~ msgid "Small"
+#~ msgstr "Маленький"
+
+#~ msgid "Standard"
+#~ msgstr "Стандартний"
+
+#~ msgid "Large"
+#~ msgstr "Великий"
+
+#~ msgid "By Name"
+#~ msgstr "За назвою"
+
+#~ msgid "By Size"
+#~ msgstr "За розміром"
+
+#~ msgid "By Type"
+#~ msgstr "За типом"
+
+#~ msgid "By Modification Date"
+#~ msgstr "За датою зміни"
+
+#~ msgid "By Access Date"
+#~ msgstr "За датою доступу"
+
+#~ msgid "By Trashed Date"
+#~ msgstr "За датою викидання"
+
+#~ msgid "What to do with executable text files when activated"
+#~ msgstr "Що робити з виконуваними текстовими файлами при клацанні на них"
+
+#~ msgid ""
+#~ "What to do with executable text files when they are activated (single or "
+#~ "double clicked). Possible values are “launch” to launch them as programs, "
+#~ "“ask” to ask what to do via a dialog, and “display” to display them as "
+#~ "text files."
+#~ msgstr ""
+#~ "Що робити з виконуваними текстовими файлами, коли їх активовано "
+#~ "(наприклад, одинарним або подвійним клацанням). Можливі значення: "
+#~ "«launch» — запускати їх як програми; «ask» — питати, що з ними робити; та "
+#~ "«display» — показувати їх як тестові файли."
+
+#~ msgid "Do you want to run “%s”, or display its contents?"
+#~ msgstr "Виконати «%s» чи показати його вміст?"
+
+#~ msgid "“%s” is an executable text file."
+#~ msgstr "«%s» — виконуваний тестовий файл."
+
+#~ msgid "Run in _Terminal"
+#~ msgstr "Запустити у _терміналі"
+
+#~ msgid "_Display"
+#~ msgstr "_Показати"
+
+#~ msgid "Executable Text Files"
+#~ msgstr "Виконувані текстові файли"
+
+#~ msgid "_Display them"
+#~ msgstr "_Показувати їх"
+
+#~ msgid "_Run them"
+#~ msgstr "_Запускати їх"
+
+#~ msgid "_Ask what to do"
+#~ msgstr "Перепи_тувати, що робити"
+
+#~ msgid ""
+#~ "Whether to ask for confirmation when deleting files, or emptying the Trash"
+#~ msgstr ""
+#~ "Чи запитувати підтвердження, коли вилучаються файли або спорожняється "
+#~ "смітник "
+
+#~ msgid ""
+#~ "If set to true, then Nautilus will ask for confirmation when you attempt "
+#~ "to delete files, or empty the Trash."
+#~ msgstr ""
+#~ "Якщо позначено, Nautilus буде вимагати підтвердження при спробі вилучення "
+#~ "файлів або очищення смітника."
+
+#~ msgid "Ask before _emptying the Trash"
+#~ msgstr "Перепитувати перед о_чищенням смітника"
+
+#~ msgid "page0"
+#~ msgstr "сторінка0"
+
+#~ msgid "page1"
+#~ msgstr "сторінка1"
+
+#~ msgid "Parent folder:"
+#~ msgstr "Батьківська тека:"
+
+#~ msgid "Original folder:"
+#~ msgstr "Початкова тека:"
+
+#~ msgid "Accessed:"
+#~ msgstr "Доступ:"
+
+#~ msgid "Modified:"
+#~ msgstr "Змінено:"
+
+#~ msgid "Owner:"
+#~ msgstr "Власник:"
+
+#~ msgid "Group:"
+#~ msgstr "Група:"
+
+#~ msgid "Others:"
+#~ msgstr "Інші:"
+
+#~| msgid "New _Folder"
+#~ msgid "New _Folder…"
+#~ msgstr "Створити _теку…"

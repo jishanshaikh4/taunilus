@@ -1,0 +1,6123 @@
+# Greek translation of Nautilus
+# Copyright (C) 2000 - 2011 Free Software Foundation, Inc.
+# This file is distributed under the same license as the Nautilus package.
+# simos: 652 messages, 19Feb2001, more messages remaining.
+# simos: 713 messages, 20Feb2001, more messages remaining.
+# simos: 935 messages, 20Feb2001, more messages remaining.
+# simos: 1341 messages, 23Feb2001, more messages remaining.
+# simos: 1488 messages, 23Feb2001, more messages remaining.
+# simos: 1579 messages, 25Feb2001, more messages remaining.
+# simos: 1853 messages, 26Feb2001, 79 messages remaining.
+# simos: 1870 messages, 27Feb2001, 79 messages remaining.
+# simos: 1926 messages, 01Mar2001, 86 messages remaining.
+# simos: 2009 messages, 02Mar2001, full translation.
+# simos: 1391 messages, 20Apr2002, 167 remaining.
+# simos: 1454 messages, 26 Oct2002, 71 remaining.
+# simos: 1508 messages, 07Nov2002, 17 remaining.
+# simos: 1525 messages, 11Nov2002, translation completed.
+# kostas: unfuzzy 60, 40 new, 07Jan 2003, updated translation for Gnome 2.1x.
+# kostas: 19Jun2003, 1447 messages, updated translation for Gnome 2.4.
+# kostas:13Dec2003, one more update,1549 messages.
+# kostas:13Jan2004,1523 messages.
+# Nikos:21Jan2004, first review for 2.6 , 1508 messages.
+# Nikos:22Jan2004, second review for 2.6, 1522 messages.
+# Simos Xenitellis <simos74@gmx.net>, 2000, 2001, 2002, 2003.
+# Kostas Papadimas <pkst@gnome.org>, 2003, 2004, 2005.
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2003, 2004, 2005.
+# Kostas Papadimas <pkst@gnome.org>, 2006, 2007, 2008.
+# Athanasios Lefteris <alefteris@gmail.com>, 2008.
+# kostas: 28Jan2003, updated translation
+# kostas: 13Feb2003, fixed some typos
+# kostas: 18Feb2003, minor typos
+# kostas: 05Mar2003,unfuzzy 2
+# kostas: 13 Jul2003, one more update
+# kostas:15Aug2003, one more update
+# Nikos: 28Aug2003, fixes
+# kostas:30Oct2003, one more update
+# Nikos:22Feb2004, minor fixes, review few messages
+# Nikos:06Jun2004, review
+# Nikos:25Jun2004, review
+# Nikos:26Aug2004, update
+# Clean messages should be ok.
+# Initialized from Translation Memory, 2001.
+# simos: 652 messages, 19Feb2001, more messages remaining.
+# simos: 713 messages, 20Feb2001, more messages remaining.
+# simos: 935 messages, 20Feb2001, more messages remaining.
+# simos: 1341 messages, 23Feb2001, more messages remaining.
+# simos: 1488 messages, 23Feb2001, more messages remaining.
+# simos: 1579 messages, 25Feb2001, more messages remaining.
+# simos: 1853 messages, 26Feb2001, 79 messages remaining.
+# simos: 1870 messages, 27Feb2001, 79 messages remaining.
+# simos: 1926 messages, 01Mar2001, 86 messages remaining.
+# simos: 2009 messages, 02Mar2001, full translation.
+# simos: 38 messages,04Jun2001, drawn from nautilus.
+# simos: 17 messages,19Aug2002, full translation and UTF-8 conversion.
+# kostas: 37 messages,25Jan2004.
+# Nikos: 52 messages, 4aug2004, update.
+# Simos Xenitellis <simos@hellug.gr>, 2001, 2002.
+# Kostas Papadimas <pkst@gnome.org>, 2004, 2006, 2008.
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2004, 2005.
+# Pierros Papadeas <ppapadeas@gmail.com>, 2009.
+# Russell Kyaw <rkyaw@yahoo.com>, 2010.
+# Marios Zindilis <m.zindilis@dmajor.org>, 2011.
+# Ioannis Zampoukas <ioza1964@yahoo.gr>, 2012.
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2012, 2013, 2014, 2015.
+# Efstathios Iosifidis <eiosifidis@gnome.org>, 2013, 2015, 2016, 2018, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: el\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/nautilus/issues\n"
+"POT-Creation-Date: 2021-02-12 16:15+0000\n"
+"PO-Revision-Date: 2021-03-03 20:58+0200\n"
+"Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
+"Language-Team: Ελληνικά <>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+"X-Project-Style: gnome\n"
+
+#
+#: data/nautilus-autorun-software.desktop.in:3
+msgid "Run Software"
+msgstr "Εκτέλεση λογισμικού"
+
+#
+#. “Files” is the generic application name and the suffix is
+#. * an arbitrary and deliberately unlocalized string only shown
+#. * in development builds.
+#.
+#: data/org.gnome.Nautilus.appdata.xml.in.in:5
+#: data/org.gnome.Nautilus.desktop.in.in:3 src/nautilus-mime-actions.c:101
+#: src/nautilus-window.c:2944
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:44
+msgid "Files"
+msgstr "Αρχεία"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:6
+#: data/org.gnome.Nautilus.desktop.in.in:4
+msgid "Access and organize files"
+msgstr "Προσπελάστε και οργανώστε αρχεία"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:8
+msgid ""
+"Files, also known as Nautilus, is the default file manager of the GNOME "
+"desktop. It provides a simple and integrated way of managing your files and "
+"browsing your file system."
+msgstr ""
+"Ο Ναυτίλος, γνωστός και ως Αρχεία, είναι ο προεπιλεγμένος διαχειριστής "
+"αρχείων του GNOME. Προσφέρει έναν απλό και ολοκληρωμένο τρόπο διαχείρισης "
+"των αρχείων και περιήγησης του συστήματος αρχείων."
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:12
+msgid ""
+"Nautilus supports all the basic functions of a file manager and more. It can "
+"search and manage your files and folders, both locally and on a network, "
+"read and write data to and from removable media, run scripts, and launch "
+"applications. It has three views: Icon Grid, Icon List, and Tree List. Its "
+"functions can be extended with plugins and scripts."
+msgstr ""
+"Ο Ναυτίλος υποστηρίζει όλες τις βασικές λειτουργίες ενός διαχειριστή "
+"αρχείων. Μπορεί να ψάξει και να διαχειριστεί τα αρχεία και τους φακέλους "
+"σας, τόσο τοπικά όσα και μέσω του δικτύου, να διαβάσει και να γράψει "
+"δεδομένα από αφαιρούμενες συσκευές, να εκτελέσει σενάρια ενεργειών, και να "
+"εκκινήσει εφαρμογές. Έχει τρεις προβολές: Πλέγμα εικονιδίων, Λίστα "
+"εικονιδίων και Δενδρική λίστα. Οι λειτουργίες του μπορούν να επεκταθούν με "
+"πρόσθετα και δέσμες ενεργειών."
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:34
+msgid "The GNOME Project"
+msgstr "Το έργο GNOME"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:38
+msgid "Tile View"
+msgstr "Προβολή σε πλακίδια"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:42 src/nautilus-list-view.c:2415
+msgid "List View"
+msgstr "Προβολή λίστας"
+
+#: data/org.gnome.Nautilus.appdata.xml.in.in:46 src/nautilus-query.c:536
+#: src/nautilus-search-directory-file.c:175
+#: src/nautilus-search-directory-file.c:232
+#: src/nautilus-search-directory-file.c:272
+#: src/resources/ui/nautilus-search-popover.ui:341
+#: src/resources/ui/nautilus-toolbar.ui:510
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#
+#: data/org.gnome.Nautilus.appdata.xml.in.in:50 src/nautilus-bookmark.c:111
+#: src/nautilus-file.c:4464 src/nautilus-file-utilities.c:323
+#: src/nautilus-pathbar.c:333
+msgid "Other Locations"
+msgstr "Άλλες τοποθεσίες"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Nautilus.desktop.in.in:6
+msgid "folder;manager;explore;disk;filesystem;nautilus;"
+msgstr ""
+"φάκελος;διαχειριστής;εξερεύνηση;δίσκος;σύστημα αρχείων;nautilus;folder;"
+"manager;explore;disk;filesystem;nautilus;"
+
+#: data/org.gnome.Nautilus.desktop.in.in:20
+#: src/resources/ui/nautilus-toolbar.ui:27
+msgid "New Window"
+msgstr "Νέο παράθυρο"
+
+#: data/org.gnome.nautilus.gschema.xml:84
+msgid "Where to position newly open tabs in browser windows"
+msgstr ""
+"Πού θα τοποθετούνται οι νέες καρτέλες που ανοίγουν σε παράθυρα περιηγητή"
+
+#: data/org.gnome.nautilus.gschema.xml:85
+msgid ""
+"If set to “after-current-tab”, then new tabs are inserted after the current "
+"tab. If set to “end”, then new tabs are appended to the end of the tab list."
+msgstr ""
+"Αν οριστεί σε «after-current-tab», οι νέες καρτέλες θα εισάγονται μετά την "
+"τρέχουσα καρτέλα. Αν οριστεί σε «end», οι νέες καρτέλες θα προστίθενται στο "
+"τέλος των υπόλοιπων καρτελών."
+
+#: data/org.gnome.nautilus.gschema.xml:89
+msgid "Always use the location entry, instead of the pathbar"
+msgstr ""
+"Να γίνεται πάντα χρήση της καταχώρισης θέσης, αντί των γραμμών διαδρομής"
+
+#: data/org.gnome.nautilus.gschema.xml:90
+msgid ""
+"If set to true, then Nautilus browser windows will always use a textual "
+"input entry for the location toolbar, instead of the pathbar."
+msgstr ""
+"Αν οριστεί σε αληθές, τα παράθυρα του Ναυτίλου θα χρησιμοποιούν πάντα "
+"καταχώριση κειμενικής εισόδου για την εργαλειοθήκη τοποθεσίας, αντί για τη "
+"γραμμή διαδρομής."
+
+#: data/org.gnome.nautilus.gschema.xml:94
+msgid "Where to perform recursive search"
+msgstr "Που θα εκτελεστεί η αναδρομική αναζήτηση"
+
+#: data/org.gnome.nautilus.gschema.xml:95
+msgid ""
+"In which locations Nautilus should search on subfolders. Available values "
+"are “local-only”, “always”, “never”."
+msgstr ""
+"Σε ποιες τοποθεσίες θα αναζητήσει ο Ναυτίλος σε υποφακέλους. Οι πιθανές "
+"τιμές είναι «local-only» (μόνο τοπικά), «always» (πάντα), «never» (ποτέ)."
+
+#: data/org.gnome.nautilus.gschema.xml:99
+msgid "Filter the search dates using either last used or last modified"
+msgstr ""
+"Φιλτράρισμα των ημερομηνιών αναζήτησης χρησιμοποιώντας είτε το τελευταίο "
+"χρησιμοποιημένο ή το τροποποιημένο"
+
+#: data/org.gnome.nautilus.gschema.xml:100
+msgid "Filter the search dates using either last used or last modified."
+msgstr ""
+"Φιλτράρισμα των ημερομηνιών αναζήτησης χρησιμοποιώντας είτε το τελευταίο "
+"χρησιμοποιημένο ή το τροποποιημένο."
+
+#: data/org.gnome.nautilus.gschema.xml:104
+msgid "Whether to show a context menu item to delete permanently"
+msgstr ""
+"Αν θα εμφανίζεται ένα αντικείμενο στο μενού περιεχομένων για την οριστική "
+"διαγραφή"
+
+#: data/org.gnome.nautilus.gschema.xml:105
+msgid ""
+"If set to true, then Nautilus will show a delete permanently context menu "
+"item to bypass the Trash."
+msgstr ""
+"Αν οριστεί σε αληθές, ο Ναυτίλος θα εμφανίσει ένα αντικείμενο οριστικής "
+"διαγραφής στο μενού περιεχομένων, όπου θα παρακάμπτει τα απορρίμματα."
+
+#: data/org.gnome.nautilus.gschema.xml:109
+msgid ""
+"Whether to show context menu items to create links from copied or selected "
+"files"
+msgstr ""
+"Αν θα εμφανίζονται αντικείμενα στο μενού περιεχομένων για τη δημιουργία "
+"συνδέσμων από αντιγραμμένα ή επιλεγμένα αρχεία"
+
+#: data/org.gnome.nautilus.gschema.xml:110
+msgid ""
+"If set to true, then Nautilus will show context menu items to create links "
+"from the copied or selected files."
+msgstr ""
+"Αν οριστεί σε αληθές, ο Ναυτίλος θα εμφανίσει αντικείμενα για τη δημιουργία "
+"συνδέσμων από αντιγραμμένα ή επιλεγμένα αρχεία."
+
+#: data/org.gnome.nautilus.gschema.xml:115
+msgid "When to show number of items in a folder"
+msgstr "Αν θα εμφανίζεται ο αριθμός αντικειμένων του φακέλου"
+
+#: data/org.gnome.nautilus.gschema.xml:116
+msgid ""
+"Speed tradeoff for when to show the number of items in a folder. If set to "
+"“always” then always show item counts, even if the folder is on a remote "
+"server. If set to “local-only” then only show counts for local file systems. "
+"If set to “never” then never bother to compute item counts."
+msgstr ""
+"Η προβολή του αριθμού των αντικειμένων του φακέλου προκαλεί κάποια "
+"καθυστέρηση. Αν οριστεί σε «πάντα», θα γίνεται πάντα προβολή των "
+"αντικειμένων, ακόμα και αν ο φάκελος βρίσκεται σε απομακρυσμένο διακομιστή. "
+"Αν οριστεί σε «μόνο τοπικά», θα γίνεται εμφάνιση πλήθους μόνο για τα τοπικά "
+"αρχεία του συστήματος. Αν οριστεί σε «ποτέ», δε θα γίνεται καθόλου "
+"υπολογισμός πλήθους αντικειμένων."
+
+#: data/org.gnome.nautilus.gschema.xml:120
+msgid "Type of click used to launch/open files"
+msgstr "Τύπος κλικ που χρησιμοποιείται για το άνοιγμα/εκκίνηση αρχείων"
+
+#: data/org.gnome.nautilus.gschema.xml:121
+msgid ""
+"Possible values are “single” to launch files on a single click, or “double” "
+"to launch them on a double click."
+msgstr ""
+"Οι επιτρεπτές τιμές είναι «μονό» για εκκίνηση αρχείων με μονό κλικ, ή "
+"«διπλό» για εκκίνηση αρχείων με διπλό κλικ."
+
+#: data/org.gnome.nautilus.gschema.xml:125
+msgid "Show the package installer for unknown MIME types"
+msgstr "Εμφάνιση διαλόγου εγκατάστασης πακέτων για άγνωστους τύπους MIME"
+
+#: data/org.gnome.nautilus.gschema.xml:126
+msgid ""
+"Whether to show the user a package installer dialog in case an unknown MIME "
+"type is opened, in order to search for an application to handle it."
+msgstr ""
+"Εάν θα εμφανίζεται διάλογος εγκατάστασης πακέτων όποτε ανοίγεται αρχείο "
+"άγνωστου τύπου MIME, επιτρέποντας την αναζήτηση εφαρμογής για το χειρισμό "
+"του."
+
+#: data/org.gnome.nautilus.gschema.xml:130
+msgid "Use extra mouse button events in Nautilus’ browser window"
+msgstr ""
+"Χρήση επιπλέον συμβάντων κουμπιών ποντικιού στα παράθυρα περιηγητή του "
+"Ναυτίλου"
+
+#: data/org.gnome.nautilus.gschema.xml:131
+msgid ""
+"For users with mice that have “Forward” and “Back” buttons, this key will "
+"determine if any action is taken inside of Nautilus when either is pressed."
+msgstr ""
+"Για χρήστες με ποντίκια που διαθέτουν κουμπιά «Μπροστά» και «Πίσω», αυτό το "
+"κλειδί καθορίζει αν ο Ναυτίλος θα εκτελεί κάποια ενέργεια όταν πατιέται "
+"οποιοδήποτε από αυτά τα κουμπιά."
+
+#: data/org.gnome.nautilus.gschema.xml:135
+msgid "Mouse button to activate the “Forward” command in browser window"
+msgstr ""
+"Κουμπί ποντικιού που θα εκτελεί την εντολή «Μπροστά» στο παράθυρο περιηγητή"
+
+#: data/org.gnome.nautilus.gschema.xml:136
+msgid ""
+"For users with mice that have buttons for “Forward” and “Back”, this key "
+"will set which button activates the “Forward” command in a browser window. "
+"Possible values range between 6 and 14."
+msgstr ""
+"Για χρήστες με ποντίκια που διαθέτουν κουμπιά «Μπροστά» και «Πίσω», αυτό το "
+"κλειδί καθορίζει ποιο κουμπί θα ενεργοποιεί την εντολή «Μπροστά» στο "
+"παράθυρο περιηγητή. Οι επιτρεπτές τιμές είναι από 6 μέχρι 14."
+
+#: data/org.gnome.nautilus.gschema.xml:140
+msgid "Mouse button to activate the “Back” command in browser window"
+msgstr ""
+"Κουμπί ποντικιού που θα εκτελεί την εντολή «Πίσω» στο παράθυρο περιηγητή"
+
+#: data/org.gnome.nautilus.gschema.xml:141
+msgid ""
+"For users with mice that have buttons for “Forward” and “Back”, this key "
+"will set which button activates the “Back” command in a browser window. "
+"Possible values range between 6 and 14."
+msgstr ""
+"Για χρήστες με ποντίκια που διαθέτουν κουμπιά «Μπροστά» και «Πίσω», αυτό το "
+"κλειδί καθορίζει ποιο κουμπί θα ενεργοποιεί την εντολή «Πίσω» στο παράθυρο "
+"περιηγητή. Οι επιτρεπτές τιμές είναι από 6 μέχρι 14."
+
+#: data/org.gnome.nautilus.gschema.xml:146
+msgid "When to show thumbnails of files"
+msgstr "Πότε θα εμφανίζονται μικρογραφίες των αρχείων"
+
+#: data/org.gnome.nautilus.gschema.xml:147
+msgid ""
+"Speed trade-off for when to show a file as a thumbnail. If set to “always” "
+"then always thumbnail, even if the folder is on a remote server. If set to "
+"“local-only” then only show thumbnails for local file systems. If set to "
+"“never” then never bother to thumbnail files, just use a generic icon. "
+"Despite what the name may suggest, this applies to any previewable file type."
+msgstr ""
+"Η προβολή των αρχείων ως μικρογραφίες προκαλεί κάποια καθυστέρηση. Αν "
+"οριστεί στο «always», θα γίνεται πάντα προεπισκόπηση, ακόμα και αν το αρχείο "
+"βρίσκεται σε απομακρυσμένο διακομιστή. Αν οριστεί σε «local-only», θα "
+"γίνεται προεπισκόπηση μόνο τοπικών αρχείων. Αν οριστεί στο «never», δε θα "
+"γίνεται προεπισκόπηση αρχείων, απλώς θα εμφανίζεται ένα γενικό εικονίδιο. "
+"Παρά την πιθανή πρόταση του ονόματος, αυτό εφαρμόζεται σε οποιοδήποτε "
+"προεπισκοπήσιμο τύπο αρχείου."
+
+#: data/org.gnome.nautilus.gschema.xml:152
+msgid "Maximum image size for thumbnailing"
+msgstr "Μέγιστο μέγεθος εικόνων για μικρογραφίες"
+
+#: data/org.gnome.nautilus.gschema.xml:153
+msgid ""
+"Images over this size (in megabytes) won’t be thumbnailed. The purpose of "
+"this setting is to avoid thumbnailing large images that may take a long time "
+"to load or use lots of memory."
+msgstr ""
+"Δε θα γίνεται μικρογραφία σε εικόνες πάνω από αυτό το μέγεθος (σε "
+"megabytes). Ο σκοπός αυτής της ρύθμισης είναι να αποφευχθεί η προεπισκόπηση "
+"μεγάλων εικόνων που θα καθυστερούν να φορτώσουν και θα χρησιμοποιούν πολλή "
+"μνήμη."
+
+#: data/org.gnome.nautilus.gschema.xml:160
+msgid "Default sort order"
+msgstr "Προεπιλεγμένη σειρά ταξινόμησης"
+
+#: data/org.gnome.nautilus.gschema.xml:161
+msgid ""
+"The default sort-order for items in the icon view. Possible values are "
+"“name”, “size”, “type”, “mtime”, “atime” and “starred”."
+msgstr ""
+"Η προεπιλεγμένη σειρά ταξινόμησης των αντικειμένων στην προβολή εικονιδίων. "
+"Πιθανές τιμές είναι «όνομα», «μέγεθος», «τύπος», «τροποποιήθηκε», "
+"«προσπελάστηκε» και «επισημασμένο»."
+
+#
+#: data/org.gnome.nautilus.gschema.xml:165
+msgid "Reverse sort order in new windows"
+msgstr "Αντίστροφη σειρά ταξινόμησης στα νέα παράθυρα"
+
+#: data/org.gnome.nautilus.gschema.xml:166
+msgid ""
+"If true, files in new windows will be sorted in reverse order. I.e., if "
+"sorted by name, then instead of sorting the files from “a” to “z”, they will "
+"be sorted from “z” to “a”; if sorted by size, instead of being incrementally "
+"they will be sorted decrementally."
+msgstr ""
+"Αν οριστεί σε αληθές, τα αρχεία στα νέα παράθυρα θα ταξινομούνται σε "
+"αντίστροφη σειρά. Π.χ. στην ταξινόμηση κατά όνομα αντί για ταξινόμηση από το "
+"«α» στο «ω», θα γίνεται ταξινόμηση από το «ω» στο «α»· στην ταξινόμηση κατά "
+"μέγεθος η ταξινόμηση θα είναι φθίνουσα και όχι αύξουσα."
+
+#: data/org.gnome.nautilus.gschema.xml:176
+msgid "Default folder viewer"
+msgstr "Προεπιλεγμένη προβολή φακέλων"
+
+#: data/org.gnome.nautilus.gschema.xml:177
+msgid ""
+"When a folder is visited this viewer is used unless you have selected "
+"another view for that particular folder. Possible values are “list-view”, "
+"and “icon-view”."
+msgstr ""
+"Όταν ανοίγει ένας φάκελος, χρησιμοποιείται αυτή η προβολή, εκτός και αν "
+"έχετε επιλέξει διαφορετική προβολή για το συγκεκριμένο φάκελο. Οι επιτρεπτές "
+"τιμές είναι «προβολή λίστας», και «προβολή εικονιδίου»."
+
+#: data/org.gnome.nautilus.gschema.xml:181
+msgid "Whether to show hidden files"
+msgstr "Αν θα προβάλλονται τα κρυφά αρχεία"
+
+#: data/org.gnome.nautilus.gschema.xml:182
+msgid ""
+"This key is deprecated and ignored. The “show-hidden” key from “org.gtk."
+"Settings.FileChooser” is now used instead."
+msgstr ""
+"Αυτό το κλειδί είναι παρωχημένο και αγνοήθηκε. Το κλειδί «show-hidden» από "
+"το «org.gtk.Settings.FileChooser» χρησιμοποιείται τώρα αντ' αυτού."
+
+#: data/org.gnome.nautilus.gschema.xml:186
+msgid "What viewer should be used when searching"
+msgstr "Ποιός θεατής θα χρησιμοποιηθεί κατά την αναζήτηση"
+
+#: data/org.gnome.nautilus.gschema.xml:187
+msgid ""
+"When searching Nautilus will switch to the type of view in this setting."
+msgstr ""
+"Κατά την αναζήτηση ο Ναυτίλος θα αλλάξει στον τύπο προβολής της ρύθμισης."
+
+#: data/org.gnome.nautilus.gschema.xml:191
+msgid ""
+"Whether to open the hovered folder after a timeout when drag and drop "
+"operation"
+msgstr ""
+"Αν θα ανοιχθεί ο επιλεγμένος φάκελος μετά από ένα ορισμένο χρονικό όριο, "
+"κατά το σύρσιμο και απόθεση"
+
+#: data/org.gnome.nautilus.gschema.xml:192
+msgid ""
+"If this is set to true, when performing a drag and drop operation the "
+"hovered folder will open automatically after a timeout."
+msgstr ""
+"Αν οριστεί σε αληθές, στο σύρσιμο και απόθεση ο επιλεγμένος φάκελο θα "
+"ανοίξει αυτόματα μετά από ένα χρονικό όριο."
+
+#: data/org.gnome.nautilus.gschema.xml:196
+msgid "Enable new experimental views"
+msgstr "Ενεργοποίηση νέων πειραματικών προβολών"
+
+#: data/org.gnome.nautilus.gschema.xml:197
+msgid ""
+"Whether to use the new experimental views using the latest GTK+ widgets to "
+"help giving feedback and shaping their future."
+msgstr ""
+"Αν θα γίνει χρήση των νέων πειραματικών γραφικών στοιχείων του GTK+. Αυτό θα "
+"βοηθήσει σημαντικά στην μελλοντική τους ανάπτυξη βάσει της ανάδρασης σας."
+
+#: data/org.gnome.nautilus.gschema.xml:201
+msgid ""
+"Whether to have full text search enabled by default when opening a new "
+"window/tab"
+msgstr ""
+"Εάν θα είναι ενεργοποιημένη η αναζήτηση πλήρους κειμένου από προεπιλογή κατά "
+"το άνοιγμα ενός νέου παραθύρου/καρτέλας"
+
+#: data/org.gnome.nautilus.gschema.xml:202
+msgid ""
+"If set to true, then Nautilus will also match the file contents besides the "
+"name. This toggles the default active state, which can still be overridden "
+"in the search popover"
+msgstr ""
+"Εάν είναι ρυθμισμένο σε αληθές, τότε το Nautilus θα ταιριάζει με το "
+"περιεχόμενο του αρχείου εκτός από το όνομα. Αυτό αλλάζει την προεπιλεγμένη "
+"ενεργή κατάσταση, η οποία μπορεί να παρακαμφθεί στην αναδυόμενη αναζήτηση"
+
+#: data/org.gnome.nautilus.gschema.xml:209
+msgid "Default format for compressing files"
+msgstr "Προεπιλεγμένη μορφή για συμπίεση αρχείων"
+
+#: data/org.gnome.nautilus.gschema.xml:210
+msgid "The format that will be selected when compressing files."
+msgstr "Η μορφή που θα χρησιμοποιηθεί κατά την συμπίεση των αρχείων."
+
+#: data/org.gnome.nautilus.gschema.xml:217
+msgid "List of possible captions on icons"
+msgstr "Λίστα με πιθανές λεζάντες για τα εικονίδια"
+
+#: data/org.gnome.nautilus.gschema.xml:218
+msgid ""
+"A list of captions below an icon in the icon view. The actual number of "
+"captions shown depends on the zoom level. Some possible values are: “size”, "
+"“type”, “date_modified”, “owner”, “group”, “permissions”, and “mime_type”."
+msgstr ""
+"Μια σειρά από λεζάντες κάτω από τα εικονίδια στην προβολή εικονιδίων. Ο "
+"ενεργός αριθμός των εμφανιζόμενων λεζάντων εξαρτάται από το επίπεδο "
+"εστίασης. Μερικές πιθανές τιμές είναι: «μέγεθος», «τύπος», "
+"«ημερομηνία_τροποποίησης», «ιδιοκτήτης», «ομάδα», «δικαιώματα» και "
+"«τύπος_mime»."
+
+#: data/org.gnome.nautilus.gschema.xml:222
+msgid "Default icon view zoom level"
+msgstr "Προεπιλεγμένο επίπεδο εστίασης εικονιδίων"
+
+#: data/org.gnome.nautilus.gschema.xml:226
+msgid "Text Ellipsis Limit"
+msgstr "Όριο εμφάνισης αποσιωπητικών"
+
+#: data/org.gnome.nautilus.gschema.xml:227
+msgid ""
+"A string specifying how parts of overlong file names should be replaced by "
+"ellipses, depending on the zoom level. Each of the list entries is of the "
+"form “Zoom Level:Integer”. For each specified zoom level, if the given "
+"integer is larger than 0, the file name will not exceed the given number of "
+"lines. If the integer is 0 or smaller, no limit is imposed on the specified "
+"zoom level. A default entry of the form “Integer” without any specified zoom "
+"level is also allowed. It defines the maximum number of lines for all other "
+"zoom levels. Examples: 0 — always display overlong file names; 3 — shorten "
+"file names if they exceed three lines; smallest:5,smaller:4,0 — shorten file "
+"names if they exceed five lines for zoom level “smallest”. Shorten file "
+"names if they exceed four lines for zoom level “smaller”. Do not shorten "
+"file names for other zoom levels. Available zoom levels: small, standard, "
+"large."
+msgstr ""
+"Μια συμβολοσειρά που καθορίζει τον τρόπο αντικατάστασης από αποσιωπητικά "
+"μέρους των μεγάλων ονομάτων αρχείων, ανάλογα με το επίπεδο εστίασης. Κάθε "
+"καταχώρηση της λίστας είναι της μορφής «Zoom Level:Integer». Για κάθε "
+"επίπεδο εστίασης, αν ο ακέραιος που δόθηκε είναι μεγαλύτερος του 0, το όνομα "
+"αρχείου δε θα ξεπερνά τον αριθμό γραμμών που δόθηκε. Αν ο ακέραιος είναι 0 ή "
+"μικρότερος, δε θα ισχύουν περιορισμοί για το συγκεκριμένο επίπεδο εστίασης. "
+"Επίσης, επιτρέπεται μια προεπιλεγμένη καταχώρηση της μορφής «Integer», χωρίς "
+"να έχει οριστεί επίπεδο εστίασης. Καθορίζει το μέγιστο αριθμό γραμμών για "
+"όλα τα υπόλοιπα επίπεδα εστίασης. Για παράδειγμα: 0 - τα μεγάλα ονόματα "
+"αρχείων εμφανίζονται πάντα· 3 - συντόμευση ονομάτων αρχείων αν ξεπερνούν τις "
+"τρεις γραμμές· ελάχιστο:5, μικρότερο:4,0 - συντόμευση ονομάτων αρχείων αν "
+"ξεπερνούν τις πέντε ή τις τέσσερις γραμμές στα επίπεδα εστίασης «smallest» "
+"και «smaller», αντίστοιχα. Όχι συντόμευση των ονομάτων αρχείων στα υπόλοιπα "
+"επίπεδα εστίασης. Τα διαθέσιμα επίπεδα εστίασης είναι: small, standard, "
+"large."
+
+#: data/org.gnome.nautilus.gschema.xml:234
+msgid "Default list view zoom level"
+msgstr "Προεπιλεγμένο επίπεδο εστίασης για την προβολή λίστας"
+
+#: data/org.gnome.nautilus.gschema.xml:238
+msgid "Columns visible in list view"
+msgstr "Ορατές στήλες στην προβολή λίστας"
+
+#: data/org.gnome.nautilus.gschema.xml:242
+msgid "Column order in list view"
+msgstr "Ταξινόμηση στήλης στην προβολή λίστας"
+
+#: data/org.gnome.nautilus.gschema.xml:246
+msgid "Use tree view"
+msgstr "Χρήση προβολής δένδρου"
+
+#: data/org.gnome.nautilus.gschema.xml:247
+msgid ""
+"Whether a tree should be used for list view navigation instead of a flat "
+"list."
+msgstr ""
+"Εάν θα πρέπει να χρησιμοποιηθεί ένα δέντρο για περιήγηση προβολής λίστας "
+"αντί για επίπεδη λίστα."
+
+#: data/org.gnome.nautilus.gschema.xml:254
+msgid "Initial size of the window"
+msgstr "Αρχικό μέγεθος του παραθύρου"
+
+#: data/org.gnome.nautilus.gschema.xml:255
+msgid ""
+"A tuple containing the initial width and height of the application window."
+msgstr ""
+"Μια πλειάδα η οποία περιέχει το αρχικό πλάτος και ύψος του παραθύρου της "
+"εφαρμογής."
+
+#: data/org.gnome.nautilus.gschema.xml:259
+msgid "Whether the navigation window should be maximized"
+msgstr "Αν το παράθυρο περιήγησης θα έπρεπε να είναι μεγιστοποιημένο"
+
+#: data/org.gnome.nautilus.gschema.xml:260
+msgid "Whether the navigation window should be maximized by default."
+msgstr "Αν το παράθυρο περιήγησης θα είναι μεγιστοποιημένο ως προεπιλογή."
+
+#: data/org.gnome.nautilus.gschema.xml:264
+msgid "Width of the side pane"
+msgstr "Πλάτος της πλευρικής στήλης"
+
+#
+#: data/org.gnome.nautilus.gschema.xml:265
+msgid "The default width of the side pane in new windows."
+msgstr "Το προεπιλεγμένο πλάτος της πλευρικής στήλης στα νέα παράθυρα."
+
+#
+#: data/org.gnome.nautilus.gschema.xml:269
+msgid "Show location bar in new windows"
+msgstr "Εμφάνιση γραμμής τοποθεσίας στα νέα παράθυρα"
+
+#: data/org.gnome.nautilus.gschema.xml:270
+msgid ""
+"If set to true, newly opened windows will have the location bar visible."
+msgstr ""
+"Αν οριστεί σε αληθές, η γραμμή τοποθεσίας θα είναι ορατή στα νέα παράθυρα."
+
+#
+#: data/org.gnome.nautilus.gschema.xml:274
+msgid "Show side pane in new windows"
+msgstr "Εμφάνιση πλευρικής στήλης στα νέα παράθυρα"
+
+#: data/org.gnome.nautilus.gschema.xml:275
+msgid "If set to true, newly opened windows will have the side pane visible."
+msgstr ""
+"Αν οριστεί σε αληθές, η πλευρική στήλη θα είναι ορατή στα νέα παράθυρα."
+
+#: eel/eel-canvas.c:1324 eel/eel-canvas.c:1325
+msgid "X"
+msgstr "X"
+
+#: eel/eel-canvas.c:1331 eel/eel-canvas.c:1332
+msgid "Y"
+msgstr "Y"
+
+#. Put up the timed wait window.
+#. Add buttons
+#: eel/eel-stock-dialogs.c:204 src/nautilus-file-conflict-dialog.c:330
+#: src/nautilus-file-operations.c:255 src/nautilus-files-view.c:1210
+#: src/nautilus-files-view.c:1763 src/nautilus-files-view.c:6034
+#: src/nautilus-files-view.c:6494 src/nautilus-location-entry.c:282
+#: src/nautilus-mime-actions.c:559 src/nautilus-mime-actions.c:563
+#: src/nautilus-mime-actions.c:843 src/nautilus-mime-actions.c:1183
+#: src/nautilus-properties-window.c:5297 src/nautilus-search-popover.c:583
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:12
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:13
+msgid "_Cancel"
+msgstr "_Ακύρωση"
+
+#: eel/eel-stock-dialogs.c:213
+msgid "You can stop this operation by clicking cancel."
+msgstr "Μπορείτε να διακόψετε αυτή τη λειτουργία αν πατήσετε ακύρωση."
+
+#
+#. Title
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:105
+msgctxt "Title"
+msgid "Unknown"
+msgstr "Άγνωστος"
+
+#
+#. Artist
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:107
+msgctxt "Artist"
+msgid "Unknown"
+msgstr "Άγνωστος"
+
+#
+#. Album
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:109
+msgctxt "Album"
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#
+#. Year
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:111
+msgctxt "Year"
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#
+#. Container
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:117
+msgctxt "Media container"
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#. Dimensions
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:120
+msgctxt "Dimensions"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#. Video Codec
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:122
+msgctxt "Video codec"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:125
+msgctxt "Video bit rate"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:128
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:236
+msgctxt "Frame rate"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:132
+msgctxt "Audio bit rate"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#. Audio Codec
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:134
+msgctxt "Audio codec"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#. Sample rate
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:136
+msgid "0 Hz"
+msgstr "0 Hz"
+
+#. Channels
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:138
+msgid "0 Channels"
+msgstr "0 κανάλια"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:154
+#, c-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d ώρα"
+msgstr[1] "%d ώρες"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:156
+#, c-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d λεπτό"
+msgstr[1] "%d λεπτά"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:159
+#, c-format
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d δευτερόλεπτο"
+msgstr[1] "%d δευτερόλεπτα"
+
+#. 5 hours 2 minutes 12 seconds
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:165
+#, c-format
+msgctxt "time"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. 2 minutes 12 seconds
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:168
+#, c-format
+msgctxt "time"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. 0 seconds
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:174
+msgid "0 seconds"
+msgstr "0 δευτερόλεπτα"
+
+#: extensions/audio-video-properties/bacon-video-widget-properties.c:234
+#, c-format
+msgid "%0.2f frame per second"
+msgid_plural "%0.2f frames per second"
+msgstr[0] "%0.2f καρέ ανά δευτερόλεπτο"
+msgstr[1] "%0.2f καρέ ανά δευτερόλεπτο"
+
+#: extensions/audio-video-properties/totem-properties-main.c:116
+#: extensions/audio-video-properties/totem-properties-view.c:275
+msgid "Audio/Video"
+msgstr "Ήχος/Βίντεο"
+
+#: extensions/audio-video-properties/totem-properties-view.c:133
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#: extensions/audio-video-properties/totem-properties-view.c:162
+msgctxt "Stream bit rate"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#: extensions/audio-video-properties/totem-properties-view.c:165
+#, c-format
+msgid "%d kbps"
+msgstr "%d kbps"
+
+#: extensions/audio-video-properties/totem-properties-view.c:182
+#, c-format
+msgid "%d × %d"
+msgstr "%d × %d"
+
+#: extensions/audio-video-properties/totem-properties-view.c:214
+#, c-format
+msgid "%d Hz"
+msgstr "%d Hz"
+
+#: extensions/audio-video-properties/totem-properties-view.c:222
+msgctxt "Sample rate"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#: extensions/audio-video-properties/totem-properties-view.c:230
+msgid "Surround"
+msgstr "Surround"
+
+#: extensions/audio-video-properties/totem-properties-view.c:232
+msgid "Mono"
+msgstr "Μονοφωνικό"
+
+#: extensions/audio-video-properties/totem-properties-view.c:234
+msgid "Stereo"
+msgstr "Στέρεο"
+
+#: extensions/audio-video-properties/totem-properties-view.c:245
+msgctxt "Number of audio channels"
+msgid "N/A"
+msgstr "Δ/Υ"
+
+#: extensions/audio-video-properties/totem-properties-view.c:277
+#: extensions/audio-video-properties/resources/ui/properties.ui:512
+#: src/nautilus-file.c:7484
+msgid "Audio"
+msgstr "Ήχος"
+
+#: extensions/audio-video-properties/totem-properties-view.c:279
+#: extensions/audio-video-properties/resources/ui/properties.ui:321
+#: src/nautilus-file.c:7492 src/nautilus-mime-actions.c:204
+msgid "Video"
+msgstr "Βίντεο"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:23
+#: src/resources/ui/nautilus-preferences-window.ui:9
+#: src/resources/ui/nautilus-preferences-window.ui:13
+msgid "General"
+msgstr "Γενικά"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:47
+msgid "Title:"
+msgstr "Τίτλος:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:67
+msgid "Artist:"
+msgstr "Καλλιτέχνης:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:87
+msgid "Duration:"
+msgstr "Διάρκεια:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:107
+msgid "Year:"
+msgstr "Έτος:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:127
+msgid "Album:"
+msgstr "Άλμπουμ:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:235
+msgid "Comment:"
+msgstr "Σχόλιο:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:273
+msgid "Container:"
+msgstr "Περιέκτης:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:345
+msgid "Dimensions:"
+msgstr "Διαστάσεις:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:365
+#: extensions/audio-video-properties/resources/ui/properties.ui:609
+msgid "Codec:"
+msgstr "Κωδικοποίηση:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:385
+msgid "Frame rate:"
+msgstr "Ρυθμός καρέ:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:405
+#: extensions/audio-video-properties/resources/ui/properties.ui:572
+msgid "Bit rate:"
+msgstr "Ρυθμός bit:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:536
+msgid "Sample rate:"
+msgstr "Ρυθμός δειγματοληψίας:"
+
+#: extensions/audio-video-properties/resources/ui/properties.ui:646
+msgid "Channels:"
+msgstr "Κανάλια:"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:129
+#: src/nautilus-files-view.c:405 src/nautilus-list-model.c:471
+#: src/nautilus-window-slot.c:1032
+msgid "Loading…"
+msgstr "Φόρτωση…"
+
+#
+#: extensions/image-properties/nautilus-image-properties-page.c:151
+msgid "Image Type"
+msgstr "Τύπος εικόνας"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:170
+#: extensions/image-properties/nautilus-image-properties-page.c:178
+#, c-format
+msgid "%d pixel"
+msgid_plural "%d pixels"
+msgstr[0] "%d εικονοστοιχείο"
+msgstr[1] "%d εικονοστοιχεία"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:175
+msgid "Width"
+msgstr "Πλάτος"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:183
+msgid "Height"
+msgstr "Ύψος"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:247
+msgid "Camera Brand"
+msgstr "Μάρκα κάμερας"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:248
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:28
+msgid "Camera Model"
+msgstr "Μοντέλο κάμερας"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:249
+msgid "Exposure Time"
+msgstr "Χρόνος έκθεσης"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:250
+msgid "Exposure Program"
+msgstr "Πρόγραμμα έκθεσης"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:251
+msgid "Aperture Value"
+msgstr "Τιμή διαφράγματος"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:252
+msgid "ISO Speed Rating"
+msgstr "Ρυθμός ταχύτητας ISO"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:253
+msgid "Flash Fired"
+msgstr "Χρήση αναλαμπής"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:254
+msgid "Metering Mode"
+msgstr "Λειτουργία μέτρησης"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:255
+msgid "Focal Length"
+msgstr "Εστιακό μήκος"
+
+#
+#: extensions/image-properties/nautilus-image-properties-page.c:256
+msgid "Software"
+msgstr "Λογισμικό"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:257
+#: src/nautilus-batch-rename-dialog.h:163
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:53
+msgid "Title"
+msgstr "Τίτλος"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:258
+msgid "Description"
+msgstr "Περιγραφή"
+
+#
+#: extensions/image-properties/nautilus-image-properties-page.c:259
+msgid "Keywords"
+msgstr "Λέξεις κλειδιά"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:260
+msgid "Creator"
+msgstr "Δημιουργός"
+
+#
+#: extensions/image-properties/nautilus-image-properties-page.c:261
+msgid "Created On"
+msgstr "Δημιουργήθηκε"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:262
+msgid "Copyright"
+msgstr "Πνευματικά δικαιώματα"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:263
+msgid "Rating"
+msgstr "Βαθμολογία"
+
+#. Translators: These are the coordinates of a position where a picture was taken.
+#: extensions/image-properties/nautilus-image-properties-page.c:270
+#, c-format
+msgid "%f N / %f W (%.0f m)"
+msgstr "%f N / %f W (%.0f m)"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:272
+msgid "Coordinates"
+msgstr "Συντεταγμένες"
+
+#: extensions/image-properties/nautilus-image-properties-page.c:296
+msgid "Failed to load image information"
+msgstr "Αποτυχία φόρτωσης πληροφοριών εικόνας"
+
+#
+#: extensions/image-properties/nautilus-image-properties-page-provider.c:100
+#: src/nautilus-file.c:7486
+msgid "Image"
+msgstr "Εικόνα"
+
+#: extensions/sendto/nautilus-nste.c:105 extensions/sendto/nautilus-nste.c:112
+msgid "Send to…"
+msgstr "Αποστολή σε…"
+
+#: extensions/sendto/nautilus-nste.c:106
+msgid "Send file by mail…"
+msgstr "Αποστολή αρχείου με αλληλογραφία…"
+
+#: extensions/sendto/nautilus-nste.c:113
+msgid "Send files by mail…"
+msgstr "Αποστολή αρχείων με αλληλογραφία…"
+
+#. Some sort of failure occurred. How 'bout we tell the user?
+#: src/nautilus-application.c:183 src/nautilus-window-slot.c:1698
+msgid "Oops! Something went wrong."
+msgstr "Ωχ όχι! Κάτι πήγε στραβά."
+
+#: src/nautilus-application.c:186
+#, c-format
+msgid ""
+"Unable to create a required folder. Please create the following folder, or "
+"set permissions such that it can be created:\n"
+"%s"
+msgstr ""
+"Αδυναμία δημιουργίας του ζητούμενου φακέλου. Παρακαλούμε, δημιουργήστε τον "
+"παρακάτω φάκελο, ή ορίστε τα κατάλληλα δικαιώματα ώστε να μπορέσει να "
+"δημιουργηθεί:\n"
+"%s"
+
+#: src/nautilus-application.c:193
+#, c-format
+msgid ""
+"Unable to create required folders. Please create the following folders, or "
+"set permissions such that they can be created:\n"
+"%s"
+msgstr ""
+"Αδυναμία δημιουργίας των ζητούμενων φακέλων. Παρακαλούμε, δημιουργήστε τους "
+"παρακάτω φακέλους, ή ορίστε τα κατάλληλα δικαιώματα ώστε να μπορέσουν να "
+"δημιουργηθούν:\n"
+"%s"
+
+#: src/nautilus-application.c:608
+msgid "--check cannot be used with other options."
+msgstr "Το --check δε χρησιμοποιείται μαζί με άλλες επιλογές."
+
+#: src/nautilus-application.c:616
+msgid "--quit cannot be used with URIs."
+msgstr "Το --quit δεν μπορεί να χρησιμοποιηθεί με URI."
+
+#: src/nautilus-application.c:625
+msgid "--select must be used with at least an URI."
+msgstr "Το --select πρέπει να χρησιμοποιηθεί με τουλάχιστον ένα URI."
+
+#: src/nautilus-application.c:778
+#, c-format
+msgid ""
+"There was an error displaying help: \n"
+"%s"
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά την εμφάνιση της βοήθειας: \n"
+"%s"
+
+#: src/nautilus-application.c:970
+#, c-format
+msgid ""
+"“%s” is an internal protocol. Opening this location directly is not "
+"supported."
+msgstr ""
+"Το «%s» είναι ένα εσωτερικό πρωτόκολλο. Το άμεσο άνοιγμα αυτής της "
+"τοποθεσίας δεν υποστηρίζεται."
+
+#: src/nautilus-application.c:1070
+msgid "Perform a quick set of self-check tests."
+msgstr "Εκτέλεση ενός συνόλου γρήγορων δοκιμών αυτοελέγχων."
+
+#: src/nautilus-application.c:1073
+msgid "Show the version of the program."
+msgstr "Εμφάνιση της έκδοσης του προγράμματος."
+
+#: src/nautilus-application.c:1075
+msgid "Always open a new window for browsing specified URIs"
+msgstr "Να ανοίγεται πάντα νέο παράθυρο για περιήγηση καθορισμένων URI"
+
+#: src/nautilus-application.c:1077
+msgid "Quit Nautilus."
+msgstr "Τερματισμός του Ναυτίλου."
+
+#: src/nautilus-application.c:1079
+msgid "Select specified URI in parent folder."
+msgstr "Επιλέξτε τα καθορισμένα URI στο γονικό φάκελο."
+
+#: src/nautilus-application.c:1080
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/nautilus-autorun-software.c:143 src/nautilus-autorun-software.c:146
+#, c-format
+msgid ""
+"Unable to start the program:\n"
+"%s"
+msgstr ""
+"Αδυναμία εκκίνησης του προγράμματος:\n"
+"%s"
+
+#
+#: src/nautilus-autorun-software.c:149
+#, c-format
+msgid "Unable to locate the program"
+msgstr "Αδυναμία εντοπισμού του προγράμματος"
+
+#: src/nautilus-autorun-software.c:159
+msgid "Oops! There was a problem running this software."
+msgstr "Ωχ! Προέκυψε ένα σφάλμα στην εκτέλεση του λογισμικού."
+
+#: src/nautilus-autorun-software.c:188
+#, c-format
+msgid ""
+"“%s” contains software intended to be automatically started. Would you like "
+"to run it?"
+msgstr ""
+"Το «%s» περιέχει λογισμικό σχεδιασμένο να εκτελείται αυτόματα. Θέλετε να το "
+"εκτελέσετε;"
+
+#: src/nautilus-autorun-software.c:192
+msgid "If you don’t trust this location or aren’t sure, press Cancel."
+msgstr ""
+"Αν δεν εμπιστεύεστε αυτήν την τοποθεσία ή δεν είστε σίγουρος για την "
+"τοποθεσία, πατήστε Ακύρωση."
+
+#: src/nautilus-autorun-software.c:223
+msgid "_Run"
+msgstr "_Εκτέλεση"
+
+#: src/nautilus-batch-rename-dialog.c:821
+#, c-format
+msgid "“%s” would not be a unique new name."
+msgstr "Το «%s» δεν θα είναι ένα μοναδικό νέο όνομα."
+
+#: src/nautilus-batch-rename-dialog.c:827
+#, c-format
+msgid "“%s” would conflict with an existing file."
+msgstr "Το «%s» θα ερχόταν σε σύγκρουση με ένα υπάρχον αρχείο."
+
+#: src/nautilus-batch-rename-dialog.c:1314
+msgid "Name cannot be empty."
+msgstr "Το όνομα δεν μπορεί να είναι κενό."
+
+#: src/nautilus-batch-rename-dialog.c:1320
+msgid "Name cannot contain “/”."
+msgstr "Το όνομα δεν μπορεί να περιέχει «/»."
+
+#: src/nautilus-batch-rename-dialog.c:1326
+msgid "“.” is not a valid name."
+msgstr "Η «.» δεν είναι έγκυρο όνομα."
+
+#: src/nautilus-batch-rename-dialog.c:1332
+msgid "“..” is not a valid name."
+msgstr "Οι «..» δεν είναι έγκυρο όνομα."
+
+#: src/nautilus-batch-rename-dialog.c:2067
+#, c-format
+msgid "Rename %d Folder"
+msgid_plural "Rename %d Folders"
+msgstr[0] "Μετονομασία %d φακέλου"
+msgstr[1] "Μετονομασία %d φακέλων"
+
+#: src/nautilus-batch-rename-dialog.c:2075
+#, c-format
+msgid "Rename %d File"
+msgid_plural "Rename %d Files"
+msgstr[0] "Μετονομασία %d αρχείου"
+msgstr[1] "Μετονομασία %d αρχείων"
+
+#. To translators: %d is the total number of files and folders.
+#. * Singular case of the string is never used
+#: src/nautilus-batch-rename-dialog.c:2085
+#, c-format
+msgid "Rename %d File and Folder"
+msgid_plural "Rename %d Files and Folders"
+msgstr[0] "Μετονομασία %d αρχείου και φακέλου"
+msgstr[1] "Μετονομασία %d αρχείων και φακέλων"
+
+#: src/nautilus-batch-rename-dialog.h:87
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:73
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:187
+msgid "Original Name (Ascending)"
+msgstr "Αρχικό όνομα (Αύξουσα)"
+
+#: src/nautilus-batch-rename-dialog.h:92
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:78
+msgid "Original Name (Descending)"
+msgstr "Αρχικό όνομα (Φθίνουσα)"
+
+#: src/nautilus-batch-rename-dialog.h:97
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:83
+msgid "First Modified"
+msgstr "Αρχικά τροποποιημένο"
+
+#: src/nautilus-batch-rename-dialog.h:102
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:88
+msgid "Last Modified"
+msgstr "Τελευταία τροποποιημένο"
+
+#: src/nautilus-batch-rename-dialog.h:107
+msgid "First Created"
+msgstr "Αρχικά δημιουργημένο"
+
+#: src/nautilus-batch-rename-dialog.h:112
+msgid "Last Created"
+msgstr "Τελευταία δημιουργημένο"
+
+#: src/nautilus-batch-rename-dialog.h:121
+msgid "Camera model"
+msgstr "Μοντέλο κάμερας"
+
+#: src/nautilus-batch-rename-dialog.h:128
+msgid "Creation date"
+msgstr "Ημερομηνία δημιουργίας"
+
+#: src/nautilus-batch-rename-dialog.h:135
+msgid "Season number"
+msgstr "Αριθμός κύκλου"
+
+#: src/nautilus-batch-rename-dialog.h:142
+msgid "Episode number"
+msgstr "Αριθμός επεισοδίου"
+
+#: src/nautilus-batch-rename-dialog.h:149
+msgid "Track number"
+msgstr "Αριθμός κομματιού"
+
+#: src/nautilus-batch-rename-dialog.h:156
+msgid "Artist name"
+msgstr "Όνομα καλλιτέχνη"
+
+#: src/nautilus-batch-rename-dialog.h:170
+msgid "Album name"
+msgstr "Όνομα συλλογής"
+
+#: src/nautilus-batch-rename-dialog.h:177
+msgid "Original file name"
+msgstr "Αρχικό όνομα αρχείου"
+
+#: src/nautilus-batch-rename-dialog.h:188
+msgid "1, 2, 3"
+msgstr "1, 2, 3"
+
+#: src/nautilus-batch-rename-dialog.h:195
+msgid "01, 02, 03"
+msgstr "01, 02, 03"
+
+#: src/nautilus-batch-rename-dialog.h:202
+msgid "001, 002, 003"
+msgstr "001, 002, 003"
+
+#: src/nautilus-bookmark.c:115 src/nautilus-file-utilities.c:304
+#: src/nautilus-list-view.c:1938 src/nautilus-pathbar.c:328
+#: src/nautilus-shell-search-provider.c:315 src/nautilus-window.c:193
+msgid "Home"
+msgstr "Προσωπικός φάκελος"
+
+#: src/nautilus-canvas-container.c:1772
+msgid "The selection rectangle"
+msgstr "Το ορθογώνιο επιλογής"
+
+#: src/nautilus-canvas-view-container.c:366
+msgid "Icon View"
+msgstr "Προβολή εικονιδίων"
+
+#: src/nautilus-column-chooser.c:433
+msgid "Reset to De_fault"
+msgstr "Επαναφορά στην προεπι_λογή"
+
+#: src/nautilus-column-chooser.c:435
+msgid "Replace the current List Columns settings with the default settings"
+msgstr ""
+"Αντικατάσταση των τωρινών ρυθμίσεων της εμφάνισης λιστών με τις "
+"προεπιλεγμένες"
+
+#
+#: src/nautilus-column-utilities.c:59 src/nautilus-list-view.c:2281
+#: src/resources/ui/nautilus-rename-file-popover.ui:23
+msgid "Name"
+msgstr "Όνομα"
+
+#: src/nautilus-column-utilities.c:60
+msgid "The name and icon of the file."
+msgstr "Το όνομα και το εικονίδιο του αρχείου."
+
+#
+#: src/nautilus-column-utilities.c:66
+#: src/resources/ui/nautilus-properties-window.ui:234
+msgid "Size"
+msgstr "Μέγεθος"
+
+#: src/nautilus-column-utilities.c:67
+msgid "The size of the file."
+msgstr "Το μέγεθος του αρχείου."
+
+#
+#: src/nautilus-column-utilities.c:73
+#: src/resources/ui/nautilus-properties-window.ui:141
+msgid "Type"
+msgstr "Τύπος"
+
+#: src/nautilus-column-utilities.c:74
+msgid "The type of the file."
+msgstr "Ο τύπος του αρχείου."
+
+#: src/nautilus-column-utilities.c:80
+#: src/resources/ui/nautilus-properties-window.ui:424
+msgid "Modified"
+msgstr "Τροποποιήθηκε"
+
+#: src/nautilus-column-utilities.c:81 src/nautilus-column-utilities.c:148
+msgid "The date the file was modified."
+msgstr "Η ημερομηνία που τροποποιήθηκε το αρχείο."
+
+#: src/nautilus-column-utilities.c:89
+msgid "Detailed Type"
+msgstr "Λεπτομερής τύπος"
+
+#: src/nautilus-column-utilities.c:90
+msgid "The detailed type of the file."
+msgstr "Ο λεπτομερής τύπος του αρχείου."
+
+#: src/nautilus-column-utilities.c:96
+#: src/resources/ui/nautilus-properties-window.ui:398
+msgid "Accessed"
+msgstr "Προσπελάστηκε"
+
+#: src/nautilus-column-utilities.c:97
+msgid "The date the file was accessed."
+msgstr "Η ημερομηνία που προσπελάστηκε το αρχείο."
+
+#: src/nautilus-column-utilities.c:105
+#: src/resources/ui/nautilus-properties-window.ui:288
+msgid "Created"
+msgstr "Δημιουργήθηκε"
+
+#: src/nautilus-column-utilities.c:106
+msgid "The date the file was created."
+msgstr "Η ημερομηνία που δημιουργήθηκε το αρχείο."
+
+#: src/nautilus-column-utilities.c:115
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:72
+msgid "Owner"
+msgstr "Ιδιοκτήτης"
+
+#: src/nautilus-column-utilities.c:116
+msgid "The owner of the file."
+msgstr "Ο ιδιοκτήτης του αρχείου."
+
+#: src/nautilus-column-utilities.c:123
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:107
+msgid "Group"
+msgstr "Ομάδα"
+
+#: src/nautilus-column-utilities.c:124
+msgid "The group of the file."
+msgstr "Η ομάδα του αρχείου."
+
+#: src/nautilus-column-utilities.c:131
+#: src/resources/ui/nautilus-properties-window.ui:1281
+msgid "Permissions"
+msgstr "Δικαιώματα"
+
+#: src/nautilus-column-utilities.c:132
+msgid "The permissions of the file."
+msgstr "Τα δικαιώματα του αρχείου."
+
+#
+#: src/nautilus-column-utilities.c:139
+msgid "Location"
+msgstr "Θέση"
+
+#: src/nautilus-column-utilities.c:140
+msgid "The location of the file."
+msgstr "Η θέση του αρχείου."
+
+#: src/nautilus-column-utilities.c:147
+msgid "Modified — Time"
+msgstr "Τροποποιήθηκε — Ώρα"
+
+#: src/nautilus-column-utilities.c:156
+msgid "Recency"
+msgstr "Πρόσφατα"
+
+#: src/nautilus-column-utilities.c:157
+msgid "The date the file was accessed by the user."
+msgstr "Η ημερομηνία που προσπελάστηκε το αρχείο."
+
+#
+#: src/nautilus-column-utilities.c:166
+msgid "Star"
+msgstr "Επισήμανση"
+
+#: src/nautilus-column-utilities.c:167
+msgid "Shows if file is starred."
+msgstr "Εμφανίζει εάν το αρχείο είναι στα αγαπημένα."
+
+#
+#: src/nautilus-column-utilities.c:212
+msgid "Trashed On"
+msgstr "Διαγράφηκε"
+
+#: src/nautilus-column-utilities.c:213
+msgid "Date when file was moved to the Trash"
+msgstr "Ημερομηνία μετακίνησης του αρχείου στα απορρίμματα"
+
+#: src/nautilus-column-utilities.c:220
+msgid "Original Location"
+msgstr "Αρχική θέση"
+
+#: src/nautilus-column-utilities.c:221
+msgid "Original location of file before moved to the Trash"
+msgstr "Αρχική θέση του αρχείου πριν τη μετακίνηση στα απορρίμματα"
+
+#: src/nautilus-column-utilities.c:239
+msgid "Relevance"
+msgstr "Συνάφεια"
+
+#: src/nautilus-column-utilities.c:240
+msgid "Relevance rank for search"
+msgstr "Βαθμός συνάφειας για την αναζήτηση"
+
+#: src/nautilus-compress-dialog-controller.c:62
+msgid "Archive names cannot contain “/”."
+msgstr "Τα ονόματα των συμπιεσμένων αρχείων δεν μπορεί να περιέχουν «/»."
+
+#: src/nautilus-compress-dialog-controller.c:67
+msgid "An archive cannot be called “.”."
+msgstr "Ένα συμπιεσμένο αρχείο δεν μπορεί να ονομαστεί «.»."
+
+#: src/nautilus-compress-dialog-controller.c:72
+msgid "An archive cannot be called “..”."
+msgstr "Ένα συμπιεσμένο αρχείο δεν μπορεί να ονομαστεί «..»."
+
+#: src/nautilus-compress-dialog-controller.c:77
+msgid "Archive name is too long."
+msgstr "Το όνομα αρχείου είναι πολύ μεγάλο."
+
+#. We must warn about the side effect
+#: src/nautilus-compress-dialog-controller.c:83
+msgid "Archives with “.” at the beginning of their name are hidden."
+msgstr "Αρχεία που το όνομά τους ξεκινάει με «.» , είναι κρυφά."
+
+#
+#. Translators: this is of the format "hostname (uri-scheme)"
+#: src/nautilus-directory.c:673
+#, c-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: src/nautilus-dnd.c:794
+msgid "_Move Here"
+msgstr "_Μετακίνηση εδώ"
+
+# # NOTE: Translation of "Create" as "New" to
+# #       keep msg length relatively short...
+#: src/nautilus-dnd.c:799
+msgid "_Copy Here"
+msgstr "_Αντιγραφή εδώ"
+
+#: src/nautilus-dnd.c:804
+msgid "_Link Here"
+msgstr "_Σύνδεσμος εδώ"
+
+#: src/nautilus-dnd.c:811 src/nautilus-file-operations.c:8407
+#: src/resources/ui/nautilus-compress-dialog.ui:165
+#: src/resources/ui/nautilus-create-folder-dialog.ui:63
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: src/nautilus-error-reporting.c:85
+#, c-format
+msgid "You do not have the permissions necessary to view the contents of “%s”."
+msgstr ""
+"Δεν έχετε τα απαραίτητα δικαιώματα για να εμφανίσετε τα περιεχόμενα του «%s»."
+
+#: src/nautilus-error-reporting.c:92
+#, c-format
+msgid "“%s” could not be found. Perhaps it has recently been deleted."
+msgstr "Το «%s» δε βρέθηκε. Μάλλον διαγράφηκε πρόσφατα."
+
+#: src/nautilus-error-reporting.c:104
+#, c-format
+msgid "Sorry, could not display all the contents of “%s”: %s"
+msgstr "Συγγνώμη, αδύνατη η εμφάνιση όλων των περιεχομένων του «%s»: %s"
+
+#: src/nautilus-error-reporting.c:115
+msgid "This location could not be displayed."
+msgstr "Αυτή η τοποθεσία δε μπορεί να εμφανιστεί."
+
+#: src/nautilus-error-reporting.c:142
+#, c-format
+msgid "You do not have the permissions necessary to change the group of “%s”."
+msgstr "Δεν έχετε τα απαραίτητα δικαιώματα για να αλλάξετε την ομάδα του «%s»."
+
+#. fall through
+#: src/nautilus-error-reporting.c:165
+#, c-format
+msgid "Sorry, could not change the group of “%s”: %s"
+msgstr "Συγγνώμη, αδύνατη η αλλαγή της ομάδας του «%s»: %s"
+
+#: src/nautilus-error-reporting.c:170
+msgid "The group could not be changed."
+msgstr "Αδύνατη η αλλαγή της ομάδας."
+
+#: src/nautilus-error-reporting.c:191
+#, c-format
+msgid "Sorry, could not change the owner of “%s”: %s"
+msgstr "Συγγνώμη, αδύνατη η αλλαγή του ιδιοκτήτη του «%s»: %s"
+
+#: src/nautilus-error-reporting.c:194
+msgid "The owner could not be changed."
+msgstr "Αδύνατη η αλλαγή του ιδιοκτήτη."
+
+#: src/nautilus-error-reporting.c:215
+#, c-format
+msgid "Sorry, could not change the permissions of “%s”: %s"
+msgstr "Συγγνώμη, αδύνατη η αλλαγή των δικαιωμάτων του «%s»: %s"
+
+#: src/nautilus-error-reporting.c:218
+msgid "The permissions could not be changed."
+msgstr "Αδύνατη η αλλαγή των δικαιωμάτων."
+
+#: src/nautilus-error-reporting.c:253
+#, c-format
+msgid ""
+"The name “%s” is already used in this location. Please use a different name."
+msgstr ""
+"Το όνομα «%s» χρησιμοποιείται ήδη σε αυτήν την θέση. Παρακαλούμε, "
+"χρησιμοποιήστε άλλο όνομα."
+
+#: src/nautilus-error-reporting.c:261
+#, c-format
+msgid ""
+"There is no “%s” in this location. Perhaps it was just moved or deleted?"
+msgstr ""
+"Δεν υπάρχει «%s» σε αυτήν τη θέση. Ίσως μόλις μεταφέρθηκε ή διαγράφηκε;"
+
+#: src/nautilus-error-reporting.c:269
+#, c-format
+msgid "You do not have the permissions necessary to rename “%s”."
+msgstr "Δεν έχετε τα κατάλληλα δικαιώματα για να μετονομάσετε το «%s»."
+
+#: src/nautilus-error-reporting.c:278
+#, c-format
+msgid ""
+"The name “%s” is not valid because it contains the character “/”. Please use "
+"a different name."
+msgstr ""
+"Το όνομα «%s» δεν είναι έγκυρο, διότι περιέχει το χαρακτήρα «/». "
+"Παρακαλούμε, δοκιμάστε άλλο όνομα."
+
+#: src/nautilus-error-reporting.c:284
+#, c-format
+msgid "The name “%s” is not valid. Please use a different name."
+msgstr "Το όνομα «%s» δεν είναι έγκυρο. Παρακαλούμε, δοκιμάστε άλλο όνομα."
+
+#: src/nautilus-error-reporting.c:293
+#, c-format
+msgid "The name “%s” is too long. Please use a different name."
+msgstr ""
+"Το όνομα «%s» είναι υπερβολικά μεγάλο. Παρακαλούμε, δοκιμάστε άλλο όνομα."
+
+#. fall through
+#: src/nautilus-error-reporting.c:317
+#, c-format
+msgid "Sorry, could not rename “%s” to “%s”: %s"
+msgstr "Συγγνώμη, αδυναμία μετονομασίας του «%s» σε «%s»: %s"
+
+#: src/nautilus-error-reporting.c:322
+msgid "The item could not be renamed."
+msgstr "Αδύνατη η μετονομασία του αντικειμένου."
+
+#: src/nautilus-error-reporting.c:431
+#, c-format
+msgid "Renaming “%s” to “%s”."
+msgstr "Μετονομασία του «%s» σε «%s»."
+
+#: src/nautilus-file.c:1344 src/nautilus-vfs-file.c:380
+msgid "This file cannot be mounted"
+msgstr "Αδυναμία προσάρτησης του αρχείου"
+
+#: src/nautilus-file.c:1398
+msgid "This file cannot be unmounted"
+msgstr "Αδυναμία αποπροσάρτησης του αρχείου"
+
+#: src/nautilus-file.c:1441
+msgid "This file cannot be ejected"
+msgstr "Αδυναμία εξαγωγής του αρχείου"
+
+#: src/nautilus-file.c:1482 src/nautilus-vfs-file.c:571
+msgid "This file cannot be started"
+msgstr "Αδυναμία εκκίνησης του αρχείου"
+
+#: src/nautilus-file.c:1541 src/nautilus-file.c:1581
+msgid "This file cannot be stopped"
+msgstr "Αδυναμία διακοπής του αρχείου"
+
+#: src/nautilus-file.c:1960
+#, c-format
+msgid "Slashes are not allowed in filenames"
+msgstr "Δεν επιτρέπεται η χρήση καθέτων / στα ονόματα αρχείων"
+
+#: src/nautilus-file.c:2003
+#, c-format
+msgid "Toplevel files cannot be renamed"
+msgstr "Αδυναμία μετονομασίας αρχείων ανώτατου επιπέδου"
+
+#: src/nautilus-file.c:2087
+#, c-format
+msgid "File not found"
+msgstr "Δε βρέθηκε το αρχείο"
+
+#
+#: src/nautilus-file.c:4468 src/nautilus-file-utilities.c:327
+#: src/nautilus-pathbar.c:338
+msgid "Starred"
+msgstr "Επισημάνθηκαν"
+
+#. Translators: Time in 24h format
+#: src/nautilus-file.c:5531
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#. Translators: Time in 12h format
+#: src/nautilus-file.c:5536
+msgid "%l:%M %p"
+msgstr "%l:%M %p"
+
+#: src/nautilus-file.c:5545
+#, no-c-format
+msgid "Yesterday"
+msgstr "Χθες"
+
+#. Translators: this is the word Yesterday followed by
+#. * a time in 24h format. i.e. "Yesterday 23:04"
+#: src/nautilus-file.c:5554
+#, no-c-format
+msgid "Yesterday %H:%M"
+msgstr "Χθες %H:%M"
+
+#. Translators: this is the word Yesterday followed by
+#. * a time in 12h format. i.e. "Yesterday 9:04 PM"
+#: src/nautilus-file.c:5561
+#, no-c-format
+msgid "Yesterday %l:%M %p"
+msgstr "Χθες %l:%M %p"
+
+#: src/nautilus-file.c:5571
+#, no-c-format
+msgid "%a"
+msgstr "%a"
+
+#. Translators: this is the name of the week day followed by
+#. * a time in 24h format. i.e. "Monday 23:04"
+#: src/nautilus-file.c:5580
+#, no-c-format
+msgid "%a %H:%M"
+msgstr "%a %H:%M"
+
+#. Translators: this is the week day name followed by
+#. * a time in 12h format. i.e. "Monday 9:04 PM"
+#: src/nautilus-file.c:5587
+#, no-c-format
+msgid "%a %l:%M %p"
+msgstr "%a %l:%M %p"
+
+#. Translators: this is the day of the month followed
+#. * by the abbreviated month name i.e. "3 Feb"
+#: src/nautilus-file.c:5598
+#, no-c-format
+msgid "%-e %b"
+msgstr "%-e %b"
+
+#. Translators: this is the day of the month followed
+#. * by the abbreviated month name followed by a time in
+#. * 24h format i.e. "3 Feb 23:04"
+#: src/nautilus-file.c:5608
+#, no-c-format
+msgid "%-e %b %H:%M"
+msgstr "%-e %b %H:%M"
+
+#. Translators: this is the day of the month followed
+#. * by the abbreviated month name followed by a time in
+#. * 12h format i.e. "3 Feb 9:04"
+#: src/nautilus-file.c:5616
+#, no-c-format
+msgid "%-e %b %l:%M %p"
+msgstr "%-e %b %l:%M %p"
+
+#. Translators: this is the day of the month followed by the abbreviated
+#. * month name followed by the year i.e. "3 Feb 2015"
+#: src/nautilus-file.c:5627
+#, no-c-format
+msgid "%-e %b %Y"
+msgstr "%-e %b %Y"
+
+#. Translators: this is the day number followed
+#. * by the abbreviated month name followed by the year followed
+#. * by a time in 24h format i.e. "3 Feb 2015 23:04"
+#: src/nautilus-file.c:5637
+#, no-c-format
+msgid "%-e %b %Y %H:%M"
+msgstr "%-e %b %Y %H:%M"
+
+#. Translators: this is the day number followed
+#. * by the abbreviated month name followed by the year followed
+#. * by a time in 12h format i.e. "3 Feb 2015 9:04 PM"
+#: src/nautilus-file.c:5645
+#, no-c-format
+msgid "%-e %b %Y %l:%M %p"
+msgstr "%-e %b %Y %l:%M %p"
+
+#: src/nautilus-file.c:5657
+#, no-c-format
+msgid "%c"
+msgstr "%c"
+
+#: src/nautilus-file.c:6083
+#, c-format
+msgid "Not allowed to set permissions"
+msgstr "Δεν επιτρέπεται να ορίσετε δικαιώματα"
+
+#: src/nautilus-file.c:6406
+#, c-format
+msgid "Not allowed to set owner"
+msgstr "Δεν επιτρέπεται να ορίσετε ιδιοκτήτη"
+
+#: src/nautilus-file.c:6425
+#, c-format
+msgid "Specified owner “%s” doesn’t exist"
+msgstr "Ο καθορισμένος ιδιοκτήτης «%s» δεν υπάρχει"
+
+#: src/nautilus-file.c:6710
+#, c-format
+msgid "Not allowed to set group"
+msgstr "Δεν επιτρέπεται να ορίσετε ομάδα"
+
+#: src/nautilus-file.c:6729
+#, c-format
+msgid "Specified group “%s” doesn’t exist"
+msgstr "Η καθορισμένη ομάδα «%s» δεν υπάρχει"
+
+#. Translators: "Me" is used to indicate the file is owned by me (the current user)
+#: src/nautilus-file.c:6871
+msgid "Me"
+msgstr "Εγώ"
+
+#: src/nautilus-file.c:6903
+#, c-format
+msgid "%'u item"
+msgid_plural "%'u items"
+msgstr[0] "%'u αντικείμενο"
+msgstr[1] "%'u αντικείμενα"
+
+#: src/nautilus-file.c:6904
+#, c-format
+msgid "%'u folder"
+msgid_plural "%'u folders"
+msgstr[0] "%'u φάκελος"
+msgstr[1] "%'u φάκελοι"
+
+#: src/nautilus-file.c:6905
+#, c-format
+msgid "%'u file"
+msgid_plural "%'u files"
+msgstr[0] "%'u αρχείο"
+msgstr[1] "%'u αρχεία"
+
+#. This means no contents at all were readable
+#: src/nautilus-file.c:7394
+msgid "? bytes"
+msgstr "; bytes"
+
+#. This means no contents at all were readable
+#: src/nautilus-file.c:7406
+msgid "? items"
+msgstr "; αντικείμενα"
+
+#
+#: src/nautilus-file.c:7414
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#
+#. Fallback, use for both unknown attributes and attributes
+#. * for which we have no more appropriate default.
+#.
+#: src/nautilus-file.c:7445 src/nautilus-properties-window.c:1268
+msgid "unknown"
+msgstr "άγνωστο"
+
+#: src/nautilus-file.c:7483 src/nautilus-file.c:7491 src/nautilus-file.c:7550
+msgid "Program"
+msgstr "Πρόγραμμα"
+
+#: src/nautilus-file.c:7485
+msgid "Font"
+msgstr "Γραμματοσειρά"
+
+#: src/nautilus-file.c:7487
+msgid "Archive"
+msgstr "Συμπιεσμένο αρχείο"
+
+#: src/nautilus-file.c:7488
+msgid "Markup"
+msgstr "Σήμανση"
+
+#: src/nautilus-file.c:7489 src/nautilus-file.c:7490
+msgid "Text"
+msgstr "Κείμενο"
+
+#: src/nautilus-file.c:7493
+msgid "Contacts"
+msgstr "Επαφές"
+
+#: src/nautilus-file.c:7494
+msgid "Calendar"
+msgstr "Ημερολόγιο"
+
+#: src/nautilus-file.c:7495
+msgid "Document"
+msgstr "Έγγραφο"
+
+#: src/nautilus-file.c:7496 src/nautilus-mime-actions.c:178
+msgid "Presentation"
+msgstr "Παρουσίαση"
+
+#: src/nautilus-file.c:7497 src/nautilus-mime-actions.c:186
+msgid "Spreadsheet"
+msgstr "Λογιστικό φύλλο"
+
+#
+#. Refers to a file type which is known but not one of the basic types
+#: src/nautilus-file.c:7524
+msgid "Other"
+msgstr "Άλλα"
+
+#: src/nautilus-file.c:7552
+msgid "Binary"
+msgstr "Εκτελέσιμο"
+
+#: src/nautilus-file.c:7557
+msgid "Folder"
+msgstr "Φάκελος"
+
+#: src/nautilus-file.c:7596
+msgid "Link"
+msgstr "Σύνδεσμος"
+
+#. Note to localizers: convert file type string for file
+#. * (e.g. "folder", "plain text") to file type for symbolic link
+#. * to that kind of file (e.g. "link to folder").
+#.
+#. appended to new link file
+#: src/nautilus-file.c:7602 src/nautilus-file-operations.c:486
+#, c-format
+msgid "Link to %s"
+msgstr "Σύνδεσμος προς %s"
+
+#: src/nautilus-file.c:7620 src/nautilus-file.c:7636 src/nautilus-file.c:7652
+msgid "Link (broken)"
+msgstr "Σύνδεσμος (κατεστραμμένος)"
+
+#. Setup the expander for the rename action
+#: src/nautilus-file-conflict-dialog.c:296
+msgid "_Select a new name for the destination"
+msgstr "_Επιλέξτε νέο όνομα για τον προορισμό"
+
+#: src/nautilus-file-conflict-dialog.c:311
+#: src/resources/ui/nautilus-properties-window.ui:1332
+msgid "Reset"
+msgstr "Επαναφορά"
+
+#. Setup the checkbox to apply the action to all files
+#: src/nautilus-file-conflict-dialog.c:322
+msgid "Apply this action to all files and folders"
+msgstr "Εφαρμογή αυτής της ενέργειας σε όλα τα αρχεία και φακέλους"
+
+#: src/nautilus-file-conflict-dialog.c:333 src/nautilus-file-operations.c:256
+msgid "_Skip"
+msgstr "_Παράλειψη"
+
+#
+#: src/nautilus-file-conflict-dialog.c:337
+msgid "Re_name"
+msgstr "_Μετονομασία"
+
+#: src/nautilus-file-conflict-dialog.c:342
+msgid "Re_place"
+msgstr "Α_ντικατάσταση"
+
+#: src/nautilus-file-name-widget-controller.c:143
+#: src/nautilus-rename-file-popover-controller.c:110
+msgid "File names cannot contain “/”."
+msgstr "Τα ονόματα αρχείων δεν μπορούν να περιέχουν «/»."
+
+#: src/nautilus-file-name-widget-controller.c:148
+#: src/nautilus-rename-file-popover-controller.c:122
+msgid "A file cannot be called “.”."
+msgstr "Ένα αρχείο δεν μπορεί να ονομαστεί «.»."
+
+#: src/nautilus-file-name-widget-controller.c:153
+#: src/nautilus-rename-file-popover-controller.c:134
+msgid "A file cannot be called “..”."
+msgstr "Ένα αρχείο δεν μπορεί να ονομαστεί «..»."
+
+#: src/nautilus-file-name-widget-controller.c:158
+#: src/nautilus-rename-file-popover-controller.c:146
+msgid "File name is too long."
+msgstr "Το όνομα αρχείου είναι πολύ μεγάλο."
+
+#. We must warn about the side effect
+#: src/nautilus-file-name-widget-controller.c:164
+#: src/nautilus-rename-file-popover-controller.c:159
+msgid "Files with “.” at the beginning of their name are hidden."
+msgstr "Αρχεία που το όνομά τους ξεκινάει με «.» , είναι κρυφά."
+
+#: src/nautilus-file-name-widget-controller.c:186
+msgid "A folder with that name already exists."
+msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα."
+
+#: src/nautilus-file-name-widget-controller.c:191
+msgid "A file with that name already exists."
+msgstr "Υπάρχει ήδη ένα αρχείο με το ίδιο όνομα."
+
+#: src/nautilus-file-operations.c:257
+msgid "S_kip All"
+msgstr "_Παράλειψη όλων"
+
+#: src/nautilus-file-operations.c:258
+msgid "_Retry"
+msgstr "Επα_νάληψη"
+
+#
+#: src/nautilus-file-operations.c:259
+msgid "_Delete"
+msgstr "_Διαγραφή"
+
+#: src/nautilus-file-operations.c:260
+msgid "Delete _All"
+msgstr "Διαγραφή ό_λων"
+
+#: src/nautilus-file-operations.c:261
+msgid "_Replace"
+msgstr "Α_ντικατάσταση"
+
+#: src/nautilus-file-operations.c:262
+msgid "Replace _All"
+msgstr "Αντικατάσταση ό_λων"
+
+#: src/nautilus-file-operations.c:263
+msgid "_Merge"
+msgstr "_Συγχώνευση"
+
+#: src/nautilus-file-operations.c:264
+msgid "Merge _All"
+msgstr "Συγχώνευση ό_λων"
+
+#: src/nautilus-file-operations.c:265
+msgid "Copy _Anyway"
+msgstr "Αντιγραφή ο_πωσδήποτε"
+
+#: src/nautilus-file-operations.c:266 src/nautilus-file-operations.c:3012
+msgid "Empty _Trash"
+msgstr "Άδειασμα α_πορριμμάτων"
+
+#: src/nautilus-file-operations.c:366
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d δευτερόλεπτο"
+msgstr[1] "%'d δευτερόλεπτα"
+
+#: src/nautilus-file-operations.c:372 src/nautilus-file-operations.c:384
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d λεπτό"
+msgstr[1] "%'d λεπτά"
+
+#: src/nautilus-file-operations.c:383 src/nautilus-file-operations.c:391
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d ώρα"
+msgstr[1] "%'d ώρες"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:493
+#, c-format
+msgid "Another link to %s"
+msgstr "Επιπλέον σύνδεσμος προς το %s"
+
+#. Localizers: Feel free to leave out the "st" suffix
+#. * if there's no way to do that nicely for a
+#. * particular language.
+#.
+#: src/nautilus-file-operations.c:514
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'dος σύνδεσμος προς το %s"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:521
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'dος σύνδεσμος προς το %s"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:528
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'dος σύνδεσμος προς το %s"
+
+#. appended to new link file
+#: src/nautilus-file-operations.c:535
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'dος σύνδεσμος προς το %s"
+
+#. Localizers:
+#. * Feel free to leave out the st, nd, rd and th suffix or
+#. * make some or all of them match.
+#.
+#. localizers: tag used to detect the first copy of a file
+#: src/nautilus-file-operations.c:587
+msgid " (copy)"
+msgstr " (αντίγραφο)"
+
+#. localizers: tag used to detect the second copy of a file
+#: src/nautilus-file-operations.c:589
+msgid " (another copy)"
+msgstr " (επιπλέον αντίγραφο)"
+
+#. localizers: tag used to detect the x11th copy of a file
+#. localizers: tag used to detect the x12th copy of a file
+#. localizers: tag used to detect the x13th copy of a file
+#. localizers: tag used to detect the xxth copy of a file
+#: src/nautilus-file-operations.c:592 src/nautilus-file-operations.c:594
+#: src/nautilus-file-operations.c:596 src/nautilus-file-operations.c:606
+msgid "th copy)"
+msgstr "ο αντίγραφο)"
+
+#. localizers: tag used to detect the x1st copy of a file
+#: src/nautilus-file-operations.c:599
+msgid "st copy)"
+msgstr "ο αντίγραφο)"
+
+#. localizers: tag used to detect the x2nd copy of a file
+#: src/nautilus-file-operations.c:601
+msgid "nd copy)"
+msgstr "ο αντίγραφο)"
+
+#. localizers: tag used to detect the x3rd copy of a file
+#: src/nautilus-file-operations.c:603
+msgid "rd copy)"
+msgstr "ο αντίγραφο)"
+
+#
+#. localizers: appended to first file copy
+#: src/nautilus-file-operations.c:620
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (αντίγραφο)%s"
+
+#. localizers: appended to second file copy
+#: src/nautilus-file-operations.c:622
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (επιπλέον αντίγραφο)%s"
+
+#. localizers: appended to x11th file copy
+#. localizers: appended to x12th file copy
+#. localizers: appended to x13th file copy
+#. localizers: appended to xxth file copy
+#: src/nautilus-file-operations.c:625 src/nautilus-file-operations.c:627
+#: src/nautilus-file-operations.c:629 src/nautilus-file-operations.c:643
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (%'dο αντίγραφο)%s"
+
+#. localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
+#. * plurals, you can leave the st, nd, rd suffixes out and just make all the translated
+#. * strings look like "%s (copy %'d)%s".
+#.
+#. localizers: appended to x1st file copy
+#: src/nautilus-file-operations.c:637
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (%'dο αντίγραφο)%s"
+
+#. localizers: appended to x2nd file copy
+#: src/nautilus-file-operations.c:639
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (%'dο αντίγραφο)%s"
+
+#. localizers: appended to x3rd file copy
+#: src/nautilus-file-operations.c:641
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (%'dο αντίγραφο)%s"
+
+#. localizers: opening parentheses to match the "th copy)" string
+#: src/nautilus-file-operations.c:756
+msgid " ("
+msgstr " ("
+
+#. localizers: opening parentheses of the "th copy)" string
+#: src/nautilus-file-operations.c:766
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: src/nautilus-file-operations.c:1657
+#, c-format
+msgid "Are you sure you want to permanently delete “%s” from the trash?"
+msgstr ""
+"Είστε σίγουροι ότι επιθυμείτε να διαγράψετε οριστικά το «%s» από τα "
+"απορρίμματα;"
+
+#: src/nautilus-file-operations.c:1662
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Είστε σίγουροι ότι επιθυμείτε να διαγράψετε οριστικά το %'d επιλεγμένο "
+"αντικείμενο από τα απορρίμματα;"
+msgstr[1] ""
+"Είστε σίγουροι ότι επιθυμείτε να διαγράψετε οριστικά τα %'d επιλεγμένα "
+"αντικείμενα από τα απορρίμματα;"
+
+#: src/nautilus-file-operations.c:1672 src/nautilus-file-operations.c:1735
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Αν διαγράψετε ένα αντικείμενο, θα χαθεί οριστικά."
+
+#: src/nautilus-file-operations.c:1687
+msgid "Empty all items from Trash?"
+msgstr "Διαγραφή όλων των αντικειμένων από τα απορρίμματα;"
+
+#: src/nautilus-file-operations.c:1691
+msgid "All items in the Trash will be permanently deleted."
+msgstr "Όλα τα αντικείμενα στα απορρίμματα θα διαγραφούν οριστικά."
+
+#
+#: src/nautilus-file-operations.c:1721
+#, c-format
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Είστε σίγουροι ότι επιθυμείτε να διαγράψετε οριστικά το «%s»;"
+
+#
+#: src/nautilus-file-operations.c:1726
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] ""
+"Είστε σίγουροι ότι επιθυμείτε να διαγράψετε οριστικά το %'d επιλεγμένο "
+"αντικείμενο;"
+msgstr[1] ""
+"Είστε σίγουροι ότι επιθυμείτε να διαγράψετε οριστικά τα %'d επιλεγμένα "
+"αντικείμενα;"
+
+#
+#: src/nautilus-file-operations.c:1787
+#, c-format
+msgid "Deleted “%s”"
+msgstr "Διαγράφηκε «%s»"
+
+#: src/nautilus-file-operations.c:1791
+#, c-format
+msgid "Deleting “%s”"
+msgstr "Διαγράφεται το «%s»"
+
+#: src/nautilus-file-operations.c:1802
+#, c-format
+msgid "Deleted %'d file"
+msgid_plural "Deleted %'d files"
+msgstr[0] "Διαγράφτηκε %'d αρχείο"
+msgstr[1] "Διαγράφτηκαν %'d αρχεία"
+
+#: src/nautilus-file-operations.c:1808
+#, c-format
+msgid "Deleting %'d file"
+msgid_plural "Deleting %'d files"
+msgstr[0] "Διαγράφεται %'d αρχείο"
+msgstr[1] "Διαγράφονται %'d αρχεία"
+
+#. To translators: %'d is the number of files completed for the operation,
+#. * so it will be something like 2/14.
+#: src/nautilus-file-operations.c:1836 src/nautilus-file-operations.c:1844
+#: src/nautilus-file-operations.c:1884 src/nautilus-file-operations.c:2227
+#: src/nautilus-file-operations.c:2235 src/nautilus-file-operations.c:2275
+#: src/nautilus-file-operations.c:4153 src/nautilus-file-operations.c:4161
+#: src/nautilus-file-operations.c:4232 src/nautilus-file-operations.c:8791
+#: src/nautilus-file-operations.c:8859
+#, c-format
+msgid "%'d / %'d"
+msgstr "%'d / %'d"
+
+#. To translators: %s will expand to a time duration like "2 minutes".
+#. * So the whole thing will be something like "1 / 5 -- 2 hours left (4 files/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#: src/nautilus-file-operations.c:1863 src/nautilus-file-operations.c:2254
+#, c-format
+msgid "%'d / %'d — %s left"
+msgid_plural "%'d / %'d — %s left"
+msgstr[0] "%'d / %'d — Απομένει %s"
+msgstr[1] "%'d / %'d — Απομένουν %s"
+
+#: src/nautilus-file-operations.c:1867 src/nautilus-file-operations.c:2257
+#, c-format
+msgid "(%d file/sec)"
+msgid_plural "(%d files/sec)"
+msgstr[0] "(%d αρχείο/δευτερόλεπτο)"
+msgstr[1] "(%d αρχεία/δευτερόλεπτο)"
+
+#: src/nautilus-file-operations.c:2026 src/nautilus-file-operations.c:3333
+msgid "Error while deleting."
+msgstr "Σφάλμα κατά τη διαγραφή."
+
+#: src/nautilus-file-operations.c:2037
+#, c-format
+msgid "There was an error deleting the folder “%s”."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή του φακέλου «%s»."
+
+#: src/nautilus-file-operations.c:2040
+#, c-format
+msgid "You do not have sufficient permissions to delete the folder “%s”."
+msgstr "Δεν έχετε τα απαραίτητα δικαιώματα για την διαγραφή του φακέλου «%s»."
+
+#: src/nautilus-file-operations.c:2047
+#, c-format
+msgid "There was an error deleting the file “%s”."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή του αρχείου «%s»."
+
+#: src/nautilus-file-operations.c:2050
+#, c-format
+msgid "You do not have sufficient permissions to delete the file “%s”."
+msgstr "Δεν έχετε τα απαραίτητα δικαιώματα για την διαγραφή του αρχείου «%s»."
+
+#: src/nautilus-file-operations.c:2177
+#, c-format
+msgid "Trashing “%s”"
+msgstr "Απορρίπτεται το «%s»"
+
+#
+#: src/nautilus-file-operations.c:2181
+#, c-format
+msgid "Trashed “%s”"
+msgstr "Απορρίφθηκε το «%s»"
+
+#: src/nautilus-file-operations.c:2192
+#, c-format
+msgid "Trashing %'d file"
+msgid_plural "Trashing %'d files"
+msgstr[0] "Απορρίπτεται %'d αρχείο"
+msgstr[1] "Απορρίπτονται %'d αρχεία"
+
+#
+#: src/nautilus-file-operations.c:2198
+#, c-format
+msgid "Trashed %'d file"
+msgid_plural "Trashed %'d files"
+msgstr[0] "Απορρίφθηκε %'d αρχείο"
+msgstr[1] "Απορρίφθηκαν %'d αρχεία"
+
+#. Translators: %s is a file name
+#: src/nautilus-file-operations.c:2347
+#, c-format
+msgid "“%s” can’t be put in the trash. Do you want to delete it immediately?"
+msgstr ""
+"Το «%s» δεν μπορεί να μεταφερθεί στα απορρίμματα. Θέλετε να το διαγράψετε "
+"οριστικά;"
+
+#: src/nautilus-file-operations.c:2359
+msgid "This remote location does not support sending items to the trash."
+msgstr ""
+"Αυτή η απομακρυσμένη τοποθεσία δεν υποστηρίζει μεταφορά αντικειμένων στα "
+"απορρίμματα."
+
+#: src/nautilus-file-operations.c:2656
+msgid "Trashing Files"
+msgstr "Μεταφορά αρχείων στα απορρίμματα"
+
+#: src/nautilus-file-operations.c:2660
+msgid "Deleting Files"
+msgstr "Διαγραφή αρχείων"
+
+#: src/nautilus-file-operations.c:2817
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Αδυναμία εξαγωγής %s"
+
+#: src/nautilus-file-operations.c:2822
+#, c-format
+msgid "Unable to unmount %s"
+msgstr "Αδυναμία αποπροσάρτησης %s"
+
+#: src/nautilus-file-operations.c:3002
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "Θέλετε να αδειάσετε τα απορρίμματα πριν την αποπροσάρτηση;"
+
+#: src/nautilus-file-operations.c:3004
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Για να κερδίσετε ελεύθερο χώρο στη συσκευή, θα πρέπει να αδειάσετε τα "
+"απορρίμματα. Όλα τα αντικείμενα στα απορρίμματα θα χαθούν οριστικά."
+
+#: src/nautilus-file-operations.c:3010
+msgid "Do _not Empty Trash"
+msgstr "_Να μη γίνει άδειασμα των απορριμμάτων"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-file-operations.c:3152 src/nautilus-files-view.c:6850
+#, c-format
+msgid "Unable to access “%s”"
+msgstr "Αδυναμία πρόσβασης στο “%s”"
+
+#: src/nautilus-file-operations.c:3237
+#, c-format
+msgid "Preparing to copy %'d file (%s)"
+msgid_plural "Preparing to copy %'d files (%s)"
+msgstr[0] "Προετοιμασία αντιγραφής %'d αρχείου (%s)"
+msgstr[1] "Προετοιμασία αντιγραφής %'d αρχείων (%s)"
+
+#: src/nautilus-file-operations.c:3250
+#, c-format
+msgid "Preparing to move %'d file (%s)"
+msgid_plural "Preparing to move %'d files (%s)"
+msgstr[0] "Προετοιμασία μετακίνησης %'d αρχείου (%s)"
+msgstr[1] "Προετοιμασία μετακίνησης %'d αρχείων (%s)"
+
+#: src/nautilus-file-operations.c:3263
+#, c-format
+msgid "Preparing to delete %'d file (%s)"
+msgid_plural "Preparing to delete %'d files (%s)"
+msgstr[0] "Προετοιμασία διαγραφής %'d αρχείου (%s)"
+msgstr[1] "Προετοιμασία διαγραφής %'d αρχείων (%s)"
+
+#: src/nautilus-file-operations.c:3273
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Προετοιμασία μεταφοράς στα απορρίμματα %'d αρχείου"
+msgstr[1] "Προετοιμασία μεταφοράς στα απορρίμματα %'d αρχείων"
+
+#: src/nautilus-file-operations.c:3281
+#, c-format
+msgid "Preparing to compress %'d file"
+msgid_plural "Preparing to compress %'d files"
+msgstr[0] "Προετοιμασία συμπίεσης %'d αρχείου"
+msgstr[1] "Προετοιμασία συμπίεσης %'d αρχείων"
+
+#: src/nautilus-file-operations.c:3323 src/nautilus-file-operations.c:4756
+#: src/nautilus-file-operations.c:4948 src/nautilus-file-operations.c:5030
+#: src/nautilus-file-operations.c:5305
+msgid "Error while copying."
+msgstr "Σφάλμα κατά την αντιγραφή."
+
+#: src/nautilus-file-operations.c:3328 src/nautilus-file-operations.c:4944
+#: src/nautilus-file-operations.c:5026 src/nautilus-file-operations.c:5301
+msgid "Error while moving."
+msgstr "Σφάλμα κατά τη μετακίνηση."
+
+#: src/nautilus-file-operations.c:3338
+msgid "Error while moving files to trash."
+msgstr "Σφάλμα κατά τη μετακίνηση αρχείων στα απορρίμματα."
+
+#: src/nautilus-file-operations.c:3342
+msgid "Error while compressing files."
+msgstr "Σφάλμα κατά τη συμπίεση των αρχείων."
+
+#: src/nautilus-file-operations.c:3433
+#, c-format
+msgid ""
+"Files in the folder “%s” cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Αδύνατος ο χειρισμός των αρχείων του φακέλου «%s», διότι δεν έχετε "
+"δικαιώματα ανάγνωσής τους."
+
+#: src/nautilus-file-operations.c:3439 src/nautilus-file-operations.c:4960
+#, c-format
+msgid ""
+"There was an error getting information about the files in the folder “%s”."
+msgstr ""
+"Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τα αρχεία του φακέλου «%s»."
+
+#: src/nautilus-file-operations.c:3494
+#, c-format
+msgid ""
+"The folder “%s” cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Αδύνατος ο χειρισμός του φακέλου «%s», διότι δεν έχετε δικαιώματα ανάγνωσής "
+"του."
+
+#: src/nautilus-file-operations.c:3500 src/nautilus-file-operations.c:5042
+#, c-format
+msgid "There was an error reading the folder “%s”."
+msgstr "Παρουσιάστηκε σφάλμα κατά την ανάγνωση του φακέλου «%s»."
+
+#: src/nautilus-file-operations.c:3610
+#, c-format
+msgid ""
+"The file “%s” cannot be handled because you do not have permissions to read "
+"it."
+msgstr ""
+"Αδύνατος ο χειρισμός του αρχείου «%s», διότι δεν έχετε δικαιώματα ανάγνωσής "
+"του."
+
+#: src/nautilus-file-operations.c:3615
+#, c-format
+msgid "There was an error getting information about “%s”."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τον «%s»."
+
+#: src/nautilus-file-operations.c:3737 src/nautilus-file-operations.c:3799
+#: src/nautilus-file-operations.c:3846 src/nautilus-file-operations.c:3890
+#, c-format
+msgid "Error while copying to “%s”."
+msgstr "Σφάλμα κατά την αντιγραφή στο «%s»."
+
+#: src/nautilus-file-operations.c:3742
+msgid "You do not have permissions to access the destination folder."
+msgstr "Δεν έχετε δικαιώματα πρόσβασης του φακέλου προορισμού."
+
+#: src/nautilus-file-operations.c:3746
+msgid "There was an error getting information about the destination."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τον προορισμό."
+
+#: src/nautilus-file-operations.c:3800
+msgid "The destination is not a folder."
+msgstr "Ο προορισμός δεν είναι φάκελος."
+
+#: src/nautilus-file-operations.c:3847
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Δεν υπάρχει διαθέσιμος χώρος στον προορισμό. Δοκιμάστε να διαγράψετε κάποια "
+"αρχεία για να κερδίσετε χώρο."
+
+#: src/nautilus-file-operations.c:3851
+#, c-format
+msgid "%s more space is required to copy to the destination."
+msgstr "Απαιτείται %s περισσότερος χώρος για να αντιγράψετε στον προορισμό."
+
+#: src/nautilus-file-operations.c:3891
+msgid "The destination is read-only."
+msgstr "Ο προορισμός είναι μόνο για ανάγνωση."
+
+#: src/nautilus-file-operations.c:3968
+#, c-format
+msgid "Moving “%s” to “%s”"
+msgstr "Μετακίνηση του «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:3972
+#, c-format
+msgid "Moved “%s” to “%s”"
+msgstr "Μετακινήθηκε το «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:3979
+#, c-format
+msgid "Copying “%s” to “%s”"
+msgstr "Αντιγραφή του «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:3983
+#, c-format
+msgid "Copied “%s” to “%s”"
+msgstr "Αντιγράφηκε το «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:4017
+#, c-format
+msgid "Duplicating “%s”"
+msgstr "Δημιουργία διπλότυπου του «%s»"
+
+#: src/nautilus-file-operations.c:4021
+#, c-format
+msgid "Duplicated “%s”"
+msgstr "Δημιουργήθηκε διπλότυπο του «%s»"
+
+#: src/nautilus-file-operations.c:4040
+#, c-format
+msgid "Moving %'d file to “%s”"
+msgid_plural "Moving %'d files to “%s”"
+msgstr[0] "Μετακινείται %'d αρχείο στο «%s»"
+msgstr[1] "Μετακινούνται %'d αρχεία στο «%s»"
+
+#: src/nautilus-file-operations.c:4046
+#, c-format
+msgid "Copying %'d file to “%s”"
+msgid_plural "Copying %'d files to “%s”"
+msgstr[0] "Αντιγράφεται %'d αρχείο στο «%s»"
+msgstr[1] "Αντιγράφονται %'d αρχεία στο «%s»"
+
+#: src/nautilus-file-operations.c:4065
+#, c-format
+msgid "Moved %'d file to “%s”"
+msgid_plural "Moved %'d files to “%s”"
+msgstr[0] "Μετακινήθηκε %'d αρχείο στο «%s»"
+msgstr[1] "Μετακινήθηκαν %'d αρχείο στο «%s»"
+
+#: src/nautilus-file-operations.c:4071
+#, c-format
+msgid "Copied %'d file to “%s”"
+msgid_plural "Copied %'d files to “%s”"
+msgstr[0] "Αντιγράφηκε %'d αρχείο στο «%s»"
+msgstr[1] "Αντιγράφηκαν %'d αρχεία στο «%s»"
+
+#: src/nautilus-file-operations.c:4094
+#, c-format
+msgid "Duplicating %'d file in “%s”"
+msgid_plural "Duplicating %'d files in “%s”"
+msgstr[0] "Δημιουργία %'d διπλότυπου αρχείου στο «%s»"
+msgstr[1] "Δημιουργία %'d διπλότυπων αρχείων στο «%s»"
+
+#: src/nautilus-file-operations.c:4104
+#, c-format
+msgid "Duplicated %'d file in “%s”"
+msgid_plural "Duplicated %'d files in “%s”"
+msgstr[0] "Δημιουργήθηκε %'d διπλότυπο αρχείο στο «%s»"
+msgstr[1] "Δημιουργήθηκαν %'d διπλότυπα αρχεία στο «%s»"
+
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", so something like "4 kb / 4 MB"
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB".
+#. To translators: %s will expand to a size like "2 bytes" or
+#. * "3 MB", so something like "4 kb / 4 MB"
+#.
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", so something like "4 kb / 4 MB"
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB".
+#: src/nautilus-file-operations.c:4143 src/nautilus-file-operations.c:4203
+#: src/nautilus-file-operations.c:8266 src/nautilus-file-operations.c:8528
+#: src/nautilus-file-operations.c:8786 src/nautilus-file-operations.c:8829
+#, c-format
+msgid "%s / %s"
+msgstr "%s / %s"
+
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", %s to a time duration like
+#. * "2 minutes". So the whole thing will be something like "2 kb / 4 MB -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#. To translators: %s will expand to a size like "2 bytes" or
+#. * "3 MB", %s to a time duration like "2 minutes". So the whole
+#. * thing will be something like
+#. * "2 kb / 4 MB -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the
+#. * remaining time (i.e. the %s argument).
+#.
+#. To translators: %s will expand to a size like "2 bytes" or "3 MB", %s to a time duration like
+#. * "2 minutes". So the whole thing will be something like "2 kb / 4 MB -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#: src/nautilus-file-operations.c:4187 src/nautilus-file-operations.c:8284
+#: src/nautilus-file-operations.c:8818
+#, c-format
+msgid "%s / %s — %s left (%s/sec)"
+msgid_plural "%s / %s — %s left (%s/sec)"
+msgstr[0] "%s / %s — Απομένει %s (%s/δευτ)"
+msgstr[1] "%s / %s — Απομένουν %s (%s/δευτ)"
+
+#. To translators: %s will expand to a time duration like "2 minutes".
+#. * So the whole thing will be something like "1 / 5 -- 2 hours left (4kb/sec)"
+#. *
+#. * The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#.
+#: src/nautilus-file-operations.c:4221 src/nautilus-file-operations.c:8848
+#, c-format
+msgid "%'d / %'d — %s left (%s/sec)"
+msgid_plural "%'d / %'d — %s left (%s/sec)"
+msgstr[0] "%'d / %'d — Απομένει %s (%s/δευτ)"
+msgstr[1] "%'d / %'d — Απομένουν %s (%s/δευτ)"
+
+#: src/nautilus-file-operations.c:4762
+#, c-format
+msgid ""
+"The folder “%s” cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Αδύνατη η αντιγραφή του φακέλου «%s», διότι δεν έχετε δικαιώματα δημιουργίας "
+"του στον προορισμό."
+
+#: src/nautilus-file-operations.c:4768
+#, c-format
+msgid "There was an error creating the folder “%s”."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργία του φακέλου «%s»."
+
+#: src/nautilus-file-operations.c:4955
+#, c-format
+msgid ""
+"Files in the folder “%s” cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Αδυναμία αντιγραφής των αρχείων του φακέλου «%s», διότι δεν έχετε δικαιώματα "
+"ανάγνωσής τους."
+
+#: src/nautilus-file-operations.c:4971
+msgid "_Skip files"
+msgstr "_Παράλειψη αρχείων"
+
+#: src/nautilus-file-operations.c:5037
+#, c-format
+msgid ""
+"The folder “%s” cannot be copied because you do not have permissions to read "
+"it."
+msgstr ""
+"Αδύνατη η αντιγραφή του φακέλου «%s», διότι δεν έχετε δικαιώματα ανάγνωσής "
+"του."
+
+#: src/nautilus-file-operations.c:5102 src/nautilus-file-operations.c:5719
+#: src/nautilus-file-operations.c:6420
+#, c-format
+msgid "Error while moving “%s”."
+msgstr "Σφάλμα κατά τη μετακίνηση του «%s»."
+
+#: src/nautilus-file-operations.c:5103
+msgid "Could not remove the source folder."
+msgstr "Αδύνατη η διαγραφή του φακέλου προέλευσης."
+
+#: src/nautilus-file-operations.c:5307
+msgid "There was an error getting information about the source."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τον προορισμό."
+
+#. the run_warning() frees all strings passed in automatically
+#: src/nautilus-file-operations.c:5409 src/nautilus-file-operations.c:6222
+msgid "You cannot move a folder into itself."
+msgstr "Αδύνατη η μετακίνηση ενός φακέλου στον εαυτό του."
+
+#: src/nautilus-file-operations.c:5410 src/nautilus-file-operations.c:6223
+msgid "You cannot copy a folder into itself."
+msgstr "Αδύνατη η αντιγραφή ενός φακέλου στον εαυτό του."
+
+#: src/nautilus-file-operations.c:5411 src/nautilus-file-operations.c:6224
+msgid "The destination folder is inside the source folder."
+msgstr "Ο φάκελος προορισμού βρίσκεται μέσα στο φάκελο προέλευσης."
+
+#. the run_warning() frees all strings passed in automatically
+#: src/nautilus-file-operations.c:5451
+msgid "You cannot move a file over itself."
+msgstr "Αδύνατη η μετακίνηση ενός αρχείου στον εαυτό του."
+
+#: src/nautilus-file-operations.c:5452
+msgid "You cannot copy a file over itself."
+msgstr "Αδύνατη η αντιγραφή ενός αρχείου στον εαυτό του."
+
+#: src/nautilus-file-operations.c:5453
+msgid "The source file would be overwritten by the destination."
+msgstr ""
+"Το αρχείο προέλευσης θα έπρεπε να αντικατασταθεί από το αρχείο προορισμού."
+
+#: src/nautilus-file-operations.c:5723 src/nautilus-file-operations.c:5811
+#, c-format
+msgid "Error while copying “%s”."
+msgstr "Σφάλμα κατά την αντιγραφή του «%s»."
+
+#: src/nautilus-file-operations.c:5726
+#, c-format
+msgid "Could not remove the already existing file with the same name in %s."
+msgstr ""
+"Αδύνατη η διαγραφή από το %s του ήδη υπάρχοντος αρχείου με το ίδιο όνομα."
+
+#: src/nautilus-file-operations.c:5813
+#, c-format
+msgid "There was an error copying the file into %s."
+msgstr "Παρουσιάστηκε σφάλμα κατά την αντιγραφή του αρχείου στο %s."
+
+#: src/nautilus-file-operations.c:6003
+msgid "Copying Files"
+msgstr "Αντιγραφή αρχείων"
+
+#: src/nautilus-file-operations.c:6123
+#, c-format
+msgid "Preparing to move to “%s”"
+msgstr "Προετοιμασία μετακίνησης στο «%s»"
+
+#: src/nautilus-file-operations.c:6127
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Προετοιμασία μετακίνησης %'d αρχείου"
+msgstr[1] "Προετοιμασία μετακίνησης %'d αρχείων"
+
+#: src/nautilus-file-operations.c:6422
+#, c-format
+msgid "There was an error moving the file into %s."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη μετακίνηση του αρχείου στο %s."
+
+#: src/nautilus-file-operations.c:6670
+msgid "Moving Files"
+msgstr "Μετακίνηση αρχείων"
+
+#: src/nautilus-file-operations.c:6776
+#, c-format
+msgid "Creating links in “%s”"
+msgstr "Δημιουργία συνδέσμων στο «%s»"
+
+#: src/nautilus-file-operations.c:6780
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Δημιουργία συνδέσμου προς %'d αρχείο"
+msgstr[1] "Δημιουργία συνδέσμου προς %'d αρχεία"
+
+#: src/nautilus-file-operations.c:6930
+#, c-format
+msgid "Error while creating link to %s."
+msgstr "Σφάλμα κατά τη δημιουργία συνδέσμου προς το %s."
+
+#: src/nautilus-file-operations.c:6934
+msgid "Symbolic links only supported for local files"
+msgstr "Οι συμβολικοί σύνδεσμοι υποστηρίζονται μόνο για τοπικά αρχεία"
+
+#: src/nautilus-file-operations.c:6939
+msgid "The target doesn’t support symbolic links."
+msgstr "Ο προορισμός δεν υποστηρίζει συμβολικούς συνδέσμους."
+
+#: src/nautilus-file-operations.c:6947
+#, c-format
+msgid "There was an error creating the symlink in %s."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργία συμβολικού συνδέσμου στο %s."
+
+#: src/nautilus-file-operations.c:7277
+msgid "Setting permissions"
+msgstr "Ορισμός δικαιωμάτων"
+
+#. localizers: the initial name of a new folder
+#: src/nautilus-file-operations.c:7556
+msgid "Untitled Folder"
+msgstr "Ανώνυμος φάκελος"
+
+#. localizers: the initial name of a new empty document
+#: src/nautilus-file-operations.c:7571
+msgid "Untitled Document"
+msgstr "Ανώνυμο έγγραφο"
+
+#: src/nautilus-file-operations.c:7854
+#, c-format
+msgid "Error while creating directory %s."
+msgstr "Σφάλμα κατά τη δημιουργία του φακέλου %s."
+
+#: src/nautilus-file-operations.c:7859
+#, c-format
+msgid "Error while creating file %s."
+msgstr "Σφάλμα κατά τη δημιουργία του αρχείου %s."
+
+#: src/nautilus-file-operations.c:7863
+#, c-format
+msgid "There was an error creating the directory in %s."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργία του καταλόγου στο %s."
+
+#: src/nautilus-file-operations.c:8138
+msgid "Emptying Trash"
+msgstr "Άδειασμα των απορριμμάτων"
+
+#: src/nautilus-file-operations.c:8180
+msgid "Verifying destination"
+msgstr "Επαλήθευση προορισμού"
+
+#: src/nautilus-file-operations.c:8224
+#, c-format
+msgid "Extracting “%s”"
+msgstr "Αποσυμπίεση «%s»"
+
+#: src/nautilus-file-operations.c:8328 src/nautilus-file-operations.c:8478
+#, c-format
+msgid "Error extracting “%s”"
+msgstr "Σφάλμα κατά την αποσυμπίεση του «%s»"
+
+#: src/nautilus-file-operations.c:8332
+#, c-format
+msgid "There was an error while extracting “%s”."
+msgstr "Παρουσιάστηκε σφάλμα κατά την αποσυμπίεση του «%s»."
+
+#: src/nautilus-file-operations.c:8404
+msgid "Password Required"
+msgstr "Απαιτείται συνθηματικό"
+
+#: src/nautilus-file-operations.c:8408
+msgid "Extract"
+msgstr "Αποσυμπίεση"
+
+#
+#: src/nautilus-file-operations.c:8420
+#, c-format
+msgid "“%s” is password-protected."
+msgstr "Το «%s» είναι προστατευμένο με συνθηματικό."
+
+#: src/nautilus-file-operations.c:8430
+msgid "Enter password…"
+msgstr "Εισαγωγή συνθηματικού…"
+
+#: src/nautilus-file-operations.c:8481
+#, c-format
+msgid "Not enough free space to extract %s"
+msgstr "Δεν υπάρχει επαρκής ελεύθερος χώρος για αποσυμπίεση του %s"
+
+#: src/nautilus-file-operations.c:8511
+#, c-format
+msgid "Extracted “%s” to “%s”"
+msgstr "Αποσυμπιέστηκε το «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:8517
+#, c-format
+msgid "Extracted %'d file to “%s”"
+msgid_plural "Extracted %'d files to “%s”"
+msgstr[0] "Αποσυμπιέστηκε %'d αρχείο στο «%s»"
+msgstr[1] "Αποσυμπιέστηκαν %'d αρχεία στο «%s»"
+
+#: src/nautilus-file-operations.c:8551
+msgid "Preparing to extract"
+msgstr "Προετοιμασία για αποσυμπίεση"
+
+#: src/nautilus-file-operations.c:8683
+msgid "Extracting Files"
+msgstr "Γίνεται αποσυμπίεση αρχείων"
+
+#: src/nautilus-file-operations.c:8742
+#, c-format
+msgid "Compressing “%s” into “%s”"
+msgstr "Συμπίεση του «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:8748
+#, c-format
+msgid "Compressing %'d file into “%s”"
+msgid_plural "Compressing %'d files into “%s”"
+msgstr[0] "Συμπίεση %'d αρχείου στο «%s»"
+msgstr[1] "Συμπίεση %'d αρχείων στο «%s»"
+
+#: src/nautilus-file-operations.c:8896
+#, c-format
+msgid "Error compressing “%s” into “%s”"
+msgstr "Σφλάμα κατά τη συμπίεση του «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:8902
+#, c-format
+msgid "Error compressing %'d file into “%s”"
+msgid_plural "Error compressing %'d files into “%s”"
+msgstr[0] "Σφλάμα κατά τη συμπίεση %'d αρχείου στο «%s»"
+msgstr[1] "Σφλάμα κατά τη συμπίεση %'d αρχείων στο «%s»"
+
+#: src/nautilus-file-operations.c:8912
+msgid "There was an error while compressing files."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη συμπίεση αρχείων."
+
+#: src/nautilus-file-operations.c:8937
+#, c-format
+msgid "Compressed “%s” into “%s”"
+msgstr "Συμπιέστηκε το «%s» στο «%s»"
+
+#: src/nautilus-file-operations.c:8943
+#, c-format
+msgid "Compressed %'d file into “%s”"
+msgid_plural "Compressed %'d files into “%s”"
+msgstr[0] "Συμπιέστηκε %'d αρχείο στο «%s»"
+msgstr[1] "Συμπιέστηκαν %'d αρχεία στο «%s»"
+
+#: src/nautilus-file-operations.c:9035
+msgid "Compressing Files"
+msgstr "Γίνεται συμπιέση αρχείων"
+
+#: src/nautilus-files-view.c:405
+msgid "Searching…"
+msgstr "Αναζήτηση…"
+
+#: src/nautilus-files-view.c:1198 src/nautilus-mime-actions.c:831
+msgid "Are you sure you want to open all files?"
+msgstr "Σίγουρα θέλετε να ανοίξετε όλα τα αρχεία;"
+
+#: src/nautilus-files-view.c:1201
+#, c-format
+msgid "This will open %'d separate tab."
+msgid_plural "This will open %'d separate tabs."
+msgstr[0] "Θα ανοίξει %'d ξεχωριστή καρτέλα."
+msgstr[1] "Θα ανοίξουν %'d ξεχωριστές καρτέλες."
+
+#: src/nautilus-files-view.c:1206
+#, c-format
+msgid "This will open %'d separate window."
+msgid_plural "This will open %'d separate windows."
+msgstr[0] "Θα ανοίξει %'d ξεχωριστό παράθυρο."
+msgstr[1] "Θα ανοίξουν %'d ξεχωριστά παράθυρα."
+
+#: src/nautilus-files-view.c:1210 src/nautilus-location-entry.c:282
+#: src/nautilus-mime-actions.c:843 src/nautilus-mime-actions.c:1029
+msgid "_OK"
+msgstr "_Εντάξει"
+
+#: src/nautilus-files-view.c:1760
+msgid "Select Items Matching"
+msgstr "Επιλογή αντικειμένων που ταιριάζουν"
+
+#: src/nautilus-files-view.c:1765 src/nautilus-files-view.c:6035
+#: src/nautilus-files-view.c:6495
+msgid "_Select"
+msgstr "_Επιλογή"
+
+#: src/nautilus-files-view.c:1773
+msgid "_Pattern:"
+msgstr "Μο_τίβο:"
+
+#: src/nautilus-files-view.c:1779
+msgid "Examples: "
+msgstr "Παραδείγματα: "
+
+#
+#: src/nautilus-files-view.c:2752
+msgid "Could not paste files"
+msgstr "Αδυναμία επικόλλησης αρχείων"
+
+#: src/nautilus-files-view.c:2753
+msgid "Permissions do not allow pasting files in this directory"
+msgstr ""
+"Τα δικαιώματα δεν επιτρέπουν την επικόλληση αρχείων σε αυτόν τον κατάλογο"
+
+#: src/nautilus-files-view.c:2916
+msgid ""
+"Nautilus 3.6 deprecated this directory and tried migrating this "
+"configuration to ~/.local/share/nautilus"
+msgstr ""
+"Στον Ναυτίλο 3.6 αυτός ο φάκελος είναι παρωχημένος και έγινε προσπάθεια "
+"μεταφοράς αυτής της ρύθμισης στο ~/.local/share/nautilus"
+
+#
+#: src/nautilus-files-view.c:3414 src/nautilus-files-view.c:3461
+#, c-format
+msgid "“%s” selected"
+msgstr "Επιλέχθηκε το «%s»"
+
+#
+#: src/nautilus-files-view.c:3418
+#, c-format
+msgid "%'d folder selected"
+msgid_plural "%'d folders selected"
+msgstr[0] "Επιλέχθηκε %'d φάκελος"
+msgstr[1] "Επιλέχθηκαν %'d φάκελοι"
+
+#: src/nautilus-files-view.c:3432
+#, c-format
+msgid "(containing %'d item)"
+msgid_plural "(containing %'d items)"
+msgstr[0] "(περιέχει %'d αντικείμενο)"
+msgstr[1] "(περιέχει %'d αντικείμενα)"
+
+#. translators: this is preceded with a string of form 'N folders' (N more than 1)
+#: src/nautilus-files-view.c:3447
+#, c-format
+msgid "(containing a total of %'d item)"
+msgid_plural "(containing a total of %'d items)"
+msgstr[0] "(περιέχουν συνολικά %'d αντικείμενο)"
+msgstr[1] "(περιέχουν συνολικά %'d αντικείμενα)"
+
+#
+#: src/nautilus-files-view.c:3466
+#, c-format
+msgid "%'d item selected"
+msgid_plural "%'d items selected"
+msgstr[0] "Επιλέχθηκε %'d αντικείμενο"
+msgstr[1] "Επιλέχθηκαν %'d αντικείμενα"
+
+#
+#. Folders selected also, use "other" terminology
+#: src/nautilus-files-view.c:3475
+#, c-format
+msgid "%'d other item selected"
+msgid_plural "%'d other items selected"
+msgstr[0] "Επιλέχθηκε %'d επιπλέον αντικείμενο"
+msgstr[1] "Επιλέχθηκαν %'d επιπλέον αντικείμενα"
+
+#
+#. This is marked for translation in case a localiser
+#. * needs to use something other than parentheses. The
+#. * the message in parentheses is the size of the selected items.
+#.
+#: src/nautilus-files-view.c:3490
+#, c-format
+msgid "(%s)"
+msgstr "(%s)"
+
+#. This is marked for translation in case a localizer
+#. * needs to change ", " to something else. The comma
+#. * is between the message about the number of folders
+#. * and the number of items in those folders and the
+#. * message about the number of other items and the
+#. * total size of those items.
+#.
+#: src/nautilus-files-view.c:3523
+#, c-format
+msgid "%s %s, %s %s"
+msgstr "%s %s, %s %s"
+
+#
+#: src/nautilus-files-view.c:6022
+msgid "Select Move Destination"
+msgstr "Επιλογή προορισμού μετακίνησης"
+
+#
+#: src/nautilus-files-view.c:6026
+msgid "Select Copy Destination"
+msgstr "Επιλογή προορισμού αντιγραφής"
+
+#: src/nautilus-files-view.c:6491
+msgid "Select Extract Destination"
+msgstr "Επιλογή προορισμού αποσυμπίεσης"
+
+#: src/nautilus-files-view.c:6789
+msgid "Wallpapers"
+msgstr "Ταπετσαρίες"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-files-view.c:6880
+#, c-format
+msgid "Unable to remove “%s”"
+msgstr "Αδυναμία αφαίρεσης του «%s»"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-files-view.c:6910
+#, c-format
+msgid "Unable to eject “%s”"
+msgstr "Αδυναμία εξαγωγής του «%s»"
+
+#: src/nautilus-files-view.c:6935
+msgid "Unable to stop drive"
+msgstr "Αδυναμία διακοπής μονάδας δίσκου"
+
+#. Translators: %s is a file name formatted for display
+#: src/nautilus-files-view.c:7048
+#, c-format
+msgid "Unable to start “%s”"
+msgstr "Αδυναμία εκκίνησης του «%s»"
+
+#: src/nautilus-files-view.c:7970
+#, c-format
+msgid "New Folder with Selection (%'d Item)"
+msgid_plural "New Folder with Selection (%'d Items)"
+msgstr[0] "Νέος φάκελος με επιλογή (%'d αντικείμενο)"
+msgstr[1] "Νέος φάκελος με επιλογή (%'d αντικείμενα)"
+
+#: src/nautilus-files-view.c:8028
+#, c-format
+msgid "Open With %s"
+msgstr "Άνοιγμα με %s"
+
+#: src/nautilus-files-view.c:8040
+msgid "Run"
+msgstr "Εκτέλεση"
+
+#: src/nautilus-files-view.c:8045
+msgid "Extract Here"
+msgstr "Αποσυμπίεση εδώ"
+
+#: src/nautilus-files-view.c:8046
+msgid "Extract to…"
+msgstr "Αποσυμπίεση σε…"
+
+#
+#: src/nautilus-files-view.c:8050
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#
+#: src/nautilus-files-view.c:8106
+#: src/resources/ui/nautilus-files-view-context-menus.ui:109
+msgid "_Start"
+msgstr "_Εκκίνηση"
+
+#: src/nautilus-files-view.c:8112 src/gtk/nautilusgtkplacesview.c:1750
+msgid "_Connect"
+msgstr "Σύν_δεση"
+
+#: src/nautilus-files-view.c:8118
+msgid "_Start Multi-disk Drive"
+msgstr "_Εκκίνηση μονάδας πολλαπλών δίσκων"
+
+#: src/nautilus-files-view.c:8124
+msgid "U_nlock Drive"
+msgstr "_Ξεκλείδωμα μονάδας δίσκου"
+
+#: src/nautilus-files-view.c:8142
+msgid "Stop Drive"
+msgstr "Διακοπή μονάδας δίσκου"
+
+#: src/nautilus-files-view.c:8148
+msgid "_Safely Remove Drive"
+msgstr "Ασφα_λής αφαίρεση μονάδας δίσκου"
+
+#: src/nautilus-files-view.c:8154 src/gtk/nautilusgtkplacesview.c:1740
+msgid "_Disconnect"
+msgstr "_Αποσύνδεση"
+
+#: src/nautilus-files-view.c:8160
+msgid "_Stop Multi-disk Drive"
+msgstr "_Διακοπή μονάδας πολλαπλών δίσκων"
+
+#: src/nautilus-files-view.c:8166
+msgid "_Lock Drive"
+msgstr "Κλείδ_ωμα μονάδας δίσκου"
+
+#: src/nautilus-files-view.c:9931
+msgid "Content View"
+msgstr "Προβολή περιεχομένου"
+
+#: src/nautilus-files-view.c:9932
+msgid "View of the current folder"
+msgstr "Προβολή του τρέχοντος φακέλου"
+
+#: src/nautilus-files-view-dnd.c:61 src/nautilus-files-view-dnd.c:95
+#: src/nautilus-files-view-dnd.c:157
+msgid "Drag and drop is not supported."
+msgstr "Δεν υποστηρίζεται η μεταφορά και απόθεση."
+
+#: src/nautilus-files-view-dnd.c:62
+msgid "Drag and drop is only supported on local file systems."
+msgstr ""
+"Η μεταφορά και απόθεση υποστηρίζεται μόνο για τοπικά συστήματα αρχείων."
+
+#: src/nautilus-files-view-dnd.c:96 src/nautilus-files-view-dnd.c:158
+msgid "An invalid drag type was used."
+msgstr "Χρησιμοποιήθηκε άκυρος τρόπος μεταφοράς."
+
+#. Translator: This is the filename used for when you dnd text to a directory
+#: src/nautilus-files-view-dnd.c:249
+msgid "Dropped Text.txt"
+msgstr "Αφημένο κείμενο.txt"
+
+#. Translator: This is the filename used for when you dnd raw
+#. * data to a directory, if the source didn't supply a name.
+#.
+#: src/nautilus-files-view-dnd.c:340
+msgid "dropped data"
+msgstr "αφημένα δεδομένα"
+
+#: src/nautilus-file-undo-operations.c:176
+#: src/resources/ui/nautilus-window.ui:82
+msgid "Undo"
+msgstr "Αναίρεση"
+
+#: src/nautilus-file-undo-operations.c:180
+msgid "Undo last action"
+msgstr "Αναίρεση της τελευταίας ενέργειας"
+
+#: src/nautilus-file-undo-operations.c:185
+msgid "Redo"
+msgstr "Επανάληψη"
+
+#: src/nautilus-file-undo-operations.c:189
+msgid "Redo last undone action"
+msgstr "Επανάληψη της τελευταίας αναιρεμένης ενέργειας"
+
+#: src/nautilus-file-undo-operations.c:452
+#, c-format
+msgid "Move %d item back to “%s”"
+msgid_plural "Move %d items back to “%s”"
+msgstr[0] "Μετακίνηση %d αντικειμένου πίσω στο «%s»"
+msgstr[1] "Μετακίνηση %d αντικειμένων πίσω στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:455
+#, c-format
+msgid "Move %d item to “%s”"
+msgid_plural "Move %d items to “%s”"
+msgstr[0] "Μετακίνηση %d αντικειμένου στο «%s»"
+msgstr[1] "Μετακίνηση %d αντικειμένων στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:459
+#, c-format
+msgid "_Undo Move %d item"
+msgid_plural "_Undo Move %d items"
+msgstr[0] "Α_ναίρεση μετακίνησης %d αντικειμένου"
+msgstr[1] "Α_ναίρεση μετακίνησης %d αντικειμένων"
+
+#: src/nautilus-file-undo-operations.c:462
+#, c-format
+msgid "_Redo Move %d item"
+msgid_plural "_Redo Move %d items"
+msgstr[0] "Ε_πανάληψη μετακίνησης %d αντικειμένου"
+msgstr[1] "Ε_πανάληψη μετακίνησης %d αντικειμένων"
+
+#: src/nautilus-file-undo-operations.c:468
+#, c-format
+msgid "Move “%s” back to “%s”"
+msgstr "Μετακίνηση «%s» πίσω στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:469
+#, c-format
+msgid "Move “%s” to “%s”"
+msgstr "Μετακίνηση «%s» στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:471
+msgid "_Undo Move"
+msgstr "_Αναίρεση μετακίνησης"
+
+#
+#: src/nautilus-file-undo-operations.c:472
+msgid "_Redo Move"
+msgstr "Επανά_ληψη μετακίνησης"
+
+#: src/nautilus-file-undo-operations.c:477
+msgid "_Undo Restore from Trash"
+msgstr "_Αναίρεση επαναφοράς από τα απορρίμματα"
+
+#: src/nautilus-file-undo-operations.c:478
+msgid "_Redo Restore from Trash"
+msgstr "_Επανάληψη επαναφοράς από τα απορρίμματα"
+
+#: src/nautilus-file-undo-operations.c:482
+#, c-format
+msgid "Move %d item back to trash"
+msgid_plural "Move %d items back to trash"
+msgstr[0] "Μετακίνηση %d αντικειμένου πίσω στα απορρίμματα"
+msgstr[1] "Μετακίνηση %d αντικειμένων πίσω στα απορρίμματα"
+
+#: src/nautilus-file-undo-operations.c:485
+#: src/nautilus-file-undo-operations.c:1610
+#, c-format
+msgid "Restore %d item from trash"
+msgid_plural "Restore %d items from trash"
+msgstr[0] "Επαναφορά %d αντικειμένου από τα απορρίμματα"
+msgstr[1] "Επαναφορά %d αντικειμένων από τα απορρίμματα"
+
+#: src/nautilus-file-undo-operations.c:491
+#, c-format
+msgid "Move “%s” back to trash"
+msgstr "Μετακίνηση «%s» πίσω στα απορρίμματα"
+
+#: src/nautilus-file-undo-operations.c:492
+#, c-format
+msgid "Restore “%s” from trash"
+msgstr "Επαναφορά «%s» από τα απορρίμματα"
+
+#: src/nautilus-file-undo-operations.c:499
+#, c-format
+msgid "Delete %d copied item"
+msgid_plural "Delete %d copied items"
+msgstr[0] "Διαγραφή %d αντιγραφέντος αντικειμένου"
+msgstr[1] "Διαγραφή %d αντιγραφέντων αντικειμένων"
+
+#: src/nautilus-file-undo-operations.c:502
+#, c-format
+msgid "Copy %d item to “%s”"
+msgid_plural "Copy %d items to “%s”"
+msgstr[0] "Αντιγραφή %d αντικειμένου στο «%s»"
+msgstr[1] "Αντιγραφή %d αντικειμένων στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:506
+#, c-format
+msgid "_Undo Copy %d item"
+msgid_plural "_Undo Copy %d items"
+msgstr[0] "Αναί_ρεση αντιγραφής %d αντικειμένου"
+msgstr[1] "Αναί_ρεση αντιγραφής %d αντικειμένων"
+
+#: src/nautilus-file-undo-operations.c:509
+#, c-format
+msgid "_Redo Copy %d item"
+msgid_plural "_Redo Copy %d items"
+msgstr[0] "Επανάλη_ψη αντιγραφής %d αντικειμένου"
+msgstr[1] "Επανάλη_ψη αντιγραφής %d αντικειμένων"
+
+#
+#: src/nautilus-file-undo-operations.c:515
+#: src/nautilus-file-undo-operations.c:542
+#: src/nautilus-file-undo-operations.c:826
+#: src/nautilus-file-undo-operations.c:2367
+#: src/nautilus-file-undo-operations.c:2529
+#, c-format
+msgid "Delete “%s”"
+msgstr "Διαγραφή «%s»"
+
+#: src/nautilus-file-undo-operations.c:516
+#, c-format
+msgid "Copy “%s” to “%s”"
+msgstr "Αντιγραφή «%s» στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:518
+msgid "_Undo Copy"
+msgstr "Αναί_ρεση αντιγραφής"
+
+#: src/nautilus-file-undo-operations.c:519
+msgid "_Redo Copy"
+msgstr "Επανάλη_ψη αντιγραφής"
+
+#: src/nautilus-file-undo-operations.c:526
+#, c-format
+msgid "Delete %d duplicated item"
+msgid_plural "Delete %d duplicated items"
+msgstr[0] "Διαγραφή %d διπλοτύπου αντικειμένου"
+msgstr[1] "Διαγραφή %d διπλότυπων αντικειμένων"
+
+#: src/nautilus-file-undo-operations.c:529
+#, c-format
+msgid "Duplicate %d item in “%s”"
+msgid_plural "Duplicate %d items in “%s”"
+msgstr[0] "Δημιουργία %d διπλότυπου αντικειμένου στο «%s»"
+msgstr[1] "Δημιουργία %d διπλότυπων αντικειμένων στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:533
+#, c-format
+msgid "_Undo Duplicate %d item"
+msgid_plural "_Undo Duplicate %d items"
+msgstr[0] "_Αναίρεση δημιουργίας %d διπλότυπου αντικειμένου"
+msgstr[1] "_Αναίρεση δημιουργίας %d διπλότυπων αντικειμένων"
+
+#: src/nautilus-file-undo-operations.c:536
+#, c-format
+msgid "_Redo Duplicate %d item"
+msgid_plural "_Redo Duplicate %d items"
+msgstr[0] "_Επανάληψη δημιουργίας %d διπλότυπου αντικειμένου"
+msgstr[1] "_Επανάληψη δημιουργίας %d διπλότυπων αντικειμένων"
+
+#: src/nautilus-file-undo-operations.c:543
+#, c-format
+msgid "Duplicate “%s” in “%s”"
+msgstr "Δημιουργία διπλότυπου «%s» στο «%s»"
+
+#: src/nautilus-file-undo-operations.c:546
+msgid "_Undo Duplicate"
+msgstr "_Αναίρεση δημιουργίας διπλότυπου"
+
+#: src/nautilus-file-undo-operations.c:547
+msgid "_Redo Duplicate"
+msgstr "_Επανάληψη δημιουργίας διπλότυπου"
+
+#: src/nautilus-file-undo-operations.c:554
+#, c-format
+msgid "Delete links to %d item"
+msgid_plural "Delete links to %d items"
+msgstr[0] "Διαγραφή συνδέσμων με %d αντικείμενο"
+msgstr[1] "Διαγραφή συνδέσμων με %d αντικείμενα"
+
+#: src/nautilus-file-undo-operations.c:557
+#, c-format
+msgid "Create links to %d item"
+msgid_plural "Create links to %d items"
+msgstr[0] "Δημιουργία συνδέσμων προς %d αντικείμενο"
+msgstr[1] "Δημιουργία συνδέσμων προς %d αντικείμενα"
+
+#: src/nautilus-file-undo-operations.c:563
+#, c-format
+msgid "Delete link to “%s”"
+msgstr "Διαγραφή συνδέσμου προς το «%s»"
+
+#: src/nautilus-file-undo-operations.c:564
+#, c-format
+msgid "Create link to “%s”"
+msgstr "Δημιουργία συνδέσμου προς το «%s»"
+
+#: src/nautilus-file-undo-operations.c:566
+msgid "_Undo Create Link"
+msgstr "Α_ναίρεση δημιουργίας συνδέσμου"
+
+#: src/nautilus-file-undo-operations.c:567
+msgid "_Redo Create Link"
+msgstr "Επα_νάληψη δημιουργίας συνδέσμου"
+
+#: src/nautilus-file-undo-operations.c:830
+#, c-format
+msgid "Create an empty file “%s”"
+msgstr "Δημιουργία κενού αρχείου «%s»"
+
+#: src/nautilus-file-undo-operations.c:832
+msgid "_Undo Create Empty File"
+msgstr "Α_ναίρεση δημιουργίας κενού αρχείου"
+
+#: src/nautilus-file-undo-operations.c:833
+msgid "_Redo Create Empty File"
+msgstr "Ε_πανάληψη δημιουργίας κενού αρχείου"
+
+#: src/nautilus-file-undo-operations.c:837
+#, c-format
+msgid "Create a new folder “%s”"
+msgstr "Δημιουργία νέου φακέλου «%s»"
+
+#: src/nautilus-file-undo-operations.c:839
+msgid "_Undo Create Folder"
+msgstr "Α_ναίρεση δημιουργίας φακέλου"
+
+#: src/nautilus-file-undo-operations.c:840
+msgid "_Redo Create Folder"
+msgstr "Επα_νάληψη δημιουργίας φακέλου"
+
+#: src/nautilus-file-undo-operations.c:844
+#, c-format
+msgid "Create new file “%s” from template "
+msgstr "Δημιουργία νέου αρχείου «%s» από το πρότυπο "
+
+#: src/nautilus-file-undo-operations.c:846
+msgid "_Undo Create from Template"
+msgstr "_Αναίρεση δημιουργίας από το πρότυπο"
+
+#: src/nautilus-file-undo-operations.c:847
+msgid "_Redo Create from Template"
+msgstr "_Επανάληψη δημιουργίας από το πρότυπο"
+
+#: src/nautilus-file-undo-operations.c:1047
+#: src/nautilus-file-undo-operations.c:1048
+#, c-format
+msgid "Rename “%s” as “%s”"
+msgstr "Μετονομασία του «%s» σε «%s»."
+
+#
+#: src/nautilus-file-undo-operations.c:1050
+msgid "_Undo Rename"
+msgstr "_Αναίρεση μετονομασίας"
+
+#
+#: src/nautilus-file-undo-operations.c:1051
+msgid "_Redo Rename"
+msgstr "_Επανάληψη μετονομασίας"
+
+#: src/nautilus-file-undo-operations.c:1166
+#: src/nautilus-file-undo-operations.c:1170
+#, c-format
+msgid "Batch rename %d file"
+msgid_plural "Batch rename %d files"
+msgstr[0] "Μαζική μετονομασία %d αρχείου"
+msgstr[1] "Μαζική μετονομασία %d αρχείων"
+
+#: src/nautilus-file-undo-operations.c:1175
+msgid "_Undo Batch Rename"
+msgstr "_Αναίρεση μαζικής μετονομασίας"
+
+#: src/nautilus-file-undo-operations.c:1176
+msgid "_Redo Batch Rename"
+msgstr "_Επανάληψη μαζικής μετονομασίας"
+
+#: src/nautilus-file-undo-operations.c:1392
+#: src/nautilus-file-undo-operations.c:1409
+#, c-format
+msgid "Unstar %d file"
+msgid_plural "Unstar %d files"
+msgstr[0] "Κατάργηση επισήμανσης %d αρχείου"
+msgstr[1] "Κατάργηση επισήμανσης %d αρχείων"
+
+#: src/nautilus-file-undo-operations.c:1396
+#: src/nautilus-file-undo-operations.c:1405
+#, c-format
+msgid "Star %d file"
+msgid_plural "Star %d files"
+msgstr[0] "Επισήμανση %d αρχείου"
+msgstr[1] "Επισήμανση %d αρχείων"
+
+#: src/nautilus-file-undo-operations.c:1400
+msgid "_Undo Starring"
+msgstr "_Αναίρεση επισήμανσης"
+
+#: src/nautilus-file-undo-operations.c:1401
+msgid "_Redo Starring"
+msgstr "_Επανάληψη επισήμανσης"
+
+#: src/nautilus-file-undo-operations.c:1413
+msgid "_Undo Unstarring"
+msgstr "_Αναίρεση της κατάργησης επισήμανσης"
+
+#: src/nautilus-file-undo-operations.c:1414
+msgid "_Redo Unstarring"
+msgstr "_Επανάληψη αναίρεσης επισήμανσης"
+
+#: src/nautilus-file-undo-operations.c:1613
+#, c-format
+msgid "Move %d item to trash"
+msgid_plural "Move %d items to trash"
+msgstr[0] "Μετακίνηση %d αντικειμένου στα απορρίματα"
+msgstr[1] "Μετακίνηση %d αντικειμένων στα απορρίματα"
+
+#: src/nautilus-file-undo-operations.c:1627
+#, c-format
+msgid "Restore “%s” to “%s”"
+msgstr "Επαναφορά του «%s» σε «%s»."
+
+#: src/nautilus-file-undo-operations.c:1634
+#, c-format
+msgid "Move “%s” to trash"
+msgstr "Μετακίνηση «%s» στα απορρίμματα"
+
+#
+#: src/nautilus-file-undo-operations.c:1639
+msgid "_Undo Trash"
+msgstr "_Αναίρεση απορριμμάτων"
+
+#: src/nautilus-file-undo-operations.c:1640
+msgid "_Redo Trash"
+msgstr "_Επανάληψη απορριμμάτων"
+
+#: src/nautilus-file-undo-operations.c:1935
+#, c-format
+msgid "Restore original permissions of items enclosed in “%s”"
+msgstr ""
+"Επαναφορά των αρχικών δικαιωμάτων των περιεχόμενων αντικειμένων σε «%s»"
+
+#: src/nautilus-file-undo-operations.c:1936
+#, c-format
+msgid "Set permissions of items enclosed in “%s”"
+msgstr "Ρύθμιση των δικαιωμάτων των περιεχόμενων αντικειμένων σε «%s»"
+
+#: src/nautilus-file-undo-operations.c:1938
+#: src/nautilus-file-undo-operations.c:2091
+msgid "_Undo Change Permissions"
+msgstr "_Αναίρεση δικαιωμάτων αλλαγής"
+
+#: src/nautilus-file-undo-operations.c:1939
+#: src/nautilus-file-undo-operations.c:2092
+msgid "_Redo Change Permissions"
+msgstr "_Επανάληψη δικαιωμάτων αλλαγής"
+
+#: src/nautilus-file-undo-operations.c:2088
+#, c-format
+msgid "Restore original permissions of “%s”"
+msgstr "Επαναφορά των αρχικών δικαιωμάτων του «%s»"
+
+#: src/nautilus-file-undo-operations.c:2089
+#, c-format
+msgid "Set permissions of “%s”"
+msgstr "Ορισμός δικαιωμάτων του «%s»"
+
+#: src/nautilus-file-undo-operations.c:2201
+#, c-format
+msgid "Restore group of “%s” to “%s”"
+msgstr "Επαναφορά ομάδας «%s» σε «%s»"
+
+#: src/nautilus-file-undo-operations.c:2203
+#, c-format
+msgid "Set group of “%s” to “%s”"
+msgstr "Ορισμός ομάδας «%s» σε «%s»"
+
+#: src/nautilus-file-undo-operations.c:2206
+msgid "_Undo Change Group"
+msgstr "_Αναίρεση αλλαγής ομάδας"
+
+#: src/nautilus-file-undo-operations.c:2207
+msgid "_Redo Change Group"
+msgstr "Επανά_ληψη αλλαγής ομάδας"
+
+#: src/nautilus-file-undo-operations.c:2211
+#, c-format
+msgid "Restore owner of “%s” to “%s”"
+msgstr "Επαναφορά ιδιοκτήτη «%s» σε «%s»"
+
+#: src/nautilus-file-undo-operations.c:2213
+#, c-format
+msgid "Set owner of “%s” to “%s”"
+msgstr "Ορισμός ιδιοκτήτη «%s» σε «%s»"
+
+#: src/nautilus-file-undo-operations.c:2216
+msgid "_Undo Change Owner"
+msgstr "_Αναίρεση αλλαγής ιδιοκτήτη"
+
+#: src/nautilus-file-undo-operations.c:2217
+msgid "_Redo Change Owner"
+msgstr "Επανά_ληψη αλλαγής ιδιοκτήτη"
+
+#: src/nautilus-file-undo-operations.c:2353
+msgid "_Undo Extract"
+msgstr "_Αναίρεση αποσυμπίεσης"
+
+#: src/nautilus-file-undo-operations.c:2354
+msgid "_Redo Extract"
+msgstr "_Επανάληψη αποσυμπίεσης"
+
+#: src/nautilus-file-undo-operations.c:2371
+#, c-format
+msgid "Delete %d extracted file"
+msgid_plural "Delete %d extracted files"
+msgstr[0] "Διαγραφή %d αποσυμπιεσμένου αρχείου"
+msgstr[1] "Διαγραφή %d αποσυμπιεσμένων αρχείων"
+
+#: src/nautilus-file-undo-operations.c:2385
+#, c-format
+msgid "Extract “%s”"
+msgstr "Αποσυμπίεση «%s»"
+
+#: src/nautilus-file-undo-operations.c:2389
+#, c-format
+msgid "Extract %d file"
+msgid_plural "Extract %d files"
+msgstr[0] "Αποσυμπίεση %d αρχείου"
+msgstr[1] "Αποσυμπίεση %d αρχείων"
+
+#: src/nautilus-file-undo-operations.c:2540
+#, c-format
+msgid "Compress “%s”"
+msgstr "Συμπίεση «%s»"
+
+#: src/nautilus-file-undo-operations.c:2544
+#, c-format
+msgid "Compress %d file"
+msgid_plural "Compress %d files"
+msgstr[0] "Συμπίεση %d αρχείου"
+msgstr[1] "Συμπίεση %d αρχείων"
+
+#: src/nautilus-file-undo-operations.c:2550
+msgid "_Undo Compress"
+msgstr "_Αναίρεση συμπίεσης"
+
+#: src/nautilus-file-undo-operations.c:2551
+msgid "_Redo Compress"
+msgstr "_Επανάληψη συμπίεσης"
+
+#: src/nautilus-file-utilities.c:882
+#, c-format
+msgid "Could not determine original location of “%s” "
+msgstr "Δε βρέθηκε η αρχική θέση του «%s» "
+
+#: src/nautilus-file-utilities.c:886
+msgid "The item cannot be restored from trash"
+msgstr "Αδύνατη η αποκατάσταση του αντικειμένου από τα απορρίμματα"
+
+#. translators: these describe the contents of removable media
+#: src/nautilus-file-utilities.c:1001
+msgid "Audio CD"
+msgstr "CD ήχου"
+
+#: src/nautilus-file-utilities.c:1005
+msgid "Audio DVD"
+msgstr "DVD ήχου"
+
+#: src/nautilus-file-utilities.c:1009
+msgid "Video DVD"
+msgstr "DVD βίντεο"
+
+#: src/nautilus-file-utilities.c:1013
+msgid "Video CD"
+msgstr "CD βίντεο"
+
+#: src/nautilus-file-utilities.c:1017
+msgid "Super Video CD"
+msgstr "Super CD βίντεο"
+
+#: src/nautilus-file-utilities.c:1021
+msgid "Photo CD"
+msgstr "CD φωτογραφιών"
+
+#: src/nautilus-file-utilities.c:1025
+msgid "Picture CD"
+msgstr "CD εικόνων"
+
+#: src/nautilus-file-utilities.c:1029 src/nautilus-file-utilities.c:1077
+msgid "Contains digital photos"
+msgstr "Περιέχει ψηφιακές φωτογραφίες"
+
+#
+#: src/nautilus-file-utilities.c:1033
+msgid "Contains music"
+msgstr "Περιέχει μουσική"
+
+#: src/nautilus-file-utilities.c:1037
+msgid "Contains software to run"
+msgstr "Περιέχει λογισμικό προς εκτέλεση"
+
+#: src/nautilus-file-utilities.c:1041
+msgid "Contains software to install"
+msgstr "Περιέχει λογισμικό προς εγκατάσταση"
+
+#
+#. fallback to generic greeting
+#: src/nautilus-file-utilities.c:1046
+#, c-format
+msgid "Detected as “%s”"
+msgstr "Εντοπίσθηκε ως «%s»"
+
+#. translators: these describe the contents of removable media
+#: src/nautilus-file-utilities.c:1069
+msgid "Contains music and photos"
+msgstr "Περιέχει μουσική και φωτογραφίες"
+
+#: src/nautilus-file-utilities.c:1073
+msgid "Contains photos and music"
+msgstr "Περιέχει φωτογραφίες και μουσική"
+
+#: src/nautilus-list-model.c:467
+msgid "(Empty)"
+msgstr "(Άδειο)"
+
+#: src/nautilus-list-view.c:1589
+msgid "Use Default"
+msgstr "Χρήση προεπιλογής"
+
+#: src/nautilus-list-view.c:3404
+#, c-format
+msgid "%s Visible Columns"
+msgstr "%s ορατές στήλες"
+
+#: src/nautilus-list-view.c:3424
+msgid "Choose the order of information to appear in this folder:"
+msgstr "Επιλέξτε τον τρόπο ταξινόμησης των πληροφοριών στο φάκελο:"
+
+#: src/nautilus-location-entry.c:267
+#, c-format
+msgid "Do you want to view %d location?"
+msgid_plural "Do you want to view %d locations?"
+msgstr[0] "Θέλετε να εμφανιστεί %d τοποθεσία;"
+msgstr[1] "Θέλετε να εμφανιστούν %d τοποθεσίες;"
+
+#: src/nautilus-location-entry.c:271 src/nautilus-mime-actions.c:839
+#, c-format
+msgid "This will open %d separate window."
+msgid_plural "This will open %d separate windows."
+msgstr[0] "Θα ανοίξει %d ξεχωριστό παράθυρο."
+msgstr[1] "Θα ανοίξουν %d ξεχωριστά παράθυρα."
+
+#: src/nautilus-mime-actions.c:97
+#: src/resources/ui/nautilus-search-popover.ui:275
+msgid "Anything"
+msgstr "Οτιδήποτε"
+
+#: src/nautilus-mime-actions.c:107
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:58
+msgid "Folders"
+msgstr "Φάκελοι"
+
+#: src/nautilus-mime-actions.c:111
+msgid "Documents"
+msgstr "Έγγραφα"
+
+#: src/nautilus-mime-actions.c:128
+msgid "Illustration"
+msgstr "Σκίτσο"
+
+#: src/nautilus-mime-actions.c:140
+msgid "Music"
+msgstr "Μουσική"
+
+#: src/nautilus-mime-actions.c:153
+msgid "PDF / PostScript"
+msgstr "PDF / PostScript"
+
+#: src/nautilus-mime-actions.c:160
+msgid "Picture"
+msgstr "Εικόνα"
+
+#: src/nautilus-mime-actions.c:201
+msgid "Text File"
+msgstr "Αρχείο κειμένου"
+
+#: src/nautilus-mime-actions.c:537
+#, c-format
+msgid "The link “%s” is broken. Move it to Trash?"
+msgstr "Ο σύνδεσμος «%s» είναι κατεστραμμένος. Θέλετε να τον απορρίψετε;"
+
+#: src/nautilus-mime-actions.c:541
+#, c-format
+msgid "The link “%s” is broken."
+msgstr "Ο σύνδεσμος «%s» είναι κατεστραμμένος."
+
+#: src/nautilus-mime-actions.c:548
+msgid "This link cannot be used because it has no target."
+msgstr "Ο σύνδεσμος δεν μπορεί να χρησιμοποιηθεί διότι δεν έχει προορισμό."
+
+#: src/nautilus-mime-actions.c:552
+#, c-format
+msgid "This link cannot be used because its target “%s” doesn’t exist."
+msgstr ""
+"Ο σύνδεσμος δεν μπορεί να χρησιμοποιηθεί διότι ο προορισμός «%s» δεν υπάρχει."
+
+#: src/nautilus-mime-actions.c:563
+#: src/resources/ui/nautilus-files-view-context-menus.ui:158
+msgid "Mo_ve to Trash"
+msgstr "Μετακίνηση στα απο_ρρίμματα"
+
+#: src/nautilus-mime-actions.c:834
+#, c-format
+msgid "This will open %d separate tab."
+msgid_plural "This will open %d separate tabs."
+msgstr[0] "Θα ανοίξει %d ξεχωριστή καρτέλα."
+msgstr[1] "Θα ανοίξουν %d ξεχωριστές καρτέλες."
+
+#: src/nautilus-mime-actions.c:906
+#, c-format
+msgid "Could Not Display “%s”"
+msgstr "Αδύνατη η εμφάνιση του «%s»"
+
+#: src/nautilus-mime-actions.c:1009
+msgid "The file is of an unknown type"
+msgstr "Το αρχείο είναι αγνώστου τύπου"
+
+#: src/nautilus-mime-actions.c:1014
+#, c-format
+msgid "There is no application installed for “%s” files"
+msgstr "Δεν υπάρχει εγκατεστημένη εφαρμογή για αρχεία «%s»"
+
+#
+#: src/nautilus-mime-actions.c:1027
+msgid "_Select Application"
+msgstr "Επι_λογή εφαρμογής"
+
+#: src/nautilus-mime-actions.c:1065
+msgid "There was an internal error trying to search for applications:"
+msgstr "Παρουσιάστηκε εσωτερικό σφάλμα κατά την αναζήτηση εφαρμογών:"
+
+#: src/nautilus-mime-actions.c:1067
+msgid "Unable to search for application"
+msgstr "Αδυναμία αναζήτησης της εφαρμογής"
+
+#: src/nautilus-mime-actions.c:1178
+#, c-format
+msgid ""
+"There is no application installed for “%s” files. Do you want to search for "
+"an application to open this file?"
+msgstr ""
+"Δεν υπάρχει εγκατεστημένη εφαρμογή για τα αρχεία «%s». Να αναζητηθεί "
+"εφαρμογή για το άνοιγμα του αρχείου;"
+
+#
+#: src/nautilus-mime-actions.c:1184
+msgid "_Search in Software"
+msgstr "_Αναζήτηση στο Λογισμικό"
+
+#. if it wasn't cancelled show a dialog
+#: src/nautilus-mime-actions.c:1534 src/nautilus-mime-actions.c:1833
+#: src/gtk/nautilusgtkplacesview.c:1231 src/gtk/nautilusgtkplacesview.c:1320
+msgid "Unable to access location"
+msgstr "Αδυναμία πρόσβασης στην τοποθεσία"
+
+#: src/nautilus-mime-actions.c:1924
+msgid "Unable to start location"
+msgstr "Αδυναμία εκκίνησης τοποθεσίας"
+
+#: src/nautilus-mime-actions.c:2017
+#, c-format
+msgid "Opening “%s”."
+msgstr "Άνοιγμα του «%s»."
+
+#: src/nautilus-mime-actions.c:2022
+#, c-format
+msgid "Opening %d item."
+msgid_plural "Opening %d items."
+msgstr[0] "Άνοιγμα %d αντικειμένου."
+msgstr[1] "Άνοιγμα %d αντικειμένων."
+
+#: src/nautilus-new-folder-dialog-controller.c:55
+#: src/nautilus-rename-file-popover-controller.c:106
+msgid "Folder names cannot contain “/”."
+msgstr "Τα ονόματα του φακέλου δεν μπορεί να περιέχουν το «/»."
+
+#: src/nautilus-new-folder-dialog-controller.c:60
+#: src/nautilus-rename-file-popover-controller.c:118
+msgid "A folder cannot be called “.”."
+msgstr "Ένας φάκελος δεν μπορεί να ονομαστεί «.»."
+
+#: src/nautilus-new-folder-dialog-controller.c:65
+#: src/nautilus-rename-file-popover-controller.c:130
+msgid "A folder cannot be called “..”."
+msgstr "Ένας φάκελος δεν μπορεί να ονομαστεί «..»."
+
+#: src/nautilus-new-folder-dialog-controller.c:70
+#: src/nautilus-rename-file-popover-controller.c:142
+msgid "Folder name is too long."
+msgstr "Το όνομα φακέλου είναι πολύ μεγάλο."
+
+#. We must warn about the side effect
+#: src/nautilus-new-folder-dialog-controller.c:76
+#: src/nautilus-rename-file-popover-controller.c:155
+msgid "Folders with “.” at the beginning of their name are hidden."
+msgstr "Φάκελοι που το όνομά τους ξεκινάει με «.» , είναι κρυφά."
+
+#: src/nautilus-new-folder-dialog-controller.c:145
+#: src/resources/ui/nautilus-compress-dialog.ui:173
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: src/nautilus-new-folder-dialog-controller.c:146
+#: src/nautilus-rename-file-popover-controller.c:380
+msgid "Folder name"
+msgstr "Όνομα φακέλου"
+
+#: src/nautilus-new-folder-dialog-controller.c:147
+#: src/resources/ui/nautilus-toolbar.ui:71
+msgid "New Folder"
+msgstr "Νέος φάκελος"
+
+#: src/nautilus-notebook.c:373
+msgid "Close tab"
+msgstr "Κλείσιμο καρτέλας"
+
+#: src/nautilus-operations-ui-manager.c:142
+#, c-format
+msgid ""
+"You are trying to replace the destination folder “%s” with a symbolic link."
+msgstr ""
+"Προσπαθείτε να αντικαταστήσετε το φάκελο προορισμού «%s» με συμβολικό "
+"σύνδεσμο."
+
+#: src/nautilus-operations-ui-manager.c:144
+#, c-format
+msgid ""
+"This is not allowed in order to avoid the deletion of the destination "
+"folder’s contents."
+msgstr ""
+"Αυτό δεν επιτρέπεται προκειμένου να αποφευχθεί η διαγραφή των περιεχομένων "
+"του φακέλου προορισμού."
+
+#: src/nautilus-operations-ui-manager.c:145
+msgid "Please rename the symbolic link or press the skip button."
+msgstr ""
+"Παρακαλούμε μετονομάστε τον συμβολικό σύνδεσμο ή πατήστε το πλήκτρο "
+"παράβλεψης."
+
+#: src/nautilus-operations-ui-manager.c:149
+#, c-format
+msgid "Merge folder “%s”?"
+msgstr "Συγχώνευση φακέλου «%s»;"
+
+#: src/nautilus-operations-ui-manager.c:152
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Η συγχώνευση θα ζητήσει επιβεβαίωση προτού αντικαταστήσει τα αρχεία στο "
+"φάκελο που συγκρούονται με τα αρχεία που αντιγράφονται."
+
+#: src/nautilus-operations-ui-manager.c:157
+#, c-format
+msgid "An older folder with the same name already exists in “%s”."
+msgstr "Υπάρχει ήδη ένας παλαιότερος φάκελος με το ίδιο όνομα στο «%s»."
+
+#: src/nautilus-operations-ui-manager.c:162
+#, c-format
+msgid "A newer folder with the same name already exists in “%s”."
+msgstr "Υπάρχει ήδη ένας νεότερος φάκελος με το ίδιο όνομα στο «%s»."
+
+#: src/nautilus-operations-ui-manager.c:167
+#, c-format
+msgid "Another folder with the same name already exists in “%s”."
+msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο «%s»."
+
+#: src/nautilus-operations-ui-manager.c:173
+#, c-format
+msgid "Replace folder “%s”?"
+msgstr "Αντικατάσταση φακέλου «%s»;"
+
+#: src/nautilus-operations-ui-manager.c:175
+msgid "Replacing it will remove all files in the folder."
+msgstr "Η αντικατάστασή του θα διαγράψει όλα τα αρχεία του φακέλου."
+
+#: src/nautilus-operations-ui-manager.c:176
+#, c-format
+msgid "A folder with the same name already exists in “%s”."
+msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο «%s»."
+
+#: src/nautilus-operations-ui-manager.c:182
+#, c-format
+msgid "Replace file “%s”?"
+msgstr "Αντικατάσταση αρχείου «%s»;"
+
+#: src/nautilus-operations-ui-manager.c:185
+msgid "Replacing it will overwrite its content."
+msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
+
+#: src/nautilus-operations-ui-manager.c:189
+#, c-format
+msgid "An older file with the same name already exists in “%s”."
+msgstr "Υπάρχει ήδη ένα παλαιότερο αρχείο με το ίδιο όνομα στο «%s»."
+
+#: src/nautilus-operations-ui-manager.c:194
+#, c-format
+msgid "A newer file with the same name already exists in “%s”."
+msgstr "Υπάρχει ήδη ένα νεότερο αρχείο με το ίδιο όνομα στο «%s»."
+
+#: src/nautilus-operations-ui-manager.c:199
+#, c-format
+msgid "Another file with the same name already exists in “%s”."
+msgstr "Υπάρχει ήδη ένα αρχείο με το ίδιο όνομα στο «%s»."
+
+#: src/nautilus-operations-ui-manager.c:274
+#: src/resources/ui/nautilus-properties-window.ui:314
+msgid "Original folder"
+msgstr "Αρχικός φάκελος"
+
+#: src/nautilus-operations-ui-manager.c:275
+#: src/nautilus-operations-ui-manager.c:307
+msgid "Contents:"
+msgstr "Περιεχόμενα:"
+
+#: src/nautilus-operations-ui-manager.c:279
+msgid "Original file"
+msgstr "Αρχικό αρχείο"
+
+#
+#: src/nautilus-operations-ui-manager.c:280
+#: src/nautilus-operations-ui-manager.c:312
+msgid "Size:"
+msgstr "Μέγεθος:"
+
+#
+#: src/nautilus-operations-ui-manager.c:285
+#: src/nautilus-operations-ui-manager.c:317
+msgid "Type:"
+msgstr "Τύπος:"
+
+#: src/nautilus-operations-ui-manager.c:288
+#: src/nautilus-operations-ui-manager.c:320
+msgid "Last modified:"
+msgstr "Τελευταία τροποποίηση:"
+
+#: src/nautilus-operations-ui-manager.c:306
+msgid "Merge with"
+msgstr "Συγχώνευση με"
+
+#: src/nautilus-operations-ui-manager.c:306
+#: src/nautilus-operations-ui-manager.c:311
+msgid "Replace with"
+msgstr "Αντικατάσταση με"
+
+#: src/nautilus-operations-ui-manager.c:360
+msgid "Merge"
+msgstr "Συγχώνευση"
+
+#: src/nautilus-operations-ui-manager.c:384
+msgid "Merge Folder"
+msgstr "Συγχώνευση φακέλου"
+
+#: src/nautilus-operations-ui-manager.c:385
+#: src/nautilus-operations-ui-manager.c:390
+msgid "File and Folder conflict"
+msgstr "Σύγκρουση αρχείου και φακέλου"
+
+#: src/nautilus-operations-ui-manager.c:391
+msgid "File conflict"
+msgstr "Σύγκρουση αρχείων"
+
+#: src/nautilus-operations-ui-manager.c:533
+msgid ""
+"Password-protected archives are not yet supported. This list contains "
+"applications that can open the archive."
+msgstr ""
+"Τα αρχεία που προστατεύονται με συνθηματικό δεν υποστηρίζονται ακόμη. Αυτή η "
+"λίστα περιέχει εφαρμογές που μπορούν να ανοίξουν το αρχείο."
+
+#. Translators: This is the label used in the pathbar when seeing
+#. * the root directory (also known as /)
+#: src/nautilus-pathbar.c:316 src/gtk/nautilusgtkplacesview.c:1121
+msgid "Computer"
+msgstr "Υπολογιστής"
+
+#. Translators: This is the filesystem root directory (also known
+#. * as /) when seen as administrator
+#: src/nautilus-pathbar.c:323
+msgid "Administrator Root"
+msgstr "Διαχειριστής Root"
+
+#
+#. Translators: this is referred to captions under icons.
+#. Translators: this is referred to the permissions
+#. * the user has in a directory.
+#.
+#: src/nautilus-preferences-window.c:97 src/nautilus-properties-window.c:3604
+#: src/nautilus-properties-window.c:3634
+msgid "None"
+msgstr "Καμία"
+
+#: src/nautilus-preferences-window.c:336
+msgid "Single click"
+msgstr "Απλό κλικ"
+
+#: src/nautilus-preferences-window.c:336
+msgid "Double click"
+msgstr "Διπλό κλικ"
+
+#: src/nautilus-preferences-window.c:338 src/nautilus-preferences-window.c:340
+#: src/nautilus-preferences-window.c:342
+msgid "On this computer only"
+msgstr "Μόνο σε αυτόν τον υπολογιστή"
+
+#
+#: src/nautilus-preferences-window.c:338
+msgid "All locations"
+msgstr "Όλες οι τοποθεσίες"
+
+#
+#: src/nautilus-preferences-window.c:338 src/nautilus-preferences-window.c:340
+#: src/nautilus-preferences-window.c:342
+msgid "Never"
+msgstr "Ποτέ"
+
+#
+#: src/nautilus-preferences-window.c:340
+msgid "All files"
+msgstr "Όλα τα αρχεία"
+
+#
+#: src/nautilus-preferences-window.c:342
+msgid "All folders"
+msgstr "Όλοι οι φάκελοι"
+
+#: src/nautilus-program-choosing.c:379
+msgid "Sorry, but you cannot execute commands from a remote site."
+msgstr ""
+"Συγγνώμη, αλλά δεν μπορείτε να εκτελέσετε εντολές από απομακρυσμένο σύστημα."
+
+#: src/nautilus-program-choosing.c:380
+msgid "This is disabled due to security considerations."
+msgstr "Η λειτουργία αυτή έχει απενεργοποιηθεί για λόγους ασφαλείας."
+
+#: src/nautilus-program-choosing.c:392 src/nautilus-program-choosing.c:469
+#: src/nautilus-properties-window.c:2616
+msgid "There was an error launching the application."
+msgstr "Παρουσιάστηκε σφάλμα κατά την εκκίνηση της εφαρμογής."
+
+#. all files are non-local
+#. some files are non-local
+#: src/nautilus-program-choosing.c:421 src/nautilus-program-choosing.c:433
+msgid "This drop target only supports local files."
+msgstr "Ο προορισμός υποστηρίζει μόνο τοπικά αρχεία."
+
+#: src/nautilus-program-choosing.c:422
+msgid ""
+"To open non-local files copy them to a local folder and then drop them again."
+msgstr ""
+"Για να ανοίξετε μη τοπικά αρχεία, αντιγράψτε τα σε τοπικό φάκελο και "
+"δοκιμάστε ξανά."
+
+#: src/nautilus-program-choosing.c:434
+msgid ""
+"To open non-local files copy them to a local folder and then drop them "
+"again. The local files you dropped have already been opened."
+msgstr ""
+"Για να ανοίξετε μη τοπικά αρχεία, αντιγράψτε τα σε τοπικό φάκελο και "
+"δοκιμάστε ξανά. Τα τοπικά αρχεία που εναποθέσατε έχουν ήδη ανοιχτεί."
+
+#: src/nautilus-program-choosing.c:468
+msgid "Details: "
+msgstr "Λεπτομέρειες: "
+
+#: src/nautilus-progress-info.c:306
+msgid "Canceled"
+msgstr "Ακυρώθηκε"
+
+#: src/nautilus-progress-info.c:353 src/nautilus-progress-info.c:374
+msgid "Preparing"
+msgstr "Προετοιμασία"
+
+#: src/nautilus-progress-persistence-handler.c:106
+#: src/nautilus-progress-persistence-handler.c:146
+msgid "File Operations"
+msgstr "Λειτουργίες αρχείων"
+
+#: src/nautilus-progress-persistence-handler.c:108
+msgid "Show Details"
+msgstr "Εμφάνιση λεπτομερειών"
+
+#: src/nautilus-progress-persistence-handler.c:111
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d ενεργή λειτουργία αρχείων"
+msgstr[1] "%'d ενεργές λειτουργίες αρχείων"
+
+#: src/nautilus-progress-persistence-handler.c:148
+msgid "All file operations have been successfully completed"
+msgstr "Όλες οι λειτουργίες αρχείων ολοκληρώθηκαν με επιτυχία"
+
+#: src/nautilus-properties-window.c:543
+msgid "You cannot assign more than one custom icon at a time!"
+msgstr ""
+"Δεν μπορείτε να ορίσετε περισσότερα από ένα προσαρμοσμένα εικονίδια τη φορά!"
+
+#: src/nautilus-properties-window.c:544
+msgid "Please drop just one image to set a custom icon."
+msgstr ""
+"Παρακαλούμε, αποθέστε μόνο μια εικόνα για να την ορίσετε ως προσαρμοσμένο "
+"εικονίδιο."
+
+#: src/nautilus-properties-window.c:561
+msgid "The file that you dropped is not local."
+msgstr "Το αρχείο που αποθέσατε δεν είναι τοπικό."
+
+#: src/nautilus-properties-window.c:562 src/nautilus-properties-window.c:569
+msgid "You can only use local images as custom icons."
+msgstr "Μόνο τοπικά αρχεία εικόνας επιτρέπονται ως προσαρμοσμένα εικονίδια."
+
+#: src/nautilus-properties-window.c:568
+msgid "The file that you dropped is not an image."
+msgstr "Το αρχείο που αποθέσατε δεν είναι αρχείο εικόνας."
+
+#
+#: src/nautilus-properties-window.c:651
+#: src/resources/ui/nautilus-properties-window.ui:91
+msgid "_Name"
+msgid_plural "_Names"
+msgstr[0] "Ό_νομα"
+msgstr[1] "Ο_νόματα"
+
+#. To translators: %s is the name of the folder.
+#: src/nautilus-properties-window.c:897
+#, c-format
+msgctxt "folder"
+msgid "%s Properties"
+msgstr "Ιδιότητες %s"
+
+#. To translators: %s is the name of the file.
+#: src/nautilus-properties-window.c:903
+#, c-format
+msgctxt "file"
+msgid "%s Properties"
+msgstr "Ιδιότητες %s"
+
+#: src/nautilus-properties-window.c:911
+#, c-format
+msgid "Properties"
+msgstr "Ιδιότητες"
+
+#
+#: src/nautilus-properties-window.c:1326
+#, c-format
+msgctxt "MIME type description (MIME type)"
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: src/nautilus-properties-window.c:1393
+msgid "Cancel Group Change?"
+msgstr "Ακύρωση αλλαγής ομάδας;"
+
+#: src/nautilus-properties-window.c:1762
+msgid "Cancel Owner Change?"
+msgstr "Ακύρωση αλλαγής ιδιοκτήτη;"
+
+#: src/nautilus-properties-window.c:2090
+msgid "nothing"
+msgstr "τίποτα"
+
+#: src/nautilus-properties-window.c:2094
+msgid "unreadable"
+msgstr "μη αναγνώσιμο"
+
+#: src/nautilus-properties-window.c:2106
+#, c-format
+msgid "%'d item, with size %s"
+msgid_plural "%'d items, totalling %s"
+msgstr[0] "%'d αντικείμενο, μεγέθους %s"
+msgstr[1] "%'d αντικείμενα, συνολικού μεγέθους %s"
+
+#: src/nautilus-properties-window.c:2116
+msgid "(some contents unreadable)"
+msgstr "(μερικά από τα περιεχόμενα είναι μη αναγνώσιμα)"
+
+#: src/nautilus-properties-window.c:2615
+#, c-format
+msgid "Details: %s"
+msgstr "Λεπτομέρειες: %s"
+
+#. translators: this gets concatenated to "no read",
+#. * "no access", etc. (see following strings)
+#.
+#: src/nautilus-properties-window.c:3508 src/nautilus-properties-window.c:3523
+#: src/nautilus-properties-window.c:3540
+msgid "no "
+msgstr "όχι "
+
+#: src/nautilus-properties-window.c:3512
+msgid "list"
+msgstr "λίστα"
+
+#: src/nautilus-properties-window.c:3516
+msgid "read"
+msgstr "ανάγνωση"
+
+#: src/nautilus-properties-window.c:3527
+msgid "create/delete"
+msgstr "δημιουργία/διαγραφή"
+
+#: src/nautilus-properties-window.c:3531
+msgid "write"
+msgstr "εγγραφή"
+
+#: src/nautilus-properties-window.c:3542
+msgid "access"
+msgstr "πρόσβαση"
+
+#: src/nautilus-properties-window.c:3611
+msgid "List files only"
+msgstr "Μόνο λίστα αρχείων"
+
+#: src/nautilus-properties-window.c:3617
+msgid "Access files"
+msgstr "Πρόσβαση αρχείων"
+
+#: src/nautilus-properties-window.c:3623
+msgid "Create and delete files"
+msgstr "Δημιουργία και διαγραφή αρχείων"
+
+#: src/nautilus-properties-window.c:3641
+msgid "Read-only"
+msgstr "Μόνο ανάγνωση"
+
+#: src/nautilus-properties-window.c:3647
+msgid "Read and write"
+msgstr "Ανάγνωση και εγγραφή"
+
+#: src/nautilus-properties-window.c:4191
+#, c-format
+msgid "The permissions of “%s” could not be determined."
+msgstr "Αδύνατη η εξακρίβωση των δικαιωμάτων του «%s»."
+
+#: src/nautilus-properties-window.c:4435
+#, c-format
+msgid "Error while adding “%s”: %s"
+msgstr "Σφάλμα κατά την προσθήκη του «%s»: %s"
+
+#: src/nautilus-properties-window.c:4437
+msgid "Could not add application"
+msgstr "Αδυναμία προσθήκης εφαρμογής"
+
+#: src/nautilus-properties-window.c:4466
+msgid "Could not forget association"
+msgstr "Αδυναμία αφαίρεσης συσχέτισης"
+
+#: src/nautilus-properties-window.c:4489
+msgid "Forget association"
+msgstr "Αφαίρεση συσχέτισης"
+
+#
+#: src/nautilus-properties-window.c:4529
+#, c-format
+msgid "Error while setting “%s” as default application: %s"
+msgstr "Σφάλμα κατά τον ορισμό του «%s» ως προεπιλεγμένη εφαρμογή: %s"
+
+#
+#: src/nautilus-properties-window.c:4531
+msgid "Could not set as default"
+msgstr "Αδυναμία ορισμού προεπιλογής"
+
+#. Translators: the %s here is a file extension
+#: src/nautilus-properties-window.c:4607
+#, c-format
+msgid "%s document"
+msgstr "έγγραφο %s"
+
+#. Translators; %s here is a mime-type description
+#: src/nautilus-properties-window.c:4617
+#, c-format
+msgid "Open all files of type “%s” with"
+msgstr "Άνοιγμα όλων των αρχείων τύπου «%s» με"
+
+#. Translators: first %s is filename, second %s is mime-type description
+#: src/nautilus-properties-window.c:4626
+#, c-format
+msgid "Select an application to open “%s” and other files of type “%s”"
+msgstr "Επιλογή εφαρμογής για το άνοιγμα του «%s» και άλλων αρχείων τύπου «%s»"
+
+#
+#: src/nautilus-properties-window.c:5075
+msgid "Creating Properties window."
+msgstr "Δημιουργία παραθύρου ιδιοτήτων."
+
+#: src/nautilus-properties-window.c:5294
+msgid "Select Custom Icon"
+msgstr "Επιλογή προσαρμοσμένου εικονιδίου"
+
+#
+#: src/nautilus-properties-window.c:5296
+msgid "_Revert"
+msgstr "_Επαναφορά"
+
+#
+#. Open item is always present
+#: src/nautilus-properties-window.c:5298 src/gtk/nautilusgtkplacesview.c:1695
+msgid "_Open"
+msgstr "Άν_οιγμα"
+
+#: src/nautilus-query.c:539
+#, c-format
+msgid "Search for “%s”"
+msgstr "Αναζήτηση για «%s»"
+
+#: src/nautilus-rename-file-popover-controller.c:381
+msgid "File name"
+msgstr "Όνομα αρχείου"
+
+#: src/nautilus-search-engine.c:353
+msgid "Unable to complete the requested search"
+msgstr "Αδυναμία ολοκλήρωσης της ζητούμενης αναζήτησης"
+
+#: src/nautilus-search-popover.c:301
+msgid "Show a list to select the date"
+msgstr "Εμφάνιση λίστας για επιλογή ημερομηνίας"
+
+#: src/nautilus-search-popover.c:307
+#: src/resources/ui/nautilus-search-popover.ui:96
+msgid "Show a calendar to select the date"
+msgstr "Εμφάνιση ημερολογίου για επιλογή ημερομηνίας"
+
+#. Add the no date filter element first
+#: src/nautilus-search-popover.c:423
+msgid "Any time"
+msgstr "Οποιαδήποτε στιγμή"
+
+#. Other types
+#: src/nautilus-search-popover.c:520
+msgid "Other Type…"
+msgstr "Άλλος τύπος…"
+
+#: src/nautilus-search-popover.c:580
+msgid "Select type"
+msgstr "Επιλογή τύπου"
+
+#: src/nautilus-search-popover.c:584
+msgid "Select"
+msgstr "Επιλογή"
+
+#: src/nautilus-search-popover.c:669
+#: src/resources/ui/nautilus-search-popover.ui:51
+msgid "Select Dates…"
+msgstr "Επιλογή ημερομηνιών…"
+
+#
+#. trash
+#: src/nautilus-shell-search-provider.c:320 src/nautilus-trash-bar.c:201
+msgid "Trash"
+msgstr "Απορρίμματα"
+
+#: src/nautilus-special-location-bar.c:56
+msgid "Put files in this folder to use them as templates for new documents."
+msgstr ""
+"Προσθέστε αρχεία σε αυτόν το φάκελο για να τα χρησιμοποιήσετε ως πρότυπα στη "
+"δημιουργία νέων εγγράφων."
+
+#: src/nautilus-special-location-bar.c:57
+msgid ""
+"<a href=\"help:gnome-help/files-templates\" title=\"GNOME help for templates"
+"\">Learn more…</a>"
+msgstr ""
+"<a href=\"help:gnome-help/files-templates\" title=\"GNOME help for templates"
+"\">Μάθετε περισσότερα…</a>"
+
+#: src/nautilus-special-location-bar.c:63
+msgid "Executable files in this folder will appear in the Scripts menu."
+msgstr ""
+"Όλα τα εκτελέσιμα αρχεία σε αυτόν το φάκελο θα εμφανίζονται στο μενού δεσμών "
+"ενεργειών."
+
+#: src/nautilus-toolbar.c:840 src/resources/ui/nautilus-toolbar.ui:396
+msgid "_Undo"
+msgstr "_Αναίρεση"
+
+#: src/nautilus-toolbar.c:847 src/resources/ui/nautilus-toolbar.ui:410
+msgid "_Redo"
+msgstr "Α_κύρωση αναίρεσης"
+
+#: src/nautilus-trash-bar.c:209
+msgid "_Restore"
+msgstr "_Επαναφορά"
+
+#: src/nautilus-trash-bar.c:212
+msgid "Restore selected items to their original position"
+msgstr "Επαναφορά επιλεγμένων αντικειμένων στις αρχικές τους θέσεις"
+
+#. Translators: "Empty" is an action (for the trash) , not a state
+#: src/nautilus-trash-bar.c:216
+msgid "_Empty…"
+msgstr "Ά_δειασμα…"
+
+#: src/nautilus-trash-bar.c:219
+msgid "Delete all items in the Trash"
+msgstr "Διαγραφή όλων των αντικειμένων στα απορρίμματα"
+
+#: src/nautilus-ui-utilities.c:186
+#, c-format
+msgid "Since %d day ago"
+msgid_plural "Since %d days ago"
+msgstr[0] "Πριν από %d ημέρα"
+msgstr[1] "Πριν από %d ημέρες"
+
+#: src/nautilus-ui-utilities.c:187
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d ημέρα πριν"
+msgstr[1] "%d ημέρες πριν"
+
+#: src/nautilus-ui-utilities.c:193
+#, c-format
+msgid "Since last week"
+msgid_plural "Since %d weeks ago"
+msgstr[0] "Την τελευταία βδομάδα"
+msgstr[1] "Πριν από %d βδομάδες"
+
+#: src/nautilus-ui-utilities.c:194
+#, c-format
+msgid "Last week"
+msgid_plural "%d weeks ago"
+msgstr[0] "Προηγούμενη βδομάδα"
+msgstr[1] "%d βδομάδες πριν"
+
+#: src/nautilus-ui-utilities.c:200
+#, c-format
+msgid "Since last month"
+msgid_plural "Since %d months ago"
+msgstr[0] "Τον τελευταίο μήνα"
+msgstr[1] "Πριν από %d μήνες"
+
+#: src/nautilus-ui-utilities.c:201
+#, c-format
+msgid "Last month"
+msgid_plural "%d months ago"
+msgstr[0] "Προηγούμενος μήνας"
+msgstr[1] "%d μήνες πριν"
+
+#: src/nautilus-ui-utilities.c:206
+#, c-format
+msgid "Since last year"
+msgid_plural "Since %d years ago"
+msgstr[0] "Τον τελευταίο χρόνο"
+msgstr[1] "Πριν από %d χρόνια"
+
+#: src/nautilus-ui-utilities.c:207
+#, c-format
+msgid "Last year"
+msgid_plural "%d years ago"
+msgstr[0] "Προηγούμενος χρόνος"
+msgstr[1] "%d χρόνια πριν"
+
+#: src/nautilus-view.c:154
+msgid "Show grid"
+msgstr "Εμφάνιση γραμμών πλέγματος"
+
+#: src/nautilus-view.c:158
+msgid "Show list"
+msgstr "Εμφάνιση λίστας"
+
+#: src/nautilus-view.c:162
+msgid "Show List"
+msgstr "Εμφάνιση λίστας"
+
+# # NOTE: Translation of "Create" as "New" to
+# #       keep msg length relatively short...
+#: src/nautilus-window.c:192 src/resources/ui/nautilus-properties-window.ui:260
+msgid "Parent folder"
+msgstr "Γονικός φάκελος"
+
+#: src/nautilus-window.c:194
+msgid "New tab"
+msgstr "Νέα καρτέλα"
+
+#: src/nautilus-window.c:195
+msgid "Close current view"
+msgstr "Κλείσιμο τρέχουσας προβολής"
+
+#: src/nautilus-window.c:196
+msgid "Back"
+msgstr "Πίσω"
+
+#: src/nautilus-window.c:197
+msgid "Forward"
+msgstr "Μπροστά"
+
+#: src/nautilus-window.c:1331
+msgid "Empty _Trash…"
+msgstr "Άδειασμα α_πορριμμάτων…"
+
+#: src/nautilus-window.c:1350
+#: src/resources/ui/nautilus-pathbar-context-menu.ui:14
+msgid "_Properties"
+msgstr "_Ιδιότητες"
+
+#: src/nautilus-window.c:1362
+msgid "_Format…"
+msgstr "_Διαμόρφωση…"
+
+#
+#. Translators: only one item has been deleted and %s is its name.
+#: src/nautilus-window.c:1614
+#, c-format
+msgid "“%s” deleted"
+msgstr "Διαγράφηκε το «%s»"
+
+#
+#. Translators: one or more items might have been deleted, and %d
+#. * is the count.
+#: src/nautilus-window.c:1621
+#, c-format
+msgid "%d file deleted"
+msgid_plural "%d files deleted"
+msgstr[0] "Διαγράφηκε %d αρχείο"
+msgstr[1] "Διαγράφηκαν %d αρχεία"
+
+#
+#. Translators: one item has been unstarred and %s is its name.
+#: src/nautilus-window.c:1642
+#, c-format
+msgid "“%s” unstarred"
+msgstr "Το «%s»  αφαιρέθηκε από αγαπημένα"
+
+#
+#. Translators: one or more items have been unstarred, and %d
+#. * is the count.
+#: src/nautilus-window.c:1648
+#, c-format
+msgid "%d file unstarred"
+msgid_plural "%d files unstarred"
+msgstr[0] "%d αρχείο αφαιρέθηκε από αγαπημένα"
+msgstr[1] "%d αρχεία  αφαιρέθηκαν από τα αγαπημένα"
+
+#: src/nautilus-window.c:1786
+#, c-format
+msgid "Open %s"
+msgstr "Άνοιγμα με %s"
+
+#: src/nautilus-window.c:1864
+msgid "_New Tab"
+msgstr "_Νέα καρτέλα"
+
+#: src/nautilus-window.c:1874
+msgid "Move Tab _Left"
+msgstr "Μετακίνηση καρτέλας _αριστερά"
+
+#: src/nautilus-window.c:1882
+msgid "Move Tab _Right"
+msgstr "Μετακίνηση καρτέλας _δεξιά"
+
+#: src/nautilus-window.c:1893
+msgid "_Close Tab"
+msgstr "_Κλείσιμο καρτέλας"
+
+#: src/nautilus-window.c:2949
+msgid "Access and organize your files\nFork by cheesits456"
+msgstr "Πρόσβαση και οργάνωση των αρχείων σας"
+
+#
+#. Translators should localize the following string
+#. * which will be displayed at the bottom of the about
+#. * box to give credit to the translator(s).
+#.
+#: src/nautilus-window.c:2960
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME\n"
+" Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
+" Συμεών (σίμος) Ξενιτέλλης <simos@gnome.org>\n"
+" Κώστας Παπαδήμας <pkst@gnome.org>\n"
+" Πιέρρος Παπαδέας <ppapadeas@gmail.com>\n"
+" Τζένη Πετούμενου <epetoumenou@gmail.gr>\n"
+" Μάριος Ζηντίλης <m.zindilis@dmajor.org>\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+" Μαρία Μαυρίδου <mavridou@gmail.com>\n"
+" Θάνος Τρυφωνίδης <tomtryf@gmail.com>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"http://gnome.gr/"
+
+#: src/nautilus-window-slot.c:1168
+msgid "Searching locations only"
+msgstr "Αναζήτηση μόνο σε τοποθεσίες"
+
+#: src/nautilus-window-slot.c:1172
+msgid "Searching network locations only"
+msgstr "Αναζήτηση μόνο σε τοποθεσίες δικτύου"
+
+#: src/nautilus-window-slot.c:1177
+msgid "Remote location — only searching the current folder"
+msgstr "Απομακρυσμένη τοποθεσία — αναζήτηση μόνο στον τρέχων φάκελο"
+
+#: src/nautilus-window-slot.c:1181
+msgid "Only searching the current folder"
+msgstr "Αναζήτηση μόνο στον τρέχων φάκελο"
+
+#: src/nautilus-window-slot.c:1704
+msgid "Unable to display the contents of this folder."
+msgstr "Αδυναμία εμφάνισης των περιεχομένων αυτού του φακέλου."
+
+#: src/nautilus-window-slot.c:1708
+msgid "This location doesn’t appear to be a folder."
+msgstr "Η τοποθεσία δεν φαίνεται να είναι φάκελος."
+
+#: src/nautilus-window-slot.c:1717
+msgid ""
+"Unable to find the requested file. Please check the spelling and try again."
+msgstr ""
+"Αδύνατη η εύρεση του ζητούμενου αρχείου. Παρακαλούμε, ελέγξτε την ορθογραφία "
+"και προσπαθήστε ξανά."
+
+#: src/nautilus-window-slot.c:1726
+#, c-format
+msgid "“%s” locations are not supported."
+msgstr "Δεν υποστηρίζονται οι τοποθεσίες «%s»."
+
+#: src/nautilus-window-slot.c:1731
+msgid "Unable to handle this kind of location."
+msgstr "Αδύνατος ο χειρισμός τέτοιου είδους τοποθεσιών."
+
+#: src/nautilus-window-slot.c:1739
+msgid "Unable to access the requested location."
+msgstr "Αδύνατη η πρόσβαση στη ζητούμενη τοποθεσία."
+
+#: src/nautilus-window-slot.c:1745
+msgid "Don’t have permission to access the requested location."
+msgstr "Δεν έχετε δικαίωμα πρόσβασης στη ζητούμενη τοποθεσία."
+
+#. This case can be hit for user-typed strings like "foo" due to
+#. * the code that guesses web addresses when there's no initial "/".
+#. * But this case is also hit for legitimate web addresses when
+#. * the proxy is set up wrong.
+#.
+#: src/nautilus-window-slot.c:1756
+msgid ""
+"Unable to find the requested location. Please check the spelling or the "
+"network settings."
+msgstr ""
+"Αδύνατη η εύρεση της ζητούμενης τοποθεσίας. Παρακαλούμε ελέγξτε την "
+"ορθογραφία ή τις ρυθμίσεις δικτύου."
+
+#. This case can be hit when server application is not installed
+#. * or is inactive in the system user is trying to connect to.
+#.
+#: src/nautilus-window-slot.c:1765
+msgid ""
+"The server has refused the connection. Typically this means that the "
+"firewall is blocking access or that the remote service is not running."
+msgstr ""
+"Ο διακομιστής αρνήθηκε τη σύνδεση. Συνήθως αυτό σημαίνει ότι το τείχος "
+"προστασίας αποκλείει την πρόσβαση ή ότι η απομακρυσμένη υπηρεσία δεν "
+"εκτελείται."
+
+#: src/nautilus-window-slot.c:1784
+#, c-format
+msgid "Unhandled error message: %s"
+msgstr "Μη διαχειρίσιμο μήνυμα σφάλματος: %s"
+
+#: src/nautilus-window-slot.c:1959
+#, c-format
+msgid "Unable to load location"
+msgstr "Αδυναμία φόρτωσης της τοποθεσίας"
+
+#: src/nautilus-x-content-bar.c:141
+msgid "Open with:"
+msgstr "Άνοιγμα με:"
+
+#: src/resources/gtk/help-overlay.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Γενικά"
+
+#: src/resources/gtk/help-overlay.ui:17
+msgctxt "shortcut window"
+msgid "New window"
+msgstr "Νέο παράθυρο"
+
+#: src/resources/gtk/help-overlay.ui:24
+msgctxt "shortcut window"
+msgid "Close window or tab"
+msgstr "Κλείσιμο παραθύρου ή καρτέλας"
+
+#: src/resources/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: src/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: src/resources/gtk/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Bookmark current location"
+msgstr "Προσθήκη σελιδοδείκτη για την τρέχουσα τοποθεσία"
+
+#: src/resources/gtk/help-overlay.ui:52
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Εμφάνιση βοήθειας"
+
+#: src/resources/gtk/help-overlay.ui:59
+msgctxt "shortcut window"
+msgid "Shortcuts"
+msgstr "Συντομεύσεις"
+
+#: src/resources/gtk/help-overlay.ui:66
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr "Αναίρεση"
+
+#: src/resources/gtk/help-overlay.ui:73
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr "Ακύρωση αναίρεσης"
+
+#
+#: src/resources/gtk/help-overlay.ui:82
+msgctxt "shortcut window"
+msgid "Opening"
+msgstr "Άνοιγμα"
+
+#
+#: src/resources/gtk/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: src/resources/gtk/help-overlay.ui:93
+msgctxt "shortcut window"
+msgid "Open in new tab"
+msgstr "Άνοιγμα σε νέα καρτέλα"
+
+#: src/resources/gtk/help-overlay.ui:100
+msgctxt "shortcut window"
+msgid "Open in new window"
+msgstr "Άνοιγμα σε νέο παράθυρο"
+
+#: src/resources/gtk/help-overlay.ui:107
+msgctxt "shortcut window"
+msgid "Open item location (search and recent only)"
+msgstr "Άνοιγμα τοποθεσίας αντικειμένου (αναζήτηση και πρόσφατα μόνο)"
+
+#: src/resources/gtk/help-overlay.ui:114
+msgctxt "shortcut window"
+msgid "Open file and close window"
+msgstr "Άνοιγμα αρχείου και κλείσιμο παραθύρου"
+
+#: src/resources/gtk/help-overlay.ui:121
+msgctxt "shortcut window"
+msgid "Open with default application"
+msgstr "Άνοιγμα με την προεπιλεγμένη εφαρμογή"
+
+#: src/resources/gtk/help-overlay.ui:130
+msgctxt "shortcut window"
+msgid "Tabs"
+msgstr "Καρτέλες"
+
+#: src/resources/gtk/help-overlay.ui:134
+msgctxt "shortcut window"
+msgid "New tab"
+msgstr "Νέα καρτέλα"
+
+#: src/resources/gtk/help-overlay.ui:141
+msgctxt "shortcut window"
+msgid "Go to previous tab"
+msgstr "Μετάβαση στην προηγούμενη καρτέλα"
+
+#: src/resources/gtk/help-overlay.ui:148
+msgctxt "shortcut window"
+msgid "Go to next tab"
+msgstr "Μετάβαση στην επόμενη καρτέλα"
+
+#: src/resources/gtk/help-overlay.ui:155
+msgctxt "shortcut window"
+msgid "Open tab"
+msgstr "Άνοιγμα καρτέλας"
+
+#: src/resources/gtk/help-overlay.ui:162
+msgctxt "shortcut window"
+msgid "Move tab left"
+msgstr "Μετακίνηση καρτέλας αριστερά"
+
+#: src/resources/gtk/help-overlay.ui:169
+msgctxt "shortcut window"
+msgid "Move tab right"
+msgstr "Μετακίνηση καρτέλας δεξιά"
+
+#: src/resources/gtk/help-overlay.ui:176
+msgctxt "shortcut window"
+msgid "Restore tab"
+msgstr "Επαναφορά καρτέλας"
+
+#: src/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Περιήγηση"
+
+#: src/resources/gtk/help-overlay.ui:189
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr "Μετάβαση πίσω"
+
+#: src/resources/gtk/help-overlay.ui:196
+msgctxt "shortcut window"
+msgid "Go forward"
+msgstr "Μετάβαση εμπρός"
+
+#: src/resources/gtk/help-overlay.ui:203
+msgctxt "shortcut window"
+msgid "Go up"
+msgstr "Μετάβαση πάνω"
+
+#: src/resources/gtk/help-overlay.ui:210
+msgctxt "shortcut window"
+msgid "Go down"
+msgstr "Μετάβαση κάτω"
+
+#: src/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Go to home folder"
+msgstr "Μετάβαση στον προσωπικό φάκελο"
+
+#
+#: src/resources/gtk/help-overlay.ui:224
+msgctxt "shortcut window"
+msgid "Enter location"
+msgstr "Εισαγωγή τοποθεσίας"
+
+#
+#: src/resources/gtk/help-overlay.ui:231
+msgctxt "shortcut window"
+msgid "Location bar with root location"
+msgstr "Γραμμή τοποθεσίας με τον ριζικό κατάλογο"
+
+#
+#: src/resources/gtk/help-overlay.ui:238
+msgctxt "shortcut window"
+msgid "Location bar with home location"
+msgstr "Γραμμή τοποθεσίας με τον προσωπικό φάκελο"
+
+#: src/resources/gtk/help-overlay.ui:247
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Προβολή"
+
+#: src/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Μεγέθυνση"
+
+#: src/resources/gtk/help-overlay.ui:258
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Σμίκρυνση"
+
+#: src/resources/gtk/help-overlay.ui:265
+msgctxt "shortcut window"
+msgid "Reset zoom"
+msgstr "Επαναφορά εστίασης"
+
+#: src/resources/gtk/help-overlay.ui:272
+msgctxt "shortcut window"
+msgid "Refresh view"
+msgstr "Ανανέωση της προβολής"
+
+#: src/resources/gtk/help-overlay.ui:279
+msgctxt "shortcut window"
+msgid "Show/hide hidden files"
+msgstr "Εμφάνιση/απόκρυψη κρυφών αρχείων"
+
+#: src/resources/gtk/help-overlay.ui:286
+msgctxt "shortcut window"
+msgid "Show/hide sidebar"
+msgstr "Εμφάνιση/απόκρυψη πλευρικής στήλης"
+
+#: src/resources/gtk/help-overlay.ui:293
+msgctxt "shortcut window"
+msgid "Show/hide action menu"
+msgstr "Εμφάνιση/απόκρυψη μενού ενεργειών"
+
+#: src/resources/gtk/help-overlay.ui:300
+msgctxt "shortcut window"
+msgid "List view"
+msgstr "Προβολή λίστας"
+
+#: src/resources/gtk/help-overlay.ui:307
+msgctxt "shortcut window"
+msgid "Grid view"
+msgstr "Προβολή πλέγματος"
+
+#: src/resources/gtk/help-overlay.ui:316
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Επεξεργασία"
+
+#: src/resources/gtk/help-overlay.ui:320
+msgctxt "shortcut window"
+msgid "Create folder"
+msgstr "Δημιουργία φακέλου"
+
+#
+#: src/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Rename"
+msgstr "Μετονομασία"
+
+#: src/resources/gtk/help-overlay.ui:334
+msgctxt "shortcut window"
+msgid "Move to trash"
+msgstr "Μετακίνηση στα απορρίμματα"
+
+#: src/resources/gtk/help-overlay.ui:341
+msgctxt "shortcut window"
+msgid "Delete permanently"
+msgstr "Οριστική διαγραφή"
+
+#: src/resources/gtk/help-overlay.ui:348
+msgctxt "shortcut window"
+msgid "Create link to copied item"
+msgstr "Δημιουργία συνδέσμων προς το αντιγραμμένο αντικείμενο"
+
+#: src/resources/gtk/help-overlay.ui:355
+msgctxt "shortcut window"
+msgid "Create link to selected item"
+msgstr "Δημιουργία συνδέσμων προς επιλεγμένο αντικείμενο"
+
+#: src/resources/gtk/help-overlay.ui:362
+msgctxt "shortcut window"
+msgid "Cut"
+msgstr "Αποκοπή"
+
+# # NOTE: Translation of "Create" as "New" to
+# #       keep msg length relatively short...
+#: src/resources/gtk/help-overlay.ui:369
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+#: src/resources/gtk/help-overlay.ui:376
+msgctxt "shortcut window"
+msgid "Paste"
+msgstr "Επικόλληση"
+
+#: src/resources/gtk/help-overlay.ui:383
+msgctxt "shortcut window"
+msgid "Select all"
+msgstr "Επιλογή όλων"
+
+#: src/resources/gtk/help-overlay.ui:390
+msgctxt "shortcut window"
+msgid "Invert selection"
+msgstr "Αντιστροφή επιλογής"
+
+#: src/resources/gtk/help-overlay.ui:397
+msgctxt "shortcut window"
+msgid "Select items matching"
+msgstr "Επιλογή αντικειμένων που ταιριάζουν"
+
+#: src/resources/gtk/help-overlay.ui:404
+msgctxt "shortcut window"
+msgid "Show item properties"
+msgstr "Προβολή ιδιοτήτων αντικειμένου"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:6
+msgid "Automatic Numbers"
+msgstr "Αυτόματοι αριθμοί"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:8
+msgid "1, 2, 3, 4"
+msgstr "1, 2, 3, 4"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:12
+msgid "01, 02, 03, 04"
+msgstr "01, 02, 03, 04"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:16
+msgid "001, 002, 003, 004"
+msgstr "001, 002, 003, 004"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:21
+msgid "Metadata"
+msgstr "Μεταδεδομένα"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:23
+msgid "Creation Date"
+msgstr "Ημερομηνία δημιουργίας"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:33
+msgid "Season Number"
+msgstr "Αριθμός κύκλου"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:38
+msgid "Episode Number"
+msgstr "Αριθμός επεισοδίου"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:43
+msgid "Track Number"
+msgstr "Αριθμός κομματιού"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:48
+msgid "Artist Name"
+msgstr "Όνομα καλλιτέχνη"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:58
+msgid "Album Name"
+msgstr "Όνομα συλλογής"
+
+#: src/resources/ui/nautilus-batch-rename-dialog-menu.ui:65
+msgid "Original File Name"
+msgstr "Αρχικό όνομα αρχείου"
+
+#
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:20
+#: src/resources/ui/nautilus-rename-file-popover.ui:48
+msgid "_Rename"
+msgstr "Με_τονομασία"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:55
+msgid "Rename _using a template"
+msgstr "Μετονομασία με χ_ρήση προτύπου"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:66
+msgid "Find and replace _text"
+msgstr "Εύρεση και αντικατάσταση κ_ειμένου"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:139
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:169
+msgid "Automatic Numbering Order"
+msgstr "Αυτόματη σειρά αρίθμησης"
+
+#. Translators: This is a noun, not a verb
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:214
+msgid "Format"
+msgstr "Μορφή"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:231
+msgid "Existing Text"
+msgstr "Υπάρχον κείμενο"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:260
+msgid "Replace With"
+msgstr "Αντικατάσταση με"
+
+#: src/resources/ui/nautilus-batch-rename-dialog.ui:287
+msgctxt "title"
+msgid "Replace"
+msgstr "Αντικατάσταση"
+
+#: src/resources/ui/nautilus-compress-dialog.ui:5
+msgid "Create Archive"
+msgstr "Δημιουργία συμπιεσμένου αρχείου"
+
+#: src/resources/ui/nautilus-compress-dialog.ui:22
+msgid "Archive name"
+msgstr "Όνομα συμπιεσμένου αρχείου"
+
+#: src/resources/ui/nautilus-compress-dialog.ui:118
+msgid "Compatible with all operating systems."
+msgstr "Συμβατό με όλα τα λειτουργικά συστήματα."
+
+#: src/resources/ui/nautilus-compress-dialog.ui:131
+msgid "Smaller archives but Linux and Mac only."
+msgstr "Μικρότερα συμπιεσμένα αρχεία αλλά μόνο για Linux και Mac."
+
+#: src/resources/ui/nautilus-compress-dialog.ui:144
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr ""
+"Μικρότερα συμπιεσμένα αρχεία αλλά πρέπει να εγκατασταθούν σε Windows και Mac."
+
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:5
+msgid "Change Permissions for Enclosed Files"
+msgstr "Αλλαγή δικαιωμάτων στα περιεχόμενα αρχεία"
+
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:20
+msgid "C_hange"
+msgstr "Α_λλαγή"
+
+#
+#: src/resources/ui/nautilus-file-properties-change-permissions.ui:162
+#: src/resources/ui/nautilus-properties-window.ui:1071
+msgid "Others"
+msgstr "Άλλοι"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:5
+msgid "New _Folder"
+msgstr "Νέος _φάκελος"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:9
+msgid "New _Document"
+msgstr "Νέο έ_γγραφο"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:14
+msgid "Add to _Bookmarks"
+msgstr "Προσθήκη στους _σελιδοδείκτες"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:19
+#: src/resources/ui/nautilus-files-view-context-menus.ui:135
+#: src/resources/ui/nautilus-preferences-window.ui:71
+msgid "Create _Link"
+msgstr "Δημιουργία συ_νδέσμου"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:26
+msgid "_Paste"
+msgstr "_Επικόλληση"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:30
+msgid "Select _All"
+msgstr "Επιλογή ό_λων"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:38
+#: src/resources/ui/nautilus-files-view-context-menus.ui:241
+msgid "P_roperties"
+msgstr "_Ιδιότητες"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:50
+msgid "_Scripts"
+msgstr "Δέ_σμες ενεργειών"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:55
+msgid "_Open Scripts Folder"
+msgstr "Άνοιγμα _φακέλου δεσμών ενεργειών"
+
+#
+#: src/resources/ui/nautilus-files-view-context-menus.ui:63
+msgid "_Open Item Location"
+msgstr "Άνοιγμα θέσης _αντικειμένου"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:68
+msgid "Open In New _Tab"
+msgstr "Άνοιγμα σε νέα _καρτέλα"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:73
+msgid "Open In New _Window"
+msgstr "Άνοιγμα σε νέο παρά_θυρο"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:80
+msgid "Open With Other _Application"
+msgstr "Άνοιγμα με άλλη ε_φαρμογή"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:87
+msgid "_Run as a Program"
+msgstr "_Εκτέλεση ως πρόγραμμα"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:94
+#: src/gtk/nautilusgtkplacesview.c:1750
+msgid "_Mount"
+msgstr "Π_ροσάρτηση"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:99
+#: src/gtk/nautilusgtkplacesview.c:1740
+msgid "_Unmount"
+msgstr "Α_ποπροσάρτηση"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:104
+msgid "_Eject"
+msgstr "Εξαγω_γή"
+
+#
+#: src/resources/ui/nautilus-files-view-context-menus.ui:114
+msgid "_Stop"
+msgstr "_Διακοπή"
+
+#
+#: src/resources/ui/nautilus-files-view-context-menus.ui:119
+msgid "_Detect Media"
+msgstr "_Εντοπισμός πολυμέσων"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:126
+msgid "Cu_t"
+msgstr "Απο_κοπή"
+
+# # NOTE: Translation of "Create" as "New" to
+# #       keep msg length relatively short...
+#: src/resources/ui/nautilus-files-view-context-menus.ui:130
+msgid "_Copy"
+msgstr "_Αντιγραφή"
+
+# # NOTE: Translation of "Create" as "New" to
+# #       keep msg length relatively short...
+#: src/resources/ui/nautilus-files-view-context-menus.ui:141
+msgid "_Paste Into Folder"
+msgstr "_Επικόλληση στον φάκελο"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:148
+msgid "Move to…"
+msgstr "Μετακίνηση σε…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:152
+msgid "Copy to…"
+msgstr "Αντιγραφή σε…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:163
+msgid "_Delete from Trash"
+msgstr "_Διαγραφή από τα απορρίμματα"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:168
+#: src/resources/ui/nautilus-files-view-context-menus.ui:173
+msgid "_Delete Permanently…"
+msgstr "Οριστική _διαγραφή…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:178
+msgid "_Restore From Trash"
+msgstr "_Επαναφορά από τα απορρίμματα"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:185
+msgid "Rena_me…"
+msgstr "Μετονο_μασία…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:191
+msgid "Set As Wallpaper"
+msgstr "Ορισμός ως ταπετσαρία"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:198
+msgid "_Remove from Recent"
+msgstr "Α_φαίρεση από τα πρόσφατα"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:205
+msgid "_Extract Here"
+msgstr "_Αποσυμπίεση εδώ"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:210
+msgid "E_xtract to…"
+msgstr "Απο_συμπιέση σε…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:215
+msgid "C_ompress…"
+msgstr "_Συμπίεση…"
+
+#: src/resources/ui/nautilus-files-view-context-menus.ui:224
+msgid "Tags"
+msgstr "Ετικέτες"
+
+#
+#. Marks a file as starred (starred)
+#: src/resources/ui/nautilus-files-view-context-menus.ui:229
+msgctxt "menu item"
+msgid "Star"
+msgstr "Επισήμανση"
+
+#. Unmarks a file as starred (starred)
+#: src/resources/ui/nautilus-files-view-context-menus.ui:234
+msgctxt "menu item"
+msgid "Unstar"
+msgstr "Άρση επισήμανσης"
+
+#: src/resources/ui/nautilus-folder-is-empty.ui:31
+msgid "Folder is Empty"
+msgstr "Ο φάκελος είναι κενός"
+
+#: src/resources/ui/nautilus-no-search-results.ui:31
+msgid "No Results Found"
+msgstr "Δε βρέθηκαν αποτελέσματα"
+
+#: src/resources/ui/nautilus-no-search-results.ui:46
+#: src/gtk/nautilusgtkplacesview.ui:274
+msgid "Try a different search"
+msgstr "Δοκιμάστε μια διαφορετική αναζήτηση"
+
+#: src/resources/ui/nautilus-pathbar-context-menu.ui:6
+#: src/gtk/nautilusgtkplacesview.c:1716
+msgid "Open in New _Window"
+msgstr "Άνοιγμα σε νέο παρά_θυρο"
+
+#: src/resources/ui/nautilus-pathbar-context-menu.ui:10
+#: src/gtk/nautilusgtkplacesview.c:1705
+msgid "Open in New _Tab"
+msgstr "Άνοιγμα σε νέα _καρτέλα"
+
+#: src/resources/ui/nautilus-preferences-window.ui:19
+msgid "Sort _Folders Before Files"
+msgstr "Ταξινόμηση _φακέλων πριν από τα αρχεία"
+
+#: src/resources/ui/nautilus-preferences-window.ui:37
+msgid "_Expandable Folders in List View"
+msgstr "_Επεκτάσιμοι φάκελοι σε προβολή λίστας"
+
+#: src/resources/ui/nautilus-preferences-window.ui:54
+msgid "Action to Open Items"
+msgstr "Ενέργεια για άνοιγμα αντικειμένων"
+
+#: src/resources/ui/nautilus-preferences-window.ui:64
+msgid "Optional Context Menu Actions"
+msgstr "Προαιρετικές ενέργειες μενού"
+
+#: src/resources/ui/nautilus-preferences-window.ui:65
+msgid ""
+"Show more actions in the menus. Keyboard shortcuts can be used even if the "
+"actions are not shown."
+msgstr ""
+"Εμφάνιση περισσότερων ενεργειών στα μενού. Οι συντομεύσεις πληκτρολογίου "
+"μπορούν να χρησιμοποιηθούν ακόμη και αν δεν εμφανίζονται οι ενέργειες."
+
+#: src/resources/ui/nautilus-preferences-window.ui:89
+msgid "_Delete Permanently"
+msgstr "Οριστική _διαγραφή"
+
+#: src/resources/ui/nautilus-preferences-window.ui:107
+msgid "Performance"
+msgstr "Απόδοση"
+
+#: src/resources/ui/nautilus-preferences-window.ui:108
+msgid ""
+"These features may cause slowdowns and excess network usage, especially when "
+"browsing files outside this computer, such as on a remote server."
+msgstr ""
+"Αυτές οι δυνατότητες ενδέχεται να προκαλέσουν επιβράδυνση και υπερβολική "
+"χρήση δικτύου, ειδικά κατά την περιήγηση αρχείων εκτός αυτού του υπολογιστή, "
+"όπως σε απομακρυσμένο διακομιστή."
+
+#: src/resources/ui/nautilus-preferences-window.ui:113
+msgid "Search in Subfolders"
+msgstr "Αναζήτηση σε υποφακέλους"
+
+#: src/resources/ui/nautilus-preferences-window.ui:122
+msgid "Show Thumbnails"
+msgstr "Εμφάνιση μικρογραφιών"
+
+#: src/resources/ui/nautilus-preferences-window.ui:131
+msgid "Count Number of Files in Folders"
+msgstr "Μέτρηση αριθμού αρχείων στους φακέλους"
+
+#: src/resources/ui/nautilus-preferences-window.ui:141
+msgid ""
+"Add information to be displayed beneath file and folder names. More "
+"information will appear when zooming closer."
+msgstr ""
+"Προσθέστε τις πληροφορίες που θα εμφανίζονται κάτω από τα ονόματα των "
+"αρχείων και των φακέλων. Θα εμφανίζονται περισσότερες όσο αυξάνει το επίπεδο "
+"εστίασης."
+
+#: src/resources/ui/nautilus-preferences-window.ui:142
+msgid "Icon View Captions"
+msgstr "Λεζάντες εικονιδίων"
+
+#. Translators: This is an ordinal number
+#: src/resources/ui/nautilus-preferences-window.ui:147
+msgctxt "the n-th position of an icon caption"
+msgid "First"
+msgstr "Πρώτη"
+
+#. Translators: This is an ordinal number
+#: src/resources/ui/nautilus-preferences-window.ui:156
+msgctxt "the n-th position of an icon caption"
+msgid "Second"
+msgstr "Δεύτερη"
+
+#. Translators: This is an ordinal number
+#: src/resources/ui/nautilus-preferences-window.ui:165
+msgctxt "the n-th position of an icon caption"
+msgid "Third"
+msgstr "Τρίτη"
+
+#: src/resources/ui/nautilus-properties-window.ui:169
+msgid "Link target"
+msgstr "Προορισμός συνδέσμου"
+
+#: src/resources/ui/nautilus-properties-window.ui:198
+msgid "Contents"
+msgstr "Περιεχόμενα"
+
+#: src/resources/ui/nautilus-properties-window.ui:342
+msgid "Volume"
+msgstr "Τόμος"
+
+#
+#: src/resources/ui/nautilus-properties-window.ui:370
+msgid "Trashed on"
+msgstr "Διαγράφηκε"
+
+#: src/resources/ui/nautilus-properties-window.ui:450
+msgid "Free space"
+msgstr "Ελεύθερος χώρος"
+
+#: src/resources/ui/nautilus-properties-window.ui:554
+msgid "Total capacity"
+msgstr "Συνολική χωρητικότητα"
+
+#: src/resources/ui/nautilus-properties-window.ui:571
+msgid "Filesystem type"
+msgstr "Τύπος συστήματος αρχείων"
+
+#. Refers to the capacity of the filesystem
+#: src/resources/ui/nautilus-properties-window.ui:640
+msgid "used"
+msgstr "σε χρήση"
+
+#. Refers to the capacity of the filesystem
+#: src/resources/ui/nautilus-properties-window.ui:653
+msgid "free"
+msgstr "ελεύθερα"
+
+#: src/resources/ui/nautilus-properties-window.ui:688
+msgid "Open in Disks"
+msgstr "Άνοιγμα με την εφαρμογή Δίσκοι"
+
+#: src/resources/ui/nautilus-properties-window.ui:764
+msgid "Basic"
+msgstr "Βασικές"
+
+#: src/resources/ui/nautilus-properties-window.ui:778
+msgid "You are not the owner, so you cannot change these permissions."
+msgstr ""
+"Δεν είστε ο ιδιοκτήτης, οπότε δεν μπορείτε να αλλάξετε τα δικαιώματα αυτά."
+
+#: src/resources/ui/nautilus-properties-window.ui:805
+msgid "The permissions of the selected file could not be determined."
+msgstr "Αδύνατη η εξακρίβωση των δικαιωμάτων του επιλεγμένου αρχείου."
+
+#: src/resources/ui/nautilus-properties-window.ui:827
+msgid "_Owner"
+msgstr "Ι_διοκτήτης"
+
+#: src/resources/ui/nautilus-properties-window.ui:877
+#: src/resources/ui/nautilus-properties-window.ui:1000
+#: src/resources/ui/nautilus-properties-window.ui:1085
+msgid "Access"
+msgstr "Πρόσβαση"
+
+#: src/resources/ui/nautilus-properties-window.ui:891
+#: src/resources/ui/nautilus-properties-window.ui:1014
+#: src/resources/ui/nautilus-properties-window.ui:1099
+msgid "Folder access"
+msgstr "Πρόσβαση φακέλου"
+
+#: src/resources/ui/nautilus-properties-window.ui:905
+#: src/resources/ui/nautilus-properties-window.ui:1028
+#: src/resources/ui/nautilus-properties-window.ui:1113
+msgid "File access"
+msgstr "Πρόσβαση αρχείου"
+
+#: src/resources/ui/nautilus-properties-window.ui:948
+msgid "_Group"
+msgstr "Ο_μάδα"
+
+#: src/resources/ui/nautilus-properties-window.ui:1155
+msgid "Execute"
+msgstr "Εκτέλεση"
+
+#: src/resources/ui/nautilus-properties-window.ui:1170
+msgid "Security context"
+msgstr "Περιεχόμενο ασφαλείας"
+
+#: src/resources/ui/nautilus-properties-window.ui:1200
+msgid "Change Permissions for Enclosed Files…"
+msgstr "Αλλαγή δικαιωμάτων στα περιεχόμενα αρχεία…"
+
+#: src/resources/ui/nautilus-properties-window.ui:1219
+msgid "Allow _executing file as program"
+msgstr "Να επιτρέπεται η ε_κτέλεση του αρχείου ως πρόγραμμα"
+
+#: src/resources/ui/nautilus-properties-window.ui:1346
+msgid "_Add"
+msgstr "_Προσθήκη"
+
+#: src/resources/ui/nautilus-properties-window.ui:1360
+msgid "Set as default"
+msgstr "Ορισμός ως προεπιλογή"
+
+#: src/resources/ui/nautilus-properties-window.ui:1388
+msgid "Open With"
+msgstr "Άνοιγμα με"
+
+#: src/resources/ui/nautilus-search-popover.ui:18
+msgid "When"
+msgstr "Πότε"
+
+#: src/resources/ui/nautilus-search-popover.ui:45
+msgid "Select a date"
+msgstr "Επιλογή ημερομηνίας"
+
+#: src/resources/ui/nautilus-search-popover.ui:67
+msgid "Clear the currently selected date"
+msgstr "Καθαρισμός της τρέχουσας επιλεγμένης ημερομηνίας"
+
+#: src/resources/ui/nautilus-search-popover.ui:127
+msgid "Since…"
+msgstr "Από…"
+
+#: src/resources/ui/nautilus-search-popover.ui:194
+msgid "Last _modified"
+msgstr "Τελευταία τροποποι_ημένο"
+
+#: src/resources/ui/nautilus-search-popover.ui:211
+msgid "Last _used"
+msgstr "Τελευταία χ_ρησιμοποιημένο"
+
+#: src/resources/ui/nautilus-search-popover.ui:240
+msgid "What"
+msgstr "Τι"
+
+#: src/resources/ui/nautilus-search-popover.ui:264
+msgid "Which file types will be searched"
+msgstr "Ποιοί τύποι αρχείων θα αναζητηθούν"
+
+#: src/resources/ui/nautilus-search-popover.ui:360
+msgid "Full Text"
+msgstr "Πλήρες κείμενο"
+
+#: src/resources/ui/nautilus-search-popover.ui:364
+msgid "Search on the file content and name"
+msgstr "Αναζήτηση στο περιεχομένου αρχείου και όνομα"
+
+#: src/resources/ui/nautilus-search-popover.ui:379
+msgid "File Name"
+msgstr "Όνομα αρχείου"
+
+#: src/resources/ui/nautilus-search-popover.ui:383
+msgid "Search only on the file name"
+msgstr "Αναζήτηση μόνο στο όνομα αρχείου"
+
+#: src/resources/ui/nautilus-starred-is-empty.ui:31
+msgid "Starred files will appear here"
+msgstr "Τα αρχεία που επισημάνθηκαν θα εμφανιστούν εδώ"
+
+#: src/resources/ui/nautilus-toolbar.ui:49
+msgid "New Tab"
+msgstr "Νέα καρτέλα"
+
+#: src/resources/ui/nautilus-toolbar.ui:120
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: src/resources/ui/nautilus-toolbar.ui:133
+msgid "Cut"
+msgstr "Αποκοπή"
+
+# # NOTE: Translation of "Create" as "New" to
+# #       keep msg length relatively short...
+#. Translators: This is a verb
+#: src/resources/ui/nautilus-toolbar.ui:157
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+#: src/resources/ui/nautilus-toolbar.ui:180
+msgid "Paste"
+msgstr "Επικόλληση"
+
+#: src/resources/ui/nautilus-toolbar.ui:224
+msgid "Select All"
+msgstr "Επιλογή όλων"
+
+#: src/resources/ui/nautilus-toolbar.ui:250
+msgid "Show _Hidden Files"
+msgstr "Εμφάνιση _κρυφών αρχείων"
+
+#: src/resources/ui/nautilus-toolbar.ui:265
+msgid "Show _Sidebar"
+msgstr "Εμφάνιση _πλευρικής στήλης"
+
+#
+#: src/resources/ui/nautilus-toolbar.ui:291
+msgid "_Preferences"
+msgstr "_Προτιμήσεις"
+
+#: src/resources/ui/nautilus-toolbar.ui:305
+msgid "_Keyboard Shortcuts"
+msgstr "Συντομεύσεις _πληκτρολογίου"
+
+#: src/resources/ui/nautilus-toolbar.ui:319
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: src/resources/ui/nautilus-toolbar.ui:333
+msgid "_About Files"
+msgstr "Π_ερί του Αρχεία"
+
+#: src/resources/ui/nautilus-toolbar.ui:546
+msgid "Go back"
+msgstr "Μετάβαση πίσω"
+
+#: src/resources/ui/nautilus-toolbar.ui:573
+msgid "Go forward"
+msgstr "Μετάβαση εμπρός"
+
+#: src/resources/ui/nautilus-toolbar.ui:617
+msgid "Show operations"
+msgstr "Εμφάνιση λειτουργειών"
+
+#: src/resources/ui/nautilus-toolbar.ui:656
+msgid "Toggle view"
+msgstr "Εναλλαγή προβολής"
+
+#. “View” is a noun
+#: src/resources/ui/nautilus-toolbar.ui:680
+msgid "View options"
+msgstr "Επιλογές προβολής"
+
+#. Translators: a menu item in a group of sorting options in a toolbar menu, with criterions such as "A-Z" or "Last Modified".
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:33
+msgctxt "menu item"
+msgid "Sort"
+msgstr "Ταξινόμηση"
+
+#. This is used to sort by name in the toolbar view menu
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:52
+msgctxt "Sort Criterion"
+msgid "_A-Z"
+msgstr "_Α-Ω"
+
+#. This is used to sort by name, in descending order in the toolbar view menu
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:67
+msgctxt "Sort Criterion"
+msgid "_Z-A"
+msgstr "_Ω-Α"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:82
+msgid "Last _Modified"
+msgstr "Τελευταία _τροποποιημένο"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:97
+msgid "_First Modified"
+msgstr "_Αρχικά τροποποιημένο"
+
+#
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:112
+msgid "_Size"
+msgstr "Μέγε_θος"
+
+#
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:127
+msgid "_Type"
+msgstr "_Τύπος"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:141
+msgid "Last _Trashed"
+msgstr "Τελευταία διε_γραμένα"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:174
+msgid "_Visible Columns…"
+msgstr "Ο_ρατές στήλες…"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:188
+msgid "R_eload"
+msgstr "Επανα_φόρτωση"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:201
+msgid "St_op"
+msgstr "Διακο_πή"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:225
+msgid "Zoom out"
+msgstr "Σμίκρυνση"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:247
+msgid "Reset zoom"
+msgstr "Επαναφορά εστίασης"
+
+#: src/resources/ui/nautilus-toolbar-view-menu.ui:268
+msgid "Zoom in"
+msgstr "Μεγέθυνση"
+
+#: src/resources/ui/nautilus-trash-is-empty.ui:31
+msgid "Trash is Empty"
+msgstr "Τα απορρίμματα είναι άδεια"
+
+#
+#: src/resources/ui/nautilus-window.ui:5
+msgid "_Files"
+msgstr "_Αρχεία"
+
+#: src/gtk/nautilusgtkplacesview.c:897
+msgid "Searching for network locations"
+msgstr "Αναζήτηση για τοποθεσίες δικτύου"
+
+#: src/gtk/nautilusgtkplacesview.c:904
+msgid "No network locations found"
+msgstr "Δεν βρέθηκαν τοποθεσίες δικτύων"
+
+#. Restore from Cancel to Connect
+#: src/gtk/nautilusgtkplacesview.c:1249 src/gtk/nautilusgtkplacesview.ui:317
+msgid "Con_nect"
+msgstr "Σύν_δεση"
+
+#. if it wasn't cancelled show a dialog
+#: src/gtk/nautilusgtkplacesview.c:1383
+msgid "Unable to unmount volume"
+msgstr "Αδύνατη η αποπροσάρτηση τόμου"
+
+#. Allow to cancel the operation
+#: src/gtk/nautilusgtkplacesview.c:1484
+msgid "Cance_l"
+msgstr "Α_κύρωση"
+
+#: src/gtk/nautilusgtkplacesview.c:1647
+msgid "AppleTalk"
+msgstr "AppleTalk"
+
+#. Translators: do not translate ftp:// and ftps://
+#: src/gtk/nautilusgtkplacesview.c:1651
+msgid "File Transfer Protocol"
+msgstr "Πρωτόκολλο μεταφοράς αρχείων (FTP)"
+
+#: src/gtk/nautilusgtkplacesview.c:1651
+msgid "ftp:// or ftps://"
+msgstr "ftp:// ή ftps://"
+
+#: src/gtk/nautilusgtkplacesview.c:1654
+msgid "Network File System"
+msgstr "Σύστηµα αρχείων δικτύου (NFS)"
+
+#: src/gtk/nautilusgtkplacesview.c:1657
+msgid "Samba"
+msgstr "Samba"
+
+#. Translators: do not translate sftp:// and ssh://
+#: src/gtk/nautilusgtkplacesview.c:1661
+msgid "SSH File Transfer Protocol"
+msgstr "Πρωτόκολλο μεταφοράς αρχείων SSH"
+
+#: src/gtk/nautilusgtkplacesview.c:1661
+msgid "sftp:// or ssh://"
+msgstr "sftp:// ή ssh://"
+
+#. Translators: do not translate dav:// and davs://
+#: src/gtk/nautilusgtkplacesview.c:1665
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: src/gtk/nautilusgtkplacesview.c:1665
+msgid "dav:// or davs://"
+msgstr "dav:// ή davs://"
+
+#: src/gtk/nautilusgtkplacesview.c:1891
+msgid "Unable to get remote server location"
+msgstr "Αδύνατη η λήψη της θέσης του απομακρυσμένου διακομιστή"
+
+#: src/gtk/nautilusgtkplacesview.c:2086 src/gtk/nautilusgtkplacesview.c:2095
+msgid "Networks"
+msgstr "Δίκτυα"
+
+#: src/gtk/nautilusgtkplacesview.c:2086 src/gtk/nautilusgtkplacesview.c:2095
+msgid "On This Computer"
+msgstr "Σε αυτό τον υπολογιστή"
+
+#. Translators: respectively, free and total space of the drive. The plural form
+#. * should be based on the free space available.
+#. * i.e. 1 GB / 24 GB available.
+#.
+#: src/gtk/nautilusgtkplacesviewrow.c:136
+#, c-format
+msgid "%s / %s available"
+msgid_plural "%s / %s available"
+msgstr[0] "%s / %s διαθέσιμο"
+msgstr[1] "%s / %s διαθέσιμα"
+
+#: src/gtk/nautilusgtkplacesviewrow.c:483
+msgid "Disconnect"
+msgstr "Αποσύνδεση"
+
+#: src/gtk/nautilusgtkplacesviewrow.c:483
+#: src/gtk/nautilusgtkplacesviewrow.ui:72
+msgid "Unmount"
+msgstr "Αποπροσάρτηση"
+
+#: src/gtk/nautilusgtkplacesview.ui:30
+msgid "Server Addresses"
+msgstr "Διευθύνσεις διακομιστών"
+
+#: src/gtk/nautilusgtkplacesview.ui:43
+msgid ""
+"Server addresses are made up of a protocol prefix and an address. Examples:"
+msgstr ""
+"Τα ονόματα διακομιστών δημιουργούνται από το πρόθεμα του πρωτοκόλλου και μια "
+"διεύθυνση. Παραδείγματα:"
+
+#: src/gtk/nautilusgtkplacesview.ui:78
+msgid "Available Protocols"
+msgstr "Διαθέσιμα πρωτόκολλα"
+
+#: src/gtk/nautilusgtkplacesview.ui:92
+msgid "Prefix"
+msgstr "Πρόθεμα"
+
+#. Translators: Server as any successfully connected network address
+#: src/gtk/nautilusgtkplacesview.ui:135
+msgid "No recent servers found"
+msgstr "Δεν βρέθηκαν πρόσφατοι διακομιστές"
+
+#: src/gtk/nautilusgtkplacesview.ui:158
+msgid "Recent Servers"
+msgstr "Πρόσφατοι διακομιστές"
+
+#: src/gtk/nautilusgtkplacesview.ui:261
+msgid "No results found"
+msgstr "Δεν βρέθηκαν αποτελέσματα"
+
+#
+#: src/gtk/nautilusgtkplacesview.ui:307
+msgid "Connect to _Server"
+msgstr "Σύνδεση σε _διακομιστή"
+
+#: src/gtk/nautilusgtkplacesview.ui:340
+msgid "Enter server address…"
+msgstr "Εισαγωγή διεύθυνσης διακομιστή…"
+
+#~ msgid ""
+#~ "Whether to ask for confirmation when deleting files, or emptying the Trash"
+#~ msgstr ""
+#~ "Αν θα γίνεται ερώτηση επιβεβαίωσης κατά τη διαγραφή αρχείων ή το άδειασμα "
+#~ "των απορριμμάτων"
+
+#~ msgid ""
+#~ "If set to true, then Nautilus will ask for confirmation when you attempt "
+#~ "to delete files, or empty the Trash."
+#~ msgstr ""
+#~ "Αν οριστεί σε αληθές, ο Ναυτίλος θα ζητά επιβεβαίωση όταν προσπαθείτε να "
+#~ "διαγράψετε αρχεία ή να αδειάσετε τα απορρίμματα."
+
+#~ msgid "What to do with executable text files when activated"
+#~ msgstr "Ενέργεια κατά την ενεργοποίηση εκτελέσιμων αρχείων κειμένου"
+
+#~ msgid ""
+#~ "What to do with executable text files when they are activated (single or "
+#~ "double clicked). Possible values are “launch” to launch them as programs, "
+#~ "“ask” to ask what to do via a dialog, and “display” to display them as "
+#~ "text files."
+#~ msgstr ""
+#~ "Ενέργεια κατά την ενεργοποίηση εκτελέσιμων αρχείων κειμένου (με μονό ή "
+#~ "διπλό πάτημα). Οι επιτρεπτές τιμές είναι «εκκίνηση» για να εκκινούνται ως "
+#~ "προγράμματα, «ερώτηση» για να εμφανίζεται διάλογος ερώτησης και "
+#~ "«εμφάνιση» για να προβάλλονται ως αρχεία κειμένου."
+
+#~ msgid "Do you want to run “%s”, or display its contents?"
+#~ msgstr "Θέλετε να εκτελέσετε το «%s», ή να εμφανίσετε τα περιεχόμενά του;"
+
+#~ msgid "“%s” is an executable text file."
+#~ msgstr "Το «%s» είναι εκτελέσιμο αρχείο κειμένου."
+
+#~ msgid "Run in _Terminal"
+#~ msgstr "Εκτέλεση σε _τερματικό"
+
+#
+#~ msgid "_Display"
+#~ msgstr "Εμ_φάνιση"
+
+#~ msgid "%d MB"
+#~ msgstr "%d MB"
+
+#
+#~ msgid "Preferences"
+#~ msgstr "Προτιμήσεις"
+
+#~ msgid "_Show sidebar"
+#~ msgstr "_Εμφάνιση πλευρικής στήλης"
+
+#~ msgctxt "preferences"
+#~ msgid "Sort"
+#~ msgstr "Ταξινόμηση"
+
+#~ msgid "Allow folders to be _expanded"
+#~ msgstr "Να επιτρέπεται σε φακέλους να _επεκταθούν"
+
+#~ msgid "Views"
+#~ msgstr "Προβολές"
+
+#~ msgid "Open Action"
+#~ msgstr "Ενέργεια ανοίγματος"
+
+#~ msgid "_Single click to open items"
+#~ msgstr "_Μονό κλικ για το άνοιγμα αντικειμένων"
+
+#~ msgid "Link Creation"
+#~ msgstr "Δημιουργία συνδέσμου"
+
+#~ msgid "Show action to create symbolic _links"
+#~ msgstr "Εμφάνιση ενέργειας για τη δημιουργία συμβολικών συ_νδέσμων"
+
+#~ msgid "Executable Text Files"
+#~ msgstr "Εκτελέσιμα αρχεία κειμένου"
+
+#
+#~ msgid "_Display them"
+#~ msgstr "_Εμφάνιση"
+
+#~ msgid "_Run them"
+#~ msgstr "Εκ_τέλεση"
+
+#~ msgid "_Ask what to do"
+#~ msgstr "_Ερώτηση για την ενέργεια"
+
+#~ msgid "Ask before _emptying the Trash"
+#~ msgstr "Ε_ρώτηση πριν το άδειασμα των απορριμμάτων ή τη διαγραφή αρχείων"
+
+#~ msgid "Show action to _permanently delete files and folders"
+#~ msgstr "Εμφάνιση ενέργειας για την _οριστική διαγραφή αρχείων και φακέλων"
+
+#~ msgid "Behavior"
+#~ msgstr "Συμπεριφορά"
+
+#~ msgid "Choose the order of information to appear in the list view."
+#~ msgstr ""
+#~ "Επιλέξτε τον τρόπο ταξινόμησης των πληροφοριών που εμφανίζονται στην "
+#~ "προβολή λίστας."
+
+#~ msgid "List Columns"
+#~ msgstr "Στήλες λίστας"
+
+#
+#~ msgid "_Never"
+#~ msgstr "Π_οτέ"
+
+#~ msgid "Thumbnails"
+#~ msgstr "Μικρογραφίες"
+
+#~ msgid "_Files on this computer only"
+#~ msgstr "_Αρχεία μόνο σε αυτόν τον υπολογιστή"
+
+#
+#~ msgid "N_ever"
+#~ msgstr "_Ποτέ"
+
+#~ msgid "Onl_y for files smaller than:"
+#~ msgstr "Μόν_ο για αρχεία μικρότερα από:"
+
+#~ msgid "File count"
+#~ msgstr "Πλήθος αρχείων"
+
+#~ msgid "F_olders on this computer only"
+#~ msgstr "_Φάκελοι μόνο σε αυτόν τον υπολογιστή"
+
+#~ msgid "Ne_ver"
+#~ msgstr "Πο_τέ"
+
+#~ msgid "Search & Preview"
+#~ msgstr "Αναζήτηση & προεπισκόπηση"
+
+#~ msgid "Always"
+#~ msgstr "Πάντα"
+
+#~ msgid "Local Files Only"
+#~ msgstr "Μόνο τοπικά αρχεία"
+
+#~ msgid "Small"
+#~ msgstr "Μικρό"
+
+#~ msgid "Standard"
+#~ msgstr "Κανονικό"
+
+#~ msgid "Large"
+#~ msgstr "Μεγάλο"
+
+#~ msgid "By Name"
+#~ msgstr "Κατά όνομα"
+
+#~ msgid "By Size"
+#~ msgstr "Κατά μέγεθος"
+
+#~ msgid "By Type"
+#~ msgstr "Κατά είδος"
+
+#~ msgid "By Modification Date"
+#~ msgstr "Κατά ημερομηνία τροποποίησης"
+
+#~ msgid "By Access Date"
+#~ msgstr "Κατά ημερομηνία πρόσβασης"
+
+#~ msgid "By Trashed Date"
+#~ msgstr "Κατά ημερομηνία απόρριψης"
+
+#~ msgid "page0"
+#~ msgstr "σελίδα0"
+
+#~ msgid "page1"
+#~ msgstr "σελίδα1"
+
+# # NOTE: Translation of "Create" as "New" to
+# #       keep msg length relatively short...
+#~ msgid "Parent folder:"
+#~ msgstr "Γονικός φάκελος:"
+
+#~ msgid "Original folder:"
+#~ msgstr "Αρχικός φάκελος:"
+
+#~ msgid "Accessed:"
+#~ msgstr "Προσπελάστηκε:"
+
+#~ msgid "Modified:"
+#~ msgstr "Τροποποιήθηκε:"
+
+#~ msgid "Owner:"
+#~ msgstr "Ιδιοκτήτης:"
+
+#~ msgid "Group:"
+#~ msgstr "Ομάδα:"
+
+#
+#~ msgid "Others:"
+#~ msgstr "Άλλοι:"
+
+#~ msgid "New _Folder…"
+#~ msgstr "Νέος _φάκελος…"
+
+#~ msgid "Create the initial window with the given geometry."
+#~ msgstr "Δημιουργία του αρχικού παραθύρου με τη δοσμένη γεωμετρία."
+
+#
+#~ msgid "GEOMETRY"
+#~ msgstr "ΓΕΩΜΕΤΡΙΑ"
+
+#~ msgid "Only create windows for explicitly specified URIs."
+#~ msgstr "Δημιουργία παραθύρων μόνο για τα URI που έχουν οριστεί ρητά."
+
+#~ msgid "Nautilus"
+#~ msgstr "Ναυτίλος"
+
+#~ msgid "_Sidebar"
+#~ msgstr "_Πλευρική στήλη"
+
+#~ msgid "application-x-executable"
+#~ msgstr "application-x-executable"
+
+#~ msgid "List view"
+#~ msgstr "Προβολή λίστας"
+
+#
+#~ msgid "Other locations"
+#~ msgstr "Άλλες τοποθεσίες"
+
+#~ msgid "@icon@"
+#~ msgstr "@icon@"
+
+#~ msgid "New _Window"
+#~ msgstr "Νέο παρά_θυρο"
+
+#~ msgid "smb://"
+#~ msgstr "smb://"
