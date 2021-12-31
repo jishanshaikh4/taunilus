@@ -1,0 +1,23 @@
+[Application]
+name=org.gnome.NautilusDevel
+runtime=org.gnome.Platform/x86_64/master
+sdk=org.gnome.Sdk/x86_64/master
+tags=devel;development;nightly;
+command=nautilus
+
+[Context]
+shared=ipc;
+sockets=x11;wayland;
+filesystems=xdg-run/dconf;xdg-run/gvfsd;~/.config/dconf:ro;host;
+
+[Session Bus Policy]
+org.gtk.vfs.*=talk
+org.gtk.vfs=talk
+org.gnome.OnlineAccounts=talk
+ca.desrt.dconf=talk
+
+[Environment]
+DCONF_USER_CONFIG_DIR=.config/dconf
+
+[Policy Tracker3]
+dbus:org.freedesktop.Tracker3.Miner.Files=tracker:FileSystem\;tracker:Documents;

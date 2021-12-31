@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.freedesktop.Tracker3.Miner.Files.Control
+Exec=/app/libexec/tracker-miner-fs-control-3
+SystemdService=tracker-miner-fs-control-3.service

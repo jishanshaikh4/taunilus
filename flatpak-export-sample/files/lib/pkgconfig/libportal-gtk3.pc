@@ -1,0 +1,11 @@
+prefix=/app
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libportal-gtk3
+Description: Portal API wrappers (GTK3)
+Version: 0.5
+Requires: gtk+-3.0, libportal
+Requires.private: gio-2.0 >=  2.58, gio-unix-2.0
+Libs: -L${libdir} -lportal-gtk3
+Cflags: -I${includedir}

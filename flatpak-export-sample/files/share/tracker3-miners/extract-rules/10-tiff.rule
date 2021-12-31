@@ -1,0 +1,7 @@
+[ExtractorRule]
+ModulePath=libextract-tiff.so
+MimeTypes=image/tiff
+FallbackRdfTypes=nfo:Image;nmm:Photo;
+Graph=tracker:Pictures
+Hash=a428c859ff6f21b7a6987f3c49f368fe1051dbe37b2635b80c6bed2e0611c47b
+

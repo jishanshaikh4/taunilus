@@ -1,0 +1,6 @@
+[ExtractorRule]
+MimeTypes=application/x-cbr;application/x-cbz;application/x-cbt;application/x-cb7;application/vnd.comicbook+zip;
+FallbackRdfTypes=nfo:EBook;
+Graph=tracker:Documents
+Hash=4b914d30231df5f9495cf10a15d76ebdd7ac2495f29388c0cdaafabc7cc32985
+

@@ -1,0 +1,7 @@
+[ExtractorRule]
+ModulePath=libextract-mp3.so
+MimeTypes=audio/mpeg;audio/x-mp3;
+FallbackRdfTypes=nmm:MusicPiece;nfo:Audio;
+Graph=tracker:Audio
+Hash=8d0914258f60b0f0d2099270dc7f739d07bd5b428855e5925ee3a9a4bffa9317
+

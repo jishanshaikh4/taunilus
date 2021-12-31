@@ -1,0 +1,6 @@
+[ExtractorRule]
+MimeTypes=application/x-zip-compressed-fb2;application/x-fictionbook+xml;application/x-mobipocket-ebook;image/vnd.djvu+multipage;
+FallbackRdfTypes=nfo:EBook;nfo:PaginatedTextDocument;
+Graph=tracker:Documents
+Hash=4b914d30231df5f9495cf10a15d76ebdd7ac2495f29388c0cdaafabc7cc32985
+

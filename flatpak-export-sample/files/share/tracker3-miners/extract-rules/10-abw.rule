@@ -1,0 +1,7 @@
+[ExtractorRule]
+ModulePath=libextract-abw.so
+MimeTypes=application/x-abiword
+FallbackRdfTypes=nfo:Document
+Graph=tracker:Documents
+Hash=8e704338126e769f4e079fa2b89ea86fd4c11436ccb198ba2ce818712cdf38ad
+

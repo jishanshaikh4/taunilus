@@ -1,0 +1,7 @@
+[ExtractorRule]
+ModulePath=libextract-icon.so
+MimeTypes=image/vnd.microsoft.icon
+FallbackRdfTypes=nfo:Image;nfo:Icon;
+Graph=tracker:Pictures
+Hash=b4b309672d427099dea21eb9fad33bc4378875f001493d32d6fc049215334124
+
