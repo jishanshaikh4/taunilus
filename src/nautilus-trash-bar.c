@@ -25,11 +25,14 @@
 
 #include "nautilus-trash-bar.h"
 
+#include "nautilus-global-preferences.h"
 #include "nautilus-files-view.h"
 #include "nautilus-file-operations.h"
 #include "nautilus-file-utilities.h"
 #include "nautilus-file.h"
 #include "nautilus-trash-monitor.h"
+#include "nautilus-ui-utilities.h"
+#include "nautilus-gtk4-helpers.h"
 
 enum
 {
@@ -39,7 +42,8 @@ enum
 
 enum
 {
-    TRASH_BAR_RESPONSE_EMPTY = 1,
+    TRASH_BAR_RESPONSE_AUTODELETE = 1,
+    TRASH_BAR_RESPONSE_EMPTY,
     TRASH_BAR_RESPONSE_RESTORE
 };
 
@@ -162,6 +166,28 @@ trash_bar_response_cb (GtkInfoBar *infobar,
 
     switch (response_id)
     {
+        case TRASH_BAR_RESPONSE_AUTODELETE:
+        {
+            g_autoptr (GAppInfo) app_info = NULL;
+            g_autoptr (GError) error = NULL;
+
+            app_info = g_app_info_create_from_commandline ("gnome-control-center usage",
+                                                           NULL,
+                                                           G_APP_INFO_CREATE_NONE,
+                                                           NULL);
+
+            g_app_info_launch (app_info, NULL, NULL, &error);
+
+            if (error)
+            {
+                show_dialog (_("There was an error launching the application."),
+                             error->message,
+                             GTK_WINDOW (window),
+                             GTK_MESSAGE_ERROR);
+            }
+        }
+        break;
+
         case TRASH_BAR_RESPONSE_EMPTY:
         {
             nautilus_file_operations_empty_trash (window, TRUE, NULL);
@@ -186,11 +212,12 @@ trash_bar_response_cb (GtkInfoBar *infobar,
 static void
 nautilus_trash_bar_init (NautilusTrashBar *bar)
 {
-    GtkWidget *content_area, *action_area, *w;
+    GtkWidget *action_area, *w;
+    const gchar *subtitle_text;
     GtkWidget *label;
+    GtkWidget *subtitle;
     PangoAttrList *attrs;
 
-    content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (bar));
     action_area = gtk_info_bar_get_action_area (GTK_INFO_BAR (bar));
 
     gtk_orientable_set_orientation (GTK_ORIENTABLE (action_area),
@@ -202,8 +229,27 @@ nautilus_trash_bar_init (NautilusTrashBar *bar)
     gtk_label_set_attributes (GTK_LABEL (label), attrs);
     pango_attr_list_unref (attrs);
 
+    subtitle_text = _("Trashed items are automatically deleted after a period of time");
+    subtitle = gtk_label_new (subtitle_text);
+    gtk_widget_set_tooltip_text (subtitle, subtitle_text);
+    gtk_label_set_ellipsize (GTK_LABEL (subtitle), PANGO_ELLIPSIZE_END);
+
+    g_settings_bind (gnome_privacy_preferences,
+                     "remove-old-trash-files",
+                     subtitle,
+                     "visible",
+                     G_SETTINGS_BIND_GET);
+
     gtk_widget_show (label);
-    gtk_container_add (GTK_CONTAINER (content_area), label);
+    gtk_info_bar_add_child (GTK_INFO_BAR (bar), label);
+
+    gtk_info_bar_add_child (GTK_INFO_BAR (bar), subtitle);
+
+    w = gtk_info_bar_add_button (GTK_INFO_BAR (bar),
+                                 _("_Settings"),
+                                 TRASH_BAR_RESPONSE_AUTODELETE);
+    gtk_widget_set_tooltip_text (w,
+                                 _("Display system controls for trash content"));
 
     w = gtk_info_bar_add_button (GTK_INFO_BAR (bar),
                                  _("_Restore"),

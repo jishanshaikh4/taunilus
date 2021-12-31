@@ -40,7 +40,7 @@
 #include "nautilus-toolbar-menu-sections.h"
 #include "nautilus-ui-utilities.h"
 #include "nautilus-window.h"
-#include "nautilus-container-max-width.h"
+#include "nautilus-gtk4-helpers.h"
 
 #define OPERATION_MINIMUM_TIME 2 /*s */
 #define NEEDS_ATTENTION_ANIMATION_TIMEOUT 2000 /*ms */
@@ -50,7 +50,6 @@
 #define ANIMATION_Y_GROW 30
 
 /* Just design, context at https://gitlab.gnome.org/GNOME/nautilus/issues/548#note_274131 */
-#define SWITCHER_MAX_WIDTH 840
 
 typedef enum
 {
@@ -69,8 +68,6 @@ struct _NautilusToolbar
     GtkWidget *location_entry_container;
     GtkWidget *search_container;
     GtkWidget *toolbar_switcher;
-    GtkWidget *toolbar_switcher_container;
-    NautilusContainerMaxWidth *toolbar_switcher_container_max_width;
     GtkWidget *path_bar;
     GtkWidget *location_entry;
 
@@ -91,8 +88,11 @@ struct _NautilusToolbar
     GtkWidget *view_toggle_button;
     GtkWidget *view_toggle_icon;
 
+    GtkWidget *app_menu;
+
     GtkWidget *operations_popover;
-    GtkWidget *operations_container;
+    GtkWidget *operations_list;
+    GListStore *progress_infos_model;
     GtkWidget *operations_revealer;
     GtkWidget *operations_icon;
 
@@ -159,9 +159,9 @@ toolbar_update_appearance (NautilusToolbar *self)
 }
 
 static void
-activate_back_or_forward_menu_item (GtkMenuItem    *menu_item,
-                                    NautilusWindow *window,
-                                    gboolean        back)
+activate_back_or_forward_menu_item (GtkMenuItem        *menu_item,
+                                    NautilusWindowSlot *window_slot,
+                                    gboolean            back)
 {
     int index;
 
@@ -169,21 +169,21 @@ activate_back_or_forward_menu_item (GtkMenuItem    *menu_item,
 
     index = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menu_item), "user_data"));
 
-    nautilus_window_back_or_forward (window, back, index, nautilus_event_get_window_open_flags ());
+    nautilus_window_slot_back_or_forward (window_slot, back, index);
 }
 
 static void
 activate_back_menu_item_callback (GtkMenuItem     *menu_item,
                                   NautilusToolbar *self)
 {
-    activate_back_or_forward_menu_item (menu_item, self->window, TRUE);
+    activate_back_or_forward_menu_item (menu_item, self->window_slot, TRUE);
 }
 
 static void
 activate_forward_menu_item_callback (GtkMenuItem     *menu_item,
                                      NautilusToolbar *self)
 {
-    activate_back_or_forward_menu_item (menu_item, self->window, FALSE);
+    activate_back_or_forward_menu_item (menu_item, self->window_slot, FALSE);
 }
 
 static void
@@ -518,14 +518,10 @@ update_operations (NautilusToolbar *self)
 {
     GList *progress_infos;
     GList *l;
-    GtkWidget *progress;
     gboolean should_show_progress_button = FALSE;
 
-    gtk_container_foreach (GTK_CONTAINER (self->operations_container),
-                           (GtkCallback) gtk_widget_destroy,
-                           NULL);
-
     disconnect_progress_infos (self);
+    g_list_store_remove_all (self->progress_infos_model);
 
     progress_infos = get_filtered_progress_infos (self);
     for (l = progress_infos; l != NULL; l = l->next)
@@ -539,10 +535,7 @@ update_operations (NautilusToolbar *self)
                                   G_CALLBACK (on_progress_info_cancelled), self);
         g_signal_connect_swapped (l->data, "progress-changed",
                                   G_CALLBACK (on_progress_info_progress_changed), self);
-        progress = nautilus_progress_info_widget_new (l->data);
-        gtk_box_pack_start (GTK_BOX (self->operations_container),
-                            progress,
-                            FALSE, FALSE, 0);
+        g_list_store_append (self->progress_infos_model, l->data);
     }
 
     g_list_free (progress_infos);
@@ -685,7 +678,7 @@ on_operations_icon_draw (GtkWidget       *widget,
     GtkStyleContext *style_context;
 
     style_context = gtk_widget_get_style_context (widget);
-    gtk_style_context_get_color (style_context, gtk_widget_get_state_flags (widget), &foreground);
+    gtk_style_context_get_color (style_context, gtk_style_context_get_state (style_context), &foreground);
     background = foreground;
     background.alpha *= 0.3;
 
@@ -889,37 +882,35 @@ on_location_entry_focus_changed (GObject    *object,
     }
 }
 
+static GtkWidget *
+operations_list_create_widget (GObject  *item,
+                               gpointer  user_data)
+{
+    NautilusProgressInfo *info = NAUTILUS_PROGRESS_INFO (item);
+    GtkWidget *widget;
+
+    widget = nautilus_progress_info_widget_new (info);
+    gtk_widget_show_all (widget);
+
+    return widget;
+}
+
 static void
 nautilus_toolbar_constructed (GObject *object)
 {
-    g_autoptr (GtkBuilder) builder = NULL;
     NautilusToolbar *self = NAUTILUS_TOOLBAR (object);
 
-    builder = gtk_builder_new_from_resource ("/org/gnome/nautilus/ui/nautilus-toolbar-switcher.ui");
-    self->toolbar_switcher = GTK_WIDGET (gtk_builder_get_object (builder, "toolbar_switcher"));
-    self->search_container = GTK_WIDGET (gtk_builder_get_object (builder, "search_container"));
-    self->path_bar_container = GTK_WIDGET (gtk_builder_get_object (builder, "path_bar_container"));
-    self->location_entry_container = GTK_WIDGET (gtk_builder_get_object (builder, "location_entry_container"));
-
-    self->toolbar_switcher_container_max_width = nautilus_container_max_width_new ();
-    nautilus_container_max_width_set_max_width (self->toolbar_switcher_container_max_width,
-                                                SWITCHER_MAX_WIDTH);
-    gtk_container_add (GTK_CONTAINER (self->toolbar_switcher_container_max_width),
-                       self->toolbar_switcher);
-    gtk_container_add (GTK_CONTAINER (self->toolbar_switcher_container),
-                       GTK_WIDGET (self->toolbar_switcher_container_max_width));
-
-    self->path_bar = g_object_new (NAUTILUS_TYPE_PATH_BAR, NULL);
-    gtk_container_add (GTK_CONTAINER (self->path_bar_container),
-                       self->path_bar);
+    self->path_bar = GTK_WIDGET (g_object_new (NAUTILUS_TYPE_PATH_BAR, NULL));
+    gtk_box_append (GTK_BOX (self->path_bar_container),
+                    self->path_bar);
 
     self->location_entry = nautilus_location_entry_new ();
-    gtk_container_add (GTK_CONTAINER (self->location_entry_container),
-                       self->location_entry);
+    gtk_box_append (GTK_BOX (self->location_entry_container),
+                    self->location_entry);
     self->location_entry_close_button = gtk_button_new_from_icon_name ("window-close-symbolic",
                                                                        GTK_ICON_SIZE_BUTTON);
-    gtk_container_add (GTK_CONTAINER (self->location_entry_container),
-                       self->location_entry_close_button);
+    gtk_box_append (GTK_BOX (self->location_entry_container),
+                    self->location_entry_close_button);
     g_signal_connect (self->location_entry_close_button, "clicked",
                       G_CALLBACK (on_location_entry_close), self);
 
@@ -929,6 +920,12 @@ nautilus_toolbar_constructed (GObject *object)
     g_signal_connect (self->progress_manager, "has-viewers-changed",
                       G_CALLBACK (on_progress_has_viewers_changed), self);
 
+    self->progress_infos_model = g_list_store_new (NAUTILUS_TYPE_PROGRESS_INFO);
+    gtk_list_box_bind_model (GTK_LIST_BOX (self->operations_list),
+                             G_LIST_MODEL (self->progress_infos_model),
+                             (GtkListBoxCreateWidgetFunc) operations_list_create_widget,
+                             NULL,
+                             NULL);
     update_operations (self);
 
     self->back_button_longpress_gesture = gtk_gesture_long_press_new (self->back_button);
@@ -965,6 +962,10 @@ nautilus_toolbar_constructed (GObject *object)
                       G_CALLBACK (on_location_entry_populate_popup), self);
     g_signal_connect (self->location_entry, "notify::has-focus",
                       G_CALLBACK (on_location_entry_focus_changed), self);
+
+    /* Setting a max width on one entry to effectively set a max expansion for
+     * the whole title widget. */
+    gtk_entry_set_max_width_chars (GTK_ENTRY (self->location_entry), 88);
 
     gtk_widget_show_all (GTK_WIDGET (self));
     toolbar_update_appearance (self);
@@ -1162,6 +1163,7 @@ nautilus_toolbar_finalize (GObject *obj)
     unschedule_operations_start (self);
     unschedule_operations_button_attention_style (self);
 
+    g_clear_object (&self->progress_infos_model);
     g_signal_handlers_disconnect_by_data (self->progress_manager, self);
     g_clear_object (&self->progress_manager);
 
@@ -1225,14 +1227,18 @@ nautilus_toolbar_class_init (NautilusToolbarClass *klass)
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_button);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_icon);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_popover);
-    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_container);
+    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_list);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_revealer);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, view_button);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, view_toggle_button);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, view_toggle_icon);
+    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, app_menu);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, back_button);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, forward_button);
-    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, toolbar_switcher_container);
+    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, toolbar_switcher);
+    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, search_container);
+    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, path_bar_container);
+    gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, location_entry_container);
 
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, view_menu_zoom_section);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, view_menu_undo_redo_section);
@@ -1279,17 +1285,13 @@ nautilus_toolbar_set_show_location_entry (NautilusToolbar *self,
 }
 
 static void
-container_remove_all_children (GtkContainer *container)
+box_remove_all_children (GtkBox *box)
 {
-    GList *children;
-    GList *child;
-
-    children = gtk_container_get_children (container);
-    for (child = children; child != NULL; child = g_list_next (child))
+    GtkWidget *child;
+    while ((child = gtk_widget_get_first_child (GTK_WIDGET (box))) != NULL)
     {
-        gtk_container_remove (container, GTK_WIDGET (child->data));
+        gtk_box_remove (GTK_BOX (box), child);
     }
-    g_list_free (children);
 }
 
 static void
@@ -1323,8 +1325,8 @@ on_slot_toolbar_menu_sections_changed (NautilusToolbar    *self,
 {
     NautilusToolbarMenuSections *new_sections;
 
-    container_remove_all_children (GTK_CONTAINER (self->view_menu_zoom_section));
-    container_remove_all_children (GTK_CONTAINER (self->view_menu_extended_section));
+    box_remove_all_children (GTK_BOX (self->view_menu_zoom_section));
+    box_remove_all_children (GTK_BOX (self->view_menu_extended_section));
 
     new_sections = nautilus_window_slot_get_toolbar_menu_sections (slot);
     if (new_sections == NULL)
@@ -1454,17 +1456,12 @@ nautilus_toolbar_set_window_slot_real (NautilusToolbar    *self,
                                   G_CALLBACK (toolbar_update_appearance), self);
     }
 
-    children = gtk_container_get_children (GTK_CONTAINER (self->search_container));
-    if (children != NULL)
-    {
-        gtk_container_remove (GTK_CONTAINER (self->search_container),
-                              children->data);
-    }
+    box_remove_all_children (GTK_BOX (self->search_container));
 
     if (self->window_slot != NULL)
     {
-        gtk_container_add (GTK_CONTAINER (self->search_container),
-                           GTK_WIDGET (nautilus_window_slot_get_query_editor (self->window_slot)));
+        gtk_box_append (GTK_BOX (self->search_container),
+                        GTK_WIDGET (nautilus_window_slot_get_query_editor (self->window_slot)));
     }
 
     toolbar_update_appearance (self);
@@ -1502,13 +1499,9 @@ nautilus_toolbar_set_window_slot (NautilusToolbar    *self,
 gboolean
 nautilus_toolbar_is_menu_visible (NautilusToolbar *self)
 {
-    GtkPopover *popover;
-
     g_return_val_if_fail (NAUTILUS_IS_TOOLBAR (self), FALSE);
 
-    popover = GTK_POPOVER (gtk_menu_button_get_popover (GTK_MENU_BUTTON (self->view_button)));
-
-    return gtk_widget_is_visible (GTK_WIDGET (popover));
+    return gtk_widget_is_visible (self->app_menu);
 }
 
 gboolean

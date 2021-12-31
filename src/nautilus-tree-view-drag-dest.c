@@ -182,64 +182,12 @@ remove_expand_timer (NautilusTreeViewDragDest *dest)
     }
 }
 
-static gboolean
-highlight_draw (GtkWidget *widget,
-                cairo_t   *cr,
-                gpointer   data)
-{
-    GdkWindow *bin_window;
-    int width;
-    int height;
-    GtkStyleContext *style;
-
-    /* FIXMEchpe: is bin window right here??? */
-    bin_window = gtk_tree_view_get_bin_window (GTK_TREE_VIEW (widget));
-
-    width = gdk_window_get_width (bin_window);
-    height = gdk_window_get_height (bin_window);
-
-    style = gtk_widget_get_style_context (widget);
-
-    gtk_style_context_save (style);
-    gtk_style_context_add_class (style, "treeview-drop-indicator");
-
-    gtk_render_focus (style,
-                      cr,
-                      0, 0, width, height);
-
-    gtk_style_context_restore (style);
-
-    return FALSE;
-}
-
-static void
-set_widget_highlight (NautilusTreeViewDragDest *dest,
-                      gboolean                  highlight)
-{
-    if (!highlight)
-    {
-        g_clear_signal_handler (&dest->details->highlight_id, dest->details->tree_view);
-        gtk_widget_queue_draw (GTK_WIDGET (dest->details->tree_view));
-    }
-
-    if (highlight && !dest->details->highlight_id)
-    {
-        dest->details->highlight_id =
-            g_signal_connect_object (dest->details->tree_view,
-                                     "draw",
-                                     G_CALLBACK (highlight_draw),
-                                     dest, 0);
-        gtk_widget_queue_draw (GTK_WIDGET (dest->details->tree_view));
-    }
-}
-
 static void
 set_drag_dest_row (NautilusTreeViewDragDest *dest,
                    GtkTreePath              *path)
 {
     if (path)
     {
-        set_widget_highlight (dest, FALSE);
         gtk_tree_view_set_drag_dest_row
             (dest->details->tree_view,
             path,
@@ -247,7 +195,6 @@ set_drag_dest_row (NautilusTreeViewDragDest *dest,
     }
     else
     {
-        set_widget_highlight (dest, TRUE);
         gtk_tree_view_set_drag_dest_row (dest->details->tree_view,
                                          NULL,
                                          0);
@@ -258,7 +205,6 @@ static void
 clear_drag_dest_row (NautilusTreeViewDragDest *dest)
 {
     gtk_tree_view_set_drag_dest_row (dest->details->tree_view, NULL, 0);
-    set_widget_highlight (dest, FALSE);
 }
 
 static gboolean
@@ -344,28 +290,18 @@ static void
 check_hover_timer (NautilusTreeViewDragDest *dest,
                    const char               *uri)
 {
-    GtkSettings *settings;
-    guint timeout;
-
     if (g_strcmp0 (uri, dest->details->target_uri) == 0)
     {
         return;
     }
     remove_hover_timer (dest);
 
-    settings = gtk_widget_get_settings (GTK_WIDGET (dest->details->tree_view));
-    g_object_get (settings, "gtk-timeout-expand", &timeout, NULL);
-
-    g_free (dest->details->target_uri);
-    dest->details->target_uri = NULL;
+    g_clear_pointer (&dest->details->target_uri, g_free);
 
     if (uri != NULL)
     {
         dest->details->target_uri = g_strdup (uri);
-        dest->details->hover_id =
-            gdk_threads_add_timeout (timeout,
-                                     hover_timer,
-                                     dest);
+        dest->details->hover_id = g_timeout_add (HOVER_TIMEOUT, hover_timer, dest);
     }
 }
 
@@ -596,7 +532,7 @@ drag_motion_callback (GtkWidget      *widget,
     GtkTreePath *path;
     GtkTreePath *drop_path, *old_drop_path;
     GtkTreeViewDropPosition pos;
-    GdkWindow *bin_window;
+    int bin_y;
     guint action;
     gboolean res = TRUE;
 
@@ -624,16 +560,13 @@ drag_motion_callback (GtkWidget      *widget,
     drop_path = get_drop_path (dest, path);
 
     action = 0;
-    bin_window = gtk_tree_view_get_bin_window (GTK_TREE_VIEW (widget));
-    if (bin_window != NULL)
+    gtk_tree_view_convert_bin_window_to_widget_coords (GTK_TREE_VIEW (widget),
+                                                       0, 0,
+                                                       NULL, &bin_y);
+    if (bin_y <= y)
     {
-        int bin_x, bin_y;
-        gdk_window_get_position (bin_window, &bin_x, &bin_y);
-        if (bin_y <= y)
-        {
-            /* ignore drags on the header */
-            action = get_drop_action (dest, context, drop_path);
-        }
+        /* ignore drags on the header */
+        action = get_drop_action (dest, context, drop_path);
     }
 
     gtk_tree_view_get_drag_dest_row (GTK_TREE_VIEW (widget), &old_drop_path,
