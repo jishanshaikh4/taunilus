@@ -54,7 +54,6 @@ struct NautilusListViewDetails {
   int drag_y;
 
   gboolean drag_started;
-  gboolean ignore_button_release;
   gboolean row_selected_on_button_down;
   gboolean active;
   NautilusDragInfo *drag_source_info;
@@ -75,5 +74,8 @@ struct NautilusListViewDetails {
 
   GtkGesture *tree_view_drag_gesture;
   GtkGesture *tree_view_multi_press_gesture;
+  GtkEventController *motion_controller;
+  GtkEventController *key_controller;
+  GtkGesture *long_press_gesture;
 };
 

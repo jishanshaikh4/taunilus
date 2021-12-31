@@ -9,7 +9,7 @@
 G_BEGIN_DECLS
 
 #define NAUTILUS_LIST_ZOOM_LEVEL_N_ENTRIES (NAUTILUS_LIST_ZOOM_LEVEL_LARGER + 1)
-#define NAUTILUS_CANVAS_ZOOM_LEVEL_N_ENTRIES (NAUTILUS_CANVAS_ZOOM_LEVEL_LARGEST + 1)
+#define NAUTILUS_GRID_ZOOM_LEVEL_N_ENTRIES (NAUTILUS_GRID_ZOOM_LEVEL_LARGEST + 1)
 
 /* Maximum size of an icon that the icon factory will ever produce */
 #define NAUTILUS_ICON_MAXIMUM_SIZE     320
@@ -38,7 +38,5 @@ GdkPixbuf *           nautilus_icon_info_get_pixbuf_at_size           (NautilusI
 const char *          nautilus_icon_info_get_used_name                (NautilusIconInfo  *icon);
 
 void                  nautilus_icon_info_clear_caches                 (void);
-
-gint  nautilus_get_icon_size_for_stock_size          (GtkIconSize        size);
 
 G_END_DECLS
