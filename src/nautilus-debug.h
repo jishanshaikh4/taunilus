@@ -29,24 +29,24 @@
 G_BEGIN_DECLS
 
 typedef enum {
-    NAUTILUS_DEBUG_APPLICATION = 1 << 1,
-    NAUTILUS_DEBUG_ASYNC_JOBS = 1 << 2,
-    NAUTILUS_DEBUG_BOOKMARKS = 1 << 3,
-    NAUTILUS_DEBUG_DBUS = 1 << 4,
-    NAUTILUS_DEBUG_DIRECTORY_VIEW = 1 << 5,
-    NAUTILUS_DEBUG_FILE = 1 << 6,
-    NAUTILUS_DEBUG_GRID_VIEW = 1 << 7,
-    NAUTILUS_DEBUG_LIST_VIEW = 1 << 8,
-    NAUTILUS_DEBUG_MIME = 1 << 9,
-    NAUTILUS_DEBUG_PLACES = 1 << 10,
-    NAUTILUS_DEBUG_PREVIEWER = 1 << 11,
-    NAUTILUS_DEBUG_SMCLIENT = 1 << 12,
-    NAUTILUS_DEBUG_WINDOW = 1 << 13,
-    NAUTILUS_DEBUG_UNDO = 1 << 14,
-    NAUTILUS_DEBUG_SEARCH = 1 << 15,
-    NAUTILUS_DEBUG_SEARCH_HIT = 1 << 16,
-    NAUTILUS_DEBUG_THUMBNAILS = 1 << 17,
-    NAUTILUS_DEBUG_TAG_MANAGER = 1 << 18,
+  NAUTILUS_DEBUG_APPLICATION = 1 << 1,
+  NAUTILUS_DEBUG_ASYNC_JOBS = 1 << 2,
+  NAUTILUS_DEBUG_BOOKMARKS = 1 << 3,
+  NAUTILUS_DEBUG_DBUS = 1 << 4,
+  NAUTILUS_DEBUG_DIRECTORY_VIEW = 1 << 5,
+  NAUTILUS_DEBUG_FILE = 1 << 6,
+  NAUTILUS_DEBUG_GRID_VIEW = 1 << 7,
+  NAUTILUS_DEBUG_LIST_VIEW = 1 << 8,
+  NAUTILUS_DEBUG_MIME = 1 << 9,
+  NAUTILUS_DEBUG_PLACES = 1 << 10,
+  NAUTILUS_DEBUG_PREVIEWER = 1 << 11,
+  NAUTILUS_DEBUG_SMCLIENT = 1 << 12,
+  NAUTILUS_DEBUG_WINDOW = 1 << 13,
+  NAUTILUS_DEBUG_UNDO = 1 << 14,
+  NAUTILUS_DEBUG_SEARCH = 1 << 15,
+  NAUTILUS_DEBUG_SEARCH_HIT = 1 << 16,
+  NAUTILUS_DEBUG_THUMBNAILS = 1 << 17,
+  NAUTILUS_DEBUG_TAG_MANAGER = 1 << 18,
 } DebugFlags;
 
 void nautilus_debug_set_flags(DebugFlags flags);
@@ -55,7 +55,7 @@ gboolean nautilus_debug_flag_is_set(DebugFlags flag);
 void nautilus_debug_valist(DebugFlags flag, const gchar *format, va_list args);
 
 void nautilus_debug(DebugFlags flag, const gchar *format, ...)
-G_GNUC_PRINTF(2, 3);
+    G_GNUC_PRINTF(2, 3);
 
 void nautilus_debug_files(DebugFlags flag, GList *files, const gchar *format,
                           ...) G_GNUC_PRINTF(3, 4);

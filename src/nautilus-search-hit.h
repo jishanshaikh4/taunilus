@@ -33,13 +33,13 @@ NautilusSearchHit *nautilus_search_hit_new(const char *uri);
 
 void nautilus_search_hit_set_fts_rank(NautilusSearchHit *hit, gdouble fts_rank);
 void nautilus_search_hit_set_modification_time(NautilusSearchHit *hit,
-        GDateTime *date);
+                                               GDateTime *date);
 void nautilus_search_hit_set_access_time(NautilusSearchHit *hit,
-        GDateTime *date);
+                                         GDateTime *date);
 void nautilus_search_hit_set_creation_time(NautilusSearchHit *hit,
-        GDateTime *date);
+                                           GDateTime *date);
 void nautilus_search_hit_set_fts_snippet(NautilusSearchHit *hit,
-        const gchar *snippet);
+                                         const gchar *snippet);
 void nautilus_search_hit_compute_scores(NautilusSearchHit *hit,
                                         NautilusQuery *query);
 

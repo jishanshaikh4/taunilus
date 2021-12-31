@@ -28,10 +28,10 @@
 #include "nautilus-types.h"
 
 typedef enum {
-    NAUTILUS_LOCATION_CHANGE_STANDARD,
-    NAUTILUS_LOCATION_CHANGE_BACK,
-    NAUTILUS_LOCATION_CHANGE_FORWARD,
-    NAUTILUS_LOCATION_CHANGE_RELOAD
+  NAUTILUS_LOCATION_CHANGE_STANDARD,
+  NAUTILUS_LOCATION_CHANGE_BACK,
+  NAUTILUS_LOCATION_CHANGE_FORWARD,
+  NAUTILUS_LOCATION_CHANGE_RELOAD
 } NautilusLocationChangeType;
 
 #define NAUTILUS_TYPE_WINDOW_SLOT (nautilus_window_slot_get_type())
@@ -39,11 +39,11 @@ G_DECLARE_FINAL_TYPE(NautilusWindowSlot, nautilus_window_slot, NAUTILUS,
                      WINDOW_SLOT, GtkBox)
 
 typedef struct {
-    NautilusFile *file;
-    gint view_before_search;
-    GList *back_list;
-    GList *forward_list;
-    NautilusBookmark *current_location_bookmark;
+  NautilusFile *file;
+  gint view_before_search;
+  GList *back_list;
+  GList *forward_list;
+  NautilusBookmark *current_location_bookmark;
 } NautilusNavigationState;
 
 NautilusWindowSlot *nautilus_window_slot_new(NautilusWindow *window);
@@ -53,9 +53,9 @@ void nautilus_window_slot_set_window(NautilusWindowSlot *slot,
                                      NautilusWindow *window);
 
 void nautilus_window_slot_open_location_full(NautilusWindowSlot *slot,
-        GFile *location,
-        NautilusOpenFlags flags,
-        GList *new_selection);
+                                             GFile *location,
+                                             NautilusOpenFlags flags,
+                                             GList *new_selection);
 
 GFile *nautilus_window_slot_get_location(NautilusWindowSlot *slot);
 GFile *nautilus_window_slot_get_pending_location(NautilusWindowSlot *slot);
@@ -67,15 +67,15 @@ GList *nautilus_window_slot_get_forward_history(NautilusWindowSlot *slot);
 
 gboolean nautilus_window_slot_get_allow_stop(NautilusWindowSlot *slot);
 void nautilus_window_slot_set_allow_stop(NautilusWindowSlot *slot,
-        gboolean allow_stop);
+                                         gboolean allow_stop);
 void nautilus_window_slot_stop_loading(NautilusWindowSlot *slot);
 
 const gchar *nautilus_window_slot_get_title(NautilusWindowSlot *slot);
 void nautilus_window_slot_update_title(NautilusWindowSlot *slot);
 
 gboolean nautilus_window_slot_handle_event(NautilusWindowSlot *slot,
-        GtkEventControllerKey *controller,
-        guint keyval, GdkModifierType state);
+                                           GtkEventControllerKey *controller,
+                                           guint keyval, GdkModifierType state);
 
 void nautilus_window_slot_queue_reload(NautilusWindowSlot *slot);
 
@@ -116,6 +116,6 @@ nautilus_window_slot_get_query_editor(NautilusWindowSlot *self);
 NautilusView *nautilus_window_slot_get_current_view(NautilusWindowSlot *slot);
 
 void nautilus_window_slot_back_or_forward(NautilusWindowSlot *slot,
-        gboolean back, guint distance);
+                                          gboolean back, guint distance);
 
 void free_navigation_state(gpointer data);

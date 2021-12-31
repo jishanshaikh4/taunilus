@@ -31,26 +31,26 @@
 #include "nautilus-file-operations-dbus-data.h"
 
 typedef enum {
-    NAUTILUS_FILE_UNDO_OP_INVALID,
-    NAUTILUS_FILE_UNDO_OP_COPY,
-    NAUTILUS_FILE_UNDO_OP_DUPLICATE,
-    NAUTILUS_FILE_UNDO_OP_MOVE,
-    NAUTILUS_FILE_UNDO_OP_RENAME,
-    NAUTILUS_FILE_UNDO_OP_BATCH_RENAME,
-    NAUTILUS_FILE_UNDO_OP_STARRED,
-    NAUTILUS_FILE_UNDO_OP_CREATE_EMPTY_FILE,
-    NAUTILUS_FILE_UNDO_OP_CREATE_FILE_FROM_TEMPLATE,
-    NAUTILUS_FILE_UNDO_OP_CREATE_FOLDER,
-    NAUTILUS_FILE_UNDO_OP_EXTRACT,
-    NAUTILUS_FILE_UNDO_OP_COMPRESS,
-    NAUTILUS_FILE_UNDO_OP_MOVE_TO_TRASH,
-    NAUTILUS_FILE_UNDO_OP_RESTORE_FROM_TRASH,
-    NAUTILUS_FILE_UNDO_OP_CREATE_LINK,
-    NAUTILUS_FILE_UNDO_OP_RECURSIVE_SET_PERMISSIONS,
-    NAUTILUS_FILE_UNDO_OP_SET_PERMISSIONS,
-    NAUTILUS_FILE_UNDO_OP_CHANGE_GROUP,
-    NAUTILUS_FILE_UNDO_OP_CHANGE_OWNER,
-    NAUTILUS_FILE_UNDO_OP_NUM_TYPES,
+  NAUTILUS_FILE_UNDO_OP_INVALID,
+  NAUTILUS_FILE_UNDO_OP_COPY,
+  NAUTILUS_FILE_UNDO_OP_DUPLICATE,
+  NAUTILUS_FILE_UNDO_OP_MOVE,
+  NAUTILUS_FILE_UNDO_OP_RENAME,
+  NAUTILUS_FILE_UNDO_OP_BATCH_RENAME,
+  NAUTILUS_FILE_UNDO_OP_STARRED,
+  NAUTILUS_FILE_UNDO_OP_CREATE_EMPTY_FILE,
+  NAUTILUS_FILE_UNDO_OP_CREATE_FILE_FROM_TEMPLATE,
+  NAUTILUS_FILE_UNDO_OP_CREATE_FOLDER,
+  NAUTILUS_FILE_UNDO_OP_EXTRACT,
+  NAUTILUS_FILE_UNDO_OP_COMPRESS,
+  NAUTILUS_FILE_UNDO_OP_MOVE_TO_TRASH,
+  NAUTILUS_FILE_UNDO_OP_RESTORE_FROM_TRASH,
+  NAUTILUS_FILE_UNDO_OP_CREATE_LINK,
+  NAUTILUS_FILE_UNDO_OP_RECURSIVE_SET_PERMISSIONS,
+  NAUTILUS_FILE_UNDO_OP_SET_PERMISSIONS,
+  NAUTILUS_FILE_UNDO_OP_CHANGE_GROUP,
+  NAUTILUS_FILE_UNDO_OP_CHANGE_OWNER,
+  NAUTILUS_FILE_UNDO_OP_NUM_TYPES,
 } NautilusFileUndoOp;
 
 #define NAUTILUS_TYPE_FILE_UNDO_INFO nautilus_file_undo_info_get_type()
@@ -58,16 +58,16 @@ G_DECLARE_DERIVABLE_TYPE(NautilusFileUndoInfo, nautilus_file_undo_info,
                          NAUTILUS, FILE_UNDO_INFO, GObject)
 
 struct _NautilusFileUndoInfoClass {
-    GObjectClass parent_class;
+  GObjectClass parent_class;
 
-    void (*undo_func)(NautilusFileUndoInfo *self, GtkWindow *parent_window,
-                      NautilusFileOperationsDBusData *dbus_data);
-    void (*redo_func)(NautilusFileUndoInfo *self, GtkWindow *parent_window,
-                      NautilusFileOperationsDBusData *dbus_data);
+  void (*undo_func)(NautilusFileUndoInfo *self, GtkWindow *parent_window,
+                    NautilusFileOperationsDBusData *dbus_data);
+  void (*redo_func)(NautilusFileUndoInfo *self, GtkWindow *parent_window,
+                    NautilusFileOperationsDBusData *dbus_data);
 
-    void (*strings_func)(NautilusFileUndoInfo *self, gchar **undo_label,
-                         gchar **undo_description, gchar **redo_label,
-                         gchar **redo_description);
+  void (*strings_func)(NautilusFileUndoInfo *self, gchar **undo_label,
+                       gchar **undo_description, gchar **redo_label,
+                       gchar **redo_description);
 };
 
 void nautilus_file_undo_info_apply_async(
@@ -75,15 +75,15 @@ void nautilus_file_undo_info_apply_async(
     NautilusFileOperationsDBusData *dbus_data, GAsyncReadyCallback callback,
     gpointer user_data);
 gboolean nautilus_file_undo_info_apply_finish(NautilusFileUndoInfo *self,
-        GAsyncResult *res,
-        gboolean *user_cancel,
-        GError **error);
+                                              GAsyncResult *res,
+                                              gboolean *user_cancel,
+                                              GError **error);
 
 void nautilus_file_undo_info_get_strings(NautilusFileUndoInfo *self,
-        gchar **undo_label,
-        gchar **undo_description,
-        gchar **redo_label,
-        gchar **redo_description);
+                                         gchar **undo_label,
+                                         gchar **undo_description,
+                                         gchar **redo_label,
+                                         gchar **redo_description);
 
 NautilusFileUndoOp
 nautilus_file_undo_info_get_op_type(NautilusFileUndoInfo *self);
@@ -108,8 +108,8 @@ G_DECLARE_FINAL_TYPE(NautilusFileUndoInfoCreate, nautilus_file_undo_info_create,
 NautilusFileUndoInfo *
 nautilus_file_undo_info_create_new(NautilusFileUndoOp op_type);
 void nautilus_file_undo_info_create_set_data(NautilusFileUndoInfoCreate *self,
-        GFile *file, const char *template,
-        gint length);
+                                             GFile *file, const char *template,
+                                             gint length);
 
 /* rename */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_RENAME                                    \
@@ -145,7 +145,7 @@ G_DECLARE_FINAL_TYPE(NautilusFileUndoInfoStarred,
                      FILE_UNDO_INFO_STARRED, NautilusFileUndoInfo)
 
 NautilusFileUndoInfo *nautilus_file_undo_info_starred_new(GList *files,
-        gboolean starred);
+                                                          gboolean starred);
 GList *
 nautilus_file_undo_info_starred_get_files(NautilusFileUndoInfoStarred *self);
 gboolean
@@ -159,7 +159,7 @@ G_DECLARE_FINAL_TYPE(NautilusFileUndoInfoTrash, nautilus_file_undo_info_trash,
 
 NautilusFileUndoInfo *nautilus_file_undo_info_trash_new(gint item_count);
 void nautilus_file_undo_info_trash_add_file(NautilusFileUndoInfoTrash *self,
-        GFile *file);
+                                            GFile *file);
 GList *nautilus_file_undo_info_trash_get_files(NautilusFileUndoInfoTrash *self);
 
 /* recursive permissions */
