@@ -5,8 +5,9 @@
     <file compressed="true">ui/nautilus-search-popover.ui</file>
     <file>ui/nautilus-pathbar-context-menu.ui</file>
     <file>ui/nautilus-toolbar.ui</file>
-    <file>ui/nautilus-toolbar-switcher.ui</file>
     <file>ui/nautilus-toolbar-view-menu.ui</file>
+    <file>ui/nautilus-column-chooser.ui</file>
+    <file>ui/nautilus-list-view-column-editor.ui</file>
     <file>ui/nautilus-create-folder-dialog.ui</file>
     <file>ui/nautilus-compress-dialog.ui</file>
     <file>ui/nautilus-rename-file-popover.ui</file>
@@ -22,9 +23,13 @@
     <file>ui/nautilus-batch-rename-dialog-menu.ui</file>
     <file>ui/nautilus-properties-window.ui</file>
     <file>ui/nautilus-file-properties-change-permissions.ui</file>
+    <file>ui/nautilus-file-conflict-dialog.ui</file>
+    <file>ui/nautilus-files-view-select-items.ui</file>
+    <file>ui/nautilus-operations-ui-manager-request-passphrase.ui</file>
+    <file>ui/nautilus-view-icon-item-ui.ui</file>
+    <file alias="gtk/ui/nautilusgtksidebarrow.ui">../gtk/nautilusgtksidebarrow.ui</file>
     <file alias="gtk/ui/nautilusgtkplacesview.ui">../gtk/nautilusgtkplacesview.ui</file>
     <file alias="gtk/ui/nautilusgtkplacesviewrow.ui">../gtk/nautilusgtkplacesviewrow.ui</file>
-    <file alias="icons/thumbnail_frame.png">../../icons/thumbnail_frame.png</file>
     <file alias="icons/filmholes.png">../../icons/filmholes.png</file>
     <file>css/Adwaita.css</file>
     <file>css/nautilus.css</file>
