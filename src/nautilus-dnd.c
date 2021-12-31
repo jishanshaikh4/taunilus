@@ -32,7 +32,6 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "nautilus-file-utilities.h"
-#include "nautilus-canvas-dnd.h"
 #include <src/nautilus-list-view-dnd.h>
 #include <stdio.h>
 #include <string.h>
@@ -407,12 +406,7 @@ nautilus_drag_get_source_data (GdkDragContext *context)
         return NULL;
     }
 
-    if (NAUTILUS_IS_CANVAS_CONTAINER (source_widget))
-    {
-        source_data = nautilus_canvas_dnd_get_drag_source_data (NAUTILUS_CANVAS_CONTAINER (source_widget),
-                                                                context);
-    }
-    else if (GTK_IS_TREE_VIEW (source_widget))
+    if (GTK_IS_TREE_VIEW (source_widget))
     {
         NautilusWindow *window;
         NautilusWindowSlot *active_slot;
@@ -696,7 +690,9 @@ nautilus_drag_drag_data_get_from_cache (GList            *cache,
         break;
 
         default:
+        {
             return FALSE;
+        }
     }
 
     result = g_string_new (NULL);
