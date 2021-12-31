@@ -4,7 +4,7 @@ project('nautilus', 'c',
   # Do not forget when releasing:
   #  * Update version in data/org.gnome.Nautilus.appdata.xml.in.in
   #  * Update GTK-based codes over src/gtk/gtk-code-generator.sh
-  version: '40.3',
+  version: '42.alpha',
 
   meson_version: '>= 0.49.0',
   license: 'GPL3+'
@@ -95,21 +95,10 @@ pkgconfig = import('pkgconfig')
 ################
 glib_ver = '>= 2.67.1'
 
-libgd = subproject(
-  'libgd',
-  default_options: [
-    'static=true',
-    'with-gtk-hacks=true',
-    'with-main-view=true',
-    'with-tagged-entry=true'
-  ]
-)
-libgd_dep = libgd.get_variable('libgd_dep')
-
 libm = cc.find_library('m')
 
 if get_option('extensions')
-  gexiv = dependency('gexiv2', version: '>= 0.10.0')
+  gexiv = dependency('gexiv2', version: '>= 0.14.0')
   gst_tag_dep = dependency('gstreamer-tag-1.0')
   gst_pbutils_dep = dependency('gstreamer-pbutils-1.0')
 endif
@@ -117,13 +106,15 @@ gio = dependency('gio-2.0', version: glib_ver)
 gio_unix = dependency('gio-unix-2.0', version: glib_ver)
 glib = dependency('glib-2.0', version: glib_ver)
 gmodule = dependency('gmodule-no-export-2.0', version: glib_ver)
-gnome_autoar = dependency('gnome-autoar-0', version: '>= 0.3.0')
+gnome_autoar = dependency('gnome-autoar-0', version: '>= 0.4.0')
 gnome_desktop = dependency('gnome-desktop-3.0', version: '>= 3.0.0')
 gtk = dependency('gtk+-3.0', version: '>= 3.22.27')
 libhandy = dependency('libhandy-1', version: '>= 1.1.90')
 libportal = []
+libportal_gtk3 = []
 if get_option('libportal')
-  libportal = dependency('libportal', version: '>= 0.3')
+  libportal = dependency('libportal', version: '>= 0.5')
+  libportal_gtk3 = dependency('libportal-gtk3', version: '>= 0.5')
 endif
 selinux = []
 if get_option('selinux')
