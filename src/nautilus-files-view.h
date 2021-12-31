@@ -199,15 +199,6 @@ struct _NautilusFilesViewClass {
          */
         gboolean (* is_empty)                (NautilusFilesView *view);
 
-        /* convert *point from widget's coordinate system to a coordinate
-         * system used for specifying file operation positions, which is view-specific.
-         *
-         * This is used by the the icon view, which converts the screen position to a zoom
-         * level-independent coordinate system.
-         */
-        void (* widget_to_file_operation_position) (NautilusFilesView *view,
-                                                    GdkPoint     *position);
-
         /* Preference change callbacks, overridden by icon and list views.
          * Icon and list views respond by synchronizing to the new preference
          * values and forcing an update if appropriate.
@@ -259,18 +250,13 @@ gboolean            nautilus_files_view_get_loading                      (Nautil
 /* Hooks for subclasses to call. These are normally called only by
  * NautilusFilesView and its subclasses
  */
-void                nautilus_files_view_activate_files                   (NautilusFilesView       *view,
-                                                                          GList                   *files,
-                                                                          NautilusWindowOpenFlags  flags,
-                                                                          gboolean                 confirm_multiple);
-void                nautilus_files_view_activate_file                    (NautilusFilesView       *view,
-                                                                          NautilusFile            *file,
-                                                                          NautilusWindowOpenFlags  flags);
-void                nautilus_files_view_preview_files                    (NautilusFilesView *view,
+void                nautilus_files_view_activate_files                   (NautilusFilesView *view,
                                                                           GList             *files,
-                                                                          GArray            *locations);
-void                nautilus_files_view_preview_update                   (NautilusFilesView *view,
-                                                                          GList             *files);
+                                                                          NautilusOpenFlags  flags,
+                                                                          gboolean           confirm_multiple);
+void                nautilus_files_view_activate_file                    (NautilusFilesView *view,
+                                                                          NautilusFile      *file,
+                                                                          NautilusOpenFlags  flags);
 void                nautilus_files_view_start_batching_selection_changes (NautilusFilesView *view);
 void                nautilus_files_view_stop_batching_selection_changes  (NautilusFilesView *view);
 void                nautilus_files_view_notify_selection_changed         (NautilusFilesView *view);
@@ -292,8 +278,6 @@ void                nautilus_files_view_remove_subdirectory             (Nautilu
 
 gboolean            nautilus_files_view_is_editable              (NautilusFilesView      *view);
 NautilusWindow *    nautilus_files_view_get_window               (NautilusFilesView      *view);
-
-guint               nautilus_files_view_get_view_id                (NautilusView      *view);
 
 /* file operations */
 char *            nautilus_files_view_get_backing_uri            (NautilusFilesView      *view);

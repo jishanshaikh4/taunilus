@@ -1404,11 +1404,15 @@ nautilus_file_unmount (NautilusFile                  *file,
     else if (file->details->mount != NULL &&
              g_mount_can_unmount (file->details->mount))
     {
+        GtkWindow *parent;
+
+        parent = gtk_mount_operation_get_parent (GTK_MOUNT_OPERATION (mount_op));
+
         data = g_new0 (UnmountData, 1);
         data->file = nautilus_file_ref (file);
         data->callback = callback;
         data->callback_data = callback_data;
-        nautilus_file_operations_unmount_mount_full (NULL, file->details->mount, NULL, FALSE, TRUE, unmount_done, data);
+        nautilus_file_operations_unmount_mount_full (parent, file->details->mount, mount_op, FALSE, TRUE, unmount_done, data);
     }
     else if (callback)
     {
@@ -1447,11 +1451,15 @@ nautilus_file_eject (NautilusFile                  *file,
     else if (file->details->mount != NULL &&
              g_mount_can_eject (file->details->mount))
     {
+        GtkWindow *parent;
+
+        parent = gtk_mount_operation_get_parent (GTK_MOUNT_OPERATION (mount_op));
+
         data = g_new0 (UnmountData, 1);
         data->file = nautilus_file_ref (file);
         data->callback = callback;
         data->callback_data = callback_data;
-        nautilus_file_operations_unmount_mount_full (NULL, file->details->mount, NULL, TRUE, TRUE, unmount_done, data);
+        nautilus_file_operations_unmount_mount_full (parent, file->details->mount, mount_op, TRUE, TRUE, unmount_done, data);
     }
     else if (callback)
     {
@@ -3480,6 +3488,11 @@ compare_by_type (NautilusFile *file_1,
     }
 
     result = g_utf8_collate (type_string_1, type_string_2);
+    if (result == 0)
+    {
+        /* Among files of the same (generic) type, sort them by mime type. */
+        result = g_utf8_collate (file_1->details->mime_type, file_2->details->mime_type);
+    }
 
     g_free (type_string_1);
     g_free (type_string_2);
@@ -3795,7 +3808,9 @@ nautilus_file_compare_for_sort (NautilusFile         *file_1,
             break;
 
             default:
+            {
                 g_return_val_if_reached (0);
+            }
         }
 
         if (reversed)
@@ -5193,7 +5208,7 @@ nautilus_file_get_thumbnail_icon (NautilusFile          *file,
     }
     else
     {
-        modified_size = size * scale * NAUTILUS_CANVAS_ICON_SIZE_STANDARD / NAUTILUS_CANVAS_ICON_SIZE_SMALL;
+        modified_size = size * scale * NAUTILUS_GRID_ICON_SIZE_STANDARD / NAUTILUS_GRID_ICON_SIZE_SMALL;
     }
 
     if (file->details->thumbnail)
@@ -5203,9 +5218,9 @@ nautilus_file_get_thumbnail_icon (NautilusFile          *file,
 
         s = MAX (w, h);
         /* Don't scale up small thumbnails in the standard view */
-        if (s <= NAUTILUS_CANVAS_ICON_SIZE_STANDARD)
+        if (s <= NAUTILUS_GRID_ICON_SIZE_STANDARD)
         {
-            thumb_scale = (double) size / NAUTILUS_CANVAS_ICON_SIZE_SMALL;
+            thumb_scale = (double) size / NAUTILUS_GRID_ICON_SIZE_SMALL;
         }
         else
         {
@@ -5225,9 +5240,6 @@ nautilus_file_get_thumbnail_icon (NautilusFile          *file,
         }
         else
         {
-            GdkPixbuf *bg_pixbuf;
-            int bg_size;
-
             pixbuf = gdk_pixbuf_scale_simple (file->details->thumbnail,
                                               MAX (w * thumb_scale, 1),
                                               MAX (h * thumb_scale, 1),
@@ -5236,41 +5248,11 @@ nautilus_file_get_thumbnail_icon (NautilusFile          *file,
             /* We don't want frames around small icons */
             if (!gdk_pixbuf_get_has_alpha (file->details->thumbnail) || s >= 128 * scale)
             {
-                gboolean use_experimental_views;
-
-                use_experimental_views = g_settings_get_boolean (nautilus_preferences,
-                                                                 NAUTILUS_PREFERENCES_USE_EXPERIMENTAL_VIEWS);
-                if (!use_experimental_views)
+                if (nautilus_is_video_file (file))
                 {
-                    if (nautilus_is_video_file (file))
-                    {
-                        nautilus_ui_frame_video (&pixbuf);
-                    }
-                    else
-                    {
-                        nautilus_ui_frame_image (&pixbuf);
-                    }
+                    nautilus_ui_frame_video (&pixbuf);
                 }
             }
-
-            /* Copy to a transparent square pixbuf, aligned to the bottom edge */
-            bg_size = MAX (gdk_pixbuf_get_width (pixbuf), gdk_pixbuf_get_height (pixbuf));
-            bg_pixbuf = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (pixbuf),
-                                        TRUE,
-                                        gdk_pixbuf_get_bits_per_sample (pixbuf),
-                                        bg_size,
-                                        bg_size);
-            gdk_pixbuf_fill (bg_pixbuf, 0);
-            gdk_pixbuf_copy_area (pixbuf,
-                                  0,
-                                  0,
-                                  gdk_pixbuf_get_width (pixbuf),
-                                  gdk_pixbuf_get_height (pixbuf),
-                                  bg_pixbuf,
-                                  (bg_size - gdk_pixbuf_get_width (pixbuf)) / 2,
-                                  (bg_size - gdk_pixbuf_get_height (pixbuf)));
-            g_clear_object (&pixbuf);
-            pixbuf = bg_pixbuf;
 
             g_clear_object (&file->details->scaled_thumbnail);
             file->details->scaled_thumbnail = pixbuf;
@@ -5278,7 +5260,7 @@ nautilus_file_get_thumbnail_icon (NautilusFile          *file,
         }
 
         DEBUG ("Returning thumbnailed image, at size %d %d",
-               gdk_pixbuf_get_width (pixbuf), gdk_pixbuf_get_height (pixbuf));
+               (int) (w * thumb_scale), (int) (h * thumb_scale));
     }
     else if (file->details->thumbnail_path == NULL &&
              file->details->can_read &&
@@ -5321,14 +5303,14 @@ static gboolean
 nautilus_thumbnail_is_limited_by_zoom (int size,
                                        int scale)
 {
-    // int zoom_level;
+    int zoom_level;
 
-    // zoom_level = size * scale;
+    zoom_level = size * scale;
 
-    // if (zoom_level <= NAUTILUS_LIST_ICON_SIZE_STANDARD)
-    // {
-    //     return TRUE;
-    // }
+    if (zoom_level < NAUTILUS_THUMBNAIL_MINIMUM_ICON_SIZE)
+    {
+        return TRUE;
+    }
 
     return FALSE;
 }
@@ -9416,8 +9398,10 @@ nautilus_drag_can_accept_info (NautilusFile              *drop_target_item,
         }
 
         default:
+        {
             g_assert_not_reached ();
             return FALSE;
+        }
     }
 }
 
