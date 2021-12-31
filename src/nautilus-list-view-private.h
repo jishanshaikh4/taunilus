@@ -20,29 +20,31 @@
 
 #pragma once
 
-#include "nautilus-list-model.h"
-#include "nautilus-tree-view-drag-dest.h"
 #include "nautilus-dnd.h"
+#include "nautilus-list-model.h"
 #include "nautilus-tag-manager.h"
+#include "nautilus-tree-view-drag-dest.h"
 
 struct NautilusListViewDetails {
   GtkTreeView *tree_view;
   NautilusListModel *model;
 
-  GtkTreeViewColumn   *file_name_column;
+  GtkTreeViewColumn *file_name_column;
   int file_name_column_num;
 
   GtkCellRendererPixbuf *pixbuf_cell;
-  GtkCellRendererText   *file_name_cell;
+  GtkCellRendererText *file_name_cell;
   GList *cells;
 
   NautilusListZoomLevel zoom_level;
 
   NautilusTreeViewDragDest *drag_dest;
 
-  GtkTreePath *first_click_path; /* Both clicks in a double click need to be on the same row */
+  GtkTreePath *first_click_path; /* Both clicks in a double click need to be on
+                                    the same row */
 
-  GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
+  GtkTreePath
+      *new_selection_path; /* Path of the new selection after removing a file */
 
   GtkTreePath *hover_path;
 
@@ -78,4 +80,3 @@ struct NautilusListViewDetails {
   GtkEventController *key_controller;
   GtkGesture *long_press_gesture;
 };
-

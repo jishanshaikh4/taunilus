@@ -24,27 +24,21 @@
 
 #include <gtk/gtk.h>
 
+void nautilus_gmenu_set_from_model(GMenu *target_menu,
+                                   GMenuModel *source_model);
 
-void        nautilus_gmenu_set_from_model           (GMenu             *target_menu,
-                                                     GMenuModel        *source_model);
+void nautilus_ui_frame_video(GdkPixbuf **pixbuf);
 
-void        nautilus_ui_frame_video                 (GdkPixbuf        **pixbuf);
+gboolean nautilus_file_date_in_between(guint64 file_unix_time,
+                                       GDateTime *initial_date,
+                                       GDateTime *end_date);
+gchar *get_text_for_date_range(GPtrArray *date_range,
+                               gboolean prefix_with_since);
 
-gboolean    nautilus_file_date_in_between           (guint64            file_unix_time,
-                                                     GDateTime         *initial_date,
-                                                     GDateTime         *end_date);
-gchar     * get_text_for_date_range                 (GPtrArray         *date_range,
-                                                     gboolean           prefix_with_since);
+GtkDialog *show_dialog(const gchar *primary_text, const gchar *secondary_text,
+                       GtkWindow *parent, GtkMessageType type);
 
-GtkDialog * show_dialog                             (const gchar       *primary_text,
-                                                     const gchar       *secondary_text,
-                                                     GtkWindow         *parent,
-                                                     GtkMessageType     type);
-
-void        show_unmount_progress_cb                (GMountOperation   *op,
-                                                     const gchar       *message,
-                                                     gint64             time_left,
-                                                     gint64             bytes_left,
-                                                     gpointer           user_data);
-void        show_unmount_progress_aborted_cb        (GMountOperation   *op,
-                                                     gpointer           user_data);
+void show_unmount_progress_cb(GMountOperation *op, const gchar *message,
+                              gint64 time_left, gint64 bytes_left,
+                              gpointer user_data);
+void show_unmount_progress_aborted_cb(GMountOperation *op, gpointer user_data);

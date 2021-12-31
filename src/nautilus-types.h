@@ -30,17 +30,17 @@
 
 /* Keep sorted alphabetically. */
 
-typedef struct _NautilusBookmark            NautilusBookmark;
-typedef struct _NautilusBookmarkList        NautilusBookmarkList;
-typedef struct _NautilusDirectory           NautilusDirectory;
-typedef struct  NautilusFile                NautilusFile;
-typedef struct  NautilusFileQueue           NautilusFileQueue;
-typedef struct _NautilusFilesView           NautilusFilesView;
-typedef struct _NautilusIconInfo            NautilusIconInfo;
-typedef struct  NautilusMonitor             NautilusMonitor;
-typedef struct _NautilusQuery               NautilusQuery;
-typedef struct _NautilusQueryEditor         NautilusQueryEditor;
+typedef struct _NautilusBookmark NautilusBookmark;
+typedef struct _NautilusBookmarkList NautilusBookmarkList;
+typedef struct _NautilusDirectory NautilusDirectory;
+typedef struct NautilusFile NautilusFile;
+typedef struct NautilusFileQueue NautilusFileQueue;
+typedef struct _NautilusFilesView NautilusFilesView;
+typedef struct _NautilusIconInfo NautilusIconInfo;
+typedef struct NautilusMonitor NautilusMonitor;
+typedef struct _NautilusQuery NautilusQuery;
+typedef struct _NautilusQueryEditor NautilusQueryEditor;
 typedef struct _NautilusToolbarMenuSections NautilusToolbarMenuSections;
-typedef struct _NautilusView                NautilusView;
-typedef struct _NautilusWindow              NautilusWindow;
-typedef struct _NautilusWindowSlot          NautilusWindowSlot;
+typedef struct _NautilusView NautilusView;
+typedef struct _NautilusWindow NautilusWindow;
+typedef struct _NautilusWindowSlot NautilusWindowSlot;

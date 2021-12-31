@@ -29,159 +29,117 @@
 
 static gboolean ready = FALSE;
 
-static void
-usage (const char *name)
-{
-    fprintf (stderr, "Usage: %s uri field value\n", name);
-    fprintf (stderr, "Valid field values are: \n");
-    fprintf (stderr, "\tdefault_action_type\n");
-    fprintf (stderr, "\tdefault_application\n");
-    fprintf (stderr, "\tdefault_component\n");
-    fprintf (stderr, "\tshort_list_applicationss\n");
-    fprintf (stderr, "\tshort_list_components\n");
-    fprintf (stderr, "\tadd_to_all_applicationss\n");
-    fprintf (stderr, "\tremove_from_all_applications\n");
-    exit (1);
+static void usage(const char *name) {
+  fprintf(stderr, "Usage: %s uri field value\n", name);
+  fprintf(stderr, "Valid field values are: \n");
+  fprintf(stderr, "\tdefault_action_type\n");
+  fprintf(stderr, "\tdefault_application\n");
+  fprintf(stderr, "\tdefault_component\n");
+  fprintf(stderr, "\tshort_list_applicationss\n");
+  fprintf(stderr, "\tshort_list_components\n");
+  fprintf(stderr, "\tadd_to_all_applicationss\n");
+  fprintf(stderr, "\tremove_from_all_applications\n");
+  exit(1);
 }
 
-static GnomeVFSMimeActionType
-str_to_action_type (const char *str)
-{
-    if (g_ascii_strcasecmp (str, "component") == 0)
-    {
-        return GNOME_VFS_MIME_ACTION_TYPE_COMPONENT;
-    }
-    else if (g_ascii_strcasecmp (str, "application") == 0)
-    {
-        return GNOME_VFS_MIME_ACTION_TYPE_APPLICATION;
-    }
-    else
-    {
-        return GNOME_VFS_MIME_ACTION_TYPE_NONE;
-    }
+static GnomeVFSMimeActionType str_to_action_type(const char *str) {
+  if (g_ascii_strcasecmp(str, "component") == 0) {
+    return GNOME_VFS_MIME_ACTION_TYPE_COMPONENT;
+  } else if (g_ascii_strcasecmp(str, "application") == 0) {
+    return GNOME_VFS_MIME_ACTION_TYPE_APPLICATION;
+  } else {
+    return GNOME_VFS_MIME_ACTION_TYPE_NONE;
+  }
 }
 
-static char **
-strsplit_handle_null (const char *str,
-                      const char *delim,
-                      int         max)
-{
-    return g_strsplit ((str == NULL ? "" : str), delim, max);
+static char **strsplit_handle_null(const char *str, const char *delim,
+                                   int max) {
+  return g_strsplit((str == NULL ? "" : str), delim, max);
 }
 
+static GList *strsplit_to_list(const char *str, const char *delim, int max) {
+  char **strv;
+  GList *retval;
+  int i;
 
-static GList *
-strsplit_to_list (const char *str,
-                  const char *delim,
-                  int         max)
-{
-    char **strv;
-    GList *retval;
-    int i;
+  strv = strsplit_handle_null(str, delim, max);
 
-    strv = strsplit_handle_null (str, delim, max);
+  retval = NULL;
 
-    retval = NULL;
+  for (i = 0; strv[i] != NULL; i++) {
+    retval = g_list_prepend(retval, strv[i]);
+  }
 
-    for (i = 0; strv[i] != NULL; i++)
-    {
-        retval = g_list_prepend (retval, strv[i]);
-    }
+  retval = g_list_reverse(retval);
+  /* Don't strfreev, since we didn't copy the individual strings. */
+  g_free(strv);
 
-    retval = g_list_reverse (retval);
-    /* Don't strfreev, since we didn't copy the individual strings. */
-    g_free (strv);
-
-    return retval;
+  return retval;
 }
 
-static GList *
-comma_separated_str_to_str_list (const char *str)
-{
-    return strsplit_to_list (str, ",", 0);
+static GList *comma_separated_str_to_str_list(const char *str) {
+  return strsplit_to_list(str, ",", 0);
 }
 
-static void
-ready_callback (NautilusFile *file,
-                gpointer      callback_data)
-{
-    ready = TRUE;
+static void ready_callback(NautilusFile *file, gpointer callback_data) {
+  ready = TRUE;
 }
 
-int
-main (int    argc,
-      char **argv)
-{
-    const char *uri;
-    const char *field;
-    const char *value;
-    NautilusFile *file;
-    NautilusFileAttributes attributes;
+int main(int argc, char **argv) {
+  const char *uri;
+  const char *field;
+  const char *value;
+  NautilusFile *file;
+  NautilusFileAttributes attributes;
 
-    gtk_init (&argc, &argv);
+  gtk_init(&argc, &argv);
 
-    if (argc < 3)
-    {
-        usage (argv[0]);
-    }
+  if (argc < 3) {
+    usage(argv[0]);
+  }
 
-    uri = argv[1];
-    field = argv[2];
-    value = argv[3];
+  uri = argv[1];
+  field = argv[2];
+  value = argv[3];
 
-    file = nautilus_file_get_by_uri (uri);
+  file = nautilus_file_get_by_uri(uri);
 
-    attributes = nautilus_mime_actions_get_full_file_attributes ();
-    nautilus_file_call_when_ready (file, attributes, ready_callback, NULL);
+  attributes = nautilus_mime_actions_get_full_file_attributes();
+  nautilus_file_call_when_ready(file, attributes, ready_callback, NULL);
 
-    while (!ready)
-    {
-        g_main_context_iteration (NULL, TRUE);
-    }
+  while (!ready) {
+    g_main_context_iteration(NULL, TRUE);
+  }
 
-    if (strcmp (field, "default_action_type") == 0)
-    {
-        puts ("default_action_type");
-        nautilus_mime_set_default_action_type_for_file (file, str_to_action_type (value));
-    }
-    else if (strcmp (field, "default_application") == 0)
-    {
-        puts ("default_application");
-        nautilus_mime_set_default_application_for_file (file, value);
-    }
-    else if (strcmp (field, "default_component") == 0)
-    {
-        puts ("default_component");
-        nautilus_mime_set_default_component_for_file (file, value);
-    }
-    else if (strcmp (field, "short_list_applicationss") == 0)
-    {
-        puts ("short_list_applications");
-        nautilus_mime_set_short_list_applications_for_file
-            (file, comma_separated_str_to_str_list (value));
-    }
-    else if (strcmp (field, "short_list_components") == 0)
-    {
-        puts ("short_list_components");
-        nautilus_mime_set_short_list_components_for_file
-            (file, comma_separated_str_to_str_list (value));
-    }
-    else if (strcmp (field, "add_to_all_applicationss") == 0)
-    {
-        puts ("add_to_all_applications");
-        nautilus_mime_extend_all_applications_for_file
-            (file, comma_separated_str_to_str_list (value));
-    }
-    else if (strcmp (field, "remove_from_all_applications") == 0)
-    {
-        puts ("remove_from_all_applications");
-        nautilus_mime_remove_from_all_applications_for_file
-            (file, comma_separated_str_to_str_list (value));
-    }
-    else
-    {
-        usage (argv[0]);
-    }
+  if (strcmp(field, "default_action_type") == 0) {
+    puts("default_action_type");
+    nautilus_mime_set_default_action_type_for_file(file,
+                                                   str_to_action_type(value));
+  } else if (strcmp(field, "default_application") == 0) {
+    puts("default_application");
+    nautilus_mime_set_default_application_for_file(file, value);
+  } else if (strcmp(field, "default_component") == 0) {
+    puts("default_component");
+    nautilus_mime_set_default_component_for_file(file, value);
+  } else if (strcmp(field, "short_list_applicationss") == 0) {
+    puts("short_list_applications");
+    nautilus_mime_set_short_list_applications_for_file(
+        file, comma_separated_str_to_str_list(value));
+  } else if (strcmp(field, "short_list_components") == 0) {
+    puts("short_list_components");
+    nautilus_mime_set_short_list_components_for_file(
+        file, comma_separated_str_to_str_list(value));
+  } else if (strcmp(field, "add_to_all_applicationss") == 0) {
+    puts("add_to_all_applications");
+    nautilus_mime_extend_all_applications_for_file(
+        file, comma_separated_str_to_str_list(value));
+  } else if (strcmp(field, "remove_from_all_applications") == 0) {
+    puts("remove_from_all_applications");
+    nautilus_mime_remove_from_all_applications_for_file(
+        file, comma_separated_str_to_str_list(value));
+  } else {
+    usage(argv[0]);
+  }
 
-    return 0;
+  return 0;
 }

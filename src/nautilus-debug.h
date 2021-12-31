@@ -49,27 +49,26 @@ typedef enum {
   NAUTILUS_DEBUG_TAG_MANAGER = 1 << 18,
 } DebugFlags;
 
-void nautilus_debug_set_flags (DebugFlags flags);
-gboolean nautilus_debug_flag_is_set (DebugFlags flag);
+void nautilus_debug_set_flags(DebugFlags flags);
+gboolean nautilus_debug_flag_is_set(DebugFlags flag);
 
-void nautilus_debug_valist (DebugFlags flag,
-                            const gchar *format, va_list args);
+void nautilus_debug_valist(DebugFlags flag, const gchar *format, va_list args);
 
-void nautilus_debug (DebugFlags flag, const gchar *format, ...)
-  G_GNUC_PRINTF (2, 3);
+void nautilus_debug(DebugFlags flag, const gchar *format, ...)
+    G_GNUC_PRINTF(2, 3);
 
-void nautilus_debug_files (DebugFlags flag, GList *files,
-                           const gchar *format, ...) G_GNUC_PRINTF (3, 4);
+void nautilus_debug_files(DebugFlags flag, GList *files, const gchar *format,
+                          ...) G_GNUC_PRINTF(3, 4);
 
 #ifdef DEBUG_FLAG
 
-#define DEBUG(format, ...) \
-  nautilus_debug (DEBUG_FLAG, "%s: %s: " format, G_STRFUNC, G_STRLOC, \
-                  ##__VA_ARGS__)
+#define DEBUG(format, ...)                                                     \
+  nautilus_debug(DEBUG_FLAG, "%s: %s: " format, G_STRFUNC, G_STRLOC,           \
+                 ##__VA_ARGS__)
 
-#define DEBUG_FILES(files, format, ...) \
-  nautilus_debug_files (DEBUG_FLAG, files, "%s:" format, G_STRFUNC, \
-                        ##__VA_ARGS__)
+#define DEBUG_FILES(files, format, ...)                                        \
+  nautilus_debug_files(DEBUG_FLAG, files, "%s:" format, G_STRFUNC,             \
+                       ##__VA_ARGS__)
 
 #define DEBUGGING nautilus_debug_flag_is_set(DEBUG_FLAG)
 
