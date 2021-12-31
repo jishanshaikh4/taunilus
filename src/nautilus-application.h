@@ -28,62 +28,61 @@
 
 G_BEGIN_DECLS
 #define NAUTILUS_TYPE_APPLICATION (nautilus_application_get_type())
-G_DECLARE_DERIVABLE_TYPE (NautilusApplication, nautilus_application, NAUTILUS, APPLICATION, GtkApplication)
+G_DECLARE_DERIVABLE_TYPE(NautilusApplication, nautilus_application, NAUTILUS,
+                         APPLICATION, GtkApplication)
 
 struct _NautilusApplicationClass {
-    GtkApplicationClass parent_class;
+  GtkApplicationClass parent_class;
 
-    void  (*open_location_full) (NautilusApplication     *application,
-                                 GFile                   *location,
-                                 NautilusOpenFlags        flags,
-                                 GList                   *selection,
-                                 NautilusWindow          *target_window,
-                                 NautilusWindowSlot      *target_slot);
+  void (*open_location_full)(NautilusApplication *application, GFile *location,
+                             NautilusOpenFlags flags, GList *selection,
+                             NautilusWindow *target_window,
+                             NautilusWindowSlot *target_slot);
 };
 
-NautilusApplication * nautilus_application_new (void);
+NautilusApplication *nautilus_application_new(void);
 
-NautilusWindow *     nautilus_application_create_window (NautilusApplication *application,
-        GdkScreen           *screen);
+NautilusWindow *
+nautilus_application_create_window(NautilusApplication *application,
+                                   GdkScreen *screen);
 
-void nautilus_application_set_accelerator (GApplication *app,
-        const gchar  *action_name,
-        const gchar  *accel);
+void nautilus_application_set_accelerator(GApplication *app,
+                                          const gchar *action_name,
+                                          const gchar *accel);
 
-void nautilus_application_set_accelerators (GApplication *app,
-        const gchar  *action_name,
-        const gchar **accels);
+void nautilus_application_set_accelerators(GApplication *app,
+                                           const gchar *action_name,
+                                           const gchar **accels);
 
-GList * nautilus_application_get_windows (NautilusApplication *application);
+GList *nautilus_application_get_windows(NautilusApplication *application);
 
-void nautilus_application_open_location (NautilusApplication *application,
-        GFile *location,
-        GFile *selection,
-        const char *startup_id);
+void nautilus_application_open_location(NautilusApplication *application,
+                                        GFile *location, GFile *selection,
+                                        const char *startup_id);
 
-void nautilus_application_open_location_full (NautilusApplication     *application,
-        GFile                   *location,
-        NautilusOpenFlags        flags,
-        GList                   *selection,
-        NautilusWindow          *target_window,
-        NautilusWindowSlot      *target_slot);
+void nautilus_application_open_location_full(NautilusApplication *application,
+                                             GFile *location,
+                                             NautilusOpenFlags flags,
+                                             GList *selection,
+                                             NautilusWindow *target_window,
+                                             NautilusWindowSlot *target_slot);
 
-NautilusApplication *nautilus_application_get_default (void);
-void nautilus_application_send_notification (NautilusApplication *self,
-        const gchar         *notification_id,
-        GNotification       *notification);
-void nautilus_application_withdraw_notification (NautilusApplication *self,
-        const gchar         *notification_id);
+NautilusApplication *nautilus_application_get_default(void);
+void nautilus_application_send_notification(NautilusApplication *self,
+                                            const gchar *notification_id,
+                                            GNotification *notification);
+void nautilus_application_withdraw_notification(NautilusApplication *self,
+                                                const gchar *notification_id);
 
 NautilusBookmarkList *
-nautilus_application_get_bookmarks  (NautilusApplication *application);
-void nautilus_application_edit_bookmarks (NautilusApplication *application,
-        NautilusWindow      *window);
+nautilus_application_get_bookmarks(NautilusApplication *application);
+void nautilus_application_edit_bookmarks(NautilusApplication *application,
+                                         NautilusWindow *window);
 
-GtkWidget * nautilus_application_connect_server (NautilusApplication *application,
-        NautilusWindow      *window);
+GtkWidget *nautilus_application_connect_server(NautilusApplication *application,
+                                               NautilusWindow *window);
 
-void nautilus_application_search (NautilusApplication *application,
-                                  NautilusQuery       *query);
-void nautilus_application_startup_common (NautilusApplication *application);
+void nautilus_application_search(NautilusApplication *application,
+                                 NautilusQuery *query);
+void nautilus_application_startup_common(NautilusApplication *application);
 G_END_DECLS
