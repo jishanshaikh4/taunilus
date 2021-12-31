@@ -57,7 +57,7 @@ typedef struct
 static GHashTable *timed_wait_hash_table;
 
 static void timed_wait_dialog_destroy_callback (GtkWidget *object,
-                                                gpointer   callback_data);
+        gpointer   callback_data);
 
 static guint
 timed_wait_hash (gconstpointer value)
@@ -85,7 +85,7 @@ timed_wait_hash_equal (gconstpointer value1,
 
 static void
 timed_wait_delayed_close_destroy_dialog_callback (GtkWidget *object,
-                                                  gpointer   callback_data)
+        gpointer   callback_data)
 {
     g_source_remove (GPOINTER_TO_UINT (callback_data));
 }
@@ -96,7 +96,7 @@ timed_wait_delayed_close_timeout_callback (gpointer callback_data)
     guint handler_id;
 
     handler_id = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (callback_data),
-                                                      "eel-stock-dialogs/delayed_close_handler_timeout_id"));
+                                   "eel-stock-dialogs/delayed_close_handler_timeout_id"));
 
     g_signal_handlers_disconnect_by_func (G_OBJECT (callback_data),
                                           G_CALLBACK (timed_wait_delayed_close_destroy_dialog_callback),
@@ -141,8 +141,8 @@ timed_wait_free (TimedWait *wait)
         if (time_up < TIMED_WAIT_MIN_TIME_UP)
         {
             delayed_close_handler_id = g_timeout_add (TIMED_WAIT_MIN_TIME_UP - time_up,
-                                                      timed_wait_delayed_close_timeout_callback,
-                                                      wait->dialog);
+                                       timed_wait_delayed_close_timeout_callback,
+                                       wait->dialog);
             g_object_set_data (G_OBJECT (wait->dialog),
                                "eel-stock-dialogs/delayed_close_handler_timeout_id",
                                GUINT_TO_POINTER (delayed_close_handler_id));
@@ -203,10 +203,10 @@ timed_wait_callback (gpointer callback_data)
     /* Put up the timed wait window. */
     button = wait->cancel_callback != NULL ? _("_Cancel") : ("_OK");
     dialog = GTK_DIALOG (gtk_message_dialog_new (wait->parent_window,
-                                                 0,
-                                                 GTK_MESSAGE_INFO,
-                                                 GTK_BUTTONS_NONE,
-                                                 NULL));
+                         0,
+                         GTK_MESSAGE_INFO,
+                         GTK_BUTTONS_NONE,
+                         NULL));
 
     g_object_set (dialog,
                   "text", wait->wait_message,
@@ -295,9 +295,9 @@ eel_timed_wait_start (EelCancelCallback  cancel_callback,
                       GtkWindow         *parent_window)
 {
     eel_timed_wait_start_with_duration
-        (TIMED_WAIT_STANDARD_DURATION,
-        cancel_callback, callback_data,
-        wait_message, parent_window);
+    (TIMED_WAIT_STANDARD_DURATION,
+     cancel_callback, callback_data,
+     wait_message, parent_window);
 }
 
 void
