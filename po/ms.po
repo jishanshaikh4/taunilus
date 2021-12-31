@@ -5028,7 +5028,7 @@ msgstr "_Tutup Tab"
 
 #: src/nautilus-window.c:3008
 #| msgid "Access and organize files"
-msgid "Access and organize your files\nFork by cheesits456"
+msgid "Access and organize your files"
 msgstr "Capai dan urus fail-fail anda"
 
 #. Translators should localize the following string

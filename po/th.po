@@ -4167,7 +4167,7 @@ msgid "_Close Tab"
 msgstr "ปิ_ดแท็บ"
 
 #: src/nautilus-window.c:2909
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "เข้าถึงและจัดระเบียบแฟ้มของคุณ"
 
 #. Translators should localize the following string

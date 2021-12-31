@@ -4582,7 +4582,7 @@ msgid "_Close Tab"
 msgstr "_Fermi langeton"
 
 #: src/nautilus-window.c:3008
-msgid "Access and organize your files\nFork by cheesits456"
+msgid "Access and organize your files"
 msgstr "Atingi kaj organizi viajn dosierojn"
 
 #. Translators should localize the following string

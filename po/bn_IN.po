@@ -4758,8 +4758,8 @@ msgid "_Close Tab"
 msgstr "ট্যাব বন্ধ করুন (_C)"
 
 #: src/nautilus-window.c:3002
-#| msgid "Access and organize your files\nFork by cheesits456."
-msgid "Access and organize your files\nFork by cheesits456"
+#| msgid "Access and organize your files."
+msgid "Access and organize your files"
 msgstr "আপনার ফাইল অ্যাক্সেস এবং সংগঠিত করুন"
 
 #. Translators should localize the following string

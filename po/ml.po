@@ -4830,7 +4830,7 @@ msgid "_Close Tab"
 msgstr "റ്റാബ് അ_ടയ്ക്കുക"
 
 #: src/nautilus-window.c:3103
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "നിങ്ങളുടെ ഫയലുകളിലേക്കു് പ്രവേശിച്ചു് അവ ക്രമത്തിലാക്കുക."
 
 #. Translators should localize the following string

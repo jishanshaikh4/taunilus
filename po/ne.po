@@ -4364,7 +4364,7 @@ msgstr "ट्याब बन्द गर्नुहोस्"
 
 #: src/nautilus-window.c:2958
 #, fuzzy
-msgid "Access and organize your files\nFork by cheesits456"
+msgid "Access and organize your files"
 msgstr "फाइलहरूको पहुँच र संगठन"
 
 #. Translators should localize the following string

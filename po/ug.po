@@ -4928,7 +4928,7 @@ msgid "Copyright © %Id–%Id The Files authors"
 msgstr "نەشر ھوقۇقى© %Id–%Id ھۆججەتلەر(Files) ئاپتورلىرىغا تەۋە"
 
 #: ../src/nautilus-window.c:2060
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "ھۆججەتلەرنى تەشكىللەش ۋە زىيارەت قىلىش پروگراممىسى"
 
 #. Translators should localize the following string

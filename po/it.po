@@ -4546,7 +4546,7 @@ msgid "_Close Tab"
 msgstr "Chiu_di scheda"
 
 #: src/nautilus-window.c:2949
-msgid "Access and organize your files\nFork by cheesits456"
+msgid "Access and organize your files"
 msgstr "Accedere e organizzare i propri file"
 
 #. Translators should localize the following string

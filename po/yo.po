@@ -5273,7 +5273,7 @@ msgid "_Close Tab"
 msgstr "_Tìí"
 
 #: ../src/nautilus-window.c:2305
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr ""
 
 #. Translators should localize the following string
