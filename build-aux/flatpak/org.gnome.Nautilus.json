@@ -4,11 +4,7 @@
   "runtime-version": "master",
   "sdk": "org.gnome.Sdk",
   "command": "nautilus",
-  "tags": [
-    "devel",
-    "development",
-    "nightly"
-  ],
+  "tags": ["devel", "development", "nightly"],
   "finish-args": [
     "--share=ipc",
     "--socket=x11",
@@ -34,9 +30,9 @@
       "buildsystem": "cmake-ninja",
       "sources": [
         {
-          "type": "archive",
-          "url": "https://github.com/Exiv2/exiv2/archive/v0.26.tar.gz",
-          "sha256": "51cffa8d19d67e1da6c1d0f570a75b8f6c814113367318c2c0407691888c5f01"
+          "type": "git",
+          "url": "https://github.com/Exiv2/exiv2.git",
+          "branch": "0.27-maintenance"
         }
       ]
     },
@@ -46,13 +42,16 @@
       "builddir": true,
       "config-opts": [
         "--libdir=/app/lib",
-        "-Ddisable-introspection=True"
+        "-Dintrospection=false",
+        "-Dvapi=false",
+        "-Dpython3=false",
+        "-Dpython3_girdir=no"
       ],
       "sources": [
         {
           "type": "git",
           "url": "https://gitlab.gnome.org/GNOME/gexiv2.git",
-          "tag": "gexiv2-0.10.10"
+          "branch": "gexiv2-0.14"
         }
       ]
     },
@@ -100,6 +99,8 @@
     },
     {
       "name": "gnome-autoar",
+      "buildsystem": "meson",
+      "builddir": true,
       "sources": [
         {
           "type": "git",
@@ -112,10 +113,12 @@
       "buildsystem": "meson",
       "builddir": true,
       "config-opts": [
+        "-Ddocs=false",
+        "-Dbackends=gtk3",
         "--libdir=/app/lib",
         "--buildtype=debugoptimized"
       ],
-      "sources" : [
+      "sources": [
         {
           "type": "git",
           "url": "https://github.com/flatpak/libportal.git"
@@ -126,11 +129,7 @@
       "buildsystem": "meson",
       "builddir": true,
       "name": "nautilus",
-      "config-opts": [
-        "--libdir=/app/lib",
-        "-Dprofile=Devel",
-        "-Dtests=all"
-      ],
+      "config-opts": ["--libdir=/app/lib", "-Dprofile=Devel", "-Dtests=all"],
       "sources": [
         {
           "type": "git",
