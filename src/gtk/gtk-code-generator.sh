@@ -29,7 +29,7 @@ update_file () {
     _source="$1"
     _dest="$2"
 
-    curl "${_source}" | sed \
+    curl "$_source" | sed \
         -e 's/gtkplacesview/nautilusgtkplacesview/g' \
         -e 's/gtk_places_view/nautilus_gtk_places_view/g' \
         -e 's/GtkPlacesView/NautilusGtkPlacesView/g' \
@@ -102,20 +102,20 @@ update_file () {
         -e 's/<gtk\/nautilusgtkplacessidebar.h>/"nautilusgtkplacessidebar.h"'/g \
         -e 's/_gtk_file_info_consider_as_directory (info)/(g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY || g_file_info_get_file_type (info) == G_FILE_TYPE_MOUNTABLE || g_file_info_get_file_type (info) == G_FILE_TYPE_SHORTCUT)/g' \
         -e '/#include "nautilus-trash-monitor.h"/a #pragma GCC diagnostic ignored "-Wshadow"' \
-        > "${_dest}"
+        > "$_dest"
 }
 
-update_file "${URL}/gtkplacesview.c${SUFIX}" "nautilusgtkplacesview.c"
-update_file "${URL}/gtkplacesviewprivate.h${SUFIX}" "nautilusgtkplacesviewprivate.h"
-update_file "${URLUI}/gtkplacesview.ui${SUFIX}" "nautilusgtkplacesview.ui"
-update_file "${URL}/gtkplacessidebar.c${SUFIX}" "nautilusgtkplacessidebar.c"
-update_file "${URL}/gtkplacessidebarprivate.h${SUFIX}" "nautilusgtkplacessidebarprivate.h"
-update_file "${URL}/gtkplacessidebar.h${SUFIX}" "nautilusgtkplacessidebar.h"
-update_file "${URL}/gtkbookmarksmanager.c${SUFIX}" "nautilusgtkbookmarksmanager.c"
-update_file "${URL}/gtkbookmarksmanager.h${SUFIX}" "nautilusgtkbookmarksmanager.h"
-update_file "${URL}/gtkplacesviewrow.c${SUFIX}" "nautilusgtkplacesviewrow.c"
-update_file "${URL}/gtkplacesviewrowprivate.h${SUFIX}" "nautilusgtkplacesviewrowprivate.h"
-update_file "${URLUI}/gtkplacesviewrow.ui${SUFIX}" "nautilusgtkplacesviewrow.ui"
-update_file "${URL}/gtksidebarrow.c${SUFIX}" "nautilusgtksidebarrow.c"
-update_file "${URL}/gtksidebarrowprivate.h${SUFIX}" "nautilusgtksidebarrowprivate.h"
-update_file "${URLUI}/gtksidebarrow.ui${SUFIX}" "nautilusgtksidebarrow.ui"
+update_file "$URL/gtkplacesview.c$SUFIX" "nautilusgtkplacesview.c"
+update_file "$URL/gtkplacesviewprivate.h$SUFIX" "nautilusgtkplacesviewprivate.h"
+update_file "$URLUI/gtkplacesview.ui$SUFIX" "nautilusgtkplacesview.ui"
+update_file "$URL/gtkplacessidebar.c$SUFIX" "nautilusgtkplacessidebar.c"
+update_file "$URL/gtkplacessidebarprivate.h$SUFIX" "nautilusgtkplacessidebarprivate.h"
+update_file "$URL/gtkplacessidebar.h$SUFIX" "nautilusgtkplacessidebar.h"
+update_file "$URL/gtkbookmarksmanager.c$SUFIX" "nautilusgtkbookmarksmanager.c"
+update_file "$URL/gtkbookmarksmanager.h$SUFIX" "nautilusgtkbookmarksmanager.h"
+update_file "$URL/gtkplacesviewrow.c$SUFIX" "nautilusgtkplacesviewrow.c"
+update_file "$URL/gtkplacesviewrowprivate.h$SUFIX" "nautilusgtkplacesviewrowprivate.h"
+update_file "$URLUI/gtkplacesviewrow.ui$SUFIX" "nautilusgtkplacesviewrow.ui"
+update_file "$URL/gtksidebarrow.c$SUFIX" "nautilusgtksidebarrow.c"
+update_file "$URL/gtksidebarrowprivate.h$SUFIX" "nautilusgtksidebarrowprivate.h"
+update_file "$URLUI/gtksidebarrow.ui$SUFIX" "nautilusgtksidebarrow.ui"
