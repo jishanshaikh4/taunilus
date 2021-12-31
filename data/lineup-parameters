@@ -59,13 +59,11 @@ from typing import NamedTuple
 
 # https://regexr.com/ is your friend.
 functionNameRegex = re.compile(r"^(\w+) ?\(")
-parameterRegex = re.compile(
-    r"^\s*(?P<type>(const\s+)?\w+)"
-    r"\s+(?P<stars>\**)"
-    r"\s*(?P<name>\w+)"
-    r"\s*(?P<end>,|\))"
-    r"\s*$"
-)
+parameterRegex = re.compile(r"^\s*(?P<type>(const\s+)?\w+)"
+                            r"\s+(?P<stars>\**)"
+                            r"\s*(?P<name>\w+)"
+                            r"\s*(?P<end>,|\))"
+                            r"\s*$")
 openingCurlyBraceRegex = re.compile(r"^{\s*$")
 
 
@@ -194,7 +192,8 @@ def parseContents(infile, useTabs, outfile):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Line up parameters of C functions")
+    parser = argparse.ArgumentParser(
+        description="Line up parameters of C functions")
     parser.add_argument(
         "infile",
         nargs="?",
@@ -210,9 +209,9 @@ if __name__ == "__main__":
         default=sys.stdout,
         help="where to output modified file",
     )
-    parser.add_argument(
-        "--tabs", action="store_true", help="whether use tab characters in the output"
-    )
+    parser.add_argument("--tabs",
+                        action="store_true",
+                        help="whether use tab characters in the output")
     args = parser.parse_args()
     parseContents(args.infile, args.tabs, args.o)
     args.infile.close()
