@@ -40,52 +40,52 @@
 
 /* drag&drop-related information. */
 typedef struct {
-    GtkTargetList *target_list;
+  GtkTargetList *target_list;
 
-    /* Stuff saved at "receive data" time needed later in the drag. */
-    gboolean got_drop_data_type;
-    NautilusIconDndTargetType data_type;
-    GtkSelectionData *selection_data;
-    char *direct_save_uri;
+  /* Stuff saved at "receive data" time needed later in the drag. */
+  gboolean got_drop_data_type;
+  NautilusIconDndTargetType data_type;
+  GtkSelectionData *selection_data;
+  char *direct_save_uri;
 
-    /* Start of the drag, in window coordinates. */
-    int start_x, start_y;
+  /* Start of the drag, in window coordinates. */
+  int start_x, start_y;
 
-    /* List of NautilusDragSelectionItems, representing items being dragged, or
-     * NULL if data about them has not been received from the source yet.
-     */
-    GList *selection_list;
+  /* List of NautilusDragSelectionItems, representing items being dragged, or
+   * NULL if data about them has not been received from the source yet.
+   */
+  GList *selection_list;
 
-    /* cache of selected URIs, representing items being dragged */
-    GList *selection_cache;
+  /* cache of selected URIs, representing items being dragged */
+  GList *selection_cache;
 
-    /* File selection list information request handler, for the call for
-     * information (mostly the file system info, in order to know if we want
-     * co copy or move the files) about the files being dragged, that can
-     * come from another nautilus process, like the desktop. */
-    NautilusFileListHandle *file_list_info_handler;
+  /* File selection list information request handler, for the call for
+   * information (mostly the file system info, in order to know if we want
+   * co copy or move the files) about the files being dragged, that can
+   * come from another nautilus process, like the desktop. */
+  NautilusFileListHandle *file_list_info_handler;
 
-    /* has the drop occurred ? */
-    gboolean drop_occurred;
+  /* has the drop occurred ? */
+  gboolean drop_occurred;
 
-    /* whether or not need to clean up the previous dnd data */
-    gboolean need_to_destroy;
+  /* whether or not need to clean up the previous dnd data */
+  gboolean need_to_destroy;
 
-    /* autoscrolling during dragging */
-    int auto_scroll_timeout_id;
-    gboolean waiting_to_autoscroll;
-    gint64 start_auto_scroll_in;
+  /* autoscrolling during dragging */
+  int auto_scroll_timeout_id;
+  gboolean waiting_to_autoscroll;
+  gint64 start_auto_scroll_in;
 
-    /* source context actions. Used for peek the actions using a GdkDragContext
-     * source at drag-begin time when they are not available yet (they become
-     * available at drag-motion time) */
-    guint32 source_actions;
+  /* source context actions. Used for peek the actions using a GdkDragContext
+   * source at drag-begin time when they are not available yet (they become
+   * available at drag-motion time) */
+  guint32 source_actions;
 
 } NautilusDragInfo;
 
 typedef void (*NautilusDragEachSelectedItemDataGet)(const char *url, int x,
-        int y, int w, int h,
-        gpointer data);
+                                                    int y, int w, int h,
+                                                    gpointer data);
 typedef void (*NautilusDragEachSelectedItemIterator)(
     NautilusDragEachSelectedItemDataGet iteratee, gpointer iterator_context,
     gpointer data);
@@ -107,15 +107,15 @@ gboolean nautilus_drag_items_local(const char *target_uri,
 gboolean nautilus_drag_uris_local(const char *target_uri,
                                   const GList *source_uri_list);
 void nautilus_drag_default_drop_action_for_icons(GdkDragContext *context,
-        const char *target_uri,
-        const GList *items,
-        guint32 source_actions,
-        int *action);
+                                                 const char *target_uri,
+                                                 const GList *items,
+                                                 guint32 source_actions,
+                                                 int *action);
 GdkDragAction
 nautilus_drag_default_drop_action_for_netscape_url(GdkDragContext *context);
 GdkDragAction
 nautilus_drag_default_drop_action_for_uri_list(GdkDragContext *context,
-        const char *target_uri_string);
+                                               const char *target_uri_string);
 GList *nautilus_drag_create_selection_cache(
     gpointer container_context,
     NautilusDragEachSelectedItemIterator each_selected_item_iterator);
@@ -127,12 +127,12 @@ int nautilus_drag_modifier_based_action(int default_action,
                                         int non_default_action);
 
 GdkDragAction nautilus_drag_drop_action_ask(GtkWidget *widget,
-        GdkDragAction possible_actions);
+                                            GdkDragAction possible_actions);
 
 gboolean nautilus_drag_autoscroll_in_scroll_region(GtkWidget *widget);
 void nautilus_drag_autoscroll_calculate_delta(GtkWidget *widget,
-        float *x_scroll_delta,
-        float *y_scroll_delta);
+                                              float *x_scroll_delta,
+                                              float *y_scroll_delta);
 void nautilus_drag_autoscroll_start(NautilusDragInfo *drag_info,
                                     GtkWidget *widget, GSourceFunc callback,
                                     gpointer user_data);

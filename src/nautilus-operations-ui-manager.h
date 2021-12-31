@@ -6,9 +6,9 @@
 #define BUTTON_ACTIVATION_DELAY_IN_SECONDS 2
 
 typedef struct {
-    int id;
-    char *new_name;
-    gboolean apply_to_all;
+  int id;
+  char *new_name;
+  gboolean apply_to_all;
 } FileConflictResponse;
 
 void file_conflict_response_free(FileConflictResponse *data);
@@ -18,9 +18,9 @@ FileConflictResponse *copy_move_conflict_ask_user_action(
     GFile *dest, GFile *dest_dir, gchar *suggestion);
 
 enum {
-    CONFLICT_RESPONSE_SKIP = 1,
-    CONFLICT_RESPONSE_REPLACE = 2,
-    CONFLICT_RESPONSE_RENAME = 3,
+  CONFLICT_RESPONSE_SKIP = 1,
+  CONFLICT_RESPONSE_REPLACE = 2,
+  CONFLICT_RESPONSE_RENAME = 3,
 };
 
 void handle_unsupported_compressed_file(GtkWindow *parent_window,
