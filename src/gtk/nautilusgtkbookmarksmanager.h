@@ -30,24 +30,24 @@ typedef void (* GtkBookmarksChangedFunc) (gpointer data);
 
 typedef struct
 {
-  /* This list contains GtkBookmark structs */
-  GSList *bookmarks;
+    /* This list contains GtkBookmark structs */
+    GSList *bookmarks;
 
-  GFileMonitor *bookmarks_monitor;
-  gulong bookmarks_monitor_changed_id;
+    GFileMonitor *bookmarks_monitor;
+    gulong bookmarks_monitor_changed_id;
 
-  gpointer changed_func_data;
-  GtkBookmarksChangedFunc changed_func;
+    gpointer changed_func_data;
+    GtkBookmarksChangedFunc changed_func;
 } NautilusGtkBookmarksManager;
 
 typedef struct
 {
-  GFile *file;
-  gchar *label;
+    GFile *file;
+    gchar *label;
 } GtkBookmark;
 
 NautilusGtkBookmarksManager *_nautilus_gtk_bookmarks_manager_new (GtkBookmarksChangedFunc changed_func,
-						 gpointer                changed_func_data);
+        gpointer                changed_func_data);
 
 
 void _nautilus_gtk_bookmarks_manager_free (NautilusGtkBookmarksManager *manager);
@@ -55,35 +55,35 @@ void _nautilus_gtk_bookmarks_manager_free (NautilusGtkBookmarksManager *manager)
 GSList *_nautilus_gtk_bookmarks_manager_list_bookmarks (NautilusGtkBookmarksManager *manager);
 
 gboolean _nautilus_gtk_bookmarks_manager_insert_bookmark (NautilusGtkBookmarksManager *manager,
-						 GFile               *file,
-						 gint                 position,
-						 GError             **error);
+        GFile               *file,
+        gint                 position,
+        GError             **error);
 
 gboolean _nautilus_gtk_bookmarks_manager_remove_bookmark (NautilusGtkBookmarksManager *manager,
-						 GFile               *file,
-						 GError             **error);
+        GFile               *file,
+        GError             **error);
 
 gboolean _nautilus_gtk_bookmarks_manager_reorder_bookmark (NautilusGtkBookmarksManager *manager,
-						  GFile               *file,
-						  gint                 new_position,
-						  GError             **error);
+        GFile               *file,
+        gint                 new_position,
+        GError             **error);
 
 gboolean _nautilus_gtk_bookmarks_manager_has_bookmark (NautilusGtkBookmarksManager *manager,
-                                              GFile               *file);
+        GFile               *file);
 
 gchar * _nautilus_gtk_bookmarks_manager_get_bookmark_label (NautilusGtkBookmarksManager *manager,
-						   GFile               *file);
+        GFile               *file);
 
 gboolean _nautilus_gtk_bookmarks_manager_set_bookmark_label (NautilusGtkBookmarksManager *manager,
-						    GFile               *file,
-						    const gchar         *label,
-						    GError             **error);
+        GFile               *file,
+        const gchar         *label,
+        GError             **error);
 
 gboolean _nautilus_gtk_bookmarks_manager_get_xdg_type (NautilusGtkBookmarksManager *manager,
-                                              GFile               *file,
-                                              GUserDirectory      *directory);
+        GFile               *file,
+        GUserDirectory      *directory);
 gboolean _nautilus_gtk_bookmarks_manager_get_is_builtin (NautilusGtkBookmarksManager *manager,
-                                                GFile               *file);
+        GFile               *file);
 
 gboolean _nautilus_gtk_bookmarks_manager_get_is_xdg_dir_builtin (GUserDirectory xdg_type);
 

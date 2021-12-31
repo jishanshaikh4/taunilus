@@ -69,9 +69,9 @@ typedef struct _NautilusGtkPlacesSidebarClass NautilusGtkPlacesSidebarClass;
  * default mode of operation.
  */
 typedef enum {
-  NAUTILUS_GTK_PLACES_OPEN_NORMAL     = 1 << 0,
-  NAUTILUS_GTK_PLACES_OPEN_NEW_TAB    = 1 << 1,
-  NAUTILUS_GTK_PLACES_OPEN_NEW_WINDOW = 1 << 2
+    NAUTILUS_GTK_PLACES_OPEN_NORMAL     = 1 << 0,
+    NAUTILUS_GTK_PLACES_OPEN_NEW_TAB    = 1 << 1,
+    NAUTILUS_GTK_PLACES_OPEN_NEW_WINDOW = 1 << 2
 } NautilusGtkPlacesOpenFlags;
 
 GDK_AVAILABLE_IN_3_10
@@ -83,75 +83,75 @@ GDK_AVAILABLE_IN_3_10
 NautilusGtkPlacesOpenFlags nautilus_gtk_places_sidebar_get_open_flags             (NautilusGtkPlacesSidebar   *sidebar);
 GDK_AVAILABLE_IN_3_10
 void               nautilus_gtk_places_sidebar_set_open_flags             (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  NautilusGtkPlacesOpenFlags  flags);
+        NautilusGtkPlacesOpenFlags  flags);
 
 GDK_AVAILABLE_IN_3_10
 GFile *            nautilus_gtk_places_sidebar_get_location               (NautilusGtkPlacesSidebar   *sidebar);
 GDK_AVAILABLE_IN_3_10
 void               nautilus_gtk_places_sidebar_set_location               (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  GFile              *location);
+        GFile              *location);
 
 GDK_AVAILABLE_IN_3_18
 gboolean           nautilus_gtk_places_sidebar_get_show_recent            (NautilusGtkPlacesSidebar   *sidebar);
 GDK_AVAILABLE_IN_3_18
 void               nautilus_gtk_places_sidebar_set_show_recent            (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            show_recent);
+        gboolean            show_recent);
 
 GDK_AVAILABLE_IN_3_10
 gboolean           nautilus_gtk_places_sidebar_get_show_desktop           (NautilusGtkPlacesSidebar   *sidebar);
 GDK_AVAILABLE_IN_3_10
 void               nautilus_gtk_places_sidebar_set_show_desktop           (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            show_desktop);
+        gboolean            show_desktop);
 
 GDK_DEPRECATED_IN_3_18
 gboolean           nautilus_gtk_places_sidebar_get_show_connect_to_server (NautilusGtkPlacesSidebar   *sidebar);
 GDK_DEPRECATED_IN_3_18
 void               nautilus_gtk_places_sidebar_set_show_connect_to_server (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            show_connect_to_server);
+        gboolean            show_connect_to_server);
 GDK_AVAILABLE_IN_3_14
 gboolean           nautilus_gtk_places_sidebar_get_show_enter_location    (NautilusGtkPlacesSidebar   *sidebar);
 GDK_AVAILABLE_IN_3_14
 void               nautilus_gtk_places_sidebar_set_show_enter_location    (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            show_enter_location);
+        gboolean            show_enter_location);
 
 GDK_AVAILABLE_IN_3_12
 void                 nautilus_gtk_places_sidebar_set_local_only           (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            local_only);
+        gboolean            local_only);
 GDK_AVAILABLE_IN_3_12
 gboolean             nautilus_gtk_places_sidebar_get_local_only           (NautilusGtkPlacesSidebar   *sidebar);
 
 
 GDK_AVAILABLE_IN_3_10
 void               nautilus_gtk_places_sidebar_add_shortcut               (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  GFile              *location);
+        GFile              *location);
 GDK_AVAILABLE_IN_3_10
 void               nautilus_gtk_places_sidebar_remove_shortcut            (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  GFile              *location);
+        GFile              *location);
 GDK_AVAILABLE_IN_3_10
 GSList *           nautilus_gtk_places_sidebar_list_shortcuts             (NautilusGtkPlacesSidebar   *sidebar);
 
 GDK_AVAILABLE_IN_3_10
 GFile *            nautilus_gtk_places_sidebar_get_nth_bookmark           (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gint                n);
+        gint                n);
 GDK_AVAILABLE_IN_3_18
 void               nautilus_gtk_places_sidebar_set_drop_targets_visible   (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            visible,
-                                                                  GdkDragContext     *context);
+        gboolean            visible,
+        GdkDragContext     *context);
 GDK_AVAILABLE_IN_3_18
 gboolean           nautilus_gtk_places_sidebar_get_show_trash             (NautilusGtkPlacesSidebar   *sidebar);
 GDK_AVAILABLE_IN_3_18
 void               nautilus_gtk_places_sidebar_set_show_trash             (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            show_trash);
+        gboolean            show_trash);
 
 GDK_AVAILABLE_IN_3_18
 void                 nautilus_gtk_places_sidebar_set_show_other_locations (NautilusGtkPlacesSidebar   *sidebar,
-                                                                  gboolean            show_other_locations);
+        gboolean            show_other_locations);
 GDK_AVAILABLE_IN_3_18
 gboolean             nautilus_gtk_places_sidebar_get_show_other_locations (NautilusGtkPlacesSidebar   *sidebar);
 
 GDK_AVAILABLE_IN_3_22
 void                 nautilus_gtk_places_sidebar_set_show_starred_location (NautilusGtkPlacesSidebar   *sidebar,
-                                                                   gboolean            show_starred_location);
+        gboolean            show_starred_location);
 GDK_AVAILABLE_IN_3_22
 gboolean             nautilus_gtk_places_sidebar_get_show_starred_location (NautilusGtkPlacesSidebar   *sidebar);
 G_END_DECLS
