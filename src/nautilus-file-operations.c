@@ -59,6 +59,7 @@
 #include "nautilus-file-undo-operations.h"
 #include "nautilus-file-undo-manager.h"
 #include "nautilus-ui-utilities.h"
+#include "nautilus-gtk4-helpers.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -67,8 +68,6 @@
 #ifdef GDK_WINDOWING_WAYLAND
 #include <gdk/gdkwayland.h>
 #endif
-
-/* TODO: TESTING!!! */
 
 typedef struct
 {
@@ -204,11 +203,14 @@ typedef struct
     GList *source_files;
     GFile *destination_directory;
     GList *output_files;
+    gboolean destination_decided;
+    gboolean extraction_failed;
 
     gdouble base_progress;
 
     guint64 archive_compressed_size;
     guint64 total_compressed_size;
+    gint total_files;
 
     NautilusExtractCallback done_callback;
     gpointer done_callback_data;
@@ -222,6 +224,7 @@ typedef struct
 
     AutoarFormat format;
     AutoarFilter filter;
+    gchar *passphrase;
 
     guint64 total_size;
     guint total_files;
@@ -247,6 +250,7 @@ G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC (SourceInfo, source_info_clear)
 #define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 8
 #define NSEC_PER_MICROSEC 1000
 #define PROGRESS_NOTIFY_INTERVAL 100 * NSEC_PER_MICROSEC
+#define LONG_JOB_THRESHOLD_IN_SECONDS 2
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
@@ -1228,6 +1232,7 @@ typedef struct
     const char *details_text;
     const char **button_titles;
     gboolean show_all;
+    gboolean should_start_inactive;
     int result;
     /* Dialogs are ran from operation threads, which need to be blocked until
      * the user gives a valid response
@@ -1297,13 +1302,47 @@ dialog_realize_cb (GtkWidget *widget,
 }
 
 static gboolean
+is_long_job (CommonJob *job)
+{
+    double elapsed = nautilus_progress_info_get_total_elapsed_time (job->progress);
+    return elapsed > LONG_JOB_THRESHOLD_IN_SECONDS ? TRUE : FALSE;
+}
+
+static gboolean
+simple_dialog_button_activate (GtkWidget *button)
+{
+    gtk_widget_set_sensitive (button, TRUE);
+    return G_SOURCE_REMOVE;
+}
+
+static void
+simple_dialog_cb (GtkDialog *dialog,
+                  gint       response_id,
+                  gpointer   user_data)
+{
+    RunSimpleDialogData *data = user_data;
+
+    if ((response_id == GTK_RESPONSE_NONE || response_id == GTK_RESPONSE_DELETE_EVENT) && data->ignore_close_box)
+    {
+        return;
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+
+    data->result = response_id;
+    data->completed = TRUE;
+
+    g_cond_signal (&data->cond);
+    g_mutex_unlock (&data->mutex);
+}
+
+static gboolean
 do_run_simple_dialog (gpointer _data)
 {
     RunSimpleDialogData *data = _data;
     const char *button_title;
     GtkWidget *dialog;
     GtkWidget *button;
-    int result;
     int response_id;
 
     g_mutex_lock (&data->mutex);
@@ -1340,6 +1379,14 @@ do_run_simple_dialog (gpointer _data)
             gtk_style_context_add_class (gtk_widget_get_style_context (button),
                                          "destructive-action");
         }
+
+        if (data->should_start_inactive)
+        {
+            gtk_widget_set_sensitive (button, FALSE);
+            g_timeout_add_seconds (BUTTON_ACTIVATION_DELAY_IN_SECONDS,
+                                   G_SOURCE_FUNC (simple_dialog_button_activate),
+                                   button);
+        }
     }
 
     if (data->details_text)
@@ -1360,7 +1407,7 @@ do_run_simple_dialog (gpointer _data)
         gtk_label_set_max_width_chars (GTK_LABEL (label),
                                        MAXIMUM_DISPLAYED_ERROR_MESSAGE_LENGTH);
 
-        gtk_container_add (GTK_CONTAINER (content_area), label);
+        gtk_box_append (GTK_BOX (content_area), label);
 
         gtk_widget_show (label);
     }
@@ -1390,20 +1437,8 @@ do_run_simple_dialog (gpointer _data)
     }
 
     /* Run it. */
-    result = gtk_dialog_run (GTK_DIALOG (dialog));
-
-    while ((result == GTK_RESPONSE_NONE || result == GTK_RESPONSE_DELETE_EVENT) && data->ignore_close_box)
-    {
-        result = gtk_dialog_run (GTK_DIALOG (dialog));
-    }
-
-    gtk_widget_destroy (dialog);
-
-    data->result = result;
-    data->completed = TRUE;
-
-    g_cond_signal (&data->cond);
-    g_mutex_unlock (&data->mutex);
+    g_signal_connect (dialog, "response", G_CALLBACK (simple_dialog_cb), data);
+    gtk_widget_show_all (dialog);
 
     return FALSE;
 }
@@ -1450,6 +1485,8 @@ run_simple_dialog_va (CommonJob      *job,
     data->button_titles = (const char **) g_ptr_array_free (ptr_array, FALSE);
 
     nautilus_progress_info_pause (job->progress);
+
+    data->should_start_inactive = is_long_job (job);
 
     g_mutex_lock (&data->mutex);
 
@@ -2982,22 +3019,12 @@ has_trash_files (GMount *mount)
     return res;
 }
 
-
-static gint
-prompt_empty_trash (GtkWindow *parent_window)
+static GtkWidget *
+create_empty_trash_prompt (GtkWindow *parent_window)
 {
-    gint result;
     GtkWidget *dialog;
-    GdkScreen *screen;
 
-    screen = NULL;
-    if (parent_window != NULL)
-    {
-        screen = gtk_widget_get_screen (GTK_WIDGET (parent_window));
-    }
-
-    /* Do we need to be modal ? */
-    dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL,
+    dialog = gtk_message_dialog_new (parent_window, GTK_DIALOG_MODAL,
                                      GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
                                      _("Do you want to empty the trash before you unmount?"));
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
@@ -3011,25 +3038,10 @@ prompt_empty_trash (GtkWindow *parent_window)
                             CANCEL, GTK_RESPONSE_CANCEL,
                             _("Empty _Trash"), GTK_RESPONSE_ACCEPT, NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
-    gtk_window_set_title (GTK_WINDOW (dialog), "");     /* as per HIG */
-    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dialog), TRUE);
-    if (screen)
-    {
-        gtk_window_set_screen (GTK_WINDOW (dialog), screen);
-    }
+    gtk_window_set_title (GTK_WINDOW (dialog), "");
     atk_object_set_role (gtk_widget_get_accessible (dialog), ATK_ROLE_ALERT);
 
-    /* Make transient for the window group */
-    gtk_widget_realize (dialog);
-    if (screen != NULL)
-    {
-        gdk_window_set_transient_for (gtk_widget_get_window (GTK_WIDGET (dialog)),
-                                      gdk_screen_get_root_window (screen));
-    }
-
-    result = gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
-    return result;
+    return dialog;
 }
 
 static void
@@ -3038,6 +3050,42 @@ empty_trash_for_unmount_done (gboolean success,
 {
     UnmountData *data = user_data;
     do_unmount (data);
+}
+
+static void
+empty_trash_prompt_cb (GtkDialog *dialog,
+                       gint       response_id,
+                       gpointer   user_data)
+{
+    UnmountData *data = user_data;
+
+    if (response_id == GTK_RESPONSE_ACCEPT)
+    {
+        GTask *task;
+        EmptyTrashJob *job;
+
+        job = op_job_new (EmptyTrashJob, data->parent_window, NULL);
+        job->should_confirm = FALSE;
+        job->trash_dirs = get_trash_dirs_for_mount (data->mount);
+        job->done_callback = empty_trash_for_unmount_done;
+        job->done_callback_data = data;
+
+        task = g_task_new (NULL, NULL, empty_trash_task_done, job);
+        g_task_set_task_data (task, job, NULL);
+        g_task_run_in_thread (task, empty_trash_thread_func);
+        g_object_unref (task);
+    }
+    else if (response_id == GTK_RESPONSE_CANCEL)
+    {
+        if (data->callback)
+        {
+            data->callback (data->callback_data);
+        }
+
+        unmount_data_free (data);
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 void
@@ -3050,7 +3098,6 @@ nautilus_file_operations_unmount_mount_full (GtkWindow               *parent_win
                                              gpointer                 callback_data)
 {
     UnmountData *data;
-    int response;
 
     data = g_new0 (UnmountData, 1);
     data->callback = callback;
@@ -3070,35 +3117,12 @@ nautilus_file_operations_unmount_mount_full (GtkWindow               *parent_win
 
     if (check_trash && has_trash_files (mount))
     {
-        response = prompt_empty_trash (parent_window);
+        GtkWidget *dialog;
+        dialog = create_empty_trash_prompt (parent_window);
 
-        if (response == GTK_RESPONSE_ACCEPT)
-        {
-            GTask *task;
-            EmptyTrashJob *job;
-
-            job = op_job_new (EmptyTrashJob, parent_window, NULL);
-            job->should_confirm = FALSE;
-            job->trash_dirs = get_trash_dirs_for_mount (mount);
-            job->done_callback = empty_trash_for_unmount_done;
-            job->done_callback_data = data;
-
-            task = g_task_new (NULL, NULL, empty_trash_task_done, job);
-            g_task_set_task_data (task, job, NULL);
-            g_task_run_in_thread (task, empty_trash_thread_func);
-            g_object_unref (task);
-            return;
-        }
-        else if (response == GTK_RESPONSE_CANCEL)
-        {
-            if (callback)
-            {
-                callback (callback_data);
-            }
-
-            unmount_data_free (data);
-            return;
-        }
+        g_signal_connect (dialog, "response", G_CALLBACK (empty_trash_prompt_cb), data);
+        gtk_widget_show_all (dialog);
+        return;
     }
 
     do_unmount (data);
@@ -3278,10 +3302,12 @@ report_preparing_count_progress (CommonJob  *job,
         break;
 
         case OP_KIND_COMPRESS:
+        {
             s = g_strdup_printf (ngettext ("Preparing to compress %'d file",
                                            "Preparing to compress %'d files",
                                            source_info->num_files),
                                  source_info->num_files);
+        }
     }
 
     nautilus_progress_info_take_details (job->progress, s);
@@ -3339,7 +3365,9 @@ get_scan_primary (OpKind kind)
         }
 
         case OP_KIND_COMPRESS:
+        {
             return g_strdup (_("Error while compressing files."));
+        }
     }
 }
 
@@ -5245,15 +5273,19 @@ handle_copy_move_conflict (CommonJob *job,
     g_autofree gchar *basename = NULL;
     g_autoptr (GFile) suggested_file = NULL;
     g_autofree gchar *suggestion = NULL;
+    gboolean should_start_inactive;
 
     g_timer_stop (job->time);
     nautilus_progress_info_pause (job->progress);
+
+    should_start_inactive = is_long_job (job);
 
     basename = g_file_get_basename (dest);
     suggested_file = nautilus_generate_unique_file_in_directory (dest_dir, basename);
     suggestion = g_file_get_basename (suggested_file);
 
     response = copy_move_conflict_ask_user_action (job->parent_window,
+                                                   should_start_inactive,
                                                    src,
                                                    dest,
                                                    dest_dir,
@@ -6257,6 +6289,51 @@ move_file_prepare (CopyMoveJob  *move_job,
 
         goto out;
     }
+
+    /* Don't allow moving over the source or one of the parents of the source.
+     */
+    if (test_dir_is_parent (src, dest))
+    {
+        int response;
+
+        if (job->skip_all_error)
+        {
+            goto out;
+        }
+
+        /*  the run_warning() frees all strings passed in automatically  */
+        primary = move_job->is_move ? g_strdup (_("You cannot move a file over itself."))
+                  : g_strdup (_("You cannot copy a file over itself."));
+        secondary = g_strdup (_("The source file would be overwritten by the destination."));
+
+        response = run_warning (job,
+                                primary,
+                                secondary,
+                                NULL,
+                                files_left > 1,
+                                CANCEL, SKIP_ALL, SKIP,
+                                NULL);
+
+        if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT)
+        {
+            abort_job (job);
+        }
+        else if (response == 1)             /* skip all */
+        {
+            job->skip_all_error = TRUE;
+        }
+        else if (response == 2)             /* skip */
+        {
+            /* do nothing */
+        }
+        else
+        {
+            g_assert_not_reached ();
+        }
+
+        goto out;
+    }
+
 
 retry:
 
@@ -8197,8 +8274,14 @@ extract_job_on_decide_destination (AutoarExtractor *extractor,
         return NULL;
     }
 
+    /* The extract_job->destination_decided variable signalizes whether the
+     * extract_job->output_files list already contains the final location as
+     * its first link. There is no way to get this over the AutoarExtractor
+     * API currently.
+     */
     extract_job->output_files = g_list_prepend (extract_job->output_files,
                                                 decided_destination);
+    extract_job->destination_decided = TRUE;
 
     return g_object_ref (decided_destination);
 }
@@ -8318,7 +8401,9 @@ extract_job_on_error (AutoarExtractor *extractor,
 {
     ExtractJob *extract_job = user_data;
     GFile *source_file;
+    GFile *destination;
     gint response_id;
+    gint remaining_files;
     g_autofree gchar *basename = NULL;
 
     source_file = autoar_extractor_get_source_file (extractor);
@@ -8331,24 +8416,49 @@ extract_job_on_error (AutoarExtractor *extractor,
         return;
     }
 
+    extract_job->extraction_failed = TRUE;
+
+    /* It is safe to use extract_job->output_files->data only when the
+     * extract_job->destination_decided variable was set, see comment in the
+     * extract_job_on_decide_destination function.
+     */
+    if (extract_job->destination_decided)
+    {
+        destination = extract_job->output_files->data;
+        delete_file_recursively (destination, NULL, NULL, NULL);
+        extract_job->output_files = g_list_delete_link (extract_job->output_files,
+                                                        extract_job->output_files);
+        g_object_unref (destination);
+    }
+
+    if (extract_job->common.skip_all_error)
+    {
+        return;
+    }
+
     basename = get_basename (source_file);
     nautilus_progress_info_take_status (extract_job->common.progress,
                                         g_strdup_printf (_("Error extracting “%s”"),
                                                          basename));
 
-    response_id = run_warning ((CommonJob *) extract_job,
-                               g_strdup_printf (_("There was an error while extracting “%s”."),
-                                                basename),
-                               g_strdup (error->message),
-                               NULL,
-                               FALSE,
-                               CANCEL,
-                               SKIP,
-                               NULL);
+    remaining_files = g_list_length (g_list_find_custom (extract_job->source_files,
+                                                         source_file,
+                                                         (GCompareFunc) g_file_equal)) - 1;
+    response_id = run_cancel_or_skip_warning ((CommonJob *) extract_job,
+                                              g_strdup_printf (_("There was an error while extracting “%s”."),
+                                                               basename),
+                                              g_strdup (error->message),
+                                              NULL,
+                                              extract_job->total_files,
+                                              remaining_files);
 
     if (response_id == 0 || response_id == GTK_RESPONSE_DELETE_EVENT)
     {
         abort_job ((CommonJob *) extract_job);
+    }
+    else if (response_id == 1)
+    {
+        extract_job->common.skip_all_error = TRUE;
     }
 }
 
@@ -8364,125 +8474,25 @@ extract_job_on_completed (AutoarExtractor *extractor,
     nautilus_file_changes_queue_file_added (output_file);
 }
 
-typedef struct
-{
-    ExtractJob *extract_job;
-    AutoarExtractor *extractor;
-    gchar *passphrase;
-    GtkWidget *passphrase_entry;
-    GMutex mutex;
-    GCond cond;
-    gboolean completed;
-} PassphraseRequestData;
-
-static void
-on_request_passphrase_cb (GtkDialog *dialog,
-                          gint       response_id,
-                          gpointer   user_data)
-{
-    PassphraseRequestData *data = user_data;
-
-    if (response_id == GTK_RESPONSE_CANCEL ||
-        response_id == GTK_RESPONSE_DELETE_EVENT)
-    {
-        abort_job ((CommonJob *) data->extract_job);
-    }
-    else
-    {
-        data->passphrase = g_strdup (gtk_entry_get_text (GTK_ENTRY (data->passphrase_entry)));
-    }
-
-    data->completed = TRUE;
-
-    gtk_widget_destroy (GTK_WIDGET (dialog));
-
-    g_cond_signal (&data->cond);
-    g_mutex_unlock (&data->mutex);
-}
-
-static gboolean
-run_passphrase_dialog (gpointer user_data)
-{
-    PassphraseRequestData *data = user_data;
-    g_autofree gchar *label_str = NULL;
-    g_autofree gchar *basename = NULL;
-    GtkWidget *dialog;
-    GtkWidget *entry;
-    GtkWidget *label;
-    GtkWidget *box;
-    GFile *source_file;
-
-    g_mutex_lock (&data->mutex);
-
-    dialog = gtk_dialog_new_with_buttons (_("Password Required"),
-                                          data->extract_job->common.parent_window,
-                                          GTK_DIALOG_USE_HEADER_BAR | GTK_DIALOG_MODAL,
-                                          _("Cancel"), GTK_RESPONSE_CANCEL,
-                                          _("Extract"), GTK_RESPONSE_OK,
-                                          NULL);
-    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-    source_file = autoar_extractor_get_source_file (data->extractor);
-    basename = get_basename (source_file);
-
-    box = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-    gtk_widget_set_margin_start (box, 20);
-    gtk_widget_set_margin_end (box, 20);
-    gtk_widget_set_margin_top (box, 20);
-    gtk_widget_set_margin_bottom (box, 20);
-
-    label_str = g_strdup_printf (_("“%s” is password-protected."), basename);
-    label = gtk_label_new (label_str);
-    gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-    gtk_label_set_max_width_chars (GTK_LABEL (label), 60);
-    gtk_container_add (GTK_CONTAINER (box), label);
-
-    entry = gtk_entry_new ();
-    gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
-    gtk_widget_set_valign (entry, GTK_ALIGN_END);
-    gtk_widget_set_vexpand (entry, TRUE);
-    gtk_entry_set_placeholder_text (GTK_ENTRY (entry), _("Enter password…"));
-    gtk_entry_set_visibility (GTK_ENTRY (entry), FALSE);
-    gtk_entry_set_input_purpose (GTK_ENTRY (entry), GTK_INPUT_PURPOSE_PASSWORD);
-    gtk_container_add (GTK_CONTAINER (box), entry);
-
-    data->passphrase_entry = entry;
-    g_signal_connect (dialog, "response", G_CALLBACK (on_request_passphrase_cb), data);
-    gtk_widget_show_all (dialog);
-
-    return G_SOURCE_REMOVE;
-}
-
 static gchar *
 extract_job_on_request_passphrase (AutoarExtractor *extractor,
                                    gpointer         user_data)
 {
-    PassphraseRequestData *data;
     ExtractJob *extract_job = user_data;
+    GtkWindow *parent_window;
+    GFile *source_file;
+    g_autofree gchar *basename = NULL;
     gchar *passphrase;
 
-    data = g_new0 (PassphraseRequestData, 1);
-    g_mutex_init (&data->mutex);
-    g_cond_init (&data->cond);
-    data->extract_job = extract_job;
-    data->extractor = extractor;
+    parent_window = extract_job->common.parent_window;
+    source_file = autoar_extractor_get_source_file (extractor);
+    basename = get_basename (source_file);
 
-    g_mutex_lock (&data->mutex);
-
-    g_main_context_invoke (NULL,
-                           run_passphrase_dialog,
-                           data);
-
-    while (!data->completed)
+    passphrase = extract_ask_passphrase (parent_window, basename);
+    if (passphrase == NULL)
     {
-        g_cond_wait (&data->cond, &data->mutex);
+        abort_job ((CommonJob *) extract_job);
     }
-
-    g_mutex_unlock (&data->mutex);
-    g_mutex_clear (&data->mutex);
-    g_cond_clear (&data->cond);
-
-    passphrase = g_steal_pointer (&data->passphrase);
-    g_free (data);
 
     return passphrase;
 }
@@ -8533,8 +8543,7 @@ extract_job_on_scanned (AutoarExtractor *extractor,
 }
 
 static void
-report_extract_final_progress (ExtractJob *extract_job,
-                               gint        total_files)
+report_extract_final_progress (ExtractJob *extract_job)
 {
     char *status;
     g_autofree gchar *basename_dest = NULL;
@@ -8544,7 +8553,11 @@ report_extract_final_progress (ExtractJob *extract_job,
                                             extract_job->destination_directory);
     basename_dest = get_basename (extract_job->destination_directory);
 
-    if (total_files == 1)
+    /* The g_list_length function is used intentionally here instead of the
+     * extract_job->total_files variable to avoid printing wrong basename in
+     * the case of skipped files.
+     */
+    if (g_list_length (extract_job->source_files) == 1)
     {
         GFile *source_file;
         g_autofree gchar *basename = NULL;
@@ -8559,8 +8572,8 @@ report_extract_final_progress (ExtractJob *extract_job,
     {
         status = g_strdup_printf (ngettext ("Extracted %'d file to “%s”",
                                             "Extracted %'d files to “%s”",
-                                            total_files),
-                                  total_files,
+                                            extract_job->total_files),
+                                  extract_job->total_files,
                                   basename_dest);
     }
 
@@ -8571,6 +8584,8 @@ report_extract_final_progress (ExtractJob *extract_job,
                                          g_strdup_printf (_("%s / %s"),
                                                           formatted_size,
                                                           formatted_size));
+
+    nautilus_progress_info_set_progress (extract_job->common.progress, 1, 1);
 }
 
 static void
@@ -8581,8 +8596,6 @@ extract_task_thread_func (GTask        *task,
 {
     ExtractJob *extract_job = task_data;
     GList *l;
-    GList *existing_output_files = NULL;
-    gint total_files;
     g_autofree guint64 *archive_compressed_sizes = NULL;
     gint i;
 
@@ -8593,9 +8606,10 @@ extract_task_thread_func (GTask        *task,
     nautilus_progress_info_set_details (extract_job->common.progress,
                                         _("Preparing to extract"));
 
-    total_files = g_list_length (extract_job->source_files);
+    extract_job->total_files = g_list_length (extract_job->source_files);
 
-    archive_compressed_sizes = g_malloc0_n (total_files, sizeof (guint64));
+    archive_compressed_sizes = g_malloc0_n (extract_job->total_files,
+                                            sizeof (guint64));
     extract_job->total_compressed_size = 0;
 
     for (l = extract_job->source_files, i = 0;
@@ -8652,6 +8666,8 @@ extract_task_thread_func (GTask        *task,
                           extract_job);
 
         extract_job->archive_compressed_size = archive_compressed_sizes[i];
+        extract_job->destination_decided = FALSE;
+        extract_job->extraction_failed = FALSE;
 
         autoar_extractor_start (extractor,
                                 extract_job->common.cancellable);
@@ -8659,31 +8675,24 @@ extract_task_thread_func (GTask        *task,
         g_signal_handlers_disconnect_by_data (extractor,
                                               extract_job);
 
-        extract_job->base_progress += (gdouble) extract_job->archive_compressed_size /
-                                      (gdouble) extract_job->total_compressed_size;
+        if (!extract_job->extraction_failed)
+        {
+            extract_job->base_progress += (gdouble) extract_job->archive_compressed_size /
+                                          (gdouble) extract_job->total_compressed_size;
+        }
+        else
+        {
+            extract_job->total_files--;
+            extract_job->base_progress *= extract_job->total_compressed_size;
+            extract_job->total_compressed_size -= extract_job->archive_compressed_size;
+            extract_job->base_progress /= extract_job->total_compressed_size;
+        }
     }
 
     if (!job_aborted ((CommonJob *) extract_job))
     {
-        report_extract_final_progress (extract_job, total_files);
+        report_extract_final_progress (extract_job);
     }
-
-    for (l = extract_job->output_files; l != NULL; l = l->next)
-    {
-        GFile *output_file;
-
-        output_file = G_FILE (l->data);
-
-        if (g_file_query_exists (output_file, NULL))
-        {
-            existing_output_files = g_list_prepend (existing_output_files,
-                                                    g_object_ref (output_file));
-        }
-    }
-
-    g_list_free_full (extract_job->output_files, g_object_unref);
-
-    extract_job->output_files = existing_output_files;
 
     if (extract_job->common.undo_info)
     {
@@ -8753,6 +8762,7 @@ compress_task_done (GObject      *source_object,
 
     g_object_unref (compress_job->output_file);
     g_list_free_full (compress_job->source_files, g_object_unref);
+    g_free (compress_job->passphrase);
 
     finalize_common ((CommonJob *) compress_job);
 
@@ -9027,6 +9037,7 @@ compress_task_thread_func (GTask        *task,
                                         compress_job->format,
                                         compress_job->filter,
                                         FALSE);
+    autoar_compressor_set_passphrase (compressor, compress_job->passphrase);
 
     autoar_compressor_set_output_is_dest (compressor, TRUE);
 
@@ -9057,6 +9068,7 @@ nautilus_file_operations_compress (GList                          *files,
                                    GFile                          *output,
                                    AutoarFormat                    format,
                                    AutoarFilter                    filter,
+                                   const gchar                    *passphrase,
                                    GtkWindow                      *parent_window,
                                    NautilusFileOperationsDBusData *dbus_data,
                                    NautilusCreateCallback          done_callback,
@@ -9072,6 +9084,7 @@ nautilus_file_operations_compress (GList                          *files,
     compress_job->output_file = g_object_ref (output);
     compress_job->format = format;
     compress_job->filter = filter;
+    compress_job->passphrase = g_strdup (passphrase);
     compress_job->done_callback = done_callback;
     compress_job->done_callback_data = done_callback_data;
 
@@ -9082,7 +9095,8 @@ nautilus_file_operations_compress (GList                          *files,
         compress_job->common.undo_info = nautilus_file_undo_info_compress_new (files,
                                                                                output,
                                                                                format,
-                                                                               filter);
+                                                                               filter,
+                                                                               passphrase);
     }
 
     task = g_task_new (NULL, compress_job->common.cancellable,
