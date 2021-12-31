@@ -13,9 +13,9 @@ void test_delete_event(GtkWidget *widget, GdkEvent *event,
                        gpointer callback_data);
 GtkWidget *test_window_new(const char *title);
 void test_gtk_widget_set_background_image(GtkWidget *widget,
-        const char *image_name);
+                                          const char *image_name);
 void test_gtk_widget_set_background_color(GtkWidget *widget,
-        const char *color_spec);
+                                          const char *color_spec);
 GdkPixbuf *test_pixbuf_new_named(const char *name, float scale);
 GtkWidget *test_label_new(const char *text, gboolean with_background,
                           int num_sizes_larger);
