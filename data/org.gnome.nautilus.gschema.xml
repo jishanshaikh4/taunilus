@@ -36,7 +36,7 @@
     <value value="6" nick="starred"/>
   </enum>
 
-  <enum id="org.gnome.nautilus.CanvasZoomLevel">
+  <enum id="org.gnome.nautilus.GridZoomLevel">
     <value value="0" nick="small"/>
     <value value="1" nick="standard"/>
     <value value="2" nick="large"/>
@@ -59,12 +59,14 @@
   <enum id="org.gnome.nautilus.SearchFilterTimeType">
     <value value="0" nick="last_modified"/>
     <value value="1" nick="last_used"/>
+    <value value="2" nick="created"/>
   </enum>
 
   <enum id="org.gnome.nautilus.CompressionFormat">
     <value value="0" nick="zip"/>
     <value value="1" nick="tar.xz"/>
     <value value="2" nick="7z"/>
+    <value value="3" nick="encrypted_zip"/>
   </enum>
 
   <schema path="/org/gnome/nautilus/" id="org.gnome.nautilus" gettext-domain="nautilus">
@@ -174,7 +176,7 @@
       </aliases>
       <default>'icon-view'</default>
       <summary>Default folder viewer</summary>
-      <description>When a folder is visited this viewer is used unless you have selected another view for that particular folder. Possible values are “list-view”, and “icon-view”.</description>
+      <description>When a folder is visited this viewer is used. Possible values are “list-view”, and “icon-view”.</description>
     </key>
     <key type="b" name="show-hidden-files">
       <default>false</default>
@@ -190,11 +192,6 @@
       <default>true</default>
       <summary>Whether to open the hovered folder after a timeout when drag and drop operation</summary>
       <description>If this is set to true, when performing a drag and drop operation the hovered folder will open automatically after a timeout.</description>
-    </key>
-    <key type="b" name="use-experimental-views">
-      <default>false</default>
-      <summary>Enable new experimental views</summary>
-      <description>Whether to use the new experimental views using the latest GTK+ widgets to help giving feedback and shaping their future.</description>
     </key>
     <key type="b" name="fts-enabled">
       <default>true</default>
@@ -217,14 +214,9 @@
       <summary>List of possible captions on icons</summary>
       <description>A list of captions below an icon in the icon view. The actual number of captions shown depends on the zoom level. Some possible values are: “size”, “type”, “date_modified”, “owner”, “group”, “permissions”, and “mime_type”.</description>
     </key>
-    <key name="default-zoom-level" enum="org.gnome.nautilus.CanvasZoomLevel">
+    <key name="default-zoom-level" enum="org.gnome.nautilus.GridZoomLevel">
       <default>'large'</default>
       <summary>Default icon view zoom level</summary>
-    </key>
-    <key type="as" name="text-ellipsis-limit">
-      <default>[ '3' ]</default>
-      <summary>Text Ellipsis Limit</summary>
-      <description>A string specifying how parts of overlong file names should be replaced by ellipses, depending on the zoom level. Each of the list entries is of the form “Zoom Level:Integer”. For each specified zoom level, if the given integer is larger than 0, the file name will not exceed the given number of lines. If the integer is 0 or smaller, no limit is imposed on the specified zoom level. A default entry of the form “Integer” without any specified zoom level is also allowed. It defines the maximum number of lines for all other zoom levels. Examples: 0 — always display overlong file names; 3 — shorten file names if they exceed three lines; smallest:5,smaller:4,0 — shorten file names if they exceed five lines for zoom level “smallest”. Shorten file names if they exceed four lines for zoom level “smaller”. Do not shorten file names for other zoom levels. Available zoom levels: small, standard, large.</description>
     </key>
   </schema>
 
