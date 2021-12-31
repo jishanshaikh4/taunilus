@@ -1,5 +1,45 @@
-Major changes in 40.2
+Major changes in 41.1
 =====================
+* Cache Scripts and New Document menus to avoid lags (António Fernandes)
+* Ellipsize subtitle label in trash bar to reduce minimum width (António Fernandes)
+* Fix build with meson 0.60.0 (Albert Vaca Cintora)
+* Don't change action when unchecking in File Conflict dialog (António Fernandes)
+* Fix progress reporting when skipping during extraction (Ondrej Holy)
+* Offer skipping in case of extraction failure only when there are more files (Ondrej Holy)
+* Remove leftover files after extraction failure (Ondrej Holy)
+* Set keyboard focus on the row with the selected archive format (Clyde Laforge)
+* Translation updates
+
+Major changes in 41.0
+=====================
+* Translation updates
+
+Major changes in 41.rc
+=========================
+* Disable background "Properties" while searching (Felipe Borges)
+* Don't duplicate set wallpaper when not using portal (Barnabás Pőcze)
+* Translation updates (GNOME Translation Project contributors)
+
+Major changes in 41.beta
+=========================
+* Fix comma placement in the floating status bar (Nick Montalbano)
+* Use standard::edit-name attribute where appropriate (Anubhav Tyagi)
+* Bring "Open with..." options together in context menu (Luis Bosque)
+* Fix "Compress..." acting on file that was not the selected one (Anubhav Tyagi)
+* Redesign "Compress..." dialog (Ondrej Holy, Allan Day)
+* Provide creation of password-protected ZIP archives (Ondrej Holy)
+* Fix search by date not working with Tracker engine (Nishit Patel)
+* Add link to Privacy Settings from Trash (Eric Daigle)
+* Indicate whether trash automatic emptying is enabled (Eric Daigle)
+* Translation updates (GNOME Translation Project contributors)
+
+Major changes in 41.alpha
+=========================
+* Replace deprecated gexiv2 symbols (Ondrej Holy)
+* Make NautilusWindowSlot non-derivable (António Fernandes, Ernestas Kulik)
+* Prevent closing popover when "Show Hidden Files" is toggled (Rodrigo Pedro)
+* Hand preview updating over to FilesView (António Fernandes)
+* Provide source .svg icon (Jakub Steiner)
 * Fix missing "Open Scripts Folder" menu item (Ondrej Holy)
 * Prevent reopening of previewer on window focus (Felipe Borges)
 * Keep working directory when executing scripts (António Fernandes)
