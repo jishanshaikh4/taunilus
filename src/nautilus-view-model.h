@@ -12,9 +12,9 @@ G_DECLARE_FINAL_TYPE(NautilusViewModel, nautilus_view_model, NAUTILUS,
                      VIEW_MODEL, GObject)
 
 typedef struct {
-  NautilusFileSortType sort_type;
-  gboolean reversed;
-  gboolean directories_first;
+    NautilusFileSortType sort_type;
+    gboolean reversed;
+    gboolean directories_first;
 } NautilusViewModelSortData;
 
 NautilusViewModel *nautilus_view_model_new(void);
@@ -27,7 +27,7 @@ NautilusViewItemModel *
 nautilus_view_model_get_item_from_file(NautilusViewModel *self,
                                        NautilusFile *file);
 GQueue *nautilus_view_model_get_items_from_files(NautilusViewModel *self,
-                                                 GQueue *files);
+        GQueue *files);
 /* Don't use inside a loop, use nautilus_view_model_remove_all_items instead. */
 void nautilus_view_model_remove_item(NautilusViewModel *self,
                                      NautilusViewItemModel *item);

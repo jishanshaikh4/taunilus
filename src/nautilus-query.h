@@ -25,21 +25,21 @@
 #include <glib-object.h>
 
 typedef enum {
-  NAUTILUS_QUERY_SEARCH_TYPE_LAST_ACCESS,
-  NAUTILUS_QUERY_SEARCH_TYPE_LAST_MODIFIED,
-  NAUTILUS_QUERY_SEARCH_TYPE_CREATED
+    NAUTILUS_QUERY_SEARCH_TYPE_LAST_ACCESS,
+    NAUTILUS_QUERY_SEARCH_TYPE_LAST_MODIFIED,
+    NAUTILUS_QUERY_SEARCH_TYPE_CREATED
 } NautilusQuerySearchType;
 
 typedef enum {
-  NAUTILUS_QUERY_SEARCH_CONTENT_SIMPLE,
-  NAUTILUS_QUERY_SEARCH_CONTENT_FULL_TEXT,
+    NAUTILUS_QUERY_SEARCH_CONTENT_SIMPLE,
+    NAUTILUS_QUERY_SEARCH_CONTENT_FULL_TEXT,
 } NautilusQuerySearchContent;
 
 typedef enum {
-  NAUTILUS_QUERY_RECURSIVE_NEVER,
-  NAUTILUS_QUERY_RECURSIVE_ALWAYS,
-  NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY,
-  NAUTILUS_QUERY_RECURSIVE_INDEXED_ONLY,
+    NAUTILUS_QUERY_RECURSIVE_NEVER,
+    NAUTILUS_QUERY_RECURSIVE_ALWAYS,
+    NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY,
+    NAUTILUS_QUERY_RECURSIVE_INDEXED_ONLY,
 } NautilusQueryRecursive;
 
 #define NAUTILUS_TYPE_QUERY (nautilus_query_get_type())
@@ -53,7 +53,7 @@ void nautilus_query_set_text(NautilusQuery *query, const char *text);
 
 gboolean nautilus_query_get_show_hidden_files(NautilusQuery *query);
 void nautilus_query_set_show_hidden_files(NautilusQuery *query,
-                                          gboolean show_hidden);
+        gboolean show_hidden);
 
 GFile *nautilus_query_get_location(NautilusQuery *query);
 void nautilus_query_set_location(NautilusQuery *query, GFile *location);
