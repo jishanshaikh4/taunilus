@@ -31,8 +31,6 @@
 
 #include <glib/gi18n.h>
 
-#include "nautilus-icon-info.h"
-
 typedef struct
 {
     GtkWidget *dialog;
@@ -163,8 +161,25 @@ out:
          *  there is no way to get it back. */
         gtk_window_set_keep_above (GTK_WINDOW (dialog), TRUE);
 
-        gtk_dialog_run (GTK_DIALOG (dialog));
-        gtk_widget_destroy (dialog);
+        g_signal_connect (dialog,
+                          "response",
+                          G_CALLBACK (gtk_widget_destroy),
+                          NULL);
+
+        gtk_widget_show_all (dialog);
+    }
+}
+
+static void
+autorun_software_dialog_response (GtkDialog *dialog,
+                                  gint       response_id,
+                                  GMount    *mount)
+{
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+
+    if (response_id == GTK_RESPONSE_OK)
+    {
+        autorun (mount);
     }
 }
 
@@ -172,9 +187,6 @@ static void
 present_autorun_for_software_dialog (GMount *mount)
 {
     GIcon *icon;
-    int icon_size;
-    g_autoptr (NautilusIconInfo) icon_info = NULL;
-    g_autoptr (GdkPixbuf) pixbuf = NULL;
     g_autofree char *mount_name = NULL;
     GtkWidget *dialog;
     AutorunSoftwareDialogData *data;
@@ -203,12 +215,17 @@ present_autorun_for_software_dialog (GMount *mount)
 
 
     icon = g_mount_get_icon (mount);
-    icon_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_DIALOG);
-    icon_info = nautilus_icon_info_lookup (icon, icon_size,
-                                           gtk_widget_get_scale_factor (GTK_WIDGET (dialog)));
-    pixbuf = nautilus_icon_info_get_pixbuf_at_size (icon_info, icon_size);
+    if (G_IS_THEMED_ICON (icon))
+    {
+        const gchar * const *names;
 
-    gtk_window_set_icon (GTK_WINDOW (dialog), pixbuf);
+        names = g_themed_icon_get_names (G_THEMED_ICON (icon));
+
+        if (names != NULL)
+        {
+            gtk_window_set_icon_name (GTK_WINDOW (dialog), names[0]);
+        }
+    }
 
     data = g_new0 (AutorunSoftwareDialogData, 1);
     data->dialog = dialog;
@@ -223,13 +240,12 @@ present_autorun_for_software_dialog (GMount *mount)
                            _("_Run"),
                            GTK_RESPONSE_OK);
 
-    gtk_widget_show_all (dialog);
+    g_signal_connect (dialog,
+                      "response",
+                      G_CALLBACK (autorun_software_dialog_response),
+                      mount);
 
-    if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
-    {
-        gtk_widget_destroy (dialog);
-        autorun (mount);
-    }
+    gtk_widget_show_all (dialog);
 }
 
 int
