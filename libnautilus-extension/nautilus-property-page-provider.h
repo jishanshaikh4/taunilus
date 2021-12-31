@@ -49,6 +49,9 @@ G_DECLARE_INTERFACE (NautilusPropertyPageProvider, nautilus_property_page_provid
                      GObject)
 
 /* For compatibility reasons, remove this once you start introducing breaking changes. */
+/**
+ * NautilusPropertyPageProviderIface: (skip)
+ */
 typedef NautilusPropertyPageProviderInterface NautilusPropertyPageProviderIface;
 
 /**
@@ -87,7 +90,7 @@ struct _NautilusPropertyPageProviderInterface
  * This function is called in the main thread before a property page
  * is shown, so it should return quickly.
  *
- * Returns: (element-type NautilusPropertyPage) (transfer full): A #GList of allocated #NautilusPropertyPage items.
+ * Returns: (nullable) (element-type NautilusPropertyPage) (transfer full): A #GList of allocated #NautilusPropertyPage items.
  */
 GList *nautilus_property_page_provider_get_pages (NautilusPropertyPageProvider *provider,
                                                   GList                        *files);

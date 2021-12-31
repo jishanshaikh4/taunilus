@@ -47,6 +47,9 @@ G_DECLARE_INTERFACE (NautilusColumnProvider, nautilus_column_provider,
                      GObject)
 
 /* For compatibility reasons, remove this once you start introducing breaking changes. */
+/**
+ * NautilusColumnProviderIface: (skip)
+ */
 typedef NautilusColumnProviderInterface NautilusColumnProviderIface;
 
 /**
@@ -77,7 +80,7 @@ struct _NautilusColumnProviderInterface
  * nautilus_column_provider_get_columns:
  * @provider: a #NautilusColumnProvider
  *
- * Returns: (element-type NautilusColumn) (transfer full): the provided #NautilusColumn objects
+ * Returns: (nullable) (element-type NautilusColumn) (transfer full): the provided #NautilusColumn objects
  */
 GList *nautilus_column_provider_get_columns (NautilusColumnProvider *provider);
 

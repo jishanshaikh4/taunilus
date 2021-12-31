@@ -48,6 +48,9 @@ G_DECLARE_INTERFACE (NautilusLocationWidgetProvider, nautilus_location_widget_pr
                      GObject)
 
 /* For compatibility reasons, remove this once you start introducing breaking changes. */
+/**
+ * NautilusLocationWidgetProviderIface: (skip)
+ */
 typedef NautilusLocationWidgetProviderInterface NautilusLocationWidgetProviderIface;
 
 /**
@@ -82,7 +85,7 @@ struct _NautilusLocationWidgetProviderInterface
  * @uri: the URI of the location
  * @window: parent #GtkWindow
  *
- * Returns: (transfer none): the location widget for @provider at @uri
+ * Returns: (transfer none) (nullable): the location widget for @provider at @uri
  */
 GtkWidget *nautilus_location_widget_provider_get_widget (NautilusLocationWidgetProvider *provider,
                                                          const char                     *uri,
