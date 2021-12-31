@@ -122,7 +122,7 @@
         "--libdir=/app/lib",
         "--buildtype=debugoptimized"
       ],
-      "sources" : [
+      "sources": [
         {
           "type": "git",
           "url": "https://github.com/flatpak/libportal.git"
