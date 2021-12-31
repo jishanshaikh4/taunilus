@@ -41,7 +41,7 @@ struct NautilusListViewDetails {
   NautilusTreeViewDragDest *drag_dest;
 
   GtkTreePath *first_click_path; /* Both clicks in a double click need to be on
-                                  the same row */
+                                the same row */
 
   GtkTreePath
       *new_selection_path; /* Path of the new selection after removing a file */
