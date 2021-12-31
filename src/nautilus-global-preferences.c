@@ -44,28 +44,28 @@ GSettings *gnome_interface_preferences;
 GSettings *gnome_privacy_preferences;
 
 void nautilus_global_preferences_init(void) {
-    static gboolean initialized = FALSE;
+  static gboolean initialized = FALSE;
 
-    if (initialized) {
-        return;
-    }
+  if (initialized) {
+    return;
+  }
 
-    initialized = TRUE;
+  initialized = TRUE;
 
-    nautilus_preferences = g_settings_new("org.gnome.nautilus.preferences");
-    nautilus_compression_preferences =
-        g_settings_new("org.gnome.nautilus.compression");
-    nautilus_window_state = g_settings_new("org.gnome.nautilus.window-state");
-    nautilus_icon_view_preferences =
-        g_settings_new("org.gnome.nautilus.icon-view");
-    nautilus_list_view_preferences =
-        g_settings_new("org.gnome.nautilus.list-view");
-    /* Some settings such as show hidden files are shared between Nautilus and GTK
-     * file chooser */
-    gtk_filechooser_preferences = g_settings_new_with_path(
-                                      "org.gtk.Settings.FileChooser", "/org/gtk/settings/file-chooser/");
-    gnome_lockdown_preferences = g_settings_new("org.gnome.desktop.lockdown");
-    gnome_background_preferences = g_settings_new("org.gnome.desktop.background");
-    gnome_interface_preferences = g_settings_new("org.gnome.desktop.interface");
-    gnome_privacy_preferences = g_settings_new("org.gnome.desktop.privacy");
+  nautilus_preferences = g_settings_new("org.gnome.nautilus.preferences");
+  nautilus_compression_preferences =
+      g_settings_new("org.gnome.nautilus.compression");
+  nautilus_window_state = g_settings_new("org.gnome.nautilus.window-state");
+  nautilus_icon_view_preferences =
+      g_settings_new("org.gnome.nautilus.icon-view");
+  nautilus_list_view_preferences =
+      g_settings_new("org.gnome.nautilus.list-view");
+  /* Some settings such as show hidden files are shared between Nautilus and GTK
+   * file chooser */
+  gtk_filechooser_preferences = g_settings_new_with_path(
+      "org.gtk.Settings.FileChooser", "/org/gtk/settings/file-chooser/");
+  gnome_lockdown_preferences = g_settings_new("org.gnome.desktop.lockdown");
+  gnome_background_preferences = g_settings_new("org.gnome.desktop.background");
+  gnome_interface_preferences = g_settings_new("org.gnome.desktop.interface");
+  gnome_privacy_preferences = g_settings_new("org.gnome.desktop.privacy");
 }

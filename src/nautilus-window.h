@@ -38,12 +38,12 @@ G_DECLARE_FINAL_TYPE(NautilusWindow, nautilus_window, NAUTILUS, WINDOW,
                      HdyApplicationWindow);
 
 typedef gboolean (*NautilusWindowGoToCallback)(NautilusWindow *window,
-        GFile *location, GError *error,
-        gpointer user_data);
+                                               GFile *location, GError *error,
+                                               gpointer user_data);
 
 typedef void (*NautilusWindowHandleExported)(NautilusWindow *window,
-        const char *handle, guint xid,
-        gpointer user_data);
+                                             const char *handle, guint xid,
+                                             gpointer user_data);
 
 /* window geometry */
 /* Min values are very small, and a Nautilus window at this tiny size is
@@ -94,8 +94,8 @@ void nautilus_window_sync_title(NautilusWindow *window,
                                 NautilusWindowSlot *slot);
 
 void nautilus_window_show_operation_notification(NautilusWindow *window,
-        gchar *main_label,
-        GFile *folder_to_open);
+                                                 gchar *main_label,
+                                                 GFile *folder_to_open);
 void nautilus_window_start_dnd(NautilusWindow *window, GdkDragContext *context);
 void nautilus_window_end_dnd(NautilusWindow *window, GdkDragContext *context);
 
