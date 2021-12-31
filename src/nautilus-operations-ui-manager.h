@@ -3,6 +3,8 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
+#define BUTTON_ACTIVATION_DELAY_IN_SECONDS 2
+
 typedef struct {
     int id;
     char *new_name;
@@ -12,6 +14,7 @@ typedef struct {
 void file_conflict_response_free (FileConflictResponse *data);
 
 FileConflictResponse * copy_move_conflict_ask_user_action (GtkWindow *parent_window,
+                                                           gboolean   should_start_inactive,
                                                            GFile     *src,
                                                            GFile     *dest,
                                                            GFile     *dest_dir,
@@ -26,3 +29,6 @@ enum
 
 void handle_unsupported_compressed_file (GtkWindow *parent_window,
                                          GFile     *compressed_file);
+
+gchar *extract_ask_passphrase (GtkWindow   *parent_window,
+                               const gchar *archive_basename);

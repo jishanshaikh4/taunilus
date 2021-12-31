@@ -11,7 +11,6 @@
 typedef struct
 {
     GSourceFunc source_func;
-    gpointer user_data;
     GMutex mutex;
     GCond cond;
     gboolean completed;
@@ -22,68 +21,77 @@ G_LOCK_DEFINE_STATIC (main_context_sync);
 static gboolean
 invoke_main_context_source_func_wrapper (gpointer user_data)
 {
-    ContextInvokeData *data = user_data;
+    ContextInvokeData *data = (ContextInvokeData *) user_data;
 
     g_mutex_lock (&data->mutex);
 
-    while (data->source_func (data->user_data))
+    while (data->source_func (user_data))
     {
     }
+
+    return G_SOURCE_REMOVE;
+}
+
+static void
+invoke_main_context_completed (gpointer user_data)
+{
+    ContextInvokeData *data = (ContextInvokeData *) user_data;
 
     data->completed = TRUE;
 
     g_cond_signal (&data->cond);
     g_mutex_unlock (&data->mutex);
-
-    return G_SOURCE_REMOVE;
 }
 
 /* This function is used to run UI on the main thread in order to ask the user
  * for an action during an operation. Since the operation cannot progress until
  * an action is provided by the user, the current thread needs to be blocked.
  * For this we wait on a condition on the shared data. We proceed further
- * unblocking the thread when the condition is set in the UI thread.
+ * unblocking the thread when invoke_main_context_completed() is called in the
+ * UI thread. The user_data pointer must reference a struct whose first member
+ * is of type ContextInvokeData.
  */
 static void
 invoke_main_context_sync (GMainContext *main_context,
                           GSourceFunc   source_func,
                           gpointer      user_data)
 {
-    ContextInvokeData data;
+    ContextInvokeData *data = (ContextInvokeData *) user_data;
     /* Allow only one thread at a time to invoke the main context so we
      * don't get race conditions which could lead to multiple dialogs being
      * displayed at the same time
      */
     G_LOCK (main_context_sync);
 
-    data.source_func = source_func;
-    data.user_data = user_data;
+    data->source_func = source_func;
 
-    g_mutex_init (&data.mutex);
-    g_cond_init (&data.cond);
-    data.completed = FALSE;
+    g_mutex_init (&data->mutex);
+    g_cond_init (&data->cond);
+    data->completed = FALSE;
 
-    g_mutex_lock (&data.mutex);
+    g_mutex_lock (&data->mutex);
 
     g_main_context_invoke (main_context,
                            invoke_main_context_source_func_wrapper,
-                           &data);
+                           user_data);
 
-    while (!data.completed)
+    while (!data->completed)
     {
-        g_cond_wait (&data.cond, &data.mutex);
+        g_cond_wait (&data->cond, &data->mutex);
     }
 
-    g_mutex_unlock (&data.mutex);
+    g_mutex_unlock (&data->mutex);
 
     G_UNLOCK (main_context_sync);
 
-    g_mutex_clear (&data.mutex);
-    g_cond_clear (&data.cond);
+    g_mutex_clear (&data->mutex);
+    g_cond_clear (&data->cond);
 }
 
 typedef struct
 {
+    ContextInvokeData parent_type;
+
     GFile *source_name;
     GFile *destination_name;
     GFile *destination_directory_name;
@@ -91,6 +99,8 @@ typedef struct
     gchar *suggestion;
 
     GtkWindow *parent;
+
+    gboolean should_start_inactive;
 
     FileConflictResponse *response;
 
@@ -217,13 +227,13 @@ set_images (FileConflictDialogData *data)
     GdkPixbuf *destination_pixbuf;
 
     destination_pixbuf = nautilus_file_get_icon_pixbuf (data->destination,
-                                                        NAUTILUS_CANVAS_ICON_SIZE_SMALL,
+                                                        NAUTILUS_GRID_ICON_SIZE_SMALL,
                                                         TRUE,
                                                         1,
                                                         NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS);
 
     source_pixbuf = nautilus_file_get_icon_pixbuf (data->source,
-                                                   NAUTILUS_CANVAS_ICON_SIZE_SMALL,
+                                                   NAUTILUS_GRID_ICON_SIZE_SMALL,
                                                    TRUE,
                                                    1,
                                                    NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS);
@@ -417,30 +427,12 @@ copy_move_conflict_on_file_list_ready (GList    *files,
                                                      G_CALLBACK (file_icons_changed), data);
 }
 
-static gboolean
-run_file_conflict_dialog (gpointer user_data)
+static void
+on_conflict_dialog_response (GtkDialog *dialog,
+                             gint       response_id,
+                             gpointer   user_data)
 {
     FileConflictDialogData *data = user_data;
-    int response_id;
-    GList *files = NULL;
-
-    data->source = nautilus_file_get (data->source_name);
-    data->destination = nautilus_file_get (data->destination_name);
-    data->destination_directory_file = nautilus_file_get (data->destination_directory_name);
-
-    data->dialog = nautilus_file_conflict_dialog_new (data->parent);
-
-    files = g_list_prepend (files, data->source);
-    files = g_list_prepend (files, data->destination);
-    files = g_list_prepend (files, data->destination_directory_file);
-
-    nautilus_file_list_call_when_ready (files,
-                                        NAUTILUS_FILE_ATTRIBUTES_FOR_ICON | NAUTILUS_FILE_ATTRIBUTE_DIRECTORY_ITEM_COUNT,
-                                        &data->handle,
-                                        data->on_file_list_ready,
-                                        data);
-
-    response_id = gtk_dialog_run (GTK_DIALOG (data->dialog));
 
     if (data->handle != NULL)
     {
@@ -478,6 +470,40 @@ run_file_conflict_dialog (gpointer user_data)
     nautilus_file_unref (data->source);
     nautilus_file_unref (data->destination);
     nautilus_file_unref (data->destination_directory_file);
+
+    invoke_main_context_completed (user_data);
+}
+
+static gboolean
+run_file_conflict_dialog (gpointer user_data)
+{
+    FileConflictDialogData *data = user_data;
+    GList *files = NULL;
+
+    data->source = nautilus_file_get (data->source_name);
+    data->destination = nautilus_file_get (data->destination_name);
+    data->destination_directory_file = nautilus_file_get (data->destination_directory_name);
+
+    data->dialog = nautilus_file_conflict_dialog_new (data->parent);
+
+    if (data->should_start_inactive)
+    {
+        nautilus_file_conflict_dialog_delay_buttons_activation (data->dialog);
+    }
+
+    files = g_list_prepend (files, data->source);
+    files = g_list_prepend (files, data->destination);
+    files = g_list_prepend (files, data->destination_directory_file);
+
+    nautilus_file_list_call_when_ready (files,
+                                        NAUTILUS_FILE_ATTRIBUTES_FOR_ICON | NAUTILUS_FILE_ATTRIBUTE_DIRECTORY_ITEM_COUNT,
+                                        &data->handle,
+                                        data->on_file_list_ready,
+                                        data);
+
+    g_signal_connect (data->dialog, "response", G_CALLBACK (on_conflict_dialog_response), data);
+    gtk_widget_show (GTK_WIDGET (data->dialog));
+
     g_list_free (files);
 
     return G_SOURCE_REMOVE;
@@ -485,6 +511,7 @@ run_file_conflict_dialog (gpointer user_data)
 
 FileConflictResponse *
 copy_move_conflict_ask_user_action (GtkWindow *parent_window,
+                                    gboolean   should_start_inactive,
                                     GFile     *source_name,
                                     GFile     *destination_name,
                                     GFile     *destination_directory_name,
@@ -495,6 +522,7 @@ copy_move_conflict_ask_user_action (GtkWindow *parent_window,
 
     data = g_slice_new0 (FileConflictDialogData);
     data->parent = parent_window;
+    data->should_start_inactive = should_start_inactive;
     data->source_name = source_name;
     data->destination_name = destination_name;
     data->destination_directory_name = destination_directory_name;
@@ -517,9 +545,34 @@ copy_move_conflict_ask_user_action (GtkWindow *parent_window,
 
 typedef struct
 {
+    ContextInvokeData parent_type;
     GtkWindow *parent_window;
     NautilusFile *file;
 } HandleUnsupportedFileData;
+
+static void
+on_app_chooser_response (GtkDialog *dialog,
+                         gint       response_id,
+                         gpointer   user_data)
+{
+    HandleUnsupportedFileData *data = user_data;
+    g_autoptr (GAppInfo) application = NULL;
+
+    if (response_id == GTK_RESPONSE_OK)
+    {
+        application = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog));
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+
+    if (application != NULL)
+    {
+        GList files = {data->file, NULL, NULL};
+        nautilus_launch_application (application, &files, data->parent_window);
+    }
+
+    invoke_main_context_completed (user_data);
+}
 
 static gboolean
 open_file_in_application (gpointer user_data)
@@ -528,7 +581,6 @@ open_file_in_application (gpointer user_data)
     g_autofree gchar *mime_type = NULL;
     GtkWidget *dialog;
     const char *heading;
-    g_autoptr (GAppInfo) application = NULL;
 
     data = user_data;
     mime_type = nautilus_file_get_mime_type (data->file);
@@ -542,21 +594,8 @@ open_file_in_application (gpointer user_data)
 
     gtk_app_chooser_dialog_set_heading (GTK_APP_CHOOSER_DIALOG (dialog), heading);
 
-    if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
-    {
-        application = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog));
-    }
-
-    gtk_widget_destroy (dialog);
-
-    if (application != NULL)
-    {
-        g_autoptr (GList) files = NULL;
-
-        files = g_list_append (NULL, data->file);
-
-        nautilus_launch_application (application, files, data->parent_window);
-    }
+    g_signal_connect (dialog, "response", G_CALLBACK (on_app_chooser_response), data);
+    gtk_widget_show (dialog);
 
     return G_SOURCE_REMOVE;
 }
@@ -580,4 +619,72 @@ handle_unsupported_compressed_file (GtkWindow *parent_window,
     g_slice_free (HandleUnsupportedFileData, data);
 
     return;
+}
+
+typedef struct
+{
+    ContextInvokeData parent_type;
+    GtkWindow *parent_window;
+    const gchar *basename;
+    GtkEntry *passphrase_entry;
+    gchar *passphrase;
+} PassphraseRequestData;
+
+static void
+on_request_passphrase_cb (GtkDialog *dialog,
+                          gint       response_id,
+                          gpointer   user_data)
+{
+    PassphraseRequestData *data = user_data;
+
+    if (response_id != GTK_RESPONSE_CANCEL &&
+        response_id != GTK_RESPONSE_DELETE_EVENT)
+    {
+        data->passphrase = g_strdup (gtk_entry_get_text (data->passphrase_entry));
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    invoke_main_context_completed (data);
+}
+
+static gboolean
+run_passphrase_dialog (gpointer user_data)
+{
+    PassphraseRequestData *data = user_data;
+    g_autofree gchar *label_str = NULL;
+    g_autoptr (GtkBuilder) builder = NULL;
+    GObject *dialog;
+    GObject *label;
+
+    builder = gtk_builder_new_from_resource ("/org/gnome/nautilus/ui/nautilus-operations-ui-manager-request-passphrase.ui");
+    dialog = gtk_builder_get_object (builder, "request_passphrase_dialog");
+    label = gtk_builder_get_object (builder, "label");
+    data->passphrase_entry = GTK_ENTRY (gtk_builder_get_object (builder, "entry"));
+
+    label_str = g_strdup_printf (_("“%s” is password-protected."), data->basename);
+    gtk_label_set_text (GTK_LABEL (label), label_str);
+
+    g_signal_connect (dialog, "response", G_CALLBACK (on_request_passphrase_cb), data);
+    gtk_window_set_transient_for (GTK_WINDOW (dialog), data->parent_window);
+    gtk_widget_show (GTK_WIDGET (dialog));
+
+    return G_SOURCE_REMOVE;
+}
+
+gchar *
+extract_ask_passphrase (GtkWindow   *parent_window,
+                        const gchar *archive_basename)
+{
+    PassphraseRequestData *data;
+    gchar *passphrase;
+
+    data = g_new0 (PassphraseRequestData, 1);
+    data->parent_window = parent_window;
+    data->basename = archive_basename;
+    invoke_main_context_sync (NULL, run_passphrase_dialog, data);
+
+    passphrase = g_steal_pointer (&data->passphrase);
+    g_free (data);
+
+    return passphrase;
 }

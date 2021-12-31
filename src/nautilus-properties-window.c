@@ -49,8 +49,6 @@
 #include "nautilus-ui-utilities.h"
 #include "nautilus-signaller.h"
 
-#define PREVIEW_IMAGE_WIDTH 96
-
 static GHashTable *windows;
 static GHashTable *pending_lists;
 
@@ -412,13 +410,13 @@ get_image_for_properties_window (NautilusPropertiesWindow  *self,
 
         if (!icon)
         {
-            icon = nautilus_file_get_icon (file, NAUTILUS_CANVAS_ICON_SIZE_STANDARD, icon_scale,
+            icon = nautilus_file_get_icon (file, NAUTILUS_GRID_ICON_SIZE_STANDARD, icon_scale,
                                            NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS |
                                            NAUTILUS_FILE_ICON_FLAGS_IGNORE_VISITING);
         }
         else
         {
-            new_icon = nautilus_file_get_icon (file, NAUTILUS_CANVAS_ICON_SIZE_STANDARD, icon_scale,
+            new_icon = nautilus_file_get_icon (file, NAUTILUS_GRID_ICON_SIZE_STANDARD, icon_scale,
                                                NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS |
                                                NAUTILUS_FILE_ICON_FLAGS_IGNORE_VISITING);
             if (!new_icon || new_icon != icon)
@@ -433,7 +431,7 @@ get_image_for_properties_window (NautilusPropertiesWindow  *self,
     if (!icon)
     {
         icon = nautilus_icon_info_lookup_from_name ("text-x-generic",
-                                                    NAUTILUS_CANVAS_ICON_SIZE_STANDARD,
+                                                    NAUTILUS_GRID_ICON_SIZE_STANDARD,
                                                     icon_scale);
     }
 
@@ -444,7 +442,7 @@ get_image_for_properties_window (NautilusPropertiesWindow  *self,
 
     if (icon_pixbuf != NULL)
     {
-        *icon_pixbuf = nautilus_icon_info_get_pixbuf_at_size (icon, NAUTILUS_CANVAS_ICON_SIZE_STANDARD);
+        *icon_pixbuf = nautilus_icon_info_get_pixbuf_at_size (icon, NAUTILUS_GRID_ICON_SIZE_STANDARD);
     }
 }
 
@@ -461,10 +459,6 @@ update_properties_window_icon (NautilusPropertiesWindow *self)
     if (name != NULL)
     {
         gtk_window_set_icon_name (GTK_WINDOW (self), name);
-    }
-    else
-    {
-        gtk_window_set_icon (GTK_WINDOW (self), pixbuf);
     }
 
     surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, gtk_widget_get_scale_factor (GTK_WIDGET (self)),
@@ -686,8 +680,10 @@ update_name_field (NautilusPropertiesWindow *self)
     {
         const char *original_name = NULL;
         g_autofree char *current_name = NULL;
+        gboolean use_label;
 
         file = get_original_file (self);
+        use_label = !nautilus_file_can_rename (file);
 
         if (file == NULL || nautilus_file_is_gone (file))
         {
@@ -695,7 +691,14 @@ update_name_field (NautilusPropertiesWindow *self)
         }
         else
         {
-            current_name = nautilus_file_get_display_name (file);
+            if (use_label)
+            {
+                current_name = nautilus_file_get_display_name (file);
+            }
+            else
+            {
+                current_name = nautilus_file_get_edit_name (file);
+            }
         }
 
         /* If the file name has changed since the original name was stored,
@@ -1320,7 +1323,7 @@ value_field_update (GtkLabel                 *label,
         g_autofree char *mime_type = file_list_get_string_attribute (file_list,
                                                                      "mime_type",
                                                                      inconsistent_string);
-        if (strcmp (mime_type, inconsistent_string))
+        if (strcmp (mime_type, inconsistent_string) && strcmp (mime_type, "inode/directory"))
         {
             g_autofree char *tmp = g_steal_pointer (&attribute_value);
             attribute_value = g_strdup_printf (C_("MIME type description (MIME type)", "%s (%s)"), tmp, mime_type);
@@ -2641,12 +2644,6 @@ setup_basic_page (NautilusPropertiesWindow *self)
                              G_CALLBACK (name_field_focus_changed), self, 0);
     g_signal_connect_object (self->name_field, "activate",
                              G_CALLBACK (name_field_activate), self, 0);
-
-    /* Start with name field selected, if it's an entry. */
-    if (GTK_IS_ENTRY (gtk_stack_get_visible_child (self->name_stack)))
-    {
-        gtk_widget_grab_focus (GTK_WIDGET (self->name_field));
-    }
 
     if (should_show_file_type (self))
     {
@@ -4636,7 +4633,8 @@ setup_app_chooser_area (NautilusPropertiesWindow *self)
     g_autoptr (GAppInfo) info = NULL;
 
     self->app_chooser_widget = gtk_app_chooser_widget_new (self->content_type);
-    gtk_box_pack_start (GTK_BOX (self->app_chooser_widget_box), self->app_chooser_widget, TRUE, TRUE, 0);
+    gtk_widget_set_vexpand (self->app_chooser_widget, TRUE);
+    gtk_box_pack_start (GTK_BOX (self->app_chooser_widget_box), self->app_chooser_widget, FALSE, TRUE, 0);
 
     gtk_app_chooser_widget_set_show_default (GTK_APP_CHOOSER_WIDGET (self->app_chooser_widget), TRUE);
     gtk_app_chooser_widget_set_show_fallback (GTK_APP_CHOOSER_WIDGET (self->app_chooser_widget), TRUE);
@@ -4705,8 +4703,8 @@ create_properties_window (StartupData *startup_data)
     NautilusPropertiesWindow *window;
     GList *l;
 
-    window = NAUTILUS_PROPERTIES_WINDOW (gtk_widget_new (NAUTILUS_TYPE_PROPERTIES_WINDOW,
-                                                         NULL));
+    window = NAUTILUS_PROPERTIES_WINDOW (g_object_new (NAUTILUS_TYPE_PROPERTIES_WINDOW,
+                                                       NULL));
 
     window->original_files = nautilus_file_list_copy (startup_data->original_files);
 
@@ -5087,7 +5085,7 @@ nautilus_properties_window_present (GList                            *original_f
 }
 
 static void
-real_destroy (GtkWidget *object)
+real_dispose (GObject *object)
 {
     NautilusPropertiesWindow *self;
 
@@ -5130,7 +5128,7 @@ real_destroy (GtkWidget *object)
     g_clear_handle_id (&self->update_directory_contents_timeout_id, g_source_remove);
     g_clear_handle_id (&self->update_files_timeout_id, g_source_remove);
 
-    GTK_WIDGET_CLASS (nautilus_properties_window_parent_class)->destroy (object);
+    G_OBJECT_CLASS (nautilus_properties_window_parent_class)->dispose (object);
 }
 
 static void
@@ -5195,49 +5193,6 @@ set_icon (const char               *icon_uri,
 }
 
 static void
-update_preview_callback (GtkFileChooser           *icon_chooser,
-                         NautilusPropertiesWindow *self)
-{
-    GtkWidget *preview_widget;
-    g_autoptr (GdkPixbuf) pixbuf = NULL;
-    g_autofree char *filename = NULL;
-
-    filename = gtk_file_chooser_get_filename (icon_chooser);
-    if (filename != NULL)
-    {
-        pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
-    }
-
-    if (pixbuf != NULL)
-    {
-        preview_widget = gtk_file_chooser_get_preview_widget (icon_chooser);
-        gtk_file_chooser_set_preview_widget_active (icon_chooser, TRUE);
-
-        if (gdk_pixbuf_get_width (pixbuf) > PREVIEW_IMAGE_WIDTH)
-        {
-            double scale;
-            GdkPixbuf *scaled_pixbuf;
-
-            scale = (double) gdk_pixbuf_get_height (pixbuf) /
-                    gdk_pixbuf_get_width (pixbuf);
-
-            scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-                                                     PREVIEW_IMAGE_WIDTH,
-                                                     scale * PREVIEW_IMAGE_WIDTH,
-                                                     GDK_INTERP_BILINEAR);
-            g_object_unref (pixbuf);
-            pixbuf = scaled_pixbuf;
-        }
-
-        gtk_image_set_from_pixbuf (GTK_IMAGE (preview_widget), pixbuf);
-    }
-    else
-    {
-        gtk_file_chooser_set_preview_widget_active (icon_chooser, FALSE);
-    }
-}
-
-static void
 custom_icon_file_chooser_response_cb (GtkDialog                *dialog,
                                       gint                      response,
                                       NautilusPropertiesWindow *self)
@@ -5252,11 +5207,13 @@ custom_icon_file_chooser_response_cb (GtkDialog                *dialog,
 
         case GTK_RESPONSE_OK:
         {
+            g_autoptr (GFile) location = NULL;
             g_autofree gchar *uri = NULL;
 
-            uri = gtk_file_chooser_get_uri (GTK_FILE_CHOOSER (dialog));
-            if (uri != NULL)
+            location = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+            if (location != NULL)
             {
+                uri = g_file_get_uri (location);
                 set_icon (uri, self);
             }
             else
@@ -5279,7 +5236,7 @@ static void
 select_image_button_callback (GtkWidget                *widget,
                               NautilusPropertiesWindow *self)
 {
-    GtkWidget *dialog, *preview;
+    GtkWidget *dialog;
     GtkFileFilter *filter;
     GList *l;
     NautilusFile *file;
@@ -5307,15 +5264,6 @@ select_image_button_callback (GtkWidget                *widget,
         gtk_file_filter_add_pixbuf_formats (filter);
         gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
 
-        preview = gtk_image_new ();
-        gtk_widget_set_size_request (preview, PREVIEW_IMAGE_WIDTH, -1);
-        gtk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (dialog), preview);
-        gtk_file_chooser_set_use_preview_label (GTK_FILE_CHOOSER (dialog), FALSE);
-        gtk_file_chooser_set_preview_widget_active (GTK_FILE_CHOOSER (dialog), FALSE);
-
-        g_signal_connect (dialog, "update-preview",
-                          G_CALLBACK (update_preview_callback), self);
-
         self->icon_chooser = dialog;
 
         g_object_add_weak_pointer (G_OBJECT (dialog),
@@ -5329,15 +5277,15 @@ select_image_button_callback (GtkWidget                *widget,
 
         if (nautilus_file_is_directory (file))
         {
-            g_autofree gchar *uri = NULL;
-            g_autofree gchar *image_path = NULL;
+            g_autoptr (GFile) image_location = NULL;
 
-            uri = nautilus_file_get_uri (file);
+            image_location = nautilus_file_get_location (file);
 
-            image_path = g_filename_from_uri (uri, NULL, NULL);
-            if (image_path != NULL)
+            if (image_location != NULL)
             {
-                gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (dialog), image_path);
+                gtk_file_chooser_set_current_folder_file (GTK_FILE_CHOOSER (dialog),
+                                                          image_location,
+                                                          NULL);
             }
         }
     }
@@ -5372,8 +5320,8 @@ nautilus_properties_window_class_init (NautilusPropertiesWindowClass *klass)
 
     widget_class = GTK_WIDGET_CLASS (klass);
     oclass = G_OBJECT_CLASS (klass);
+    oclass->dispose = real_dispose;
     oclass->finalize = real_finalize;
-    widget_class->destroy = real_destroy;
 
     binding_set = gtk_binding_set_by_class (klass);
     g_signal_new ("close",

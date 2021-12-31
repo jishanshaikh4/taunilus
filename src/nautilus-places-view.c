@@ -26,6 +26,7 @@
 #include "nautilus-toolbar-menu-sections.h"
 #include "nautilus-view.h"
 #include "nautilus-window-slot.h"
+#include "nautilus-gtk4-helpers.h"
 
 typedef struct
 {
@@ -61,11 +62,11 @@ enum
 };
 
 static void
-open_location_cb (NautilusPlacesView *view,
-                  GFile              *location,
-                  GtkPlacesOpenFlags  open_flags)
+open_location_cb (NautilusPlacesView         *view,
+                  GFile                      *location,
+                  NautilusGtkPlacesOpenFlags  open_flags)
 {
-    NautilusWindowOpenFlags flags;
+    NautilusOpenFlags flags;
     GtkWidget *slot;
 
     slot = gtk_widget_get_ancestor (GTK_WIDGET (view), NAUTILUS_TYPE_WINDOW_SLOT);
@@ -74,14 +75,14 @@ open_location_cb (NautilusPlacesView *view,
     {
         case GTK_PLACES_OPEN_NEW_TAB:
         {
-            flags = NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB |
-                    NAUTILUS_WINDOW_OPEN_FLAG_DONT_MAKE_ACTIVE;
+            flags = NAUTILUS_OPEN_FLAG_NEW_TAB |
+                    NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE;
         }
         break;
 
         case GTK_PLACES_OPEN_NEW_WINDOW:
         {
-            flags = NAUTILUS_WINDOW_OPEN_FLAG_NEW_WINDOW;
+            flags = NAUTILUS_OPEN_FLAG_NEW_WINDOW;
         }
         break;
 
@@ -136,9 +137,8 @@ show_error_message_cb (NautilusGtkPlacesView *view,
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
                                               "%s", secondary);
 
-    gtk_dialog_run (GTK_DIALOG (dialog));
-
-    gtk_widget_destroy (dialog);
+    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+    gtk_widget_show_all (dialog);
 }
 
 static void
@@ -189,7 +189,9 @@ nautilus_places_view_get_property (GObject    *object,
         break;
 
         default:
+        {
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
     }
 }
 
@@ -216,7 +218,9 @@ nautilus_places_view_set_property (GObject      *object,
         break;
 
         default:
+        {
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
     }
 }
 
@@ -393,7 +397,7 @@ nautilus_places_view_init (NautilusPlacesView *self)
     gtk_widget_set_hexpand (priv->places_view, TRUE);
     gtk_widget_set_vexpand (priv->places_view, TRUE);
     gtk_widget_show (priv->places_view);
-    gtk_container_add (GTK_CONTAINER (self), priv->places_view);
+    gtk_box_append (GTK_BOX (self), priv->places_view);
 
     g_signal_connect_swapped (priv->places_view,
                               "notify::loading",
