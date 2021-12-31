@@ -22,39 +22,48 @@
 
 G_BEGIN_DECLS
 
-#define NAUTILUS_TYPE_GTK_SIDEBAR_ROW             (nautilus_gtk_sidebar_row_get_type())
-#define NAUTILUS_GTK_SIDEBAR_ROW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), NAUTILUS_TYPE_GTK_SIDEBAR_ROW, NautilusGtkSidebarRow))
-#define NAUTILUS_GTK_SIDEBAR_ROW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), NAUTILUS_TYPE_GTK_SIDEBAR_ROW, NautilusGtkSidebarRowClass))
-#define NAUTILUS_IS_GTK_SIDEBAR_ROW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), NAUTILUS_TYPE_GTK_SIDEBAR_ROW))
-#define NAUTILUS_IS_GTK_SIDEBAR_ROW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), NAUTILUS_TYPE_GTK_SIDEBAR_ROW))
-#define NAUTILUS_GTK_SIDEBAR_ROW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), NAUTILUS_TYPE_GTK_SIDEBAR_ROW, NautilusGtkSidebarRowClass))
+#define NAUTILUS_TYPE_GTK_SIDEBAR_ROW (nautilus_gtk_sidebar_row_get_type())
+#define NAUTILUS_GTK_SIDEBAR_ROW(obj)                                          \
+  (G_TYPE_CHECK_INSTANCE_CAST((obj), NAUTILUS_TYPE_GTK_SIDEBAR_ROW,            \
+                              NautilusGtkSidebarRow))
+#define NAUTILUS_GTK_SIDEBAR_ROW_CLASS(klass)                                  \
+  (G_TYPE_CHECK_CLASS_CAST((klass), NAUTILUS_TYPE_GTK_SIDEBAR_ROW,             \
+                           NautilusGtkSidebarRowClass))
+#define NAUTILUS_IS_GTK_SIDEBAR_ROW(obj)                                       \
+  (G_TYPE_CHECK_INSTANCE_TYPE((obj), NAUTILUS_TYPE_GTK_SIDEBAR_ROW))
+#define NAUTILUS_IS_GTK_SIDEBAR_ROW_CLASS(klass)                               \
+  (G_TYPE_CHECK_CLASS_TYPE((klass), NAUTILUS_TYPE_GTK_SIDEBAR_ROW))
+#define NAUTILUS_GTK_SIDEBAR_ROW_GET_CLASS(obj)                                \
+  (G_TYPE_INSTANCE_GET_CLASS((obj), NAUTILUS_TYPE_GTK_SIDEBAR_ROW,             \
+                             NautilusGtkSidebarRowClass))
 
 typedef struct _NautilusGtkSidebarRow NautilusGtkSidebarRow;
 typedef struct _NautilusGtkSidebarRowClass NautilusGtkSidebarRowClass;
 
-struct _NautilusGtkSidebarRowClass
-{
+struct _NautilusGtkSidebarRowClass {
   GtkListBoxRowClass parent;
 };
 
-GType      nautilus_gtk_sidebar_row_get_type   (void) G_GNUC_CONST;
+GType nautilus_gtk_sidebar_row_get_type(void) G_GNUC_CONST;
 
-NautilusGtkSidebarRow *nautilus_gtk_sidebar_row_new    (void);
-NautilusGtkSidebarRow *nautilus_gtk_sidebar_row_clone  (NautilusGtkSidebarRow *self);
+NautilusGtkSidebarRow *nautilus_gtk_sidebar_row_new(void);
+NautilusGtkSidebarRow *
+nautilus_gtk_sidebar_row_clone(NautilusGtkSidebarRow *self);
 
 /* Use these methods instead of gtk_widget_hide/show to use an animation */
-void           nautilus_gtk_sidebar_row_hide   (NautilusGtkSidebarRow *self,
-                                       gboolean       inmediate);
-void           nautilus_gtk_sidebar_row_reveal (NautilusGtkSidebarRow *self);
+void nautilus_gtk_sidebar_row_hide(NautilusGtkSidebarRow *self,
+                                   gboolean inmediate);
+void nautilus_gtk_sidebar_row_reveal(NautilusGtkSidebarRow *self);
 
-GtkWidget     *nautilus_gtk_sidebar_row_get_eject_button (NautilusGtkSidebarRow *self);
-GtkWidget     *nautilus_gtk_sidebar_row_get_event_box    (NautilusGtkSidebarRow *self);
-void           nautilus_gtk_sidebar_row_set_start_icon   (NautilusGtkSidebarRow *self,
-                                                 GIcon         *icon);
-void           nautilus_gtk_sidebar_row_set_end_icon     (NautilusGtkSidebarRow *self,
-                                                 GIcon         *icon);
-void           nautilus_gtk_sidebar_row_set_busy         (NautilusGtkSidebarRow *row,
-                                                 gboolean       is_busy);
+GtkWidget *
+nautilus_gtk_sidebar_row_get_eject_button(NautilusGtkSidebarRow *self);
+GtkWidget *nautilus_gtk_sidebar_row_get_event_box(NautilusGtkSidebarRow *self);
+void nautilus_gtk_sidebar_row_set_start_icon(NautilusGtkSidebarRow *self,
+                                             GIcon *icon);
+void nautilus_gtk_sidebar_row_set_end_icon(NautilusGtkSidebarRow *self,
+                                           GIcon *icon);
+void nautilus_gtk_sidebar_row_set_busy(NautilusGtkSidebarRow *row,
+                                       gboolean is_busy);
 
 G_END_DECLS
 

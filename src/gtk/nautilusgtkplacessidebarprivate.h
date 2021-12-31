@@ -21,8 +21,8 @@
 #ifndef __NAUTILUS_GTK_PLACES_SIDEBAR_PRIVATE_H__
 #define __NAUTILUS_GTK_PLACES_SIDEBAR_PRIVATE_H__
 
-#include <glib.h>
 #include "nautilusgtkplacessidebar.h"
+#include <glib.h>
 
 G_BEGIN_DECLS
 
@@ -53,7 +53,8 @@ typedef enum {
   N_PLACES
 } NautilusGtkPlacesSidebarPlaceType;
 
-gchar *nautilus_gtk_places_sidebar_get_location_title (NautilusGtkPlacesSidebar *sidebar);
+gchar *nautilus_gtk_places_sidebar_get_location_title(
+    NautilusGtkPlacesSidebar *sidebar);
 
 G_END_DECLS
 
