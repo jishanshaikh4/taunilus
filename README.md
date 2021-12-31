@@ -1,6 +1,6 @@
 # Taunilus
 
-A powerful file-manager, Taunilus, is a fork of Nautilus aka [Files](https://wiki.gnome.org/Apps/Files) app, a file browser for GNOME (Ubuntu).
+A powerful file-manager, Taunilus, is a fork of Nautilus aka [Files](https://wiki.gnome.org/Apps/Files) app, a file browser for GNOME (Ubuntu). For more info, see project [wiki](https://github.com/jishanshaikh4/taunilus/wiki).
 
 ## Dependencies
 
