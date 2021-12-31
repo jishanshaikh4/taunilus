@@ -16,7 +16,8 @@
  * along with Nautilus.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/* This is the little brother of nautilus-types.h and only contains enumerations.
+/* This is the little brother of nautilus-types.h and only contains
+ * enumerations.
  *
  * Now that you’ve familiarized yourself with it, the reason for its existence
  * is similar, and the split is purely for convenience reasons. Include this
@@ -28,56 +29,51 @@
 
 /* Keep sorted alphabetically. */
 
-typedef enum
-{
-    NAUTILUS_CANVAS_ICON_SIZE_SMALL    = 30,
-    NAUTILUS_CANVAS_ICON_SIZE_STANDARD = 45,
-    NAUTILUS_CANVAS_ICON_SIZE_LARGE    = 60,
-    NAUTILUS_CANVAS_ICON_SIZE_LARGER   = 90,
-    NAUTILUS_CANVAS_ICON_SIZE_LARGEST  = 80,
-} NautilusCanvasIconSize;
+typedef enum {
+  NAUTILUS_GRID_ICON_SIZE_SMALL = 48,
+  NAUTILUS_GRID_ICON_SIZE_STANDARD = 64,
+  NAUTILUS_GRID_ICON_SIZE_LARGE = 96,
+  NAUTILUS_GRID_ICON_SIZE_LARGER = 128,
+  NAUTILUS_GRID_ICON_SIZE_LARGEST = 256,
+} NautilusGridIconSize;
 
-typedef enum
-{
-    NAUTILUS_CANVAS_ZOOM_LEVEL_SMALL,
-    NAUTILUS_CANVAS_ZOOM_LEVEL_STANDARD,
-    NAUTILUS_CANVAS_ZOOM_LEVEL_LARGE,
-    NAUTILUS_CANVAS_ZOOM_LEVEL_LARGER,
-    NAUTILUS_CANVAS_ZOOM_LEVEL_LARGEST,
-} NautilusCanvasZoomLevel;
+typedef enum {
+  NAUTILUS_GRID_ZOOM_LEVEL_SMALL,
+  NAUTILUS_GRID_ZOOM_LEVEL_STANDARD,
+  NAUTILUS_GRID_ZOOM_LEVEL_LARGE,
+  NAUTILUS_GRID_ZOOM_LEVEL_LARGER,
+  NAUTILUS_GRID_ZOOM_LEVEL_LARGEST,
+} NautilusGridZoomLevel;
 
-typedef enum
-{
-    NAUTILUS_LIST_ICON_SIZE_SMALL    = 30,
-    NAUTILUS_LIST_ICON_SIZE_STANDARD = 40,
-    NAUTILUS_LIST_ICON_SIZE_LARGE    = 50,
-    NAUTILUS_LIST_ICON_SIZE_LARGER   = 60,
+typedef enum {
+  NAUTILUS_LIST_ICON_SIZE_SMALL = 16,
+  NAUTILUS_LIST_ICON_SIZE_STANDARD = 32,
+  NAUTILUS_LIST_ICON_SIZE_LARGE = 48,
+  NAUTILUS_LIST_ICON_SIZE_LARGER = 64,
 } NautilusListIconSize;
 
-typedef enum
-{
-    NAUTILUS_LIST_ZOOM_LEVEL_SMALL,
-    NAUTILUS_LIST_ZOOM_LEVEL_STANDARD,
-    NAUTILUS_LIST_ZOOM_LEVEL_LARGE,
-    NAUTILUS_LIST_ZOOM_LEVEL_LARGER,
+typedef enum {
+  NAUTILUS_LIST_ZOOM_LEVEL_SMALL,
+  NAUTILUS_LIST_ZOOM_LEVEL_STANDARD,
+  NAUTILUS_LIST_ZOOM_LEVEL_LARGE,
+  NAUTILUS_LIST_ZOOM_LEVEL_LARGER,
 } NautilusListZoomLevel;
 
-typedef enum
-{
-    NAUTILUS_FILE_ATTRIBUTE_INFO                      = 1 << 0, /* All standard info */
-    NAUTILUS_FILE_ATTRIBUTE_DEEP_COUNTS               = 1 << 1,
-    NAUTILUS_FILE_ATTRIBUTE_DIRECTORY_ITEM_COUNT      = 1 << 2,
-    NAUTILUS_FILE_ATTRIBUTE_DIRECTORY_ITEM_MIME_TYPES = 1 << 3,
-    NAUTILUS_FILE_ATTRIBUTE_EXTENSION_INFO            = 1 << 4,
-    NAUTILUS_FILE_ATTRIBUTE_THUMBNAIL                 = 1 << 5,
-    NAUTILUS_FILE_ATTRIBUTE_MOUNT                     = 1 << 6,
-    NAUTILUS_FILE_ATTRIBUTE_FILESYSTEM_INFO           = 1 << 7,
+typedef enum {
+  NAUTILUS_FILE_ATTRIBUTE_INFO = 1 << 0, /* All standard info */
+  NAUTILUS_FILE_ATTRIBUTE_DEEP_COUNTS = 1 << 1,
+  NAUTILUS_FILE_ATTRIBUTE_DIRECTORY_ITEM_COUNT = 1 << 2,
+  NAUTILUS_FILE_ATTRIBUTE_DIRECTORY_ITEM_MIME_TYPES = 1 << 3,
+  NAUTILUS_FILE_ATTRIBUTE_EXTENSION_INFO = 1 << 4,
+  NAUTILUS_FILE_ATTRIBUTE_THUMBNAIL = 1 << 5,
+  NAUTILUS_FILE_ATTRIBUTE_MOUNT = 1 << 6,
+  NAUTILUS_FILE_ATTRIBUTE_FILESYSTEM_INFO = 1 << 7,
 } NautilusFileAttributes;
 
-typedef enum
-{
-    NAUTILUS_WINDOW_OPEN_FLAG_NEW_WINDOW       = 1 << 0,
-    NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB          = 1 << 1,
-    NAUTILUS_WINDOW_OPEN_SLOT_APPEND           = 1 << 2,
-    NAUTILUS_WINDOW_OPEN_FLAG_DONT_MAKE_ACTIVE = 1 << 3,
-} NautilusWindowOpenFlags;
+typedef enum {
+  NAUTILUS_OPEN_FLAG_NORMAL = 1 << 0,
+  NAUTILUS_OPEN_FLAG_NEW_WINDOW = 1 << 1,
+  NAUTILUS_OPEN_FLAG_NEW_TAB = 1 << 2,
+  NAUTILUS_OPEN_FLAG_SLOT_APPEND = 1 << 3,
+  NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE = 1 << 4,
+} NautilusOpenFlags;

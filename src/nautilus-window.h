@@ -33,90 +33,81 @@
 
 G_BEGIN_DECLS
 
-#define NAUTILUS_TYPE_WINDOW (nautilus_window_get_type ())
-G_DECLARE_FINAL_TYPE (NautilusWindow, nautilus_window, NAUTILUS, WINDOW, HdyApplicationWindow);
+#define NAUTILUS_TYPE_WINDOW (nautilus_window_get_type())
+G_DECLARE_FINAL_TYPE(NautilusWindow, nautilus_window, NAUTILUS, WINDOW,
+                     HdyApplicationWindow);
 
-typedef gboolean (* NautilusWindowGoToCallback) (NautilusWindow *window,
-                                                 GFile *location,
-                                                 GError *error,
-                                                 gpointer user_data);
-
-typedef void (* NautilusWindowHandleExported) (NautilusWindow *window,
-                                               const char *handle,
-                                               guint xid,
+typedef gboolean (*NautilusWindowGoToCallback)(NautilusWindow *window,
+                                               GFile *location, GError *error,
                                                gpointer user_data);
 
+typedef void (*NautilusWindowHandleExported)(NautilusWindow *window,
+                                             const char *handle, guint xid,
+                                             gpointer user_data);
+
 /* window geometry */
-/* Min values are very small, and a Nautilus window at this tiny size is *almost*
- * completely unusable. However, if all the extra bits (sidebar, location bar, etc)
- * are turned off, you can see an icon or two at this size. See bug 5946.
+/* Min values are very small, and a Nautilus window at this tiny size is
+ * *almost* completely unusable. However, if all the extra bits (sidebar,
+ * location bar, etc) are turned off, you can see an icon or two at this size.
+ * See bug 5946.
  */
 
-#define NAUTILUS_WINDOW_MIN_WIDTH		200
-#define NAUTILUS_WINDOW_MIN_HEIGHT		200
-#define NAUTILUS_WINDOW_DEFAULT_WIDTH		890
-#define NAUTILUS_WINDOW_DEFAULT_HEIGHT		550
+#define NAUTILUS_WINDOW_MIN_WIDTH 200
+#define NAUTILUS_WINDOW_MIN_HEIGHT 200
+#define NAUTILUS_WINDOW_DEFAULT_WIDTH 890
+#define NAUTILUS_WINDOW_DEFAULT_HEIGHT 550
 
-NautilusWindow * nautilus_window_new                  (GdkScreen         *screen);
-void             nautilus_window_close                (NautilusWindow    *window);
+NautilusWindow *nautilus_window_new(GdkScreen *screen);
+void nautilus_window_close(NautilusWindow *window);
 
-void nautilus_window_open_location_full               (NautilusWindow          *window,
-                                                       GFile                   *location,
-                                                       NautilusWindowOpenFlags  flags,
-                                                       GList                   *selection,
-                                                       NautilusWindowSlot      *target_slot);
+void nautilus_window_open_location_full(NautilusWindow *window, GFile *location,
+                                        NautilusOpenFlags flags,
+                                        GList *selection,
+                                        NautilusWindowSlot *target_slot);
 
-void             nautilus_window_new_tab              (NautilusWindow    *window);
-NautilusWindowSlot * nautilus_window_get_active_slot       (NautilusWindow *window);
-void                 nautilus_window_set_active_slot       (NautilusWindow    *window,
-                                                            NautilusWindowSlot *slot);
-GList *              nautilus_window_get_slots             (NautilusWindow *window);
-void                 nautilus_window_slot_close            (NautilusWindow *window,
-                                                            NautilusWindowSlot *slot);
+void nautilus_window_new_tab(NautilusWindow *window);
+NautilusWindowSlot *nautilus_window_get_active_slot(NautilusWindow *window);
+void nautilus_window_set_active_slot(NautilusWindow *window,
+                                     NautilusWindowSlot *slot);
+GList *nautilus_window_get_slots(NautilusWindow *window);
+void nautilus_window_slot_close(NautilusWindow *window,
+                                NautilusWindowSlot *slot);
 
-void                 nautilus_window_sync_location_widgets (NautilusWindow *window);
+void nautilus_window_sync_location_widgets(NautilusWindow *window);
 
-void     nautilus_window_hide_sidebar         (NautilusWindow *window);
-void     nautilus_window_show_sidebar         (NautilusWindow *window);
-void     nautilus_window_back_or_forward      (NautilusWindow *window,
-                                               gboolean        back,
-                                               guint           distance,
-                                               NautilusWindowOpenFlags flags);
-void nautilus_window_reset_menus (NautilusWindow *window);
+void nautilus_window_hide_sidebar(NautilusWindow *window);
+void nautilus_window_show_sidebar(NautilusWindow *window);
+void nautilus_window_reset_menus(NautilusWindow *window);
 
-GtkWidget *         nautilus_window_get_notebook (NautilusWindow *window);
+GtkWidget *nautilus_window_get_notebook(NautilusWindow *window);
 
-NautilusWindowOpenFlags nautilus_event_get_window_open_flags   (void);
-void     nautilus_window_show_about_dialog    (NautilusWindow *window);
+void nautilus_window_show_about_dialog(NautilusWindow *window);
 
-GtkWidget *nautilus_window_get_toolbar (NautilusWindow *window);
+GtkWidget *nautilus_window_get_toolbar(NautilusWindow *window);
 
 /* sync window GUI with current slot. Used when changing slots,
  * and when updating the slot state.
  */
-void nautilus_window_sync_allow_stop       (NautilusWindow *window,
-					    NautilusWindowSlot *slot);
-void nautilus_window_sync_title            (NautilusWindow *window,
-					    NautilusWindowSlot *slot);
+void nautilus_window_sync_allow_stop(NautilusWindow *window,
+                                     NautilusWindowSlot *slot);
+void nautilus_window_sync_title(NautilusWindow *window,
+                                NautilusWindowSlot *slot);
 
-void nautilus_window_show_operation_notification (NautilusWindow *window,
-                                                  gchar          *main_label,
-                                                  GFile          *folder_to_open);
-void nautilus_window_start_dnd (NautilusWindow *window,
-                                GdkDragContext *context);
-void nautilus_window_end_dnd (NautilusWindow *window,
-                              GdkDragContext *context);
+void nautilus_window_show_operation_notification(NautilusWindow *window,
+                                                 gchar *main_label,
+                                                 GFile *folder_to_open);
+void nautilus_window_start_dnd(NautilusWindow *window, GdkDragContext *context);
+void nautilus_window_end_dnd(NautilusWindow *window, GdkDragContext *context);
 
-void nautilus_window_search (NautilusWindow *window,
-                             NautilusQuery  *query);
+void nautilus_window_search(NautilusWindow *window, NautilusQuery *query);
 
-void nautilus_window_initialize_slot (NautilusWindow          *window,
-                                      NautilusWindowSlot      *slot,
-                                      NautilusWindowOpenFlags  flags);
+void nautilus_window_initialize_slot(NautilusWindow *window,
+                                     NautilusWindowSlot *slot,
+                                     NautilusOpenFlags flags);
 
-gboolean nautilus_window_export_handle (NautilusWindow *window,
-                                        NautilusWindowHandleExported callback,
-                                        gpointer user_data);
-void nautilus_window_unexport_handle (NautilusWindow *window);
+gboolean nautilus_window_export_handle(NautilusWindow *window,
+                                       NautilusWindowHandleExported callback,
+                                       gpointer user_data);
+void nautilus_window_unexport_handle(NautilusWindow *window);
 
 G_END_DECLS
