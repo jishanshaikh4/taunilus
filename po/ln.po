@@ -4042,7 +4042,7 @@ msgid "_Close Tab"
 msgstr "_Kanga lipipi"
 
 #: ../src/nautilus-window.c:2727
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "Kota mpe bongisa ba fisyé na yo."
 
 #. Translators should localize the following string

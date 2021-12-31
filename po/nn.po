@@ -5624,7 +5624,7 @@ msgid "Copyright © %Id–%Id The Files authors"
 msgstr "Opphavsrett © %Id–%Id Nautilus-utviklarane"
 
 #: ../src/nautilus-window.c:2508
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "Aksesser og organiser dine filer."
 
 #. Translators should localize the following string

@@ -3913,7 +3913,7 @@ msgstr "Sul_ge kaart"
 msgid "Copyright © %Id–%Id The Files authors"
 msgstr "Autoriõigused © %Id–%Id Failihalduri autorid"
 
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "Ligipääs failidele ning failide korrastamine."
 
 #. Translators should localize the following string

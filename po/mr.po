@@ -5080,7 +5080,7 @@ msgid "_Close Tab"
 msgstr "टॅब बंद करा (_C)"
 
 #: ../src/nautilus-window.c:2290
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "फाइल्स् करीता प्रवेश व आयोजन करा."
 
 #. Translators should localize the following string

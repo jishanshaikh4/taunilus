@@ -5919,7 +5919,7 @@ msgstr "Telif haqqı © %Id–%Id Files müellifleri"
 
 # src/file-manager/fm-properties-window.c:1289
 #: ../src/nautilus-window.c:2395
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "Dosyeleriñizge irişiñiz ve olarnı tertipleñiz"
 
 # components/services/install/lib/eazel-install-object.c:624

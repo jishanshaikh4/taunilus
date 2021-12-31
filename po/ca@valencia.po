@@ -4540,7 +4540,7 @@ msgid "_Close Tab"
 msgstr "Tan_ca la pestanya"
 
 #: src/nautilus-window.c:3088
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "Organitzeu i accediu els fitxers."
 
 #. Translators should localize the following string

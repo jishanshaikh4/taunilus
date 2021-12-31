@@ -5095,7 +5095,7 @@ msgid "_Close Tab"
 msgstr "ట్యాబ్ మూసివేయి (_C)"
 
 #: ../src/nautilus-window.c:2290
-msgid "Access and organize your files\nFork by cheesits456."
+msgid "Access and organize your files."
 msgstr "దస్త్రాలను నిర్వహించండి, ప్రాప్తించండి"
 
 #. Translators should localize the following string
