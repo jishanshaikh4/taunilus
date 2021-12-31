@@ -30,6 +30,7 @@
 #include "nautilus-icon-info.h"
 #include "nautilus-file-utilities.h"
 #include "nautilus-program-choosing.h"
+#include "nautilus-gtk4-helpers.h"
 
 struct _NautilusXContentBar
 {
@@ -157,6 +158,7 @@ nautilus_x_content_bar_set_x_content_types (NautilusXContentBar *bar,
         GAppInfo *app;
         gboolean has_app;
         guint i;
+        GtkWidget *box;
 
         default_app = g_ptr_array_index (apps, n);
         has_app = FALSE;
@@ -187,13 +189,17 @@ nautilus_x_content_bar_set_x_content_types (NautilusXContentBar *bar,
         }
 
         name = g_app_info_get_name (default_app);
-        button = gtk_info_bar_add_button (GTK_INFO_BAR (bar),
-                                          name,
-                                          n);
+        button = gtk_info_bar_add_button (GTK_INFO_BAR (bar), name, n);
+        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 
-        gtk_button_set_image (GTK_BUTTON (button), image);
-        gtk_button_set_always_show_image (GTK_BUTTON (button), TRUE);
-        gtk_button_set_label (GTK_BUTTON (button), name);
+        if (image != NULL)
+        {
+            gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+        }
+        gtk_box_pack_start (GTK_BOX (box), gtk_label_new (name), FALSE, FALSE, 0);
+
+        gtk_button_set_child (GTK_BUTTON (button), box);
+
         gtk_widget_show (button);
     }
 
@@ -317,11 +323,9 @@ nautilus_x_content_bar_class_init (NautilusXContentBarClass *klass)
 static void
 nautilus_x_content_bar_init (NautilusXContentBar *bar)
 {
-    GtkWidget *content_area;
     GtkWidget *action_area;
     PangoAttrList *attrs;
 
-    content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (bar));
     action_area = gtk_info_bar_get_action_area (GTK_INFO_BAR (bar));
 
     gtk_orientable_set_orientation (GTK_ORIENTABLE (action_area), GTK_ORIENTATION_HORIZONTAL);
@@ -333,7 +337,7 @@ nautilus_x_content_bar_init (NautilusXContentBar *bar)
     pango_attr_list_unref (attrs);
 
     gtk_label_set_ellipsize (GTK_LABEL (bar->label), PANGO_ELLIPSIZE_END);
-    gtk_container_add (GTK_CONTAINER (content_area), bar->label);
+    gtk_info_bar_add_child (GTK_INFO_BAR (bar), bar->label);
 
     g_signal_connect (bar, "response",
                       G_CALLBACK (content_bar_response_cb),

@@ -6,7 +6,6 @@ struct _NautilusViewItemModel
     GObject parent_instance;
     guint icon_size;
     NautilusFile *file;
-    GtkLabel *label;
     GtkWidget *item_ui;
 };
 
@@ -21,9 +20,31 @@ enum
     N_PROPS
 };
 
+enum
+{
+    FILE_CHANGED,
+    LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL];
+
+static void
+nautilus_view_item_model_dispose (GObject *object)
+{
+    NautilusViewItemModel *self = NAUTILUS_VIEW_ITEM_MODEL (object);
+
+    g_clear_object (&self->item_ui);
+
+    G_OBJECT_CLASS (nautilus_view_item_model_parent_class)->dispose (object);
+}
+
 static void
 nautilus_view_item_model_finalize (GObject *object)
 {
+    NautilusViewItemModel *self = NAUTILUS_VIEW_ITEM_MODEL (object);
+
+    g_clear_object (&self->file);
+
     G_OBJECT_CLASS (nautilus_view_item_model_parent_class)->finalize (object);
 }
 
@@ -74,19 +95,19 @@ nautilus_view_item_model_set_property (GObject      *object,
     {
         case PROP_FILE:
         {
-            nautilus_view_item_model_set_file (self, g_value_get_object (value));
+            self->file = g_value_dup_object (value);
         }
         break;
 
         case PROP_ICON_SIZE:
         {
-            nautilus_view_item_model_set_icon_size (self, g_value_get_int (value));
+            self->icon_size = g_value_get_int (value);
         }
         break;
 
         case PROP_ITEM_UI:
         {
-            nautilus_view_item_model_set_item_ui (self, g_value_get_object (value));
+            g_set_object (&self->item_ui, g_value_get_object (value));
         }
         break;
 
@@ -107,6 +128,7 @@ nautilus_view_item_model_class_init (NautilusViewItemModelClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
+    object_class->dispose = nautilus_view_item_model_dispose;
     object_class->finalize = nautilus_view_item_model_finalize;
     object_class->get_property = nautilus_view_item_model_get_property;
     object_class->set_property = nautilus_view_item_model_set_property;
@@ -116,9 +138,9 @@ nautilus_view_item_model_class_init (NautilusViewItemModelClass *klass)
                                      g_param_spec_int ("icon-size",
                                                        "Icon size",
                                                        "The size in pixels of the icon",
-                                                       NAUTILUS_CANVAS_ICON_SIZE_SMALL,
-                                                       NAUTILUS_CANVAS_ICON_SIZE_LARGEST,
-                                                       NAUTILUS_CANVAS_ICON_SIZE_LARGE,
+                                                       NAUTILUS_GRID_ICON_SIZE_SMALL,
+                                                       NAUTILUS_GRID_ICON_SIZE_LARGEST,
+                                                       NAUTILUS_GRID_ICON_SIZE_LARGE,
                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
     g_object_class_install_property (object_class,
                                      PROP_FILE,
@@ -126,7 +148,7 @@ nautilus_view_item_model_class_init (NautilusViewItemModelClass *klass)
                                                           "File",
                                                           "The file the icon item represents",
                                                           NAUTILUS_TYPE_FILE,
-                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
     g_object_class_install_property (object_class,
                                      PROP_ITEM_UI,
@@ -135,6 +157,14 @@ nautilus_view_item_model_class_init (NautilusViewItemModelClass *klass)
                                                           "The UI that reprensents the item model",
                                                           GTK_TYPE_WIDGET,
                                                           G_PARAM_READWRITE));
+
+    signals[FILE_CHANGED] = g_signal_new ("file-changed",
+                                          G_TYPE_FROM_CLASS (klass),
+                                          G_SIGNAL_RUN_LAST,
+                                          0,
+                                          NULL, NULL,
+                                          g_cclosure_marshal_VOID__VOID,
+                                          G_TYPE_NONE, 0);
 }
 
 NautilusViewItemModel *
@@ -161,9 +191,7 @@ nautilus_view_item_model_set_icon_size (NautilusViewItemModel *self,
 {
     g_return_if_fail (NAUTILUS_IS_VIEW_ITEM_MODEL (self));
 
-    self->icon_size = icon_size;
-
-    g_object_notify (G_OBJECT (self), "icon-size");
+    g_object_set (self, "icon-size", icon_size, NULL);
 }
 
 NautilusFile *
@@ -172,18 +200,6 @@ nautilus_view_item_model_get_file (NautilusViewItemModel *self)
     g_return_val_if_fail (NAUTILUS_IS_VIEW_ITEM_MODEL (self), NULL);
 
     return self->file;
-}
-
-void
-nautilus_view_item_model_set_file (NautilusViewItemModel *self,
-                                   NautilusFile          *file)
-{
-    g_return_if_fail (NAUTILUS_IS_VIEW_ITEM_MODEL (self));
-
-    g_clear_object (&self->file);
-    self->file = g_object_ref (file);
-
-    g_object_notify (G_OBJECT (self), "file");
 }
 
 GtkWidget *
@@ -200,8 +216,13 @@ nautilus_view_item_model_set_item_ui (NautilusViewItemModel *self,
 {
     g_return_if_fail (NAUTILUS_IS_VIEW_ITEM_MODEL (self));
 
-    g_clear_object (&self->item_ui);
-    self->item_ui = g_object_ref (item_ui);
+    g_object_set (self, "item-ui", item_ui, NULL);
+}
 
-    g_object_notify (G_OBJECT (self), "item-ui");
+void
+nautilus_view_item_model_file_changed (NautilusViewItemModel *self)
+{
+    g_return_if_fail (NAUTILUS_IS_VIEW_ITEM_MODEL (self));
+
+    g_signal_emit (self, signals[FILE_CHANGED], 0);
 }

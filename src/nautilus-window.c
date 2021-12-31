@@ -47,6 +47,8 @@
 #define DEBUG_FLAG NAUTILUS_DEBUG_WINDOW
 #include "nautilus-debug.h"
 
+#include "gtk/nautilusgtkplacessidebar.h"
+
 #include "nautilus-application.h"
 #include "nautilus-bookmark-list.h"
 #include "nautilus-clipboard.h"
@@ -61,7 +63,6 @@
 #include "nautilus-metadata.h"
 #include "nautilus-mime-actions.h"
 #include "nautilus-notebook.h"
-#include "nautilus-other-locations-window-slot.h"
 #include "nautilus-pathbar.h"
 #include "nautilus-profile.h"
 #include "nautilus-properties-window.h"
@@ -70,6 +71,7 @@
 #include "nautilus-trash-monitor.h"
 #include "nautilus-ui-utilities.h"
 #include "nautilus-window-slot.h"
+#include "nautilus-gtk4-helpers.h"
 
 /* Forward and back buttons on the mouse */
 static gboolean mouse_extra_buttons = TRUE;
@@ -81,9 +83,9 @@ static void mouse_forward_button_changed (gpointer callback_data);
 static void use_extra_mouse_buttons_changed (gpointer callback_data);
 static void nautilus_window_initialize_actions (NautilusWindow *window);
 static GtkWidget *nautilus_window_ensure_location_entry (NautilusWindow *window);
-static void close_slot (NautilusWindow     *window,
-                        NautilusWindowSlot *slot,
-                        gboolean            remove_from_notebook);
+static void nautilus_window_back_or_forward (NautilusWindow *window,
+                                             gboolean        back,
+                                             guint           distance);
 
 /* Sanity check: highest mouse button value I could find was 14. 5 is our
  * lower threshold (well-documented to be the one of the button events for the
@@ -152,40 +154,20 @@ struct _NautilusWindow
 
     GtkGesture *multi_press_gesture;
     GtkGesture *notebook_multi_press_gesture;
+    GtkEventController *key_capture_controller;
+    GtkEventController *key_bubble_controller;
 };
 
 enum
 {
     SLOT_ADDED,
     SLOT_REMOVED,
-    ACTIVE_SELECTION_CHANGED,
     LAST_SIGNAL
 };
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (NautilusWindow, nautilus_window, HDY_TYPE_APPLICATION_WINDOW);
-
-static const struct
-{
-    unsigned int keyval;
-    const char *action;
-} extra_window_keybindings [] =
-{
-    /* Window actions */
-    { GDK_KEY_AddFavorite, "bookmark-current-location" },
-    { GDK_KEY_Favorites, "bookmarks" },
-    { GDK_KEY_Go, "enter-location" },
-    { GDK_KEY_HomePage, "go-home" },
-    { GDK_KEY_OpenURL, "enter-location" },
-    { GDK_KEY_Refresh, "reload" },
-    { GDK_KEY_Reload, "reload" },
-    { GDK_KEY_Search, "search" },
-    { GDK_KEY_Start, "go-home" },
-    { GDK_KEY_Stop, "stop" },
-    { GDK_KEY_Back, "back" },
-    { GDK_KEY_Forward, "forward" },
-};
 
 static const GtkPadActionEntry pad_actions[] =
 {
@@ -222,9 +204,23 @@ action_go_home (GSimpleAction *action,
     window = NAUTILUS_WINDOW (user_data);
     home = g_file_new_for_path (g_get_home_dir ());
 
-    nautilus_window_open_location_full (window, home, nautilus_event_get_window_open_flags (), NULL, NULL);
+    nautilus_window_open_location_full (window, home, 0, NULL, NULL);
 
     g_object_unref (home);
+}
+
+static void
+action_go_starred (GSimpleAction *action,
+                   GVariant      *state,
+                   gpointer       user_data)
+{
+    NautilusWindow *window;
+    g_autoptr (GFile) starred = NULL;
+
+    window = NAUTILUS_WINDOW (user_data);
+    starred = g_file_new_for_uri ("starred:///");
+
+    nautilus_window_open_location_full (window, starred, 0, NULL, NULL);
 }
 
 static void
@@ -270,7 +266,7 @@ action_up (GSimpleAction *action,
         {
             nautilus_window_open_location_full (NAUTILUS_WINDOW (user_data),
                                                 parent,
-                                                nautilus_event_get_window_open_flags (),
+                                                0,
                                                 NULL, NULL);
         }
 
@@ -283,8 +279,7 @@ action_back (GSimpleAction *action,
              GVariant      *state,
              gpointer       user_data)
 {
-    nautilus_window_back_or_forward (NAUTILUS_WINDOW (user_data),
-                                     TRUE, 0, nautilus_event_get_window_open_flags ());
+    nautilus_window_back_or_forward (NAUTILUS_WINDOW (user_data), TRUE, 0);
 }
 
 static void
@@ -292,8 +287,7 @@ action_forward (GSimpleAction *action,
                 GVariant      *state,
                 gpointer       user_data)
 {
-    nautilus_window_back_or_forward (NAUTILUS_WINDOW (user_data),
-                                     FALSE, 0, nautilus_event_get_window_open_flags ());
+    nautilus_window_back_or_forward (NAUTILUS_WINDOW (user_data), FALSE, 0);
 }
 
 static void
@@ -449,10 +443,23 @@ action_toggle_state_view_button (GSimpleAction *action,
 }
 
 static void
+action_show_current_location_menu (GSimpleAction *action,
+                                   GVariant      *state,
+                                   gpointer       user_data)
+{
+    NautilusWindow *window = user_data;
+    GtkWidget *path_bar;
+
+    path_bar = nautilus_toolbar_get_path_bar (NAUTILUS_TOOLBAR (window->toolbar));
+
+    nautilus_path_bar_show_current_location_menu (NAUTILUS_PATH_BAR (path_bar));
+}
+
+static void
 on_location_changed (NautilusWindow *window)
 {
-    gtk_places_sidebar_set_location (GTK_PLACES_SIDEBAR (window->places_sidebar),
-                                     nautilus_window_slot_get_location (nautilus_window_get_active_slot (window)));
+    nautilus_gtk_places_sidebar_set_location (NAUTILUS_GTK_PLACES_SIDEBAR (window->places_sidebar),
+                                              nautilus_window_slot_get_location (nautilus_window_get_active_slot (window)));
 }
 
 static void
@@ -463,18 +470,6 @@ on_slot_location_changed (NautilusWindowSlot *slot,
     if (nautilus_window_get_active_slot (window) == slot)
     {
         on_location_changed (window);
-    }
-}
-
-
-static void
-on_slot_selection_changed (NautilusWindowSlot *slot,
-                           GParamSpec         *pspec,
-                           NautilusWindow     *window)
-{
-    if (nautilus_window_get_active_slot (window) == slot)
-    {
-        g_signal_emit (window, signals[ACTIVE_SELECTION_CHANGED], 0);
     }
 }
 
@@ -504,8 +499,6 @@ connect_slot (NautilusWindow     *window,
 {
     g_signal_connect (slot, "notify::location",
                       G_CALLBACK (on_slot_location_changed), window);
-    g_signal_connect (slot, "notify::selection",
-                      G_CALLBACK (on_slot_selection_changed), window);
 }
 
 static void
@@ -516,68 +509,21 @@ disconnect_slot (NautilusWindow     *window,
 }
 
 static NautilusWindowSlot *
-nautilus_window_create_slot (NautilusWindow *window,
-                             GFile          *location)
-{
-    NautilusFile *file = NULL;
-    NautilusWindowSlot *slot;
-
-    if (location)
-    {
-        file = nautilus_file_get (location);
-    }
-    /* If not file, assume we open the home directory. We will switch eventually
-     * to a different location if not.
-     */
-    if (file && nautilus_file_is_other_locations (file))
-    {
-        slot = NAUTILUS_WINDOW_SLOT (nautilus_other_locations_window_slot_new (window));
-    }
-    else
-    {
-        slot = nautilus_window_slot_new (window);
-    }
-
-    nautilus_file_unref (file);
-
-    return slot;
-}
-
-static NautilusWindowSlot *
-nautilus_window_create_and_init_slot (NautilusWindow          *window,
-                                      GFile                   *location,
-                                      NautilusWindowOpenFlags  flags)
+nautilus_window_create_and_init_slot (NautilusWindow    *window,
+                                      NautilusOpenFlags  flags)
 {
     NautilusWindowSlot *slot;
 
-    slot = nautilus_window_create_slot (window, location);
+    slot = nautilus_window_slot_new (window);
     nautilus_window_initialize_slot (window, slot, flags);
 
     return slot;
 }
 
-static NautilusWindowSlot *
-replace_active_slot (NautilusWindow          *window,
-                     GFile                   *location,
-                     NautilusWindowOpenFlags  flags)
-{
-    NautilusWindowSlot *new_slot;
-    NautilusWindowSlot *active_slot;
-
-    new_slot = nautilus_window_create_and_init_slot (window, location, flags);
-    active_slot = nautilus_window_get_active_slot (window);
-    if (active_slot)
-    {
-        close_slot (window, active_slot, TRUE);
-    }
-
-    return new_slot;
-}
-
 void
-nautilus_window_initialize_slot (NautilusWindow          *window,
-                                 NautilusWindowSlot      *slot,
-                                 NautilusWindowOpenFlags  flags)
+nautilus_window_initialize_slot (NautilusWindow     *window,
+                                 NautilusWindowSlot *slot,
+                                 NautilusOpenFlags   flags)
 {
     g_assert (NAUTILUS_IS_WINDOW (window));
     g_assert (NAUTILUS_IS_WINDOW_SLOT (slot));
@@ -589,7 +535,7 @@ nautilus_window_initialize_slot (NautilusWindow          *window,
                                      window);
     nautilus_notebook_add_tab (NAUTILUS_NOTEBOOK (window->notebook),
                                slot,
-                               (flags & NAUTILUS_WINDOW_OPEN_SLOT_APPEND) != 0 ?
+                               (flags & NAUTILUS_OPEN_FLAG_SLOT_APPEND) != 0 ?
                                -1 :
                                gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook)) + 1,
                                FALSE);
@@ -602,31 +548,24 @@ nautilus_window_initialize_slot (NautilusWindow          *window,
 }
 
 void
-nautilus_window_open_location_full (NautilusWindow          *window,
-                                    GFile                   *location,
-                                    NautilusWindowOpenFlags  flags,
-                                    GList                   *selection,
-                                    NautilusWindowSlot      *target_slot)
+nautilus_window_open_location_full (NautilusWindow     *window,
+                                    GFile              *location,
+                                    NautilusOpenFlags   flags,
+                                    GList              *selection,
+                                    NautilusWindowSlot *target_slot)
 {
     NautilusWindowSlot *active_slot;
     gboolean new_tab_at_end;
-    NautilusNavigationState *navigation_state = NULL;
-
-    /* The location owner can be one of the slots requesting to handle an
-     * unhandled location. But this slot can be destroyed when switching to
-     * a new slot. So keep the location alive.
-     */
-    g_object_ref (location);
 
     /* Assert that we are not managing new windows */
-    g_assert (!(flags & NAUTILUS_WINDOW_OPEN_FLAG_NEW_WINDOW));
+    g_assert (!(flags & NAUTILUS_OPEN_FLAG_NEW_WINDOW));
     /* if the flags say we want a new tab, open a slot in the current window */
-    if ((flags & NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB) != 0)
+    if ((flags & NAUTILUS_OPEN_FLAG_NEW_TAB) != 0)
     {
         new_tab_at_end = g_settings_get_enum (nautilus_preferences, NAUTILUS_PREFERENCES_NEW_TAB_POSITION) == NAUTILUS_NEW_TAB_POSITION_END;
         if (new_tab_at_end)
         {
-            flags |= NAUTILUS_WINDOW_OPEN_SLOT_APPEND;
+            flags |= NAUTILUS_OPEN_FLAG_SLOT_APPEND;
         }
     }
 
@@ -636,40 +575,20 @@ nautilus_window_open_location_full (NautilusWindow          *window,
         target_slot = active_slot;
     }
 
-    if (target_slot == NULL || (flags & NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB) != 0)
+    if (target_slot == NULL || (flags & NAUTILUS_OPEN_FLAG_NEW_TAB) != 0)
     {
-        target_slot = nautilus_window_create_and_init_slot (window, location, flags);
-    }
-    else if (!nautilus_window_slot_handles_location (target_slot, location))
-    {
-        navigation_state = nautilus_window_slot_get_navigation_state (active_slot);
-
-        target_slot = replace_active_slot (window, location, flags);
+        target_slot = nautilus_window_create_and_init_slot (window, flags);
     }
 
     /* Make the opened location the one active if we weren't ask for the
      * oposite, since it's the most usual use case */
-    if (!(flags & NAUTILUS_WINDOW_OPEN_FLAG_DONT_MAKE_ACTIVE))
+    if (!(flags & NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE))
     {
         gtk_window_present (GTK_WINDOW (window));
         nautilus_window_set_active_slot (window, target_slot);
     }
 
-    if (navigation_state != NULL)
-    {
-        nautilus_window_slot_open_location_set_navigation_state (target_slot,
-                                                                 location, flags, selection,
-                                                                 NAUTILUS_LOCATION_CHANGE_STANDARD,
-                                                                 navigation_state, 0);
-
-        free_navigation_state (navigation_state);
-    }
-    else
-    {
-        nautilus_window_slot_open_location_full (target_slot, location, flags, selection);
-    }
-
-    g_object_unref (location);
+    nautilus_window_slot_open_location_full (target_slot, location, flags, selection);
 }
 
 static void
@@ -799,7 +718,7 @@ nautilus_window_new_tab (NautilusWindow *window)
         }
 
         nautilus_window_open_location_full (window, location,
-                                            NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB,
+                                            NAUTILUS_OPEN_FLAG_NEW_TAB,
                                             NULL, NULL);
         g_object_unref (location);
     }
@@ -939,29 +858,29 @@ setup_side_pane_width (NautilusWindow *window)
 
 /* Callback used when the places sidebar changes location; we need to change the displayed folder */
 static void
-open_location_cb (NautilusWindow     *window,
-                  GFile              *location,
-                  GtkPlacesOpenFlags  open_flags)
+open_location_cb (NautilusWindow             *window,
+                  GFile                      *location,
+                  NautilusGtkPlacesOpenFlags  open_flags)
 {
-    NautilusWindowOpenFlags flags;
+    NautilusOpenFlags flags;
     NautilusApplication *application;
 
     switch (open_flags)
     {
-        case GTK_PLACES_OPEN_NEW_TAB:
+        case NAUTILUS_GTK_PLACES_OPEN_NEW_TAB:
         {
-            flags = NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB |
-                    NAUTILUS_WINDOW_OPEN_FLAG_DONT_MAKE_ACTIVE;
+            flags = NAUTILUS_OPEN_FLAG_NEW_TAB |
+                    NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE;
         }
         break;
 
-        case GTK_PLACES_OPEN_NEW_WINDOW:
+        case NAUTILUS_GTK_PLACES_OPEN_NEW_WINDOW:
         {
-            flags = NAUTILUS_WINDOW_OPEN_FLAG_NEW_WINDOW;
+            flags = NAUTILUS_OPEN_FLAG_NEW_WINDOW;
         }
         break;
 
-        case GTK_PLACES_OPEN_NORMAL: /* fall-through */
+        case NAUTILUS_GTK_PLACES_OPEN_NORMAL: /* fall-through */
         default:
         {
             flags = 0;
@@ -989,10 +908,10 @@ places_sidebar_unmount_operation_cb (NautilusWindow  *window,
 
 /* Callback used when the places sidebar needs us to present an error message */
 static void
-places_sidebar_show_error_message_cb (GtkPlacesSidebar *sidebar,
-                                      const char       *primary,
-                                      const char       *secondary,
-                                      gpointer          user_data)
+places_sidebar_show_error_message_cb (NautilusGtkPlacesSidebar *sidebar,
+                                      const char               *primary,
+                                      const char               *secondary,
+                                      gpointer                  user_data)
 {
     NautilusWindow *window = NAUTILUS_WINDOW (user_data);
 
@@ -1000,8 +919,8 @@ places_sidebar_show_error_message_cb (GtkPlacesSidebar *sidebar,
 }
 
 static void
-places_sidebar_show_other_locations_with_flags (NautilusWindow     *window,
-                                                GtkPlacesOpenFlags  open_flags)
+places_sidebar_show_other_locations_with_flags (NautilusWindow             *window,
+                                                NautilusGtkPlacesOpenFlags  open_flags)
 {
     GFile *location;
 
@@ -1013,8 +932,8 @@ places_sidebar_show_other_locations_with_flags (NautilusWindow     *window,
 }
 
 static void
-places_sidebar_show_starred_location (NautilusWindow     *window,
-                                      GtkPlacesOpenFlags  open_flags)
+places_sidebar_show_starred_location (NautilusWindow             *window,
+                                      NautilusGtkPlacesOpenFlags  open_flags)
 {
     GFile *location;
 
@@ -1055,9 +974,9 @@ nautilus_window_start_dnd (NautilusWindow *window,
 {
     g_return_if_fail (NAUTILUS_IS_WINDOW (window));
 
-    gtk_places_sidebar_set_drop_targets_visible (GTK_PLACES_SIDEBAR (window->places_sidebar),
-                                                 TRUE,
-                                                 context);
+    nautilus_gtk_places_sidebar_set_drop_targets_visible (NAUTILUS_GTK_PLACES_SIDEBAR (window->places_sidebar),
+                                                          TRUE,
+                                                          context);
 }
 
 void
@@ -1066,18 +985,18 @@ nautilus_window_end_dnd (NautilusWindow *window,
 {
     g_return_if_fail (NAUTILUS_IS_WINDOW (window));
 
-    gtk_places_sidebar_set_drop_targets_visible (GTK_PLACES_SIDEBAR (window->places_sidebar),
-                                                 FALSE,
-                                                 context);
+    nautilus_gtk_places_sidebar_set_drop_targets_visible (NAUTILUS_GTK_PLACES_SIDEBAR (window->places_sidebar),
+                                                          FALSE,
+                                                          context);
 }
 
 /* Callback used when the places sidebar needs to know the drag action to suggest */
 static GdkDragAction
-places_sidebar_drag_action_requested_cb (GtkPlacesSidebar *sidebar,
-                                         GdkDragContext   *context,
-                                         GFile            *dest_file,
-                                         GList            *source_file_list,
-                                         gpointer          user_data)
+places_sidebar_drag_action_requested_cb (NautilusGtkPlacesSidebar *sidebar,
+                                         GdkDragContext           *context,
+                                         GFile                    *dest_file,
+                                         GList                    *source_file_list,
+                                         gpointer                  user_data)
 {
     GList *items;
     char *uri;
@@ -1118,9 +1037,9 @@ out:
 
 /* Callback used when the places sidebar needs us to pop up a menu with possible drag actions */
 static GdkDragAction
-places_sidebar_drag_action_ask_cb (GtkPlacesSidebar *sidebar,
-                                   GdkDragAction     actions,
-                                   gpointer          user_data)
+places_sidebar_drag_action_ask_cb (NautilusGtkPlacesSidebar *sidebar,
+                                   GdkDragAction             actions,
+                                   gpointer                  user_data)
 {
     return nautilus_drag_drop_action_ask (GTK_WIDGET (sidebar), actions);
 }
@@ -1147,11 +1066,11 @@ build_uri_list_from_gfile_list (GList *file_list)
 
 /* Callback used when the places sidebar has URIs dropped into it.  We do a normal file operation for them. */
 static void
-places_sidebar_drag_perform_drop_cb (GtkPlacesSidebar *sidebar,
-                                     GFile            *dest_file,
-                                     GList            *source_file_list,
-                                     GdkDragAction     action,
-                                     gpointer          user_data)
+places_sidebar_drag_perform_drop_cb (NautilusGtkPlacesSidebar *sidebar,
+                                     GFile                    *dest_file,
+                                     GList                    *source_file_list,
+                                     GdkDragAction             action,
+                                     gpointer                  user_data)
 {
     char *dest_uri;
     GList *source_uri_list;
@@ -1228,7 +1147,7 @@ action_restore_tab (GSimpleAction *action,
                     gpointer       user_data)
 {
     NautilusWindow *window = NAUTILUS_WINDOW (user_data);
-    NautilusWindowOpenFlags flags;
+    NautilusOpenFlags flags;
     g_autoptr (GFile) location = NULL;
     NautilusWindowSlot *slot;
     NautilusNavigationState *data;
@@ -1238,13 +1157,13 @@ action_restore_tab (GSimpleAction *action,
         return;
     }
 
-    flags = NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB | NAUTILUS_WINDOW_OPEN_FLAG_DONT_MAKE_ACTIVE;
+    flags = NAUTILUS_OPEN_FLAG_NEW_TAB | NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE;
 
     data = g_queue_pop_head (window->tab_data_queue);
 
     location = nautilus_file_get_location (data->file);
 
-    slot = nautilus_window_create_and_init_slot (window, location, flags);
+    slot = nautilus_window_create_and_init_slot (window, flags);
 
     nautilus_window_slot_open_location_full (slot, location, flags, NULL);
     nautilus_window_slot_restore_navigation_state (slot, data);
@@ -1299,16 +1218,16 @@ add_menu_separator (GtkWidget *menu)
     GtkWidget *separator;
 
     separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
-    gtk_container_add (GTK_CONTAINER (menu), separator);
+    gtk_box_append (GTK_BOX (menu), separator);
     gtk_widget_show (separator);
 }
 
 static void
-places_sidebar_populate_popup_cb (GtkPlacesSidebar *sidebar,
-                                  GtkWidget        *menu,
-                                  GFile            *selected_file,
-                                  GVolume          *selected_volume,
-                                  gpointer          user_data)
+places_sidebar_populate_popup_cb (NautilusGtkPlacesSidebar *sidebar,
+                                  GtkWidget                *menu,
+                                  GFile                    *selected_file,
+                                  GVolume                  *selected_volume,
+                                  gpointer                  user_data)
 {
     NautilusWindow *window = NAUTILUS_WINDOW (user_data);
     GFile *trash;
@@ -1329,7 +1248,7 @@ places_sidebar_populate_popup_cb (GtkPlacesSidebar *sidebar,
             gtk_actionable_set_action_name (GTK_ACTIONABLE (menu_item),
                                             "win.empty-trash");
             g_object_set (menu_item, "text", _("Empty _Trash…"), NULL);
-            gtk_container_add (GTK_CONTAINER (menu), menu_item);
+            gtk_box_append (GTK_BOX (menu), menu_item);
             gtk_widget_show (menu_item);
 
             action = g_action_map_lookup_action (G_ACTION_MAP (window),
@@ -1348,7 +1267,7 @@ places_sidebar_populate_popup_cb (GtkPlacesSidebar *sidebar,
             gtk_actionable_set_action_name (GTK_ACTIONABLE (menu_item),
                                             "win.properties");
             g_object_set (menu_item, "text", _("_Properties"), NULL);
-            gtk_container_add (GTK_CONTAINER (menu), menu_item);
+            gtk_box_append (GTK_BOX (menu), menu_item);
             gtk_widget_show (menu_item);
         }
     }
@@ -1364,7 +1283,7 @@ places_sidebar_populate_popup_cb (GtkPlacesSidebar *sidebar,
             {
                 window->selected_volume = g_object_ref (selected_volume);
             }
-            gtk_container_add (GTK_CONTAINER (menu), menu_item);
+            gtk_box_append (GTK_BOX (menu), menu_item);
             gtk_widget_show (menu_item);
 
             action = g_action_map_lookup_action (G_ACTION_MAP (window),
@@ -1385,15 +1304,11 @@ nautilus_window_set_up_sidebar (NautilusWindow *window)
                       G_CALLBACK (side_pane_size_allocate_callback),
                       window);
 
-    gtk_places_sidebar_set_open_flags (GTK_PLACES_SIDEBAR (window->places_sidebar),
-                                       (GTK_PLACES_OPEN_NORMAL
-                                        | GTK_PLACES_OPEN_NEW_TAB
-                                        | GTK_PLACES_OPEN_NEW_WINDOW));
-    gtk_places_sidebar_set_show_recent (GTK_PLACES_SIDEBAR (window->places_sidebar),
-                                        FALSE);
+    nautilus_gtk_places_sidebar_set_open_flags (NAUTILUS_GTK_PLACES_SIDEBAR (window->places_sidebar),
+                                                (NAUTILUS_GTK_PLACES_OPEN_NORMAL
+                                                 | NAUTILUS_GTK_PLACES_OPEN_NEW_TAB
+                                                 | NAUTILUS_GTK_PLACES_OPEN_NEW_WINDOW));
 
-    gtk_places_sidebar_set_show_starred_location (GTK_PLACES_SIDEBAR (window->places_sidebar),
-                                                  FALSE);
     g_signal_connect_swapped (window->places_sidebar, "open-location",
                               G_CALLBACK (open_location_cb), window);
     g_signal_connect (window->places_sidebar, "show-error-message",
@@ -1683,7 +1598,7 @@ nautilus_window_on_undo_changed (NautilusFileUndoManager *manager,
             /* Don't pop up a notification if user canceled the operation or the focus
              * is not in the this window. This is an easy way to know from which window
              * was the delete operation made */
-            if (files != NULL && gtk_window_has_toplevel_focus (GTK_WINDOW (window)))
+            if (files != NULL && gtk_window_is_active (GTK_WINDOW (window)))
             {
                 popup_notification = TRUE;
                 label = in_app_notification_undo_deleted_get_label (undo_info);
@@ -1700,7 +1615,7 @@ nautilus_window_on_undo_changed (NautilusFileUndoManager *manager,
              * window. This is an easy way to know from which window was the
              * unstart operation made */
             if (eel_uri_is_starred (g_file_get_uri (location)) &&
-                gtk_window_has_toplevel_focus (GTK_WINDOW (window)) &&
+                gtk_window_is_active (GTK_WINDOW (window)) &&
                 !nautilus_file_undo_info_starred_is_starred (NAUTILUS_FILE_UNDO_INFO_STARRED (undo_info)))
             {
                 popup_notification = TRUE;
@@ -1779,7 +1694,7 @@ nautilus_window_show_operation_notification (NautilusWindow *window,
     }
 
     current_location = nautilus_window_slot_get_location (window->active_slot);
-    if (gtk_window_has_toplevel_focus (GTK_WINDOW (window)))
+    if (gtk_window_is_active (GTK_WINDOW (window)))
     {
         remove_notifications (window);
         gtk_label_set_text (GTK_LABEL (window->notification_operation_label),
@@ -1811,11 +1726,11 @@ nautilus_window_show_operation_notification (NautilusWindow *window,
 }
 
 static void
-path_bar_location_changed_callback (GtkWidget      *widget,
-                                    GFile          *location,
-                                    NautilusWindow *window)
+on_path_bar_open_location (NautilusWindow    *window,
+                           GFile             *location,
+                           NautilusOpenFlags  open_flags)
 {
-    nautilus_window_open_location_full (window, location, 0, NULL, NULL);
+    nautilus_window_open_location_full (window, location, open_flags, NULL, NULL);
 }
 
 static void
@@ -1975,10 +1890,8 @@ setup_toolbar (NautilusWindow *window)
     /* connect to the pathbar signals */
     path_bar = nautilus_toolbar_get_path_bar (NAUTILUS_TOOLBAR (window->toolbar));
 
-    g_signal_connect_object (path_bar, "path-clicked",
-                             G_CALLBACK (path_bar_location_changed_callback), window, 0);
     g_signal_connect_swapped (path_bar, "open-location",
-                              G_CALLBACK (open_location_cb), window);
+                              G_CALLBACK (on_path_bar_open_location), window);
 
     /* connect to the location entry signals */
     location_entry = nautilus_toolbar_get_location_entry (NAUTILUS_TOOLBAR (window->toolbar));
@@ -2105,6 +2018,7 @@ const GActionEntry win_entries[] =
     { "forward", action_forward },
     { "up", action_up },
     { "view-menu", action_toggle_state_view_button, NULL, "false", NULL },
+    { "current-location-menu", action_show_current_location_menu },
     { "reload", action_reload },
     { "stop", action_stop },
     { "new-tab", action_new_tab },
@@ -2115,6 +2029,7 @@ const GActionEntry win_entries[] =
     /* Only accesible by shorcuts */
     { "close-current-view", action_close_current_view },
     { "go-home", action_go_home },
+    { "go-starred", action_go_starred },
     { "tab-previous", action_tab_previous },
     { "tab-next", action_tab_next },
     { "tab-move-left", action_tab_move_left },
@@ -2137,53 +2052,39 @@ nautilus_window_initialize_actions (NautilusWindow *window)
     gchar detailed_action[80];
     gchar accel[80];
     gint i;
-    const gchar *reload_accels[] =
-    {
-        "F5",
-        "<ctrl>r",
-        NULL
-    };
-    const gchar *prompt_root_location_accels[] =
-    {
-        "slash",
-        "KP_Divide",
-        NULL
-    };
-    const gchar *prompt_home_location_accels[] =
-    {
-        "asciitilde",
-        "dead_tilde",
-        NULL
-    };
 
     g_action_map_add_action_entries (G_ACTION_MAP (window),
                                      win_entries, G_N_ELEMENTS (win_entries),
                                      window);
 
+#define ACCELS(...) ((const char *[]) { __VA_ARGS__, NULL })
+
     app = g_application_get_default ();
-    nautilus_application_set_accelerator (app, "win.back", "<alt>Left");
-    nautilus_application_set_accelerator (app, "win.forward", "<alt>Right");
-    nautilus_application_set_accelerator (app, "win.enter-location", "<control>l");
+    nautilus_application_set_accelerators (app, "win.back", ACCELS ("<alt>Left", "Back"));
+    nautilus_application_set_accelerators (app, "win.forward", ACCELS ("<alt>Right", "Forward"));
+    nautilus_application_set_accelerators (app, "win.enter-location", ACCELS ("<control>l", "Go", "OpenURL"));
     nautilus_application_set_accelerator (app, "win.new-tab", "<control>t");
     nautilus_application_set_accelerator (app, "win.close-current-view", "<control>w");
 
     /* Special case reload, since users are used to use two shortcuts instead of one */
-    nautilus_application_set_accelerators (app, "win.reload", reload_accels);
+    nautilus_application_set_accelerators (app, "win.reload", ACCELS ("F5", "<ctrl>r", "Refresh", "Reload"));
+    nautilus_application_set_accelerator (app, "win.stop", "Stop");
 
     nautilus_application_set_accelerator (app, "win.undo", "<control>z");
     nautilus_application_set_accelerator (app, "win.redo", "<shift><control>z");
     /* Only accesible by shorcuts */
-    nautilus_application_set_accelerator (app, "win.bookmark-current-location", "<control>d");
+    nautilus_application_set_accelerators (app, "win.bookmark-current-location", ACCELS ("<control>d", "AddFavorite"));
     nautilus_application_set_accelerator (app, "win.up", "<alt>Up");
-    nautilus_application_set_accelerator (app, "win.go-home", "<alt>Home");
+    nautilus_application_set_accelerators (app, "win.go-home", ACCELS ("<alt>Home", "HomePage", "Start"));
+    nautilus_application_set_accelerator (app, "win.go-starred", "Favorites");
     nautilus_application_set_accelerator (app, "win.tab-previous", "<control>Page_Up");
     nautilus_application_set_accelerator (app, "win.tab-next", "<control>Page_Down");
     nautilus_application_set_accelerator (app, "win.tab-move-left", "<shift><control>Page_Up");
     nautilus_application_set_accelerator (app, "win.tab-move-right", "<shift><control>Page_Down");
-    nautilus_application_set_accelerators (app, "win.prompt-root-location", prompt_root_location_accels);
+    nautilus_application_set_accelerators (app, "win.prompt-root-location", ACCELS ("slash", "KP_Divide"));
     /* Support keyboard layouts which have a dead tilde key but not a tilde key. */
-    nautilus_application_set_accelerators (app, "win.prompt-home-location", prompt_home_location_accels);
-    nautilus_application_set_accelerator (app, "win.view-menu", "F10");
+    nautilus_application_set_accelerators (app, "win.prompt-home-location", ACCELS ("asciitilde", "dead_tilde"));
+    nautilus_application_set_accelerator (app, "win.current-location-menu", "F10");
     nautilus_application_set_accelerator (app, "win.restore-tab", "<shift><control>t");
 
     /* Alt+N for the first 9 tabs */
@@ -2193,6 +2094,8 @@ nautilus_window_initialize_actions (NautilusWindow *window)
         g_snprintf (accel, sizeof (accel), "<alt>%i", i + 1);
         nautilus_application_set_accelerator (app, detailed_action, accel);
     }
+
+#undef ACCELS
 
     action = g_action_map_lookup_action (G_ACTION_MAP (app), "show-hide-sidebar");
     state = g_action_get_state (action);
@@ -2239,7 +2142,7 @@ nautilus_window_constructed (GObject *self)
      * some actions trigger UI widgets to show/hide. */
     nautilus_window_initialize_actions (window);
 
-    slot = nautilus_window_create_and_init_slot (window, NULL, 0);
+    slot = nautilus_window_create_and_init_slot (window, 0);
     nautilus_window_set_active_slot (window, slot);
 
     window->bookmarks_id =
@@ -2278,14 +2181,14 @@ destroy_slots_foreach (gpointer data,
 }
 
 static void
-nautilus_window_destroy (GtkWidget *object)
+nautilus_window_dispose (GObject *object)
 {
     NautilusWindow *window;
-    NautilusApplication *application;
+    GtkApplication *application;
     GList *slots_copy;
 
     window = NAUTILUS_WINDOW (object);
-    application = NAUTILUS_APPLICATION (gtk_window_get_application (GTK_WINDOW (window)));
+    application = gtk_window_get_application (GTK_WINDOW (window));
 
     DEBUG ("Destroying window");
 
@@ -2305,23 +2208,20 @@ nautilus_window_destroy (GtkWidget *object)
 
     g_clear_weak_pointer (&window->active_slot);
 
-    g_clear_signal_handler (&window->bookmarks_id, nautilus_application_get_bookmarks (application));
+    if (application != NULL)
+    {
+        g_clear_signal_handler (&window->bookmarks_id,
+                                nautilus_application_get_bookmarks (NAUTILUS_APPLICATION (application)));
+    }
 
     g_clear_handle_id (&window->in_app_notification_undo_timeout_id, g_source_remove);
 
     nautilus_window_unexport_handle (window);
 
-    GTK_WIDGET_CLASS (nautilus_window_parent_class)->destroy (object);
-}
-
-static void
-nautilus_window_dispose (GObject *object)
-{
-    NautilusWindow *window;
-
-    window = NAUTILUS_WINDOW (object);
-
     g_clear_object (&window->notebook_multi_press_gesture);
+
+    g_clear_object (&window->key_capture_controller);
+    g_clear_object (&window->key_bubble_controller);
 
     G_OBJECT_CLASS (nautilus_window_parent_class)->dispose (object);
 }
@@ -2469,7 +2369,6 @@ nautilus_window_set_active_slot (NautilusWindow     *window,
         nautilus_toolbar_set_window_slot (NAUTILUS_TOOLBAR (window->toolbar), new_slot);
 
         on_location_changed (window);
-        g_signal_emit (window, signals[ACTIVE_SELECTION_CHANGED], 0);
     }
 }
 
@@ -2481,59 +2380,46 @@ nautilus_window_realize (GtkWidget *widget)
 }
 
 static gboolean
-nautilus_window_key_press_event (GtkWidget   *widget,
-                                 GdkEventKey *event)
+nautilus_window_key_capture (GtkEventControllerKey *controller,
+                             unsigned int           keyval,
+                             unsigned int           keycode,
+                             GdkModifierType        state,
+                             gpointer               user_data)
 {
-    NautilusWindow *window;
-    guint keyval;
+    GtkWidget *widget;
     GtkWidget *focus_widget;
 
-    window = NAUTILUS_WINDOW (widget);
-
-    if (G_UNLIKELY (!gdk_event_get_keyval ((GdkEvent *) event, &keyval)))
-    {
-        g_return_val_if_reached (GDK_EVENT_PROPAGATE);
-    }
-
-    focus_widget = gtk_window_get_focus (GTK_WINDOW (window));
+    widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (controller));
+    focus_widget = gtk_window_get_focus (GTK_WINDOW (widget));
     if (focus_widget != NULL && GTK_IS_EDITABLE (focus_widget))
     {
         /* if we have input focus on a GtkEditable (e.g. a GtkEntry), forward
-         * the event to it before activating accelerator bindings too.
+         * the event to it before activating accelerators. This allows, e.g.,
+         * typing a tilde without activating the prompt-home-location action.
          */
-        if (gtk_window_propagate_key_event (GTK_WINDOW (window),
-                                            (GdkEventKey *) event))
+        if (gtk_event_controller_key_forward (controller, focus_widget))
         {
             return GDK_EVENT_STOP;
         }
     }
 
-    for (int i = 0; i < G_N_ELEMENTS (extra_window_keybindings); i++)
-    {
-        if (extra_window_keybindings[i].keyval == keyval)
-        {
-            GAction *action;
+    return GDK_EVENT_PROPAGATE;
+}
 
-            action = g_action_map_lookup_action (G_ACTION_MAP (window), extra_window_keybindings[i].action);
+static gboolean
+nautilus_window_key_bubble (GtkEventControllerKey *controller,
+                            unsigned int           keyval,
+                            unsigned int           keycode,
+                            GdkModifierType        state,
+                            gpointer               user_data)
+{
+    GtkWidget *widget;
+    NautilusWindow *window;
 
-            g_assert (action != NULL);
-            if (g_action_get_enabled (action))
-            {
-                g_action_activate (action, NULL);
-                return GDK_EVENT_STOP;
-            }
-
-            break;
-        }
-    }
-
-    if (GTK_WIDGET_CLASS (nautilus_window_parent_class)->key_press_event (widget, event))
-    {
-        return GDK_EVENT_STOP;
-    }
-
+    widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (controller));
+    window = NAUTILUS_WINDOW (widget);
     if (window->active_slot != NULL &&
-        nautilus_window_slot_handle_event (window->active_slot, (GdkEvent *) event))
+        nautilus_window_slot_handle_event (window->active_slot, controller, keyval, state))
     {
         return GDK_EVENT_STOP;
     }
@@ -2702,6 +2588,21 @@ nautilus_window_delete_event (GtkWidget   *widget,
 }
 
 static void
+nautilus_window_back_or_forward (NautilusWindow *window,
+                                 gboolean        back,
+                                 guint           distance)
+{
+    NautilusWindowSlot *slot;
+
+    slot = nautilus_window_get_active_slot (window);
+
+    if (slot != NULL)
+    {
+        nautilus_window_slot_back_or_forward (slot, back, distance);
+    }
+}
+
+static void
 on_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
                                 gint                  n_press,
                                 gdouble               x,
@@ -2718,11 +2619,11 @@ on_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
 
     if (mouse_extra_buttons && (button == mouse_back_button))
     {
-        nautilus_window_back_or_forward (window, TRUE, 0, 0);
+        nautilus_window_back_or_forward (window, TRUE, 0);
     }
     else if (mouse_extra_buttons && (button == mouse_forward_button))
     {
-        nautilus_window_back_or_forward (window, FALSE, 0, 0);
+        nautilus_window_back_or_forward (window, FALSE, 0);
     }
 }
 
@@ -2773,6 +2674,27 @@ nautilus_window_init (NautilusWindow *window)
     g_type_ensure (NAUTILUS_TYPE_NOTEBOOK);
     gtk_widget_init_template (GTK_WIDGET (window));
 
+    window->places_sidebar = nautilus_gtk_places_sidebar_new ();
+    g_object_set (window->places_sidebar,
+                  "vexpand", TRUE,
+                  "visible", TRUE,
+                  "populate-all", TRUE,
+                  "show-other-locations", TRUE,
+                  "show-starred-location", TRUE,
+                  NULL);
+    gtk_box_append (GTK_BOX (window->sidebar), window->places_sidebar);
+
+    g_signal_connect_object (window->places_sidebar,
+                             "show-other-locations-with-flags",
+                             G_CALLBACK (places_sidebar_show_other_locations_with_flags),
+                             window,
+                             G_CONNECT_SWAPPED);
+    g_signal_connect_object (window->places_sidebar,
+                             "show-starred-location",
+                             G_CALLBACK (places_sidebar_show_starred_location),
+                             window,
+                             G_CONNECT_SWAPPED);
+
     g_signal_connect (window, "notify::is-maximized",
                       G_CALLBACK (on_is_maximized_changed), NULL);
 
@@ -2814,6 +2736,20 @@ nautilus_window_init (NautilusWindow *window)
                                                 GTK_PHASE_CAPTURE);
     gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (window->notebook_multi_press_gesture),
                                    GDK_BUTTON_SECONDARY);
+
+    window->key_capture_controller = gtk_event_controller_key_new (GTK_WIDGET (window));
+    gtk_event_controller_set_propagation_phase (window->key_capture_controller,
+                                                GTK_PHASE_CAPTURE);
+    g_signal_connect (window->key_capture_controller,
+                      "key-pressed", G_CALLBACK (nautilus_window_key_capture),
+                      NULL);
+
+    window->key_bubble_controller = gtk_event_controller_key_new (GTK_WIDGET (window));
+    gtk_event_controller_set_propagation_phase (window->key_bubble_controller,
+                                                GTK_PHASE_BUBBLE);
+    g_signal_connect (window->key_bubble_controller,
+                      "key-pressed", G_CALLBACK (nautilus_window_key_bubble),
+                      NULL);
 }
 
 static void
@@ -2826,10 +2762,8 @@ nautilus_window_class_init (NautilusWindowClass *class)
     oclass->finalize = nautilus_window_finalize;
     oclass->constructed = nautilus_window_constructed;
 
-    wclass->destroy = nautilus_window_destroy;
     wclass->show = nautilus_window_show;
     wclass->realize = nautilus_window_realize;
-    wclass->key_press_event = nautilus_window_key_press_event;
     wclass->delete_event = nautilus_window_delete_event;
     wclass->grab_focus = nautilus_window_grab_focus;
 
@@ -2838,7 +2772,6 @@ nautilus_window_class_init (NautilusWindowClass *class)
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, toolbar);
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, content_paned);
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, sidebar);
-    gtk_widget_class_bind_template_child (wclass, NautilusWindow, places_sidebar);
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, main_view);
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, notebook);
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, in_app_notification_undo);
@@ -2849,9 +2782,6 @@ nautilus_window_class_init (NautilusWindowClass *class)
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, notification_operation_label);
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, notification_operation_open);
     gtk_widget_class_bind_template_child (wclass, NautilusWindow, notification_operation_close);
-
-    gtk_widget_class_bind_template_callback (wclass, places_sidebar_show_other_locations_with_flags);
-    gtk_widget_class_bind_template_callback (wclass, places_sidebar_show_starred_location);
 
     signals[SLOT_ADDED] =
         g_signal_new ("slot-added",
@@ -2869,13 +2799,6 @@ nautilus_window_class_init (NautilusWindowClass *class)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE, 1, NAUTILUS_TYPE_WINDOW_SLOT);
-    signals[ACTIVE_SELECTION_CHANGED] =
-        g_signal_new ("active-selection-changed",
-                      G_TYPE_FROM_CLASS (class),
-                      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                      0,
-                      NULL, NULL, NULL,
-                      G_TYPE_NONE, 0);
 
     g_signal_connect_swapped (nautilus_preferences,
                               "changed::" NAUTILUS_PREFERENCES_MOUSE_BACK_BUTTON,
@@ -2903,30 +2826,6 @@ nautilus_window_new (GdkScreen *screen)
                          "icon-name", APPLICATION_ID,
                          "screen", screen,
                          NULL);
-}
-
-NautilusWindowOpenFlags
-nautilus_event_get_window_open_flags (void)
-{
-    NautilusWindowOpenFlags flags = 0;
-    GdkEvent *event;
-
-    event = gtk_get_current_event ();
-
-    if (event == NULL)
-    {
-        return flags;
-    }
-
-    if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE) &&
-        (event->button.button == GDK_BUTTON_MIDDLE))
-    {
-        flags |= NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB;
-    }
-
-    gdk_event_free (event);
-
-    return flags;
 }
 
 void
@@ -2959,7 +2858,7 @@ nautilus_window_show_about_dialog (NautilusWindow *window)
     gtk_show_about_dialog (window ? GTK_WINDOW (window) : NULL,
                            "program-name", program_name,
                            "version", VERSION,
-                           "comments", _("Access and organize your files\nFork by cheesits456"),
+                           "comments", _("Access and organize your files"),
                            "website", "https://wiki.gnome.org/action/show/Apps/Files",
                            "copyright", "© 1999 The Files Authors",
                            "license-type", GTK_LICENSE_GPL_3_0,
@@ -2989,72 +2888,5 @@ nautilus_window_search (NautilusWindow *window,
     else
     {
         g_warning ("Trying search on a slot but no active slot present");
-    }
-}
-
-/* Ideally, this method should be a simple wrapper for the slot method. However,
- * going back or forward can result in a new slot (or another subclass), so we
- * workaround that by duplicating part of nautilus_window_slot_back_or_forward()
- */
-void
-nautilus_window_back_or_forward (NautilusWindow          *window,
-                                 gboolean                 back,
-                                 guint                    distance,
-                                 NautilusWindowOpenFlags  flags)
-{
-    NautilusWindowSlot *slot;
-    GList *next_location_list, *back_list, *forward_list;
-    g_autoptr (GFile) next_location = NULL;
-    guint len;
-    NautilusBookmark *next_location_bookmark;
-    gboolean active_slot_handles_location;
-
-    slot = nautilus_window_get_active_slot (window);
-    back_list = nautilus_window_slot_get_back_history (slot);
-    forward_list = nautilus_window_slot_get_forward_history (slot);
-
-    next_location_list = back ? back_list : forward_list;
-
-    len = (guint) g_list_length (next_location_list);
-
-    /* If we can't move in the direction at all, just return. */
-    if (len == 0)
-    {
-        return;
-    }
-
-    /* If the distance to move is off the end of the list, go to the end
-     *  of the list. */
-    if (distance >= len)
-    {
-        distance = len - 1;
-    }
-
-    next_location_bookmark = g_list_nth_data (next_location_list, distance);
-    next_location = nautilus_bookmark_get_location (next_location_bookmark);
-
-    active_slot_handles_location = nautilus_window_slot_handles_location (slot, next_location);
-
-    if (!active_slot_handles_location)
-    {
-        NautilusNavigationState *navigation_state;
-        NautilusLocationChangeType location_change_type;
-
-        navigation_state = nautilus_window_slot_get_navigation_state (slot);
-
-        location_change_type = back ? NAUTILUS_LOCATION_CHANGE_BACK : NAUTILUS_LOCATION_CHANGE_FORWARD;
-
-        slot = replace_active_slot (window, next_location, flags);
-
-        nautilus_window_slot_open_location_set_navigation_state (slot,
-                                                                 next_location, flags, NULL,
-                                                                 location_change_type,
-                                                                 navigation_state, distance);
-
-        free_navigation_state (navigation_state);
-    }
-    else
-    {
-        nautilus_window_slot_back_or_forward (slot, back, distance, flags);
     }
 }

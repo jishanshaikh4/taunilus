@@ -19,14 +19,12 @@ void nautilus_view_item_model_set_icon_size (NautilusViewItemModel *self,
 
 guint nautilus_view_item_model_get_icon_size (NautilusViewItemModel *self);
 
-void nautilus_view_item_model_set_file (NautilusViewItemModel *self,
-                                        NautilusFile         *file);
-
 NautilusFile * nautilus_view_item_model_get_file (NautilusViewItemModel *self);
 
 void nautilus_view_item_model_set_item_ui (NautilusViewItemModel *self,
                                            GtkWidget             *item_ui);
 
 GtkWidget * nautilus_view_item_model_get_item_ui (NautilusViewItemModel *self);
+void nautilus_view_item_model_file_changed (NautilusViewItemModel *self);
 
 G_END_DECLS

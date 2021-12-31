@@ -60,11 +60,11 @@ typedef void (* NautilusWindowHandleExported) (NautilusWindow *window,
 NautilusWindow * nautilus_window_new                  (GdkScreen         *screen);
 void             nautilus_window_close                (NautilusWindow    *window);
 
-void nautilus_window_open_location_full               (NautilusWindow          *window,
-                                                       GFile                   *location,
-                                                       NautilusWindowOpenFlags  flags,
-                                                       GList                   *selection,
-                                                       NautilusWindowSlot      *target_slot);
+void nautilus_window_open_location_full               (NautilusWindow     *window,
+                                                       GFile              *location,
+                                                       NautilusOpenFlags   flags,
+                                                       GList              *selection,
+                                                       NautilusWindowSlot *target_slot);
 
 void             nautilus_window_new_tab              (NautilusWindow    *window);
 NautilusWindowSlot * nautilus_window_get_active_slot       (NautilusWindow *window);
@@ -78,15 +78,10 @@ void                 nautilus_window_sync_location_widgets (NautilusWindow *wind
 
 void     nautilus_window_hide_sidebar         (NautilusWindow *window);
 void     nautilus_window_show_sidebar         (NautilusWindow *window);
-void     nautilus_window_back_or_forward      (NautilusWindow *window,
-                                               gboolean        back,
-                                               guint           distance,
-                                               NautilusWindowOpenFlags flags);
 void nautilus_window_reset_menus (NautilusWindow *window);
 
 GtkWidget *         nautilus_window_get_notebook (NautilusWindow *window);
 
-NautilusWindowOpenFlags nautilus_event_get_window_open_flags   (void);
 void     nautilus_window_show_about_dialog    (NautilusWindow *window);
 
 GtkWidget *nautilus_window_get_toolbar (NautilusWindow *window);
@@ -110,9 +105,9 @@ void nautilus_window_end_dnd (NautilusWindow *window,
 void nautilus_window_search (NautilusWindow *window,
                              NautilusQuery  *query);
 
-void nautilus_window_initialize_slot (NautilusWindow          *window,
-                                      NautilusWindowSlot      *slot,
-                                      NautilusWindowOpenFlags  flags);
+void nautilus_window_initialize_slot (NautilusWindow     *window,
+                                      NautilusWindowSlot *slot,
+                                      NautilusOpenFlags   flags);
 
 gboolean nautilus_window_export_handle (NautilusWindow *window,
                                         NautilusWindowHandleExported callback,

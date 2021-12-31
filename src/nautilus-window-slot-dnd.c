@@ -94,7 +94,7 @@ switch_location (NautilusDragSlotProxyInfo *drag_info)
 
     location = nautilus_file_get_location (drag_info->target_file);
     nautilus_application_open_location_full (NAUTILUS_APPLICATION (g_application_get_default ()),
-                                             location, NAUTILUS_WINDOW_OPEN_FLAG_DONT_MAKE_ACTIVE,
+                                             location, NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE,
                                              NULL, NAUTILUS_WINDOW (window), NULL);
     g_object_unref (location);
 }
@@ -122,21 +122,14 @@ static void
 slot_proxy_check_switch_location_timer (NautilusDragSlotProxyInfo *drag_info,
                                         GtkWidget                 *widget)
 {
-    GtkSettings *settings;
-    guint timeout;
-
     if (drag_info->switch_location_timer)
     {
         return;
     }
 
-    settings = gtk_widget_get_settings (widget);
-    g_object_get (settings, "gtk-timeout-expand", &timeout, NULL);
-
-    drag_info->switch_location_timer =
-        gdk_threads_add_timeout (timeout,
-                                 slot_proxy_switch_location_timer,
-                                 drag_info);
+    drag_info->switch_location_timer = g_timeout_add (HOVER_TIMEOUT,
+                                                      slot_proxy_switch_location_timer,
+                                                      drag_info);
 }
 
 static void
