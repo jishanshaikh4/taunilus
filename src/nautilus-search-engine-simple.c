@@ -233,12 +233,11 @@ static void send_batch_in_idle(SearchThreadData *thread_data) {
 
 #define STD_ATTRIBUTES                                                         \
   G_FILE_ATTRIBUTE_STANDARD_NAME                                               \
-      "," G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME                               \
-      "," G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP                                  \
-      "," G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN                                  \
-      "," G_FILE_ATTRIBUTE_STANDARD_TYPE "," G_FILE_ATTRIBUTE_TIME_MODIFIED    \
-      "," G_FILE_ATTRIBUTE_TIME_ACCESS "," G_FILE_ATTRIBUTE_TIME_CREATED       \
-      "," G_FILE_ATTRIBUTE_ID_FILE
+  "," G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME                                   \
+  "," G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP                                      \
+  "," G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN "," G_FILE_ATTRIBUTE_STANDARD_TYPE   \
+  "," G_FILE_ATTRIBUTE_TIME_MODIFIED "," G_FILE_ATTRIBUTE_TIME_ACCESS          \
+  "," G_FILE_ATTRIBUTE_TIME_CREATED "," G_FILE_ATTRIBUTE_ID_FILE
 
 static void visit_directory(GFile *dir, SearchThreadData *data) {
   g_autoptr(GPtrArray) date_range = NULL;
