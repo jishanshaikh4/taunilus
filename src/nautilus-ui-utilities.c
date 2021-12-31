@@ -44,251 +44,251 @@
  */
 void nautilus_gmenu_set_from_model(GMenu *target_menu,
                                    GMenuModel *source_model) {
-  g_return_if_fail(G_IS_MENU(target_menu));
-  g_return_if_fail(source_model == NULL || G_IS_MENU_MODEL(source_model));
+    g_return_if_fail(G_IS_MENU(target_menu));
+    g_return_if_fail(source_model == NULL || G_IS_MENU_MODEL(source_model));
 
-  /* First, empty the menu... */
-  g_menu_remove_all(target_menu);
+    /* First, empty the menu... */
+    g_menu_remove_all(target_menu);
 
-  /* ...then, repopulate it (maybe). */
-  if (source_model != NULL) {
-    gint n_items;
+    /* ...then, repopulate it (maybe). */
+    if (source_model != NULL) {
+        gint n_items;
 
-    n_items = g_menu_model_get_n_items(source_model);
-    for (gint i = 0; i < n_items; i++) {
-      g_autoptr(GMenuItem) item = NULL;
-      item = g_menu_item_new_from_model(source_model, i);
-      g_menu_append_item(target_menu, item);
+        n_items = g_menu_model_get_n_items(source_model);
+        for (gint i = 0; i < n_items; i++) {
+            g_autoptr(GMenuItem) item = NULL;
+            item = g_menu_item_new_from_model(source_model, i);
+            g_menu_append_item(target_menu, item);
+        }
     }
-  }
 }
 
 static GdkPixbuf *filmholes_left = NULL;
 static GdkPixbuf *filmholes_right = NULL;
 
 static gboolean ensure_filmholes(void) {
-  if (filmholes_left == NULL) {
-    filmholes_left = gdk_pixbuf_new_from_resource(
-        "/org/gnome/nautilus/icons/filmholes.png", NULL);
-  }
-  if (filmholes_right == NULL && filmholes_left != NULL) {
-    filmholes_right = gdk_pixbuf_flip(filmholes_left, TRUE);
-  }
+    if (filmholes_left == NULL) {
+        filmholes_left = gdk_pixbuf_new_from_resource(
+                             "/org/gnome/nautilus/icons/filmholes.png", NULL);
+    }
+    if (filmholes_right == NULL && filmholes_left != NULL) {
+        filmholes_right = gdk_pixbuf_flip(filmholes_left, TRUE);
+    }
 
-  return (filmholes_left && filmholes_right);
+    return (filmholes_left && filmholes_right);
 }
 
 void nautilus_ui_frame_video(GdkPixbuf **pixbuf) {
-  int width, height;
-  int holes_width, holes_height;
-  int i;
+    int width, height;
+    int holes_width, holes_height;
+    int i;
 
-  if (!ensure_filmholes()) {
-    return;
-  }
+    if (!ensure_filmholes()) {
+        return;
+    }
 
-  width = gdk_pixbuf_get_width(*pixbuf);
-  height = gdk_pixbuf_get_height(*pixbuf);
-  holes_width = gdk_pixbuf_get_width(filmholes_left);
-  holes_height = gdk_pixbuf_get_height(filmholes_left);
+    width = gdk_pixbuf_get_width(*pixbuf);
+    height = gdk_pixbuf_get_height(*pixbuf);
+    holes_width = gdk_pixbuf_get_width(filmholes_left);
+    holes_height = gdk_pixbuf_get_height(filmholes_left);
 
-  for (i = 0; i < height; i += holes_height) {
-    gdk_pixbuf_composite(filmholes_left, *pixbuf, 0, i, MIN(width, holes_width),
-                         MIN(height - i, holes_height), 0, i, 1, 1,
-                         GDK_INTERP_NEAREST, 255);
-  }
+    for (i = 0; i < height; i += holes_height) {
+        gdk_pixbuf_composite(filmholes_left, *pixbuf, 0, i, MIN(width, holes_width),
+                             MIN(height - i, holes_height), 0, i, 1, 1,
+                             GDK_INTERP_NEAREST, 255);
+    }
 
-  for (i = 0; i < height; i += holes_height) {
-    gdk_pixbuf_composite(filmholes_right, *pixbuf, width - holes_width, i,
-                         MIN(width, holes_width), MIN(height - i, holes_height),
-                         width - holes_width, i, 1, 1, GDK_INTERP_NEAREST, 255);
-  }
+    for (i = 0; i < height; i += holes_height) {
+        gdk_pixbuf_composite(filmholes_right, *pixbuf, width - holes_width, i,
+                             MIN(width, holes_width), MIN(height - i, holes_height),
+                             width - holes_width, i, 1, 1, GDK_INTERP_NEAREST, 255);
+    }
 }
 
 gboolean nautilus_file_date_in_between(guint64 unix_file_time,
                                        GDateTime *initial_date,
                                        GDateTime *end_date) {
-  GDateTime *date;
-  gboolean in_between;
+    GDateTime *date;
+    gboolean in_between;
 
-  /* Silently ignore errors */
-  if (unix_file_time == 0) {
-    return FALSE;
-  }
+    /* Silently ignore errors */
+    if (unix_file_time == 0) {
+        return FALSE;
+    }
 
-  date = g_date_time_new_from_unix_local(unix_file_time);
+    date = g_date_time_new_from_unix_local(unix_file_time);
 
-  /* For the end date, we want to make end_date inclusive,
-   * for that the difference between the start of the day and the in_between
-   * has to be more than -1 day
-   */
-  in_between = g_date_time_difference(date, initial_date) > 0 &&
-               g_date_time_difference(end_date, date) / G_TIME_SPAN_DAY > -1;
+    /* For the end date, we want to make end_date inclusive,
+     * for that the difference between the start of the day and the in_between
+     * has to be more than -1 day
+     */
+    in_between = g_date_time_difference(date, initial_date) > 0 &&
+                 g_date_time_difference(end_date, date) / G_TIME_SPAN_DAY > -1;
 
-  g_date_time_unref(date);
+    g_date_time_unref(date);
 
-  return in_between;
+    return in_between;
 }
 
 static const gchar *get_text_for_days_ago(gint days,
-                                          gboolean prefix_with_since) {
-  if (days < 7) {
-    /* days */
-    return prefix_with_since
+        gboolean prefix_with_since) {
+    if (days < 7) {
+        /* days */
+        return prefix_with_since
                ? ngettext("Since %d day ago", "Since %d days ago", days)
                : ngettext("%d day ago", "%d days ago", days);
-  }
-  if (days < 30) {
-    /* weeks */
-    return prefix_with_since
+    }
+    if (days < 30) {
+        /* weeks */
+        return prefix_with_since
                ? ngettext("Since last week", "Since %d weeks ago", days / 7)
                : ngettext("Last week", "%d weeks ago", days / 7);
-  }
-  if (days < 365) {
-    /* months */
-    return prefix_with_since
+    }
+    if (days < 365) {
+        /* months */
+        return prefix_with_since
                ? ngettext("Since last month", "Since %d months ago", days / 30)
                : ngettext("Last month", "%d months ago", days / 30);
-  }
+    }
 
-  /* years */
-  return prefix_with_since
-             ? ngettext("Since last year", "Since %d years ago", days / 365)
-             : ngettext("Last year", "%d years ago", days / 365);
+    /* years */
+    return prefix_with_since
+           ? ngettext("Since last year", "Since %d years ago", days / 365)
+           : ngettext("Last year", "%d years ago", days / 365);
 }
 
 gchar *get_text_for_date_range(GPtrArray *date_range,
                                gboolean prefix_with_since) {
-  gint days;
-  gint normalized;
-  GDateTime *initial_date;
-  GDateTime *end_date;
-  gchar *formatted_date;
-  gchar *label;
+    gint days;
+    gint normalized;
+    GDateTime *initial_date;
+    GDateTime *end_date;
+    gchar *formatted_date;
+    gchar *label;
 
-  if (!date_range) {
-    return NULL;
-  }
-
-  initial_date = g_ptr_array_index(date_range, 0);
-  end_date = g_ptr_array_index(date_range, 1);
-  days = g_date_time_difference(end_date, initial_date) / G_TIME_SPAN_DAY;
-  formatted_date = g_date_time_format(initial_date, "%x");
-
-  if (days < 1) {
-    label = g_strdup(formatted_date);
-  } else {
-    if (days < 7) {
-      /* days */
-      normalized = days;
-    } else if (days < 30) {
-      /* weeks */
-      normalized = days / 7;
-    } else if (days < 365) {
-      /* months */
-      normalized = days / 30;
-    } else {
-      /* years */
-      normalized = days / 365;
+    if (!date_range) {
+        return NULL;
     }
+
+    initial_date = g_ptr_array_index(date_range, 0);
+    end_date = g_ptr_array_index(date_range, 1);
+    days = g_date_time_difference(end_date, initial_date) / G_TIME_SPAN_DAY;
+    formatted_date = g_date_time_format(initial_date, "%x");
+
+    if (days < 1) {
+        label = g_strdup(formatted_date);
+    } else {
+        if (days < 7) {
+            /* days */
+            normalized = days;
+        } else if (days < 30) {
+            /* weeks */
+            normalized = days / 7;
+        } else if (days < 365) {
+            /* months */
+            normalized = days / 30;
+        } else {
+            /* years */
+            normalized = days / 365;
+        }
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-    label = g_strdup_printf(get_text_for_days_ago(days, prefix_with_since),
-                            normalized);
+        label = g_strdup_printf(get_text_for_days_ago(days, prefix_with_since),
+                                normalized);
 #pragma GCC diagnostic pop
-  }
+    }
 
-  g_free(formatted_date);
+    g_free(formatted_date);
 
-  return label;
+    return label;
 }
 
 GtkDialog *show_dialog(const gchar *primary_text, const gchar *secondary_text,
                        GtkWindow *parent, GtkMessageType type) {
-  GtkWidget *dialog;
+    GtkWidget *dialog;
 
-  g_return_val_if_fail(parent != NULL, NULL);
+    g_return_val_if_fail(parent != NULL, NULL);
 
-  dialog = gtk_message_dialog_new(parent, GTK_DIALOG_MODAL, type,
-                                  GTK_BUTTONS_OK, "%s", primary_text);
+    dialog = gtk_message_dialog_new(parent, GTK_DIALOG_MODAL, type,
+                                    GTK_BUTTONS_OK, "%s", primary_text);
 
-  gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s",
-                                           secondary_text);
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s",
+            secondary_text);
 
-  gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
+    gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
-  gtk_widget_show(dialog);
+    gtk_widget_show(dialog);
 
-  g_signal_connect(GTK_DIALOG(dialog), "response",
-                   G_CALLBACK(gtk_widget_destroy), NULL);
+    g_signal_connect(GTK_DIALOG(dialog), "response",
+                     G_CALLBACK(gtk_widget_destroy), NULL);
 
-  return GTK_DIALOG(dialog);
+    return GTK_DIALOG(dialog);
 }
 
 static void notify_unmount_done(GMountOperation *op, const gchar *message) {
-  NautilusApplication *application;
-  gchar *notification_id;
+    NautilusApplication *application;
+    gchar *notification_id;
 
-  application = nautilus_application_get_default();
-  notification_id = g_strdup_printf("nautilus-mount-operation-%p", op);
-  nautilus_application_withdraw_notification(application, notification_id);
+    application = nautilus_application_get_default();
+    notification_id = g_strdup_printf("nautilus-mount-operation-%p", op);
+    nautilus_application_withdraw_notification(application, notification_id);
 
-  if (message != NULL) {
-    GNotification *unplug;
-    GIcon *icon;
-    gchar **strings;
+    if (message != NULL) {
+        GNotification *unplug;
+        GIcon *icon;
+        gchar **strings;
 
-    strings = g_strsplit(message, "\n", 0);
-    icon = g_themed_icon_new("media-removable-symbolic");
-    unplug = g_notification_new(strings[0]);
-    g_notification_set_body(unplug, strings[1]);
-    g_notification_set_icon(unplug, icon);
+        strings = g_strsplit(message, "\n", 0);
+        icon = g_themed_icon_new("media-removable-symbolic");
+        unplug = g_notification_new(strings[0]);
+        g_notification_set_body(unplug, strings[1]);
+        g_notification_set_icon(unplug, icon);
 
-    nautilus_application_send_notification(application, notification_id,
-                                           unplug);
-    g_object_unref(unplug);
-    g_object_unref(icon);
-    g_strfreev(strings);
-  }
+        nautilus_application_send_notification(application, notification_id,
+                                               unplug);
+        g_object_unref(unplug);
+        g_object_unref(icon);
+        g_strfreev(strings);
+    }
 
-  g_free(notification_id);
+    g_free(notification_id);
 }
 
 static void notify_unmount_show(GMountOperation *op, const gchar *message) {
-  NautilusApplication *application;
-  GNotification *unmount;
-  gchar *notification_id;
-  GIcon *icon;
-  gchar **strings;
+    NautilusApplication *application;
+    GNotification *unmount;
+    gchar *notification_id;
+    GIcon *icon;
+    gchar **strings;
 
-  application = nautilus_application_get_default();
-  strings = g_strsplit(message, "\n", 0);
-  icon = g_themed_icon_new("media-removable");
+    application = nautilus_application_get_default();
+    strings = g_strsplit(message, "\n", 0);
+    icon = g_themed_icon_new("media-removable");
 
-  unmount = g_notification_new(strings[0]);
-  g_notification_set_body(unmount, strings[1]);
-  g_notification_set_icon(unmount, icon);
-  g_notification_set_priority(unmount, G_NOTIFICATION_PRIORITY_URGENT);
+    unmount = g_notification_new(strings[0]);
+    g_notification_set_body(unmount, strings[1]);
+    g_notification_set_icon(unmount, icon);
+    g_notification_set_priority(unmount, G_NOTIFICATION_PRIORITY_URGENT);
 
-  notification_id = g_strdup_printf("nautilus-mount-operation-%p", op);
-  nautilus_application_send_notification(application, notification_id, unmount);
-  g_object_unref(unmount);
-  g_object_unref(icon);
-  g_strfreev(strings);
-  g_free(notification_id);
+    notification_id = g_strdup_printf("nautilus-mount-operation-%p", op);
+    nautilus_application_send_notification(application, notification_id, unmount);
+    g_object_unref(unmount);
+    g_object_unref(icon);
+    g_strfreev(strings);
+    g_free(notification_id);
 }
 
 void show_unmount_progress_cb(GMountOperation *op, const gchar *message,
                               gint64 time_left, gint64 bytes_left,
                               gpointer user_data) {
-  if (bytes_left == 0) {
-    notify_unmount_done(op, message);
-  } else {
-    notify_unmount_show(op, message);
-  }
+    if (bytes_left == 0) {
+        notify_unmount_done(op, message);
+    } else {
+        notify_unmount_show(op, message);
+    }
 }
 
 void show_unmount_progress_aborted_cb(GMountOperation *op, gpointer user_data) {
-  notify_unmount_done(op, NULL);
+    notify_unmount_done(op, NULL);
 }

@@ -26,57 +26,57 @@
 #include "nautilus-tree-view-drag-dest.h"
 
 struct NautilusListViewDetails {
-  GtkTreeView *tree_view;
-  NautilusListModel *model;
+    GtkTreeView *tree_view;
+    NautilusListModel *model;
 
-  GtkTreeViewColumn *file_name_column;
-  int file_name_column_num;
+    GtkTreeViewColumn *file_name_column;
+    int file_name_column_num;
 
-  GtkCellRendererPixbuf *pixbuf_cell;
-  GtkCellRendererText *file_name_cell;
-  GList *cells;
+    GtkCellRendererPixbuf *pixbuf_cell;
+    GtkCellRendererText *file_name_cell;
+    GList *cells;
 
-  NautilusListZoomLevel zoom_level;
+    NautilusListZoomLevel zoom_level;
 
-  NautilusTreeViewDragDest *drag_dest;
+    NautilusTreeViewDragDest *drag_dest;
 
-  GtkTreePath *first_click_path; /* Both clicks in a double click need to be on
+    GtkTreePath *first_click_path; /* Both clicks in a double click need to be on
                               the same row */
 
-  GtkTreePath
-      *new_selection_path; /* Path of the new selection after removing a file */
+    GtkTreePath
+    *new_selection_path; /* Path of the new selection after removing a file */
 
-  GtkTreePath *hover_path;
+    GtkTreePath *hover_path;
 
-  gint last_event_button_x;
-  gint last_event_button_y;
+    gint last_event_button_x;
+    gint last_event_button_y;
 
-  guint drag_button;
-  int drag_x;
-  int drag_y;
+    guint drag_button;
+    int drag_x;
+    int drag_y;
 
-  gboolean drag_started;
-  gboolean row_selected_on_button_down;
-  gboolean active;
-  NautilusDragInfo *drag_source_info;
+    gboolean drag_started;
+    gboolean row_selected_on_button_down;
+    gboolean active;
+    NautilusDragInfo *drag_source_info;
 
-  GHashTable *columns;
-  GtkWidget *column_editor;
+    GHashTable *columns;
+    GtkWidget *column_editor;
 
-  char *original_name;
+    char *original_name;
 
-  gulong clipboard_handler_id;
+    gulong clipboard_handler_id;
 
-  GQuark last_sort_attr;
+    GQuark last_sort_attr;
 
-  GRegex *regex;
+    GRegex *regex;
 
-  NautilusTagManager *tag_manager;
-  GCancellable *starred_cancellable;
+    NautilusTagManager *tag_manager;
+    GCancellable *starred_cancellable;
 
-  GtkGesture *tree_view_drag_gesture;
-  GtkGesture *tree_view_multi_press_gesture;
-  GtkEventController *motion_controller;
-  GtkEventController *key_controller;
-  GtkGesture *long_press_gesture;
+    GtkGesture *tree_view_drag_gesture;
+    GtkGesture *tree_view_multi_press_gesture;
+    GtkEventController *motion_controller;
+    GtkEventController *key_controller;
+    GtkGesture *long_press_gesture;
 };
