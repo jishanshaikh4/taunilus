@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<gnome-version>
+ <platform>41</platform>
+ <minor>1</minor>
+ <micro>0</micro>
+ <distributor>GNOME.Org</distributor>
+ <date>2021-12-31</date>
+</gnome-version>

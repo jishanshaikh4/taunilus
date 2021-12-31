@@ -1,0 +1,7 @@
+[ExtractorRule]
+ModulePath=libextract-gif.so
+MimeTypes=image/gif
+FallbackRdfTypes=nfo:Image;nmm:Photo;
+Graph=tracker:Pictures
+Hash=47aac3c31c38138f6d9afc197fa996ecc9f977bc174c76412848a477f04b4cb4
+

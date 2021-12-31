@@ -1,0 +1,12 @@
+prefix=/app
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+exec_prefix=${prefix}
+
+Name: gnome-autoar
+Description: GTK+ widgets for gnome-autoar library
+Version: 0.4.1
+Requires: gtk+-3.0 >=  3.2
+Libs: -L${libdir} -lgnome-autoar-gtk-0
+Cflags: -I${includedir}/gnome-autoar-0

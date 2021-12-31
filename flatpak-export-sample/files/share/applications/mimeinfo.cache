@@ -1,0 +1,25 @@
+[MIME Cache]
+application/bzip2=org.gnome.NautilusDevel.desktop;
+application/gzip=org.gnome.NautilusDevel.desktop;
+application/vnd.rar=org.gnome.NautilusDevel.desktop;
+application/x-7z-compressed=org.gnome.NautilusDevel.desktop;
+application/x-7z-compressed-tar=org.gnome.NautilusDevel.desktop;
+application/x-bzip=org.gnome.NautilusDevel.desktop;
+application/x-bzip-compressed-tar=org.gnome.NautilusDevel.desktop;
+application/x-compress=org.gnome.NautilusDevel.desktop;
+application/x-compressed-tar=org.gnome.NautilusDevel.desktop;
+application/x-cpio=org.gnome.NautilusDevel.desktop;
+application/x-gzip=org.gnome.NautilusDevel.desktop;
+application/x-lha=org.gnome.NautilusDevel.desktop;
+application/x-lzip=org.gnome.NautilusDevel.desktop;
+application/x-lzip-compressed-tar=org.gnome.NautilusDevel.desktop;
+application/x-lzma=org.gnome.NautilusDevel.desktop;
+application/x-lzma-compressed-tar=org.gnome.NautilusDevel.desktop;
+application/x-tar=org.gnome.NautilusDevel.desktop;
+application/x-tarz=org.gnome.NautilusDevel.desktop;
+application/x-xar=org.gnome.NautilusDevel.desktop;
+application/x-xz=org.gnome.NautilusDevel.desktop;
+application/x-xz-compressed-tar=org.gnome.NautilusDevel.desktop;
+application/zip=org.gnome.NautilusDevel.desktop;
+inode/directory=org.gnome.NautilusDevel.desktop;
+x-content/unix-software=nautilus-autorun-software.desktop;

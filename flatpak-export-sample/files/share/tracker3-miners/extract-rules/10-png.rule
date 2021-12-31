@@ -1,0 +1,7 @@
+[ExtractorRule]
+ModulePath=libextract-png.so
+MimeTypes=image/png;sketch/png;
+FallbackRdfTypes=nfo:Image;nmm:Photo;
+Graph=tracker:Pictures
+Hash=6d026c45622f9b5536dd85a3ac4e313cf4544ed38f47fe21ee3a8a35a4ea91dd
+

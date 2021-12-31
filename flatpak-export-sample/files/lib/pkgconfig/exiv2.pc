@@ -1,0 +1,11 @@
+prefix=/app
+exec_prefix=${prefix}
+libdir=/app/lib
+includedir=${prefix}/include
+
+Name: exiv2
+Description: Exif/IPTC/Xmp C++ metadata library and tools plus ICC Profiles, Previews and more.
+Version: 0.27.5
+URL: https://exiv2.org
+Libs: -L${libdir} -lexiv2
+Cflags: -I${includedir}
