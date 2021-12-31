@@ -21,39 +21,40 @@
 #ifndef __NAUTILUS_GTK_PLACES_SIDEBAR_PRIVATE_H__
 #define __NAUTILUS_GTK_PLACES_SIDEBAR_PRIVATE_H__
 
-#include <glib.h>
 #include "nautilusgtkplacessidebar.h"
+#include <glib.h>
 
 G_BEGIN_DECLS
 
 /* Keep order, since it's used for the sort functions */
 typedef enum {
-    SECTION_INVALID,
-    SECTION_COMPUTER,
-    SECTION_MOUNTS,
-    SECTION_CLOUD,
-    SECTION_BOOKMARKS,
-    SECTION_OTHER_LOCATIONS,
-    N_SECTIONS
+  SECTION_INVALID,
+  SECTION_COMPUTER,
+  SECTION_MOUNTS,
+  SECTION_CLOUD,
+  SECTION_BOOKMARKS,
+  SECTION_OTHER_LOCATIONS,
+  N_SECTIONS
 } NautilusGtkPlacesSidebarSectionType;
 
 typedef enum {
-    PLACES_INVALID,
-    PLACES_BUILT_IN,
-    PLACES_XDG_DIR,
-    PLACES_MOUNTED_VOLUME,
-    PLACES_BOOKMARK,
-    PLACES_HEADING,
-    PLACES_CONNECT_TO_SERVER,
-    PLACES_ENTER_LOCATION,
-    PLACES_DROP_FEEDBACK,
-    PLACES_BOOKMARK_PLACEHOLDER,
-    PLACES_OTHER_LOCATIONS,
-    PLACES_STARRED_LOCATION,
-    N_PLACES
+  PLACES_INVALID,
+  PLACES_BUILT_IN,
+  PLACES_XDG_DIR,
+  PLACES_MOUNTED_VOLUME,
+  PLACES_BOOKMARK,
+  PLACES_HEADING,
+  PLACES_CONNECT_TO_SERVER,
+  PLACES_ENTER_LOCATION,
+  PLACES_DROP_FEEDBACK,
+  PLACES_BOOKMARK_PLACEHOLDER,
+  PLACES_OTHER_LOCATIONS,
+  PLACES_STARRED_LOCATION,
+  N_PLACES
 } NautilusGtkPlacesSidebarPlaceType;
 
-gchar *nautilus_gtk_places_sidebar_get_location_title (NautilusGtkPlacesSidebar *sidebar);
+gchar *nautilus_gtk_places_sidebar_get_location_title(
+    NautilusGtkPlacesSidebar *sidebar);
 
 G_END_DECLS
 
