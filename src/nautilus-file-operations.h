@@ -86,14 +86,14 @@ void nautilus_file_set_permissions_recursive(
     NautilusOpCallback callback, gpointer callback_data);
 
 void nautilus_file_operations_unmount_mount(GtkWindow *parent_window,
-                                            GMount *mount, gboolean eject,
-                                            gboolean check_trash);
+        GMount *mount, gboolean eject,
+        gboolean check_trash);
 void nautilus_file_operations_unmount_mount_full(
     GtkWindow *parent_window, GMount *mount, GMountOperation *mount_operation,
     gboolean eject, gboolean check_trash, NautilusUnmountCallback callback,
     gpointer callback_data);
 void nautilus_file_operations_mount_volume(GtkWindow *parent_window,
-                                           GVolume *volume);
+        GVolume *volume);
 void nautilus_file_operations_mount_volume_full(
     GtkWindow *parent_window, GVolume *volume,
     NautilusMountCallback mount_callback, GObject *mount_callback_data_object);
