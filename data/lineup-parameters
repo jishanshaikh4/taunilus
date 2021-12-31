@@ -14,7 +14,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 # Based on original C lineup-parameters by Sébastien Wilmet <swilmet@gnome.org>
 # Rewritten in Python to allow simple execution from source directory.
 #
@@ -53,7 +52,6 @@
 # }
 #
 # TODO: support "..." vararg parameter
-
 import argparse
 import re
 import sys
