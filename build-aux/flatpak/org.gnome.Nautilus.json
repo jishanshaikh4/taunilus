@@ -4,11 +4,7 @@
   "runtime-version": "master",
   "sdk": "org.gnome.Sdk",
   "command": "nautilus",
-  "tags": [
-    "devel",
-    "development",
-    "nightly"
-  ],
+  "tags": ["devel", "development", "nightly"],
   "finish-args": [
     "--share=ipc",
     "--socket=x11",
@@ -133,11 +129,7 @@
       "buildsystem": "meson",
       "builddir": true,
       "name": "nautilus",
-      "config-opts": [
-        "--libdir=/app/lib",
-        "-Dprofile=Devel",
-        "-Dtests=all"
-      ],
+      "config-opts": ["--libdir=/app/lib", "-Dprofile=Devel", "-Dtests=all"],
       "sources": [
         {
           "type": "git",
