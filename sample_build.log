@@ -1,0 +1,528 @@
+flatpak-builder --arch=x86_64 --ccache --force-clean --state-dir /home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder --download-only --disable-updates --stop-at=nautilus /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main /home/SYSTEM-USERNAME/taunilus/build-aux/flatpak/org.gnome.Nautilus.json
+Emptying app dir '/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main'
+error: org.gnome.Sdk/x86_64/master not installed
+error: org.gnome.Sdk/x86_64/master not installed
+error: org.gnome.Platform/x86_64/master not installed
+Downloading sources
+Stopping at module nautilus
+flatpak-builder --arch=x86_64 --ccache --force-clean --disable-updates --disable-download --state-dir /home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder --stop-at=nautilus /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main /home/SYSTEM-USERNAME/taunilus/build-aux/flatpak/org.gnome.Nautilus.json
+Starting build of org.gnome.NautilusDevel
+Cache hit for exiv2, skipping build
+Cache hit for gexiv2, skipping build
+Cache hit for tracker-miners, skipping build
+Cache hit for gnome-desktop, skipping build
+Cache hit for gnome-autoar, skipping build
+Cache hit for libportal, skipping build
+Stopping at module nautilus
+Everything cached, checking out from cache
+Pruning cache
+flatpak build --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[1/159] Generating config.h with a custom command
+flatpak build --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[0/1] Regenerating build files.
+The Meson build system
+Version: 0.59.4
+Source dir: /home/SYSTEM-USERNAME/taunilus
+Build dir: /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main
+Build type: native build
+Project name: nautilus
+Project version: 41.1
+C compiler for the host machine: ccache cc (gcc 11.2.0 "cc (GCC) 11.2.0")
+C linker for the host machine: cc ld.bfd 2.37
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Compiler for C supports arguments -DGLIB_DISABLE_DEPRECATION_WARNINGS: YES (cached)
+Compiler for C supports arguments -Wall: YES (cached)
+Compiler for C supports arguments -Wduplicated-branches: YES (cached)
+Compiler for C supports arguments -Wduplicated-cond: YES (cached)
+Compiler for C supports arguments -Wlogical-op: YES (cached)
+Compiler for C supports arguments -Werror=declaration-after-statement: YES (cached)
+Compiler for C supports arguments -Werror=empty-body: YES (cached)
+Compiler for C supports arguments -Werror=format=2: YES (cached)
+Compiler for C supports arguments -Werror=implicit-function-declaration: YES (cached)
+Compiler for C supports arguments -Werror=incompatible-pointer-types: YES (cached)
+Compiler for C supports arguments -Werror=init-self: YES (cached)
+Compiler for C supports arguments -Werror=missing-include-dirs: YES (cached)
+Compiler for C supports arguments -Werror=missing-prototypes: YES (cached)
+Compiler for C supports arguments -Werror=pointer-arith: YES (cached)
+Compiler for C supports arguments -Werror=sequence-point: YES (cached)
+Compiler for C supports arguments -Werror=shadow: YES (cached)
+Compiler for C supports arguments -Werror=strict-prototypes: YES (cached)
+Compiler for C supports arguments -Werror=undef: YES (cached)
+Compiler for C supports arguments -Werror=uninitialized: YES (cached)
+Compiler for C supports arguments -Wno-error=maybe-uninitialized: YES (cached)
+../../../../../../taunilus/meson.build:78: WARNING: Consider using the built-in warning_level option instead of using "-Wall".
+Library m found: YES
+Dependency gexiv2 found: YES 0.14.0 (cached)
+Dependency gstreamer-tag-1.0 found: YES 1.18.5 (cached)
+Dependency gstreamer-pbutils-1.0 found: YES 1.18.5 (cached)
+Dependency gio-2.0 found: YES 2.71.0 (cached)
+Dependency gio-unix-2.0 found: YES 2.71.0 (cached)
+Dependency glib-2.0 found: YES 2.71.0 (cached)
+Dependency gmodule-no-export-2.0 found: YES 2.71.0 (cached)
+Dependency gnome-autoar-0 found: YES 0.4.1 (cached)
+Dependency gnome-desktop-3.0 found: YES 41.1 (cached)
+Dependency gtk+-3.0 found: YES 3.24.31 (cached)
+Dependency libhandy-1 found: YES 1.5.0 (cached)
+Dependency libportal found: YES 0.5 (cached)
+Dependency libportal-gtk3 found: YES 0.5 (cached)
+Dependency tracker-sparql-3.0 found: YES 3.3.0.alpha (cached)
+Dependency libxml-2.0 found: YES 2.9.12 (cached)
+Configuring config.h.in using configuration
+Program /usr/bin/meson found: YES (/usr/bin/meson)
+Configuring org.gnome.Nautilus.desktop.in using configuration
+Configuring org.gnome.Nautilus.appdata.xml.in using configuration
+Configuring org.gnome.NautilusDevel.service using configuration
+Configuring org.freedesktop.FileManager1.service using configuration
+Configuring org.gnome.NautilusDevel.search-provider.ini using configuration
+Program glib-compile-schemas found: YES (/usr/bin/glib-compile-schemas)
+Program desktop-file-validate found: YES (/usr/bin/desktop-file-validate)
+Program appstream-util found: YES (/usr/bin/appstream-util)
+Configuring org.gnome.NautilusDevel.domain.rule using configuration
+Configuring org.gnome.NautilusDevel.Tracker3.Miner.Extract.service using configuration
+Configuring org.gnome.NautilusDevel.Tracker3.Miner.Files.service using configuration
+Program glib-mkenums found: YES (/usr/bin/glib-mkenums)
+Program glib-mkenums found: YES (/usr/bin/glib-mkenums)
+Dependency gobject-introspection-1.0 found: YES 1.71.0 (cached)
+Dependency gobject-introspection-1.0 found: YES 1.71.0 (cached)
+Program g-ir-scanner found: YES (/usr/bin/g-ir-scanner)
+Dependency gobject-introspection-1.0 found: YES 1.71.0 (cached)
+Program g-ir-compiler found: YES (/usr/bin/g-ir-compiler)
+Found pkg-config: /usr/bin/pkg-config (1.8.0)
+Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Program glib-mkenums found: YES (/usr/bin/glib-mkenums)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Dependency tracker-testutils-3.0 found: YES 3.3.0.alpha (cached)
+Program /usr/lib/x86_64-linux-gnu/tracker-3.0/trackertestutils/tracker-sandbox found: YES (/usr/lib/x86_64-linux-gnu/tracker-3.0/trackertestutils/tracker-sandbox)
+Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Library m found: YES
+Program build-aux/meson/postinstall.py found: YES (/home/SYSTEM-USERNAME/taunilus/build-aux/meson/postinstall.py)
+Build targets in project: 49
+
+Found ninja-1.10.2 at /usr/bin/ninja
+[3/3] Generating org.gnome.NautilusDevel.desktop_data_merge with a custom command
+flatpak build --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja install
+[1/2] Installing files.
+Installing data/org.gnome.NautilusDevel.desktop to /app/share/applications
+Installing data/nautilus-autorun-software.desktop to /app/share/applications
+Installing data/org.gnome.NautilusDevel.appdata.xml to /app/share/metainfo
+Installing libnautilus-extension/nautilus-extension-enum-types.h to /app/include/nautilus/libnautilus-extension
+Installing libnautilus-extension/libnautilus-extension.so.1.5.0 to /app/lib
+Installing libnautilus-extension/Nautilus-3.0.gir to /app/share/gir-1.0
+Installing libnautilus-extension/Nautilus-3.0.typelib to /app/lib/girepository-1.0
+Installing src/nautilus to /app/bin
+Installing src/nautilus-autorun-software to /app/bin
+Installing extensions/image-properties/libnautilus-image-properties.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/audio-video-properties/libtotem-properties-page.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/sendto/libnautilus-sendto.so to /app/lib/nautilus/extensions-3.0
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension.h to /app/include/nautilus
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-file-info.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-info-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-location-widget-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension-types.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-item.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/scalable/apps/org.gnome.NautilusDevel.svg to /app/share/icons/hicolor/scalable/apps
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/symbolic/apps/org.gnome.Nautilus-symbolic.svg to /app/share/icons/hicolor/symbolic/apps
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.freedesktop.FileManager1.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.search-provider.ini to /app/share/gnome-shell/search-providers
+Installing /home/SYSTEM-USERNAME/taunilus/data/org.gnome.nautilus.gschema.xml to /app/share/glib-2.0/schemas
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.description to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.ontology to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.domain.rule to /app/share/tracker3/domain-ontologies
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Extract.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Files.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/meson-private/libnautilus-extension.pc to /app/lib/pkgconfig
+Running custom install script '/usr/bin/meson --internal gettext install --subdir=po --localedir=share/locale --pkgname=nautilus'
+Running custom install script '/home/SYSTEM-USERNAME/taunilus/build-aux/meson/postinstall.py'
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[1/159] Generating config.h with a custom command
+flatpak build-init --type=app --arch=x86_64 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main org.gnome.NautilusDevel org.gnome.Sdk org.gnome.Platform master
+flatpak-builder --arch=x86_64 --ccache --force-clean --state-dir /home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder --download-only --stop-at=nautilus /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main /home/SYSTEM-USERNAME/taunilus/build-aux/flatpak/org.gnome.Nautilus.json
+Emptying app dir '/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main'
+error: org.gnome.Sdk/x86_64/master not installed
+error: org.gnome.Sdk/x86_64/master not installed
+error: org.gnome.Platform/x86_64/master not installed
+Downloading sources
+Fetching git repo https://github.com/Exiv2/exiv2.git, ref refs/heads/0.27-maintenance
+remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+Fetching git repo https://gitlab.gnome.org/GNOME/gexiv2.git, ref refs/heads/gexiv2-0.14
+remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+Fetching git repo https://gitlab.gnome.org/GNOME/tracker-miners.git, ref refs/heads/master
+remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+Fetching git repo https://gitlab.gnome.org/GNOME/gnome-desktop.git, ref refs/heads/master
+remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+Fetching git repo https://gitlab.gnome.org/GNOME/gnome-autoar.git, ref refs/heads/master
+remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+Fetching git repo https://github.com/flatpak/libportal.git, ref refs/heads/master
+remote: Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+Stopping at module nautilus
+flatpak-builder --arch=x86_64 --ccache --force-clean --disable-updates --disable-download --state-dir /home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder --stop-at=nautilus /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main /home/SYSTEM-USERNAME/taunilus/build-aux/flatpak/org.gnome.Nautilus.json
+Starting build of org.gnome.NautilusDevel
+Cache hit for exiv2, skipping build
+Cache hit for gexiv2, skipping build
+Cache hit for tracker-miners, skipping build
+Cache hit for gnome-desktop, skipping build
+Cache hit for gnome-autoar, skipping build
+Cache hit for libportal, skipping build
+Stopping at module nautilus
+Everything cached, checking out from cache
+Pruning cache
+flatpak build --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main meson /home/SYSTEM-USERNAME/taunilus . --prefix /app --libdir=/app/lib -Dprofile=Devel -Dtests=all
+The Meson build system
+Version: 0.59.4
+Source dir: /home/SYSTEM-USERNAME/taunilus
+Build dir: /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main
+Build type: native build
+Project name: nautilus
+Project version: 41.1
+C compiler for the host machine: ccache cc (gcc 11.2.0 "cc (GCC) 11.2.0")
+C linker for the host machine: cc ld.bfd 2.37
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Compiler for C supports arguments -DGLIB_DISABLE_DEPRECATION_WARNINGS: YES 
+Compiler for C supports arguments -Wall: YES 
+Compiler for C supports arguments -Wduplicated-branches: YES 
+Compiler for C supports arguments -Wduplicated-cond: YES 
+Compiler for C supports arguments -Wlogical-op: YES 
+Compiler for C supports arguments -Werror=declaration-after-statement: YES 
+Compiler for C supports arguments -Werror=empty-body: YES 
+Compiler for C supports arguments -Werror=format=2: YES 
+Compiler for C supports arguments -Werror=implicit-function-declaration: YES 
+Compiler for C supports arguments -Werror=incompatible-pointer-types: YES 
+Compiler for C supports arguments -Werror=init-self: YES 
+Compiler for C supports arguments -Werror=missing-include-dirs: YES 
+Compiler for C supports arguments -Werror=missing-prototypes: YES 
+Compiler for C supports arguments -Werror=pointer-arith: YES 
+Compiler for C supports arguments -Werror=sequence-point: YES 
+Compiler for C supports arguments -Werror=shadow: YES 
+Compiler for C supports arguments -Werror=strict-prototypes: YES 
+Compiler for C supports arguments -Werror=undef: YES 
+Compiler for C supports arguments -Werror=uninitialized: YES 
+Compiler for C supports arguments -Wno-error=maybe-uninitialized: YES 
+../../../../../../taunilus/meson.build:78: WARNING: Consider using the built-in warning_level option instead of using "-Wall".
+Library m found: YES
+Found pkg-config: /usr/bin/pkg-config (1.8.0)
+Run-time dependency gexiv2 found: YES 0.14.0
+Run-time dependency gstreamer-tag-1.0 found: YES 1.18.5
+Run-time dependency gstreamer-pbutils-1.0 found: YES 1.18.5
+Run-time dependency gio-2.0 found: YES 2.71.0
+Run-time dependency gio-unix-2.0 found: YES 2.71.0
+Run-time dependency glib-2.0 found: YES 2.71.0
+Run-time dependency gmodule-no-export-2.0 found: YES 2.71.0
+Run-time dependency gnome-autoar-0 found: YES 0.4.1
+Run-time dependency gnome-desktop-3.0 found: YES 41.1
+Run-time dependency gtk+-3.0 found: YES 3.24.31
+Run-time dependency libhandy-1 found: YES 1.5.0
+Run-time dependency libportal found: YES 0.5
+Run-time dependency libportal-gtk3 found: YES 0.5
+Run-time dependency tracker-sparql-3.0 found: YES 3.3.0.alpha
+Run-time dependency libxml-2.0 found: YES 2.9.12
+Configuring config.h.in using configuration
+Program /usr/bin/meson found: YES (/usr/bin/meson)
+Configuring org.gnome.Nautilus.desktop.in using configuration
+Configuring org.gnome.Nautilus.appdata.xml.in using configuration
+Configuring org.gnome.NautilusDevel.service using configuration
+Configuring org.freedesktop.FileManager1.service using configuration
+Configuring org.gnome.NautilusDevel.search-provider.ini using configuration
+Program glib-compile-schemas found: YES (/usr/bin/glib-compile-schemas)
+Program desktop-file-validate found: YES (/usr/bin/desktop-file-validate)
+Program appstream-util found: YES (/usr/bin/appstream-util)
+Configuring org.gnome.NautilusDevel.domain.rule using configuration
+Configuring org.gnome.NautilusDevel.Tracker3.Miner.Extract.service using configuration
+Configuring org.gnome.NautilusDevel.Tracker3.Miner.Files.service using configuration
+Program glib-mkenums found: YES (/usr/bin/glib-mkenums)
+Program glib-mkenums found: YES (/usr/bin/glib-mkenums)
+Run-time dependency gobject-introspection-1.0 found: YES 1.71.0
+Dependency gobject-introspection-1.0 found: YES 1.71.0 (cached)
+Program g-ir-scanner found: YES (/usr/bin/g-ir-scanner)
+Dependency gobject-introspection-1.0 found: YES 1.71.0 (cached)
+Program g-ir-compiler found: YES (/usr/bin/g-ir-compiler)
+Found pkg-config: /usr/bin/pkg-config (1.8.0)
+Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Program glib-mkenums found: YES (/usr/bin/glib-mkenums)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Program gdbus-codegen found: YES (/usr/bin/gdbus-codegen)
+Run-time dependency tracker-testutils-3.0 found: YES 3.3.0.alpha
+Program /usr/lib/x86_64-linux-gnu/tracker-3.0/trackertestutils/tracker-sandbox found: YES (/usr/lib/x86_64-linux-gnu/tracker-3.0/trackertestutils/tracker-sandbox)
+Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Library m found: YES
+Program build-aux/meson/postinstall.py found: YES (/home/SYSTEM-USERNAME/taunilus/build-aux/meson/postinstall.py)
+Build targets in project: 49
+
+Found ninja-1.10.2 at /usr/bin/ninja
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[29/234] Generating nautilus-enum-types.h with a custom command (wr[30/234] Compiling C object libnautilus-extension/libnautilus-exten[30/234] Linking target libnautilus-extension/libnautilus-extension[31/234] Generating nautilus-freedesktop-generated.c with a custom [32/234] Generating symb[57/234] Compiling C object src/lib...gtk_nautilusgtkbookmarksmanager.c.o
+In file included from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:29:
+/usr/include/glib-2.0/glib/gi18n-lib.h:30: warning: "_" redefined
+   30 | #define  _(String) ((char *) g_dgettext (GETTEXT_PACKAGE, String))
+      | 
+In file included from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:24:
+/usr/include/glib-2.0/glib/gi18n.h:26: note: this is the location of the previous definition
+   26 | #define  _(String) gettext (String)
+      | 
+In file included from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:29:
+/usr/include/glib-2.0/glib/gi18n-lib.h:31: warning: "Q_" redefined
+   31 | #define Q_(String) g_dpgettext (GETTEXT_PACKAGE, String, 0)
+      | 
+In file included from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:24:
+/usr/include/glib-2.0/glib/gi18n.h:27: note: this is the location of the previous definition
+   27 | #define Q_(String) g_dpgettext (NULL, String, 0)
+      | 
+In file included from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:29:
+/usr/include/glib-2.0/glib/gi18n-lib.h:33: warning: "C_" redefined
+   33 | #define C_(Context,String) g_dpgettext (GETTEXT_PACKAGE, Context "\004" String, strlen (Context) + 1)
+      | 
+In file included from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:24:
+/usr/include/glib-2.0/glib/gi18n.h:29: note: this is the location of the previous definition
+   29 | #define C_(Context,String) g_dpgettext (NULL, Context "\004" String, strlen (Context) + 1)
+      | 
+../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c: In function ‘bookmarks_file_changed’:
+../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:174:5: warning: ‘gdk_threads_enter’ is deprecated [-Wdeprecated-declarations]
+  174 |     gdk_threads_enter();
+      |     ^~~~~~~~~~~~~~~~~
+In file included from /usr/include/gtk-3.0/gdk/gdk.h:61,
+                 from /usr/include/gtk-3.0/gtk/gtk.h:30,
+                 from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:25:
+/usr/include/gtk-3.0/gdk/gdkthreads.h:46:10: note: declared here
+   46 | void     gdk_threads_enter                    (void);
+      |          ^~~~~~~~~~~~~~~~~
+../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:176:5: warning: ‘gdk_threads_leave’ is deprecated [-Wdeprecated-declarations]
+  176 |     gdk_threads_leave();
+      |     ^~~~~~~~~~~~~~~~~
+In file included from /usr/include/gtk-3.0/gdk/gdk.h:61,
+                 from /usr/include/gtk-3.0/gtk/gtk.h:30,
+                 from ../../../../../../taunilus/src/gtk/nautilusgtkbookmarksmanager.c:25:
+/usr/include/gtk-3.0/gdk/gdkthreads.h:48:10: note: declared here
+   48 | void     gdk_threads_leave                    (void);
+      |          ^~~~~~~~~~~~~~~~~
+[78/234] Compiling C object src/libnautilus.a.p/nautilus-location-entry.c.o
+../../../../../../taunilus/src/nautilus-location-entry.c: In function ‘confirm_multiple_windows_cb’:
+../../../../../../taunilus/src/nautilus-location-entry.c:247:56: warning: passing argument 4 of ‘gtk_drag_finish’ makes integer from pointer without a cast [-Wint-conversion]
+  247 |   gtk_drag_finish(data->context, open_multiple, FALSE, time);
+      |                                                        ^~~~
+      |                                                        |
+      |                                                        time_t (*)(time_t *) {aka long int (*)(long int *)}
+In file included from /usr/include/gtk-3.0/gtk/gtktreeview.h:28,
+                 from /usr/include/gtk-3.0/gtk/gtkcombobox.h:27,
+                 from /usr/include/gtk-3.0/gtk/gtkappchooserbutton.h:29,
+                 from /usr/include/gtk-3.0/gtk/gtk.h:42,
+                 from ../../../../../../taunilus/src/nautilus-location-entry.h:27,
+                 from ../../../../../../taunilus/src/nautilus-location-entry.c:30:
+/usr/include/gtk-3.0/gtk/gtkdnd.h:51:41: note: expected ‘guint32’ {aka ‘unsigned int’} but argument is of type ‘time_t (*)(time_t *)’ {aka ‘long int (*)(long int *)’}
+   51 |                         guint32         time_);
+      |                         ~~~~~~~~~~~~~~~~^~~~~
+[188/234] Generating Nautilus-3.0.gir with a custom command
+g-ir-scanner: link: x86_64-unknown-linux-gnu-gcc -pthread -o /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/tmp-introspectudstyyv6/Nautilus-3.0 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/tmp-introspectudstyyv6/Nautilus-3.0.o -L. -Wl,-rpath,. -Wl,--no-as-needed -L/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/libnautilus-extension -Wl,-rpath,/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/libnautilus-extension -L/app/lib -Wl,-rpath,/app/lib -lnautilus-extension -lglib-2.0 -lgtk-3 -lgdk-3 -lz -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lgirepository-1.0 -lgio-2.0 -lgobject-2.0 -Wl,--export-dynamic -lgmodule-2.0 -pthread -lglib-2.0 -lglib-2.0 -L/app/lib
+[234/234] Linking target extensions/audio-video-properties/test-properties-page
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[1/159] Generating config.h with a custom command
+flatpak build --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja install
+[1/2] Installing files.
+Installing data/org.gnome.NautilusDevel.desktop to /app/share/applications
+Installing data/nautilus-autorun-software.desktop to /app/share/applications
+Installing data/org.gnome.NautilusDevel.appdata.xml to /app/share/metainfo
+Installing libnautilus-extension/nautilus-extension-enum-types.h to /app/include/nautilus/libnautilus-extension
+Installing libnautilus-extension/libnautilus-extension.so.1.5.0 to /app/lib
+Installing libnautilus-extension/Nautilus-3.0.gir to /app/share/gir-1.0
+Installing libnautilus-extension/Nautilus-3.0.typelib to /app/lib/girepository-1.0
+Installing src/nautilus to /app/bin
+Installing src/nautilus-autorun-software to /app/bin
+Installing extensions/image-properties/libnautilus-image-properties.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/audio-video-properties/libtotem-properties-page.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/sendto/libnautilus-sendto.so to /app/lib/nautilus/extensions-3.0
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension.h to /app/include/nautilus
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-file-info.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-info-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-location-widget-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension-types.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-item.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/scalable/apps/org.gnome.NautilusDevel.svg to /app/share/icons/hicolor/scalable/apps
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/symbolic/apps/org.gnome.Nautilus-symbolic.svg to /app/share/icons/hicolor/symbolic/apps
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.freedesktop.FileManager1.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.search-provider.ini to /app/share/gnome-shell/search-providers
+Installing /home/SYSTEM-USERNAME/taunilus/data/org.gnome.nautilus.gschema.xml to /app/share/glib-2.0/schemas
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.description to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.ontology to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.domain.rule to /app/share/tracker3/domain-ontologies
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Extract.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Files.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/meson-private/libnautilus-extension.pc to /app/lib/pkgconfig
+Running custom install script '/usr/bin/meson --internal gettext install --subdir=po --localedir=share/locale --pkgname=nautilus'
+Running custom install script '/home/SYSTEM-USERNAME/taunilus/build-aux/meson/postinstall.py'
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[1/159] Generating config.h with a custom command
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja install
+[1/2] Installing files.
+Installing data/org.gnome.NautilusDevel.desktop to /app/share/applications
+Installing data/nautilus-autorun-software.desktop to /app/share/applications
+Installing data/org.gnome.NautilusDevel.appdata.xml to /app/share/metainfo
+Installing libnautilus-extension/nautilus-extension-enum-types.h to /app/include/nautilus/libnautilus-extension
+Installing libnautilus-extension/libnautilus-extension.so.1.5.0 to /app/lib
+Installing libnautilus-extension/Nautilus-3.0.gir to /app/share/gir-1.0
+Installing libnautilus-extension/Nautilus-3.0.typelib to /app/lib/girepository-1.0
+Installing src/nautilus to /app/bin
+Installing src/nautilus-autorun-software to /app/bin
+Installing extensions/image-properties/libnautilus-image-properties.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/audio-video-properties/libtotem-properties-page.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/sendto/libnautilus-sendto.so to /app/lib/nautilus/extensions-3.0
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension.h to /app/include/nautilus
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-file-info.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-info-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-location-widget-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension-types.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-item.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/scalable/apps/org.gnome.NautilusDevel.svg to /app/share/icons/hicolor/scalable/apps
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/symbolic/apps/org.gnome.Nautilus-symbolic.svg to /app/share/icons/hicolor/symbolic/apps
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.freedesktop.FileManager1.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.search-provider.ini to /app/share/gnome-shell/search-providers
+Installing /home/SYSTEM-USERNAME/taunilus/data/org.gnome.nautilus.gschema.xml to /app/share/glib-2.0/schemas
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.description to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.ontology to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.domain.rule to /app/share/tracker3/domain-ontologies
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Extract.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Files.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/meson-private/libnautilus-extension.pc to /app/lib/pkgconfig
+Running custom install script '/usr/bin/meson --internal gettext install --subdir=po --localedir=share/locale --pkgname=nautilus'
+Running custom install script '/home/SYSTEM-USERNAME/taunilus/build-aux/meson/postinstall.py'
+flatpak build-finish --command nautilus --share=ipc --socket=x11 --socket=wayland --talk-name=org.gnome.OnlineAccounts --filesystem=host --talk-name=org.gtk.vfs --talk-name=org.gtk.vfs.* --filesystem=xdg-run/gvfsd --filesystem=xdg-run/dconf --filesystem=~/.config/dconf:ro --talk-name=ca.desrt.dconf --env=DCONF_USER_CONFIG_DIR=.config/dconf --add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:FileSystem;tracker:Documents /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main
+Exporting share/applications/org.gnome.NautilusDevel.desktop
+Not exporting share/applications/nautilus-autorun-software.desktop, non-allowed export filename
+Not exporting share/applications/mimeinfo.cache, wrong extension
+Exporting share/icons/hicolor/symbolic/apps/org.gnome.NautilusDevel-symbolic.svg
+Not exporting share/icons/hicolor/icon-theme.cache, wrong extension
+Exporting share/icons/hicolor/scalable/apps/org.gnome.NautilusDevel.svg
+Exporting share/dbus-1/services/org.gnome.NautilusDevel.Tracker3.Miner.Files.service
+Exporting share/dbus-1/services/org.gnome.NautilusDevel.Tracker3.Miner.Extract.service
+Exporting share/dbus-1/services/org.gnome.NautilusDevel.service
+Not exporting share/dbus-1/services/org.freedesktop.Tracker3.Miner.Files.Control.service, non-allowed export filename
+Not exporting share/dbus-1/services/org.freedesktop.Tracker3.Miner.Extract.service, non-allowed export filename
+Not exporting share/dbus-1/services/org.freedesktop.Tracker3.Miner.Files.service, non-allowed export filename
+Not exporting share/dbus-1/services/org.freedesktop.FileManager1.service, non-allowed export filename
+Exporting share/gnome-shell/search-providers/org.gnome.NautilusDevel.search-provider.ini
+Please review the exported files and the metadata
+flatpak build-export --arch=x86_64 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/repo /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main
+Commit: 035c59bfd100375ecde3be46e4949f54276087724b95b6107b97d83cc14c9871
+Metadata Total: 1241
+Metadata Written: 9
+Content Total: 1423
+Content Written: 2
+Content Bytes Written: 102762 (102.8 kB)
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[1/159] Generating config.h with a custom command
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja install
+[1/2] Installing files.
+Installing data/org.gnome.NautilusDevel.desktop to /app/share/applications
+Installing data/nautilus-autorun-software.desktop to /app/share/applications
+Installing data/org.gnome.NautilusDevel.appdata.xml to /app/share/metainfo
+Installing libnautilus-extension/nautilus-extension-enum-types.h to /app/include/nautilus/libnautilus-extension
+Installing libnautilus-extension/libnautilus-extension.so.1.5.0 to /app/lib
+Installing libnautilus-extension/Nautilus-3.0.gir to /app/share/gir-1.0
+Installing libnautilus-extension/Nautilus-3.0.typelib to /app/lib/girepository-1.0
+Installing src/nautilus to /app/bin
+Installing src/nautilus-autorun-software to /app/bin
+Installing extensions/image-properties/libnautilus-image-properties.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/audio-video-properties/libtotem-properties-page.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/sendto/libnautilus-sendto.so to /app/lib/nautilus/extensions-3.0
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension.h to /app/include/nautilus
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-file-info.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-info-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-location-widget-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension-types.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-item.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/scalable/apps/org.gnome.NautilusDevel.svg to /app/share/icons/hicolor/scalable/apps
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/symbolic/apps/org.gnome.Nautilus-symbolic.svg to /app/share/icons/hicolor/symbolic/apps
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.freedesktop.FileManager1.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.search-provider.ini to /app/share/gnome-shell/search-providers
+Installing /home/SYSTEM-USERNAME/taunilus/data/org.gnome.nautilus.gschema.xml to /app/share/glib-2.0/schemas
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.description to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.ontology to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.domain.rule to /app/share/tracker3/domain-ontologies
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Extract.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Files.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/meson-private/libnautilus-extension.pc to /app/lib/pkgconfig
+Running custom install script '/usr/bin/meson --internal gettext install --subdir=po --localedir=share/locale --pkgname=nautilus'
+Running custom install script '/home/SYSTEM-USERNAME/taunilus/build-aux/meson/postinstall.py'
+flatpak build-export --arch=x86_64 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/repo /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main
+Commit: fd5c5e5173134526860d11f35d53a6ace13e9dfccb9277aad9d544c39746a642
+Metadata Total: 1241
+Metadata Written: 1
+Content Total: 1423
+Content Written: 0
+Content Bytes Written: 0 (0 bytes)
+flatpak build-bundle --arch=x86_64 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/repo /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main/org.gnome.NautilusDevel.flatpak org.gnome.NautilusDevel master
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja
+[1/159] Generating config.h with a custom command
+flatpak build --env=LANG=en_IN --env=USER=SYSTEM-USERNAME --env=HOME=/home/SYSTEM-USERNAME --env=PATH=/usr/bin:/bin --env=TERM=xterm-256color --env=V=0 --env=CCACHE_DIR=/home/SYSTEM-USERNAME/.cache/gnome-builder/flatpak-builder/ccache --env=FLATPAK_CONFIG_DIR=/home/SYSTEM-USERNAME/.local/share/gnome-builder/flatpak/etc --env=PATH=/app/bin:/usr/bin --env=G_MESSAGES_DEBUG= --env=XDG_RUNTIME_DIR=/run/user/1000 --build-dir=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --share=network --nofilesystem=host --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder --filesystem=/home/SYSTEM-USERNAME/taunilus --filesystem=/home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main --env=NOCONFIGURE=1 /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/flatpak/staging/x86_64-main ninja install
+[1/2] Installing files.
+Installing data/org.gnome.NautilusDevel.desktop to /app/share/applications
+Installing data/nautilus-autorun-software.desktop to /app/share/applications
+Installing data/org.gnome.NautilusDevel.appdata.xml to /app/share/metainfo
+Installing libnautilus-extension/nautilus-extension-enum-types.h to /app/include/nautilus/libnautilus-extension
+Installing libnautilus-extension/libnautilus-extension.so.1.5.0 to /app/lib
+Installing libnautilus-extension/Nautilus-3.0.gir to /app/share/gir-1.0
+Installing libnautilus-extension/Nautilus-3.0.typelib to /app/lib/girepository-1.0
+Installing src/nautilus to /app/bin
+Installing src/nautilus-autorun-software to /app/bin
+Installing extensions/image-properties/libnautilus-image-properties.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/audio-video-properties/libtotem-properties-page.so to /app/lib/nautilus/extensions-3.0
+Installing extensions/sendto/libnautilus-sendto.so to /app/lib/nautilus/extensions-3.0
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension.h to /app/include/nautilus
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-column.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-file-info.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-info-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-location-widget-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page-provider.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-property-page.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-extension-types.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/libnautilus-extension/nautilus-menu-item.h to /app/include/nautilus/libnautilus-extension
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/scalable/apps/org.gnome.NautilusDevel.svg to /app/share/icons/hicolor/scalable/apps
+Installing /home/SYSTEM-USERNAME/taunilus/data/icons/hicolor/symbolic/apps/org.gnome.Nautilus-symbolic.svg to /app/share/icons/hicolor/symbolic/apps
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.freedesktop.FileManager1.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/org.gnome.NautilusDevel.search-provider.ini to /app/share/gnome-shell/search-providers
+Installing /home/SYSTEM-USERNAME/taunilus/data/org.gnome.nautilus.gschema.xml to /app/share/glib-2.0/schemas
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.description to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/taunilus/data/ontology/nautilus.ontology to /app/share/nautilus/ontology
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.domain.rule to /app/share/tracker3/domain-ontologies
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Extract.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/data/tracker/org.gnome.NautilusDevel.Tracker3.Miner.Files.service to /app/share/dbus-1/services
+Installing /home/SYSTEM-USERNAME/.cache/gnome-builder/projects/taunilus/builds/org.gnome.Nautilus.json-flatpak-org.gnome.Platform-master-x86_64-main/meson-private/libnautilus-extension.pc to /app/lib/pkgconfig
+Running custom install script '/usr/bin/meson --internal gettext install --subdir=po --localedir=share/locale --pkgname=nautilus'
+Running custom install script '/home/SYSTEM-USERNAME/taunilus/build-aux/meson/postinstall.py'
+
