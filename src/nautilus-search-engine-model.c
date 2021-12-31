@@ -181,9 +181,13 @@ model_directory_ready_cb (NautilusDirectory *directory,
             {
                 current_file_unix_time = nautilus_file_get_atime (file);
             }
-            else
+            else if (type == NAUTILUS_QUERY_SEARCH_TYPE_LAST_MODIFIED)
             {
                 current_file_unix_time = nautilus_file_get_mtime (file);
+            }
+            else
+            {
+                current_file_unix_time = nautilus_file_get_btime (file);
             }
 
             found = nautilus_file_date_in_between (current_file_unix_time,
@@ -309,7 +313,9 @@ nautilus_search_engine_model_get_property (GObject    *object,
         break;
 
         default:
+        {
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
     }
 }
 

@@ -26,7 +26,6 @@
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <libgd/gd.h>
 #include <string.h>
 
 #include "nautilus-file.h"
@@ -36,6 +35,7 @@
 #include "nautilus-search-popover.h"
 #include "nautilus-mime-actions.h"
 #include "nautilus-ui-utilities.h"
+#include "nautilus-gtk4-helpers.h"
 
 struct _NautilusQueryEditor
 {
@@ -45,8 +45,10 @@ struct _NautilusQueryEditor
     GtkWidget *popover;
     GtkWidget *dropdown_button;
 
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
     GdTaggedEntryTag *mime_types_tag;
     GdTaggedEntryTag *date_range_tag;
+#endif
 
     gboolean change_frozen;
 
@@ -184,7 +186,9 @@ nautilus_query_editor_get_property (GObject    *object,
         break;
 
         default:
+        {
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
     }
 }
 
@@ -213,19 +217,23 @@ nautilus_query_editor_set_property (GObject      *object,
         break;
 
         default:
+        {
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
     }
 }
 
 static void
 nautilus_query_editor_finalize (GObject *object)
 {
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
     NautilusQueryEditor *editor;
 
     editor = NAUTILUS_QUERY_EDITOR (object);
 
     g_clear_object (&editor->date_range_tag);
     g_clear_object (&editor->mime_types_tag);
+#endif
 
     G_OBJECT_CLASS (nautilus_query_editor_parent_class)->finalize (object);
 }
@@ -420,6 +428,7 @@ search_popover_date_range_changed_cb (NautilusSearchPopover *popover,
         create_query (editor);
     }
 
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
     gd_tagged_entry_remove_tag (GD_TAGGED_ENTRY (editor->entry),
                                 editor->date_range_tag);
     if (date_range)
@@ -432,6 +441,7 @@ search_popover_date_range_changed_cb (NautilusSearchPopover *popover,
         gd_tagged_entry_add_tag (GD_TAGGED_ENTRY (editor->entry),
                                  GD_TAGGED_ENTRY_TAG (editor->date_range_tag));
     }
+#endif
 
     nautilus_query_set_date_range (editor->query, date_range);
 
@@ -454,8 +464,10 @@ search_popover_mime_type_changed_cb (NautilusSearchPopover *popover,
         create_query (editor);
     }
 
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
     gd_tagged_entry_remove_tag (GD_TAGGED_ENTRY (editor->entry),
                                 editor->mime_types_tag);
+#endif
     /* group 0 is anything */
     if (mimetype_group == 0)
     {
@@ -464,21 +476,27 @@ search_popover_mime_type_changed_cb (NautilusSearchPopover *popover,
     else if (mimetype_group > 0)
     {
         mimetypes = nautilus_mime_types_group_get_mimetypes (mimetype_group);
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
         gd_tagged_entry_tag_set_label (editor->mime_types_tag,
                                        nautilus_mime_types_group_get_name (mimetype_group));
         gd_tagged_entry_add_tag (GD_TAGGED_ENTRY (editor->entry),
                                  GD_TAGGED_ENTRY_TAG (editor->mime_types_tag));
+#endif
     }
     else
     {
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
         g_autofree gchar *display_name = NULL;
+#endif
 
         mimetypes = g_ptr_array_new_full (1, g_free);
         g_ptr_array_add (mimetypes, g_strdup (mimetype));
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
         display_name = g_content_type_get_description (mimetype);
         gd_tagged_entry_tag_set_label (editor->mime_types_tag, display_name);
         gd_tagged_entry_add_tag (GD_TAGGED_ENTRY (editor->entry),
                                  GD_TAGGED_ENTRY_TAG (editor->mime_types_tag));
+#endif
     }
     nautilus_query_set_mime_types (editor->query, mimetypes);
 
@@ -524,6 +542,7 @@ search_popover_fts_changed_cb (GObject    *popover,
     nautilus_query_editor_changed (editor);
 }
 
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
 static void
 entry_tag_clicked (NautilusQueryEditor *editor)
 {
@@ -544,6 +563,7 @@ entry_tag_close_button_clicked (NautilusQueryEditor *editor,
         nautilus_search_popover_reset_date_range (NAUTILUS_SEARCH_POPOVER (editor->popover));
     }
 }
+#endif
 
 static void
 setup_widgets (NautilusQueryEditor *editor)
@@ -553,19 +573,24 @@ setup_widgets (NautilusQueryEditor *editor)
 
     /* vertical box that holds the search entry and the label below */
     vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-    gtk_container_add (GTK_CONTAINER (editor), vbox);
+    gtk_box_append (GTK_BOX (editor), vbox);
 
     /* horizontal box */
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_style_context_add_class (gtk_widget_get_style_context (hbox), "linked");
-    gtk_container_add (GTK_CONTAINER (vbox), hbox);
+    gtk_box_append (GTK_BOX (vbox), hbox);
 
     /* create the search entry */
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
     editor->entry = GTK_WIDGET (gd_tagged_entry_new ());
+#else
+    editor->entry = gtk_search_entry_new ();
+#endif
     gtk_widget_set_hexpand (editor->entry, TRUE);
 
-    gtk_container_add (GTK_CONTAINER (hbox), editor->entry);
+    gtk_box_append (GTK_BOX (hbox), editor->entry);
 
+#if 0 && TAGGED_ENTRY_NEEDS_GTK4_REIMPLEMENTATION
     editor->mime_types_tag = gd_tagged_entry_tag_new (NULL);
     editor->date_range_tag = gd_tagged_entry_tag_new (NULL);
 
@@ -577,6 +602,7 @@ setup_widgets (NautilusQueryEditor *editor)
                               "tag-button-clicked",
                               G_CALLBACK (entry_tag_close_button_clicked),
                               editor);
+#endif
 
     /* setup the search popover */
     editor->popover = nautilus_search_popover_new ();
@@ -593,7 +619,7 @@ setup_widgets (NautilusQueryEditor *editor)
     /* setup the filter menu button */
     editor->dropdown_button = gtk_menu_button_new ();
     gtk_menu_button_set_popover (GTK_MENU_BUTTON (editor->dropdown_button), editor->popover);
-    gtk_container_add (GTK_CONTAINER (hbox), editor->dropdown_button);
+    gtk_box_append (GTK_BOX (hbox), editor->dropdown_button);
 
     g_signal_connect (editor->entry, "activate",
                       G_CALLBACK (entry_activate_cb), editor);
@@ -740,12 +766,46 @@ nautilus_query_editor_set_text (NautilusQueryEditor *self,
     gtk_entry_set_text (GTK_ENTRY (self->entry), text);
 }
 
+static gboolean
+nautilus_gtk_search_entry_is_keynav_event (guint           keyval,
+                                           GdkModifierType state)
+{
+    if (keyval == GDK_KEY_Tab || keyval == GDK_KEY_KP_Tab ||
+        keyval == GDK_KEY_Up || keyval == GDK_KEY_KP_Up ||
+        keyval == GDK_KEY_Down || keyval == GDK_KEY_KP_Down ||
+        keyval == GDK_KEY_Left || keyval == GDK_KEY_KP_Left ||
+        keyval == GDK_KEY_Right || keyval == GDK_KEY_KP_Right ||
+        keyval == GDK_KEY_Home || keyval == GDK_KEY_KP_Home ||
+        keyval == GDK_KEY_End || keyval == GDK_KEY_KP_End ||
+        keyval == GDK_KEY_Page_Up || keyval == GDK_KEY_KP_Page_Up ||
+        keyval == GDK_KEY_Page_Down || keyval == GDK_KEY_KP_Page_Down ||
+        ((state & (GDK_CONTROL_MASK | GDK_MOD1_MASK)) != 0))
+    {
+        return TRUE;
+    }
+
+    /* Other navigation events should get automatically
+     * ignored as they will not change the content of the entry
+     */
+    return FALSE;
+}
+
 gboolean
-nautilus_query_editor_handle_event (NautilusQueryEditor *self,
-                                    GdkEvent            *event)
+nautilus_query_editor_handle_event (NautilusQueryEditor   *self,
+                                    GtkEventControllerKey *controller,
+                                    guint                  keyval,
+                                    GdkModifierType        state)
 {
     g_return_val_if_fail (NAUTILUS_IS_QUERY_EDITOR (self), GDK_EVENT_PROPAGATE);
-    g_return_val_if_fail (event != NULL, GDK_EVENT_PROPAGATE);
+    g_return_val_if_fail (controller != NULL, GDK_EVENT_PROPAGATE);
 
-    return gtk_search_entry_handle_event (GTK_SEARCH_ENTRY (self->entry), event);
+    /* Conditions are copied straight from GTK. */
+    if (nautilus_gtk_search_entry_is_keynav_event (keyval, state) ||
+        keyval == GDK_KEY_space ||
+        keyval == GDK_KEY_Menu)
+    {
+        return GDK_EVENT_PROPAGATE;
+    }
+
+    return gtk_event_controller_key_forward (controller, GTK_WIDGET (self->entry));
 }

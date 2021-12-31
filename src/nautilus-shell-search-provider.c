@@ -60,6 +60,7 @@ struct _NautilusShellSearchProvider
 
     PendingSearch *current_search;
 
+    GList *metas_requests;
     GHashTable *metas_cache;
 };
 
@@ -147,7 +148,21 @@ cancel_current_search (NautilusShellSearchProvider *self)
 {
     if (self->current_search != NULL)
     {
+        g_debug ("*** Cancel current search");
         nautilus_search_provider_stop (NAUTILUS_SEARCH_PROVIDER (self->current_search->engine));
+    }
+}
+
+static void
+cancel_current_search_ignoring_partial_results (NautilusShellSearchProvider *self)
+{
+    if (self->current_search != NULL)
+    {
+        cancel_current_search (self);
+        g_signal_handlers_disconnect_by_data (G_OBJECT (self->current_search->engine),
+                                              self->current_search);
+        pending_search_finish (self->current_search, self->current_search->invocation,
+                               g_variant_new ("(as)", NULL));
     }
 }
 
@@ -524,6 +539,7 @@ typedef struct
     NautilusShellSearchProvider *self;
 
     gint64 start_time;
+    NautilusFileListHandle *handle;
     GDBusMethodInvocation *invocation;
 
     gchar **uris;
@@ -532,6 +548,7 @@ typedef struct
 static void
 result_metas_data_free (ResultMetasData *data)
 {
+    g_clear_pointer (&data->handle, nautilus_file_list_cancel_call_when_ready);
     g_clear_object (&data->self);
     g_clear_object (&data->invocation);
     g_strfreev (data->uris);
@@ -549,11 +566,14 @@ result_metas_return_from_cache (ResultMetasData *data)
 
     g_variant_builder_init (&builder, G_VARIANT_TYPE ("aa{sv}"));
 
-    for (idx = 0; data->uris[idx] != NULL; idx++)
+    if (data->uris)
     {
-        meta = g_hash_table_lookup (data->self->metas_cache,
-                                    data->uris[idx]);
-        g_variant_builder_add_value (&builder, meta);
+        for (idx = 0; data->uris[idx] != NULL; idx++)
+        {
+            meta = g_hash_table_lookup (data->self->metas_cache,
+                                        data->uris[idx]);
+            g_variant_builder_add_value (&builder, meta);
+        }
     }
 
     current_time = g_get_monotonic_time ();
@@ -562,6 +582,24 @@ result_metas_return_from_cache (ResultMetasData *data)
 
     g_dbus_method_invocation_return_value (data->invocation,
                                            g_variant_new ("(aa{sv})", &builder));
+}
+
+static void
+result_metas_return_empty (ResultMetasData *data)
+{
+    g_clear_pointer (&data->uris, g_strfreev);
+    result_metas_return_from_cache (data);
+    result_metas_data_free (data);
+}
+
+static void
+cancel_result_meta_requests (NautilusShellSearchProvider *self)
+{
+    g_debug ("*** Cancel Results Meta requests");
+
+    g_list_free_full (self->metas_requests,
+                      (GDestroyNotify) result_metas_return_empty);
+    self->metas_requests = NULL;
 }
 
 static void
@@ -639,6 +677,9 @@ result_list_attributes_ready_cb (GList    *file_list,
         g_free (uri);
     }
 
+    data->handle = NULL;
+    data->self->metas_requests = g_list_remove (data->self->metas_requests, data);
+
     result_metas_return_from_cache (data);
     result_metas_data_free (data);
 }
@@ -682,11 +723,36 @@ handle_get_result_metas (NautilusShellSearchProvider2  *skeleton,
 
     nautilus_file_list_call_when_ready (missing_files,
                                         NAUTILUS_FILE_ATTRIBUTES_FOR_ICON,
-                                        NULL,
+                                        &data->handle,
                                         result_list_attributes_ready_cb,
                                         data);
+    self->metas_requests = g_list_prepend (self->metas_requests, data);
     nautilus_file_list_free (missing_files);
     return TRUE;
+}
+
+typedef struct
+{
+    GFile *file;
+    NautilusShellSearchProvider2 *skeleton;
+    GDBusMethodInvocation *invocation;
+} ShowURIData;
+
+static void
+show_uri_callback (gboolean res,
+                   gpointer user_data)
+{
+    ShowURIData *data = user_data;
+
+    if (!res)
+    {
+        g_application_open (g_application_get_default (), &data->file, 1, "");
+    }
+
+    nautilus_shell_search_provider2_complete_activate_result (data->skeleton, data->invocation);
+
+    g_object_unref (data->file);
+    g_free (data);
 }
 
 static gboolean
@@ -697,19 +763,18 @@ handle_activate_result (NautilusShellSearchProvider2  *skeleton,
                         guint32                        timestamp,
                         gpointer                       user_data)
 {
+    ShowURIData *data;
     gboolean res;
-    GFile *file;
+
+    data = g_new (ShowURIData, 1);
+    data->file = g_file_new_for_uri (result);
+    data->skeleton = skeleton;
+    data->invocation = invocation;
 
     res = gtk_show_uri_on_window (NULL, result, timestamp, NULL);
 
-    if (!res)
-    {
-        file = g_file_new_for_uri (result);
-        g_application_open (g_application_get_default (), &file, 1, "");
-        g_object_unref (file);
-    }
+    show_uri_callback (res, data);
 
-    nautilus_shell_search_provider2_complete_activate_result (skeleton, invocation);
     return TRUE;
 }
 
@@ -754,7 +819,8 @@ search_provider_dispose (GObject *obj)
 
     g_clear_object (&self->skeleton);
     g_hash_table_destroy (self->metas_cache);
-    cancel_current_search (self);
+    cancel_current_search_ignoring_partial_results (self);
+    cancel_result_meta_requests (self);
 
     G_OBJECT_CLASS (nautilus_shell_search_provider_parent_class)->dispose (obj);
 }
