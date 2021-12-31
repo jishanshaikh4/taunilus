@@ -25,21 +25,21 @@
 #include <gio/gio.h>
 
 typedef enum {
-        NAUTILUS_QUERY_SEARCH_TYPE_LAST_ACCESS,
-        NAUTILUS_QUERY_SEARCH_TYPE_LAST_MODIFIED,
-        NAUTILUS_QUERY_SEARCH_TYPE_CREATED
+    NAUTILUS_QUERY_SEARCH_TYPE_LAST_ACCESS,
+    NAUTILUS_QUERY_SEARCH_TYPE_LAST_MODIFIED,
+    NAUTILUS_QUERY_SEARCH_TYPE_CREATED
 } NautilusQuerySearchType;
 
 typedef enum {
-        NAUTILUS_QUERY_SEARCH_CONTENT_SIMPLE,
-        NAUTILUS_QUERY_SEARCH_CONTENT_FULL_TEXT,
+    NAUTILUS_QUERY_SEARCH_CONTENT_SIMPLE,
+    NAUTILUS_QUERY_SEARCH_CONTENT_FULL_TEXT,
 } NautilusQuerySearchContent;
 
 typedef enum {
-        NAUTILUS_QUERY_RECURSIVE_NEVER,
-        NAUTILUS_QUERY_RECURSIVE_ALWAYS,
-        NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY,
-        NAUTILUS_QUERY_RECURSIVE_INDEXED_ONLY,
+    NAUTILUS_QUERY_RECURSIVE_NEVER,
+    NAUTILUS_QUERY_RECURSIVE_ALWAYS,
+    NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY,
+    NAUTILUS_QUERY_RECURSIVE_INDEXED_ONLY,
 } NautilusQueryRecursive;
 
 #define NAUTILUS_TYPE_QUERY		(nautilus_query_get_type ())
@@ -56,31 +56,31 @@ void           nautilus_query_set_show_hidden_files (NautilusQuery *query, gbool
 
 GFile*         nautilus_query_get_location       (NautilusQuery *query);
 void           nautilus_query_set_location       (NautilusQuery *query,
-                                                  GFile         *location);
+        GFile         *location);
 
 GPtrArray *    nautilus_query_get_mime_types     (NautilusQuery *query);
 void           nautilus_query_set_mime_types     (NautilusQuery *query, GPtrArray *mime_types);
 
 NautilusQuerySearchContent nautilus_query_get_search_content (NautilusQuery *query);
 void                       nautilus_query_set_search_content (NautilusQuery              *query,
-                                                              NautilusQuerySearchContent  content);
+        NautilusQuerySearchContent  content);
 
 NautilusQuerySearchType nautilus_query_get_search_type (NautilusQuery *query);
 void                    nautilus_query_set_search_type (NautilusQuery           *query,
-                                                        NautilusQuerySearchType  type);
+        NautilusQuerySearchType  type);
 
 GPtrArray*     nautilus_query_get_date_range     (NautilusQuery *query);
 void           nautilus_query_set_date_range     (NautilusQuery *query,
-                                                  GPtrArray     *date_range);
+        GPtrArray     *date_range);
 
 NautilusQueryRecursive nautilus_query_get_recursive (NautilusQuery *query);
 void                   nautilus_query_set_recursive (NautilusQuery          *query,
-                                                     NautilusQueryRecursive  recursive);
+        NautilusQueryRecursive  recursive);
 
 gboolean       nautilus_query_get_searching      (NautilusQuery *query);
 
 void           nautilus_query_set_searching      (NautilusQuery *query,
-                                                  gboolean       searching);
+        gboolean       searching);
 
 gdouble        nautilus_query_matches_string     (NautilusQuery *query, const gchar *string);
 

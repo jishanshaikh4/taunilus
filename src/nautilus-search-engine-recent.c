@@ -52,7 +52,7 @@ G_DEFINE_TYPE_WITH_CODE (NautilusSearchEngineRecent,
                          nautilus_search_engine_recent,
                          G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (NAUTILUS_TYPE_SEARCH_PROVIDER,
-                                                nautilus_search_provider_init))
+                                 nautilus_search_provider_init))
 
 enum
 {
@@ -162,7 +162,7 @@ is_file_valid_recursive (NautilusSearchEngineRecent  *self,
     if (!nautilus_query_get_show_hidden_files (self->query))
     {
         if (!g_file_info_get_is_hidden (file_info) &&
-            !g_file_info_get_is_backup (file_info))
+                !g_file_info_get_is_backup (file_info))
         {
             g_autoptr (GFile) parent = g_file_get_parent (file);
 
@@ -248,7 +248,7 @@ recent_thread_func (gpointer user_data)
                     }
 
                     if (error != NULL &&
-                        !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_EXISTS))
+                            !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_EXISTS))
                     {
                         g_debug ("Impossible to read recent file info: %s",
                                  error->message);
@@ -371,7 +371,7 @@ nautilus_search_engine_recent_stop (NautilusSearchProvider *provider)
 
 static void
 nautilus_search_engine_recent_set_query (NautilusSearchProvider *provider,
-                                         NautilusQuery          *query)
+        NautilusQuery          *query)
 {
     NautilusSearchEngineRecent *self = NAUTILUS_SEARCH_ENGINE_RECENT (provider);
 
@@ -389,26 +389,26 @@ nautilus_search_engine_recent_is_running (NautilusSearchProvider *provider)
 
 static void
 nautilus_search_engine_recent_get_property (GObject    *object,
-                                            guint       prop_id,
-                                            GValue     *value,
-                                            GParamSpec *pspec)
+        guint       prop_id,
+        GValue     *value,
+        GParamSpec *pspec)
 {
     NautilusSearchProvider *provider = NAUTILUS_SEARCH_PROVIDER (object);
 
     switch (prop_id)
     {
-        case PROP_RUNNING:
-        {
-            gboolean running;
-            running = nautilus_search_engine_recent_is_running (provider);
-            g_value_set_boolean (value, running);
-        }
-        break;
+    case PROP_RUNNING:
+    {
+        gboolean running;
+        running = nautilus_search_engine_recent_is_running (provider);
+        g_value_set_boolean (value, running);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 

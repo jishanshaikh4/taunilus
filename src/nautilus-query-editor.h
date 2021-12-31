@@ -46,7 +46,7 @@ NautilusQuery *nautilus_query_editor_get_query    (NautilusQueryEditor *editor);
  * @query: (nullable) (transfer full): The #NautilusQuery for the search.
  */
 void           nautilus_query_editor_set_query    (NautilusQueryEditor *editor,
-                                                   NautilusQuery       *query);
+        NautilusQuery       *query);
 /**
  * nautilus_query_editor_get_location:
  *
@@ -62,7 +62,7 @@ GFile         *nautilus_query_editor_get_location (NautilusQueryEditor *editor);
  * @location: (nullable) (transfer full): The location in which the search will take place.
  */
 void           nautilus_query_editor_set_location (NautilusQueryEditor *editor,
-                                                   GFile               *location);
+        GFile               *location);
 /**
  * nautilus_query_editor_set_text:
  *
@@ -70,7 +70,7 @@ void           nautilus_query_editor_set_location (NautilusQueryEditor *editor,
  * @text: (not nullable) (transfer none): The search text.
  */
 void           nautilus_query_editor_set_text     (NautilusQueryEditor *editor,
-                                                   const gchar         *text);
+        const gchar         *text);
 
 gboolean
 nautilus_query_editor_handle_event (NautilusQueryEditor   *self,

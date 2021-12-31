@@ -185,7 +185,7 @@ nautilus_search_hit_set_fts_rank (NautilusSearchHit *hit,
 
 void
 nautilus_search_hit_set_modification_time (NautilusSearchHit *hit,
-                                           GDateTime         *date)
+        GDateTime         *date)
 {
     if (hit->modification_time != NULL)
     {
@@ -258,54 +258,54 @@ nautilus_search_hit_set_property (GObject      *object,
 
     switch (arg_id)
     {
-        case PROP_RELEVANCE:
-        {
-            hit->relevance = g_value_get_double (value);
-        }
-        break;
+    case PROP_RELEVANCE:
+    {
+        hit->relevance = g_value_get_double (value);
+    }
+    break;
 
-        case PROP_FTS_RANK:
-        {
-            nautilus_search_hit_set_fts_rank (hit, g_value_get_double (value));
-        }
-        break;
+    case PROP_FTS_RANK:
+    {
+        nautilus_search_hit_set_fts_rank (hit, g_value_get_double (value));
+    }
+    break;
 
-        case PROP_URI:
-        {
-            nautilus_search_hit_set_uri (hit, g_value_get_string (value));
-        }
-        break;
+    case PROP_URI:
+    {
+        nautilus_search_hit_set_uri (hit, g_value_get_string (value));
+    }
+    break;
 
-        case PROP_MODIFICATION_TIME:
-        {
-            nautilus_search_hit_set_modification_time (hit, g_value_get_boxed (value));
-        }
-        break;
+    case PROP_MODIFICATION_TIME:
+    {
+        nautilus_search_hit_set_modification_time (hit, g_value_get_boxed (value));
+    }
+    break;
 
-        case PROP_ACCESS_TIME:
-        {
-            nautilus_search_hit_set_access_time (hit, g_value_get_boxed (value));
-        }
-        break;
+    case PROP_ACCESS_TIME:
+    {
+        nautilus_search_hit_set_access_time (hit, g_value_get_boxed (value));
+    }
+    break;
 
-        case PROP_CREATION_TIME:
-        {
-            nautilus_search_hit_set_creation_time (hit, g_value_get_boxed (value));
-        }
-        break;
+    case PROP_CREATION_TIME:
+    {
+        nautilus_search_hit_set_creation_time (hit, g_value_get_boxed (value));
+    }
+    break;
 
-        case PROP_FTS_SNIPPET:
-        {
-            g_free (hit->fts_snippet);
-            hit->fts_snippet = g_strdup (g_value_get_string (value));
-        }
-        break;
+    case PROP_FTS_SNIPPET:
+    {
+        g_free (hit->fts_snippet);
+        hit->fts_snippet = g_strdup (g_value_get_string (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, arg_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, arg_id, pspec);
+    }
+    break;
     }
 }
 
@@ -321,53 +321,53 @@ nautilus_search_hit_get_property (GObject    *object,
 
     switch (arg_id)
     {
-        case PROP_RELEVANCE:
-        {
-            g_value_set_double (value, hit->relevance);
-        }
-        break;
+    case PROP_RELEVANCE:
+    {
+        g_value_set_double (value, hit->relevance);
+    }
+    break;
 
-        case PROP_FTS_RANK:
-        {
-            g_value_set_double (value, hit->fts_rank);
-        }
-        break;
+    case PROP_FTS_RANK:
+    {
+        g_value_set_double (value, hit->fts_rank);
+    }
+    break;
 
-        case PROP_URI:
-        {
-            g_value_set_string (value, hit->uri);
-        }
-        break;
+    case PROP_URI:
+    {
+        g_value_set_string (value, hit->uri);
+    }
+    break;
 
-        case PROP_MODIFICATION_TIME:
-        {
-            g_value_set_boxed (value, hit->modification_time);
-        }
-        break;
+    case PROP_MODIFICATION_TIME:
+    {
+        g_value_set_boxed (value, hit->modification_time);
+    }
+    break;
 
-        case PROP_ACCESS_TIME:
-        {
-            g_value_set_boxed (value, hit->access_time);
-        }
-        break;
+    case PROP_ACCESS_TIME:
+    {
+        g_value_set_boxed (value, hit->access_time);
+    }
+    break;
 
-        case PROP_CREATION_TIME:
-        {
-            g_value_set_boxed (value, hit->creation_time);
-        }
-        break;
+    case PROP_CREATION_TIME:
+    {
+        g_value_set_boxed (value, hit->creation_time);
+    }
+    break;
 
-        case PROP_FTS_SNIPPET:
-        {
-            g_value_set_string (value, hit->fts_snippet);
-        }
-        break;
+    case PROP_FTS_SNIPPET:
+    {
+        g_value_set_string (value, hit->fts_snippet);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, arg_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, arg_id, pspec);
+    }
+    break;
     }
 }
 
@@ -410,55 +410,55 @@ nautilus_search_hit_class_init (NautilusSearchHitClass *class)
     g_object_class_install_property (object_class,
                                      PROP_URI,
                                      g_param_spec_string ("uri",
-                                                          "URI",
-                                                          "URI",
-                                                          NULL,
-                                                          G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE | G_PARAM_READABLE));
+                                             "URI",
+                                             "URI",
+                                             NULL,
+                                             G_PARAM_CONSTRUCT_ONLY | G_PARAM_WRITABLE | G_PARAM_READABLE));
     g_object_class_install_property (object_class,
                                      PROP_MODIFICATION_TIME,
                                      g_param_spec_boxed ("modification-time",
-                                                         "Modification time",
-                                                         "Modification time",
-                                                         G_TYPE_DATE_TIME,
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                             "Modification time",
+                                             "Modification time",
+                                             G_TYPE_DATE_TIME,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
     g_object_class_install_property (object_class,
                                      PROP_ACCESS_TIME,
                                      g_param_spec_boxed ("access-time",
-                                                         "acess time",
-                                                         "access time",
-                                                         G_TYPE_DATE_TIME,
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                             "acess time",
+                                             "access time",
+                                             G_TYPE_DATE_TIME,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 
     g_object_class_install_property (object_class,
                                      PROP_CREATION_TIME,
                                      g_param_spec_boxed ("creation-time",
-                                                         "creation time",
-                                                         "creation time",
-                                                         G_TYPE_DATE_TIME,
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                             "creation time",
+                                             "creation time",
+                                             G_TYPE_DATE_TIME,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
     g_object_class_install_property (object_class,
                                      PROP_RELEVANCE,
                                      g_param_spec_double ("relevance",
-                                                          NULL,
-                                                          NULL,
-                                                          -G_MAXDOUBLE, G_MAXDOUBLE,
-                                                          0,
-                                                          G_PARAM_READWRITE));
+                                             NULL,
+                                             NULL,
+                                             -G_MAXDOUBLE, G_MAXDOUBLE,
+                                             0,
+                                             G_PARAM_READWRITE));
     g_object_class_install_property (object_class,
                                      PROP_FTS_RANK,
                                      g_param_spec_double ("fts-rank",
-                                                          NULL,
-                                                          NULL,
-                                                          -G_MAXDOUBLE, G_MAXDOUBLE,
-                                                          0,
-                                                          G_PARAM_READWRITE));
+                                             NULL,
+                                             NULL,
+                                             -G_MAXDOUBLE, G_MAXDOUBLE,
+                                             0,
+                                             G_PARAM_READWRITE));
     g_object_class_install_property (object_class,
                                      PROP_FTS_SNIPPET,
                                      g_param_spec_string ("fts-snippet",
-                                                          "fts-snippet",
-                                                          "fts-snippet",
-                                                          NULL,
-                                                          G_PARAM_READWRITE));
+                                             "fts-snippet",
+                                             "fts-snippet",
+                                             NULL,
+                                             G_PARAM_READWRITE));
 }
 
 static void

@@ -60,7 +60,7 @@ G_DEFINE_TYPE_WITH_CODE (NautilusSearchEngineModel,
                          nautilus_search_engine_model,
                          G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (NAUTILUS_TYPE_SEARCH_PROVIDER,
-                                                nautilus_search_provider_init))
+                                 nautilus_search_provider_init))
 
 static void
 finalize (GObject *object)
@@ -298,24 +298,24 @@ nautilus_search_provider_init (NautilusSearchProviderInterface *iface)
 
 static void
 nautilus_search_engine_model_get_property (GObject    *object,
-                                           guint       prop_id,
-                                           GValue     *value,
-                                           GParamSpec *pspec)
+        guint       prop_id,
+        GValue     *value,
+        GParamSpec *pspec)
 {
     NautilusSearchProvider *self = NAUTILUS_SEARCH_PROVIDER (object);
 
     switch (prop_id)
     {
-        case PROP_RUNNING:
-        {
-            g_value_set_boolean (value, nautilus_search_engine_model_is_running (self));
-        }
-        break;
+    case PROP_RUNNING:
+    {
+        g_value_set_boolean (value, nautilus_search_engine_model_is_running (self));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 

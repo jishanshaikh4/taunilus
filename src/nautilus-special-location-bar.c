@@ -52,23 +52,23 @@ set_special_location (NautilusSpecialLocationBar *bar,
 
     switch (location)
     {
-        case NAUTILUS_SPECIAL_LOCATION_TEMPLATES:
-        {
-            message = g_strdup (_("Put files in this folder to use them as templates for new documents."));
-            learn_more_markup = g_strdup (_("<a href=\"help:gnome-help/files-templates\" title=\"GNOME help for templates\">Learn more…</a>"));
-        }
-        break;
+    case NAUTILUS_SPECIAL_LOCATION_TEMPLATES:
+    {
+        message = g_strdup (_("Put files in this folder to use them as templates for new documents."));
+        learn_more_markup = g_strdup (_("<a href=\"help:gnome-help/files-templates\" title=\"GNOME help for templates\">Learn more…</a>"));
+    }
+    break;
 
-        case NAUTILUS_SPECIAL_LOCATION_SCRIPTS:
-        {
-            message = g_strdup (_("Executable files in this folder will appear in the Scripts menu."));
-        }
-        break;
+    case NAUTILUS_SPECIAL_LOCATION_SCRIPTS:
+    {
+        message = g_strdup (_("Executable files in this folder will appear in the Scripts menu."));
+    }
+    break;
 
-        default:
-        {
-            g_assert_not_reached ();
-        }
+    default:
+    {
+        g_assert_not_reached ();
+    }
     }
 
     gtk_label_set_text (GTK_LABEL (bar->label), message);
@@ -91,9 +91,9 @@ set_special_location (NautilusSpecialLocationBar *bar,
 
 static void
 nautilus_special_location_bar_set_property (GObject      *object,
-                                            guint         prop_id,
-                                            const GValue *value,
-                                            GParamSpec   *pspec)
+        guint         prop_id,
+        const GValue *value,
+        GParamSpec   *pspec)
 {
     NautilusSpecialLocationBar *bar;
 
@@ -101,25 +101,25 @@ nautilus_special_location_bar_set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_SPECIAL_LOCATION:
-        {
-            set_special_location (bar, g_value_get_enum (value));
-        }
-        break;
+    case PROP_SPECIAL_LOCATION:
+    {
+        set_special_location (bar, g_value_get_enum (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+    break;
     }
 }
 
 static void
 nautilus_special_location_bar_get_property (GObject    *object,
-                                            guint       prop_id,
-                                            GValue     *value,
-                                            GParamSpec *pspec)
+        guint       prop_id,
+        GValue     *value,
+        GParamSpec *pspec)
 {
     NautilusSpecialLocationBar *bar;
 
@@ -127,17 +127,17 @@ nautilus_special_location_bar_get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_SPECIAL_LOCATION:
-        {
-            g_value_set_enum (value, bar->special_location);
-        }
-        break;
+    case PROP_SPECIAL_LOCATION:
+    {
+        g_value_set_enum (value, bar->special_location);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+    break;
     }
 }
 
@@ -153,11 +153,11 @@ nautilus_special_location_bar_class_init (NautilusSpecialLocationBarClass *klass
     g_object_class_install_property (object_class,
                                      PROP_SPECIAL_LOCATION,
                                      g_param_spec_enum ("special-location",
-                                                        "special-location",
-                                                        "special-location",
-                                                        NAUTILUS_TYPE_SPECIAL_LOCATION,
-                                                        NAUTILUS_SPECIAL_LOCATION_TEMPLATES,
-                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                             "special-location",
+                                             "special-location",
+                                             NAUTILUS_TYPE_SPECIAL_LOCATION,
+                                             NAUTILUS_SPECIAL_LOCATION_TEMPLATES,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 }
 
 static void

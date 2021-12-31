@@ -45,9 +45,9 @@
 
 void
 nautilus_files_view_handle_netscape_url_drop (NautilusFilesView *view,
-                                              const char        *encoded_url,
-                                              const char        *target_uri,
-                                              GdkDragAction      action)
+        const char        *encoded_url,
+        const char        *target_uri,
+        GdkDragAction      action)
 {
     char *url;
     char **bits;
@@ -72,16 +72,16 @@ nautilus_files_view_handle_netscape_url_drop (NautilusFilesView *view,
     bits = g_strsplit (encoded_url, "\n", 0);
     switch (g_strv_length (bits))
     {
-        case 0:
-        {
-            g_strfreev (bits);
-            return;
-        }
+    case 0:
+    {
+        g_strfreev (bits);
+        return;
+    }
 
-        default:
-        {
-            url = bits[0];
-        }
+    default:
+    {
+        url = bits[0];
+    }
     }
 
     f = g_file_new_for_uri (url);
@@ -109,9 +109,9 @@ nautilus_files_view_handle_netscape_url_drop (NautilusFilesView *view,
 
 void
 nautilus_files_view_handle_uri_list_drop (NautilusFilesView *view,
-                                          const char        *item_uris,
-                                          const char        *target_uri,
-                                          GdkDragAction      action)
+        const char        *item_uris,
+        const char        *target_uri,
+        GdkDragAction      action)
 {
     gchar **uri_list;
     GList *real_uri_list = NULL;
@@ -134,8 +134,8 @@ nautilus_files_view_handle_uri_list_drop (NautilusFilesView *view,
     if (action == GDK_ACTION_ASK)
     {
         action = nautilus_drag_drop_action_ask
-                     (GTK_WIDGET (view),
-                     GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);
+                 (GTK_WIDGET (view),
+                  GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);
         if (action == 0)
         {
             g_free (container_uri);
@@ -144,8 +144,8 @@ nautilus_files_view_handle_uri_list_drop (NautilusFilesView *view,
     }
 
     if ((action != GDK_ACTION_COPY) &&
-        (action != GDK_ACTION_MOVE) &&
-        (action != GDK_ACTION_LINK))
+            (action != GDK_ACTION_MOVE) &&
+            (action != GDK_ACTION_LINK))
     {
         show_dialog (_("Drag and drop is not supported."),
                      _("An invalid drag type was used."),
@@ -244,8 +244,8 @@ get_drop_filename (const char *text)
 
     /* Remove any invalid characters */
     for (current_char = filename;
-         *current_char;
-         current_char = g_utf8_next_char (current_char))
+            *current_char;
+            current_char = g_utf8_next_char (current_char))
     {
         if (G_IS_DIR_SEPARATOR (g_utf8_get_char (current_char)))
         {
@@ -286,10 +286,10 @@ nautilus_files_view_handle_text_drop (NautilusFilesView *view,
     filename = get_drop_filename (text);
 
     nautilus_files_view_new_file_with_initial_contents (view,
-                                                        target_uri != NULL ? target_uri : container_uri,
-                                                        filename,
-                                                        text,
-                                                        length);
+            target_uri != NULL ? target_uri : container_uri,
+            filename,
+            text,
+            length);
     g_free (filename);
     g_free (container_uri);
 }
@@ -343,9 +343,9 @@ nautilus_files_view_handle_raw_drop (NautilusFilesView *view,
 
 void
 nautilus_files_view_drop_proxy_received_uris (NautilusFilesView *view,
-                                              const GList       *source_uri_list,
-                                              const char        *target_uri,
-                                              GdkDragAction      action)
+        const GList       *source_uri_list,
+        const char        *target_uri,
+        GdkDragAction      action)
 {
     char *container_uri;
 
@@ -359,8 +359,8 @@ nautilus_files_view_drop_proxy_received_uris (NautilusFilesView *view,
     if (action == GDK_ACTION_ASK)
     {
         action = nautilus_drag_drop_action_ask
-                     (GTK_WIDGET (view),
-                     GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);
+                 (GTK_WIDGET (view),
+                  GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);
         if (action == 0)
         {
             return;
@@ -368,7 +368,7 @@ nautilus_files_view_drop_proxy_received_uris (NautilusFilesView *view,
     }
 
     nautilus_clipboard_clear_if_colliding_uris (GTK_WIDGET (view),
-                                                source_uri_list);
+            source_uri_list);
 
     nautilus_files_view_move_copy_items (view, source_uri_list,
                                          target_uri != NULL ? target_uri : container_uri,
@@ -395,14 +395,14 @@ nautilus_files_view_handle_hover (NautilusFilesView *view,
     target_is_dir = nautilus_file_get_file_type (target_file) == G_FILE_TYPE_DIRECTORY;
     current_location = nautilus_window_slot_get_location (slot);
     open_folder_on_hover = g_settings_get_boolean (nautilus_preferences,
-                                                   NAUTILUS_PREFERENCES_OPEN_FOLDER_ON_DND_HOVER);
+                           NAUTILUS_PREFERENCES_OPEN_FOLDER_ON_DND_HOVER);
 
     if (target_is_dir && open_folder_on_hover &&
-        !(current_location != NULL && g_file_equal (location, current_location)))
+            !(current_location != NULL && g_file_equal (location, current_location)))
     {
         nautilus_application_open_location_full (NAUTILUS_APPLICATION (g_application_get_default ()),
-                                                 location, NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE,
-                                                 NULL, NULL, slot);
+                location, NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE,
+                NULL, NULL, slot);
     }
     g_object_unref (location);
     nautilus_file_unref (target_file);

@@ -39,49 +39,49 @@ G_DECLARE_INTERFACE (NautilusView, nautilus_view, NAUTILUS, VIEW, GtkWidget)
 
 struct _NautilusViewInterface
 {
-        GTypeInterface parent;
+    GTypeInterface parent;
 
-        guint                           (*get_view_id)               (NautilusView         *view);
-        /*
-         * Returns the menu sections that should be shown in the toolbar menu
-         * when this view is active. Implementations must not return %NULL
-         */
-        NautilusToolbarMenuSections *   (*get_toolbar_menu_sections) (NautilusView         *view);
+    guint                           (*get_view_id)               (NautilusView         *view);
+    /*
+     * Returns the menu sections that should be shown in the toolbar menu
+     * when this view is active. Implementations must not return %NULL
+     */
+    NautilusToolbarMenuSections *   (*get_toolbar_menu_sections) (NautilusView         *view);
 
-        /*
-         * Returns the menu for the background click of extensions.
-         */
-        GMenuModel *   (*get_extensions_background_menu) (NautilusView         *view);
+    /*
+     * Returns the menu for the background click of extensions.
+     */
+    GMenuModel *   (*get_extensions_background_menu) (NautilusView         *view);
 
-        void     (*set_extensions_background_menu) (NautilusView *view,
-                                                    GMenuModel   *menu);
-        /*
-         * Returns the menu for templates.
-         */
-        GMenuModel *   (*get_templates_menu) (NautilusView         *view);
+    void     (*set_extensions_background_menu) (NautilusView *view,
+            GMenuModel   *menu);
+    /*
+     * Returns the menu for templates.
+     */
+    GMenuModel *   (*get_templates_menu) (NautilusView         *view);
 
-        void     (*set_templates_menu) (NautilusView *view,
-                                        GMenuModel   *menu);
-        /* Current location of the view */
-        GFile*                          (*get_location)              (NautilusView         *view);
-        void                            (*set_location)              (NautilusView         *view,
-                                                                      GFile                *location);
+    void     (*set_templates_menu) (NautilusView *view,
+                                    GMenuModel   *menu);
+    /* Current location of the view */
+    GFile*                          (*get_location)              (NautilusView         *view);
+    void                            (*set_location)              (NautilusView         *view,
+            GFile                *location);
 
-        /* Selection */
-        GList*                          (*get_selection)             (NautilusView         *view);
-        void                            (*set_selection)             (NautilusView         *view,
-                                                                      GList                *selection);
+    /* Selection */
+    GList*                          (*get_selection)             (NautilusView         *view);
+    void                            (*set_selection)             (NautilusView         *view,
+            GList                *selection);
 
-        /* Search */
-        NautilusQuery*                  (*get_search_query)          (NautilusView         *view);
-        void                            (*set_search_query)          (NautilusView         *view,
-                                                                      NautilusQuery        *query);
+    /* Search */
+    NautilusQuery*                  (*get_search_query)          (NautilusView         *view);
+    void                            (*set_search_query)          (NautilusView         *view,
+            NautilusQuery        *query);
 
-        /* Whether the current view is loading the location */
-        gboolean                        (*is_loading)                (NautilusView         *view);
+    /* Whether the current view is loading the location */
+    gboolean                        (*is_loading)                (NautilusView         *view);
 
-        /* Whether the current view is searching or not */
-        gboolean                        (*is_searching)              (NautilusView         *view);
+    /* Whether the current view is searching or not */
+    gboolean                        (*is_searching)              (NautilusView         *view);
 };
 
 GIcon *                        nautilus_view_get_icon                  (guint                 view_id);
@@ -95,27 +95,27 @@ NautilusToolbarMenuSections *  nautilus_view_get_toolbar_menu_sections (Nautilus
 GFile *                        nautilus_view_get_location              (NautilusView         *view);
 
 void                           nautilus_view_set_location              (NautilusView         *view,
-                                                                        GFile                *location);
+        GFile                *location);
 
 GList *                        nautilus_view_get_selection             (NautilusView         *view);
 
 void                           nautilus_view_set_selection             (NautilusView         *view,
-                                                                        GList                *selection);
+        GList                *selection);
 
 NautilusQuery *                nautilus_view_get_search_query          (NautilusView         *view);
 
 void                           nautilus_view_set_search_query          (NautilusView         *view,
-                                                                        NautilusQuery        *query);
+        NautilusQuery        *query);
 
 gboolean                       nautilus_view_is_loading                (NautilusView         *view);
 
 gboolean                       nautilus_view_is_searching              (NautilusView         *view);
 
 void                           nautilus_view_set_templates_menu        (NautilusView *view,
-                                                                        GMenuModel   *menu);
+        GMenuModel   *menu);
 GMenuModel *                   nautilus_view_get_templates_menu        (NautilusView *view);
 void                           nautilus_view_set_extensions_background_menu (NautilusView *view,
-                                                                             GMenuModel   *menu);
+        GMenuModel   *menu);
 GMenuModel *                   nautilus_view_get_extensions_background_menu (NautilusView *view);
 
 G_END_DECLS

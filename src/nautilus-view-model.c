@@ -54,7 +54,7 @@ nautilus_view_model_list_model_init (GListModelInterface *iface)
 
 G_DEFINE_TYPE_WITH_CODE (NautilusViewModel, nautilus_view_model, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (G_TYPE_LIST_MODEL,
-                                                nautilus_view_model_list_model_init))
+                                 nautilus_view_model_list_model_init))
 
 enum
 {
@@ -104,16 +104,16 @@ get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_SORT_TYPE:
-        {
-            g_value_set_object (value, self->sort_data);
-        }
-        break;
+    case PROP_SORT_TYPE:
+    {
+        g_value_set_object (value, self->sort_data);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -127,16 +127,16 @@ set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_SORT_TYPE:
-        {
-            nautilus_view_model_set_sort_type (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_SORT_TYPE:
+    {
+        nautilus_view_model_set_sort_type (self, g_value_get_object (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -220,7 +220,7 @@ nautilus_view_model_get_sort_type (NautilusViewModel *self)
 
 GQueue *
 nautilus_view_model_get_items_from_files (NautilusViewModel *self,
-                                          GQueue            *files)
+        GQueue            *files)
 {
     GList *l;
     NautilusViewItemModel *item_model;

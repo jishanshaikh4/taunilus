@@ -30,19 +30,19 @@
 G_DECLARE_FINAL_TYPE (NautilusFloatingBar, nautilus_floating_bar, NAUTILUS, FLOATING_BAR, GtkBox)
 
 GtkWidget * nautilus_floating_bar_new              (const gchar *primary_label,
-						    const gchar *details_label,
-						    gboolean show_spinner);
+        const gchar *details_label,
+        gboolean show_spinner);
 
 void       nautilus_floating_bar_set_primary_label (NautilusFloatingBar *self,
-						    const gchar *label);
+        const gchar *label);
 void       nautilus_floating_bar_set_details_label (NautilusFloatingBar *self,
-						    const gchar *label);
+        const gchar *label);
 void        nautilus_floating_bar_set_labels        (NautilusFloatingBar *self,
-						     const gchar *primary,
-						     const gchar *detail);
+        const gchar *primary,
+        const gchar *detail);
 void        nautilus_floating_bar_set_show_spinner (NautilusFloatingBar *self,
-						    gboolean show_spinner);
+        gboolean show_spinner);
 void        nautilus_floating_bar_set_show_stop (NautilusFloatingBar *self,
-						    gboolean show_spinner);
+        gboolean show_spinner);
 
 void        nautilus_floating_bar_remove_hover_timeout (NautilusFloatingBar *self);

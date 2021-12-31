@@ -85,9 +85,9 @@ static GdkCursor *hand_cursor = NULL;
 static GList *nautilus_list_view_get_selection (NautilusFilesView *view);
 static GList *nautilus_list_view_get_selection_for_file_transfer (NautilusFilesView *view);
 static void   nautilus_list_view_set_zoom_level (NautilusListView     *view,
-                                                 NautilusListZoomLevel new_level);
+        NautilusListZoomLevel new_level);
 static void   nautilus_list_view_scroll_to_file (NautilusListView *view,
-                                                 NautilusFile     *file);
+        NautilusFile     *file);
 static void   nautilus_list_view_sort_directories_first_changed (NautilusFilesView *view);
 
 static void   apply_columns_settings (NautilusListView *list_view,
@@ -266,8 +266,8 @@ on_event_controller_motion_motion (GtkEventControllerMotion *controller,
     old_hover_path = view->details->hover_path;
 
     gtk_tree_view_convert_widget_to_bin_window_coords (GTK_TREE_VIEW (widget),
-                                                       x, y,
-                                                       &x_in_bin, &y_in_bin);
+            x, y,
+            &x_in_bin, &y_in_bin);
     gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
                                    x_in_bin, y_in_bin,
                                    &view->details->hover_path,
@@ -300,7 +300,7 @@ on_event_controller_motion_leave (GtkEventControllerMotion *controller,
     view = user_data;
 
     if (get_click_policy () != NAUTILUS_CLICK_POLICY_SINGLE ||
-        view->details->hover_path == NULL)
+            view->details->hover_path == NULL)
     {
         return;
     }
@@ -333,8 +333,8 @@ on_event_controller_motion_enter (GtkEventControllerMotion *controller,
     widget = gtk_event_controller_get_widget (GTK_EVENT_CONTROLLER (controller));
 
     gtk_tree_view_convert_widget_to_bin_window_coords (GTK_TREE_VIEW (widget),
-                                                       x, y,
-                                                       &x_in_bin, &y_in_bin);
+            x, y,
+            &x_in_bin, &y_in_bin);
     gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
                                    x_in_bin, y_in_bin,
                                    &view->details->hover_path,
@@ -448,10 +448,10 @@ on_star_cell_renderer_clicked (GtkTreePath      *path,
 
 static void
 on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
-                                          gint                  n_press,
-                                          gdouble               x,
-                                          gdouble               y,
-                                          gpointer              callback_data)
+        gint                  n_press,
+        gdouble               x,
+        gdouble               y,
+        gpointer              callback_data)
 {
     NautilusListView *view;
     GtkWidget *widget;
@@ -505,9 +505,9 @@ on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
     }
 
     nautilus_list_model_set_drag_view
-        (NAUTILUS_LIST_MODEL (gtk_tree_view_get_model (tree_view)),
-        tree_view,
-        bin_x, bin_y);
+    (NAUTILUS_LIST_MODEL (gtk_tree_view_get_model (tree_view)),
+     tree_view,
+     bin_x, bin_y);
 
     /* Ignore double click if we are in single click mode */
     if (get_click_policy () == NAUTILUS_CLICK_POLICY_SINGLE && n_press >= 2)
@@ -531,7 +531,7 @@ on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
         if (button == GDK_BUTTON_SECONDARY)
         {
             nautilus_files_view_pop_up_background_context_menu (NAUTILUS_FILES_VIEW (view),
-                                                                event);
+                    event);
         }
 
         return;
@@ -540,7 +540,7 @@ on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
     on_expander = FALSE;
     path_selected = gtk_tree_selection_path_is_selected (selection, path);
     show_expanders = g_settings_get_boolean (nautilus_list_view_preferences,
-                                             NAUTILUS_PREFERENCES_LIST_VIEW_USE_TREE);
+                     NAUTILUS_PREFERENCES_LIST_VIEW_USE_TREE);
 
     if (show_expanders)
     {
@@ -572,12 +572,12 @@ on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
 
     on_star = (g_hash_table_lookup (view->details->columns, "starred") == column &&
                !gtk_tree_view_is_blank_at_pos (tree_view,
-                                               bin_x,
-                                               bin_y,
-                                               NULL,
-                                               NULL,
-                                               NULL,
-                                               NULL));
+                       bin_x,
+                       bin_y,
+                       NULL,
+                       NULL,
+                       NULL,
+                       NULL));
 
     if (is_simple_click && on_star)
     {
@@ -590,8 +590,8 @@ on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
 
         /* NOTE: Activation can actually destroy the view if we're switching */
         if (!on_expander &&
-            view->details->first_click_path &&
-            gtk_tree_path_compare (path, view->details->first_click_path) == 0)
+                view->details->first_click_path &&
+                gtk_tree_path_compare (path, view->details->first_click_path) == 0)
         {
             if ((button == GDK_BUTTON_PRIMARY) && button_event_modifies_selection (event))
             {
@@ -691,15 +691,15 @@ on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
         if (button == GDK_BUTTON_SECONDARY)
         {
             nautilus_files_view_pop_up_selection_context_menu (NAUTILUS_FILES_VIEW (view),
-                                                               event);
+                    event);
         }
 
         /* Don't open a new tab if we are in single click mode (this would open 2 tabs),
          * or if CTRL or SHIFT is pressed.
          */
         if (button == GDK_BUTTON_MIDDLE &&
-            get_click_policy () != NAUTILUS_CLICK_POLICY_SINGLE &&
-            !button_event_modifies_selection (event))
+                get_click_policy () != NAUTILUS_CLICK_POLICY_SINGLE &&
+                !button_event_modifies_selection (event))
         {
             gtk_tree_selection_unselect_all (selection);
             gtk_tree_selection_select_path (selection, path);
@@ -713,10 +713,10 @@ on_tree_view_multi_press_gesture_pressed (GtkGestureMultiPress *gesture,
 
 static void
 on_tree_view_multi_press_gesture_released (GtkGestureMultiPress *gesture,
-                                           gint                  n_press,
-                                           gdouble               x,
-                                           gdouble               y,
-                                           gpointer              callback_data)
+        gint                  n_press,
+        gdouble               x,
+        gdouble               y,
+        gpointer              callback_data)
 {
     NautilusListView *view;
     guint button;
@@ -761,8 +761,8 @@ on_tree_view_multi_press_gesture_released (GtkGestureMultiPress *gesture,
 
 
     gtk_tree_view_convert_widget_to_bin_window_coords (tree_view,
-                                                       x, y,
-                                                       &x_in_bin, &y_in_bin);
+            x, y,
+            &x_in_bin, &y_in_bin);
 
     if (!gtk_tree_view_get_path_at_pos (tree_view, x_in_bin, y_in_bin, &path, NULL, NULL, NULL))
     {
@@ -772,9 +772,9 @@ on_tree_view_multi_press_gesture_released (GtkGestureMultiPress *gesture,
     gdk_event_get_state (event, &state);
 
     if ((button == GDK_BUTTON_PRIMARY || button == GDK_BUTTON_MIDDLE)
-        && ((state & GDK_CONTROL_MASK) != 0 ||
-            (state & GDK_SHIFT_MASK) == 0)
-        && view->details->row_selected_on_button_down)
+            && ((state & GDK_CONTROL_MASK) != 0 ||
+                (state & GDK_SHIFT_MASK) == 0)
+            && view->details->row_selected_on_button_down)
     {
         if (!button_event_modifies_selection (event))
         {
@@ -788,7 +788,7 @@ on_tree_view_multi_press_gesture_released (GtkGestureMultiPress *gesture,
     }
 
     if ((get_click_policy () == NAUTILUS_CLICK_POLICY_SINGLE)
-        && !button_event_modifies_selection (event))
+            && !button_event_modifies_selection (event))
     {
         if (button == GDK_BUTTON_PRIMARY)
         {
@@ -929,7 +929,7 @@ row_expanded_callback (GtkTreeView *treeview,
     if (nautilus_directory_are_all_files_seen (directory))
     {
         nautilus_list_model_subdirectory_done_loading (view->details->model,
-                                                       directory);
+                directory);
     }
     else
     {
@@ -996,9 +996,9 @@ unload_file_timeout (gpointer data)
 
     model = unload_data->view->details->model;
     if (nautilus_list_model_get_tree_iter_from_file (model,
-                                                     unload_data->file,
-                                                     unload_data->directory,
-                                                     &iter))
+            unload_data->file,
+            unload_data->directory,
+            &iter))
     {
         path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), &iter);
         if (!gtk_tree_view_row_expanded (unload_data->view->details->tree_view,
@@ -1157,7 +1157,7 @@ sort_column_changed_callback (GtkTreeSortable  *sortable,
     sort_attr = nautilus_list_model_get_attribute_from_sort_column_id (view->details->model, sort_column_id);
 
     default_sort_column_id = nautilus_list_model_get_sort_column_id_from_attribute (view->details->model,
-                                                                                    g_quark_from_string (get_default_sort_order (file, &default_sort_reversed)));
+                             g_quark_from_string (get_default_sort_order (file, &default_sort_reversed)));
     default_sort_attr = nautilus_list_model_get_attribute_from_sort_column_id (view->details->model, default_sort_column_id);
     nautilus_file_set_metadata (file, NAUTILUS_METADATA_KEY_LIST_VIEW_SORT_COLUMN,
                                 g_quark_to_string (default_sort_attr), g_quark_to_string (sort_attr));
@@ -1165,7 +1165,7 @@ sort_column_changed_callback (GtkTreeSortable  *sortable,
     default_reversed_attr = (default_sort_reversed ? "true" : "false");
 
     if (view->details->last_sort_attr != sort_attr &&
-        sort_criterion_changes_due_to_user (view->details->tree_view))
+            sort_criterion_changes_due_to_user (view->details->tree_view))
     {
         /* at this point, the sort order is always GTK_SORT_ASCENDING, if the sort column ID
          * switched. Invert the sort order, if it's the default criterion with a reversed preference,
@@ -1234,7 +1234,7 @@ list_view_handle_uri_list (NautilusTreeViewDragDest *dest,
                            NautilusListView         *view)
 {
     nautilus_files_view_handle_uri_list_drop (NAUTILUS_FILES_VIEW (view),
-                                              item_uris, target_uri, action);
+            item_uris, target_uri, action);
 }
 
 static void
@@ -1280,7 +1280,7 @@ move_copy_items_callback (NautilusTreeViewDragDest *dest,
     NautilusFilesView *view = user_data;
 
     nautilus_clipboard_clear_if_colliding_uris (GTK_WIDGET (view),
-                                                item_uris);
+            item_uris);
     nautilus_files_view_move_copy_items (view,
                                          item_uris,
                                          target_uri,
@@ -1392,9 +1392,9 @@ popup_column_header_menu (NautilusListView *list_view,
 
     /* hash table to lookup if a given column should be visible */
     visible_columns_hash = g_hash_table_new_full (g_str_hash,
-                                                  g_str_equal,
-                                                  (GDestroyNotify) g_free,
-                                                  (GDestroyNotify) g_free);
+                           g_str_equal,
+                           (GDestroyNotify) g_free,
+                           (GDestroyNotify) g_free);
     /* always show name column */
     g_hash_table_insert (visible_columns_hash, g_strdup ("name"), g_strdup ("name"));
     if (visible_columns != NULL)
@@ -1491,9 +1491,9 @@ apply_columns_settings (NautilusListView  *list_view,
 
     /* hash table to lookup if a given column should be visible */
     visible_columns_hash = g_hash_table_new_full (g_str_hash,
-                                                  g_str_equal,
-                                                  (GDestroyNotify) g_free,
-                                                  (GDestroyNotify) g_free);
+                           g_str_equal,
+                           (GDestroyNotify) g_free,
+                           (GDestroyNotify) g_free);
     /* always show name column */
     g_hash_table_insert (visible_columns_hash, g_strdup ("name"), g_strdup ("name"));
     if (visible_columns != NULL)
@@ -1647,7 +1647,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
         path = gtk_tree_model_get_path (model, iter);
 
         if (view->details->hover_path == NULL ||
-            gtk_tree_path_compare (path, view->details->hover_path))
+                gtk_tree_path_compare (path, view->details->hover_path))
         {
             underline = PANGO_UNDERLINE_NONE;
         }
@@ -1664,7 +1664,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
     }
 
     if (query &&
-        nautilus_query_get_search_content (query) == NAUTILUS_QUERY_SEARCH_CONTENT_FULL_TEXT)
+            nautilus_query_get_search_content (query) == NAUTILUS_QUERY_SEARCH_CONTENT_FULL_TEXT)
     {
         gtk_tree_model_get (model, iter,
                             NAUTILUS_LIST_MODEL_FILE_COLUMN, &file,
@@ -1857,30 +1857,30 @@ nautilus_list_view_get_icon_padding_for_zoom_level (NautilusListZoomLevel zoom_l
 {
     switch (zoom_level)
     {
-        case NAUTILUS_LIST_ZOOM_LEVEL_SMALL:
-        {
-            return SMALL_ZOOM_ICON_PADDING;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_SMALL:
+    {
+        return SMALL_ZOOM_ICON_PADDING;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_STANDARD:
-        {
-            return STANDARD_ZOOM_ICON_PADDING;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_STANDARD:
+    {
+        return STANDARD_ZOOM_ICON_PADDING;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_LARGE:
-        {
-            return LARGE_ZOOM_ICON_PADDING;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_LARGE:
+    {
+        return LARGE_ZOOM_ICON_PADDING;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_LARGER:
-        {
-            return LARGER_ZOOM_ICON_PADDING;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_LARGER:
+    {
+        return LARGER_ZOOM_ICON_PADDING;
+    }
 
-        default:
-        {
-            g_assert_not_reached ();
-        }
+    default:
+    {
+        g_assert_not_reached ();
+    }
     }
 }
 
@@ -1989,9 +1989,9 @@ create_and_set_up_tree_view (NautilusListView *view)
     content_widget = nautilus_files_view_get_content_widget (NAUTILUS_FILES_VIEW (view));
     view->details->tree_view = GTK_TREE_VIEW (gtk_tree_view_new ());
     view->details->columns = g_hash_table_new_full (g_str_hash,
-                                                    g_str_equal,
-                                                    (GDestroyNotify) g_free,
-                                                    NULL);
+                             g_str_equal,
+                             (GDestroyNotify) g_free,
+                             NULL);
     gtk_tree_view_set_enable_search (view->details->tree_view, FALSE);
 
     view->details->drag_dest =
@@ -2033,7 +2033,7 @@ create_and_set_up_tree_view (NautilusListView *view)
     view->details->tree_view_drag_gesture = gesture;
 
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
-                                                GTK_PHASE_CAPTURE);
+            GTK_PHASE_CAPTURE);
     gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (gesture), 0);
 
     g_signal_connect (gesture, "drag-begin",
@@ -2045,7 +2045,7 @@ create_and_set_up_tree_view (NautilusListView *view)
     view->details->tree_view_multi_press_gesture = gesture;
 
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
-                                                GTK_PHASE_CAPTURE);
+            GTK_PHASE_CAPTURE);
     gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (gesture), 0);
 
     g_signal_connect (gesture, "pressed",
@@ -2107,7 +2107,7 @@ create_and_set_up_tree_view (NautilusListView *view)
     view->details->long_press_gesture = gesture;
 
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (gesture),
-                                                GTK_PHASE_CAPTURE);
+            GTK_PHASE_CAPTURE);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (gesture), TRUE);
     g_signal_connect (gesture,
                       "pressed",
@@ -2141,7 +2141,7 @@ create_and_set_up_tree_view (NautilusListView *view)
                       NULL);
 
         column_num = nautilus_list_model_add_column (view->details->model,
-                                                     nautilus_column);
+                     nautilus_column);
 
         /* Created the name column specially, because it
          * has the icon in it.*/
@@ -2194,8 +2194,8 @@ create_and_set_up_tree_view (NautilusListView *view)
 
             gtk_tree_view_column_pack_start (view->details->file_name_column, cell, TRUE);
             gtk_tree_view_column_set_cell_data_func (view->details->file_name_column, cell,
-                                                     (GtkTreeCellDataFunc) filename_cell_data_func,
-                                                     view, NULL);
+                    (GtkTreeCellDataFunc) filename_cell_data_func,
+                    view, NULL);
         }
         else
         {
@@ -2207,8 +2207,8 @@ create_and_set_up_tree_view (NautilusListView *view)
                               NULL);
 
                 column = gtk_tree_view_column_new_with_attributes ("",
-                                                                   cell,
-                                                                   NULL);
+                         cell,
+                         NULL);
                 gtk_tree_view_column_set_fixed_width (column, STAR_COLUMN_WIDTH);
             }
             else
@@ -2218,9 +2218,9 @@ create_and_set_up_tree_view (NautilusListView *view)
                 cell = gtk_cell_renderer_text_new ();
 
                 column = gtk_tree_view_column_new_with_attributes (label,
-                                                                   cell,
-                                                                   "text", column_num,
-                                                                   NULL);
+                         cell,
+                         "text", column_num,
+                         NULL);
 
                 pango_attr_list_insert (attr_list, pango_attr_foreground_alpha_new (ALPHA_55_PERCENT));
                 g_object_set (cell, "attributes", attr_list, NULL);
@@ -2253,20 +2253,20 @@ create_and_set_up_tree_view (NautilusListView *view)
             if (!strcmp (name, "where"))
             {
                 gtk_tree_view_column_set_cell_data_func (column, cell,
-                                                         (GtkTreeCellDataFunc) where_cell_data_func,
-                                                         view, NULL);
+                        (GtkTreeCellDataFunc) where_cell_data_func,
+                        view, NULL);
             }
             else if (!strcmp (name, "trash_orig_path"))
             {
                 gtk_tree_view_column_set_cell_data_func (column, cell,
-                                                         (GtkTreeCellDataFunc) trash_orig_path_cell_data_func,
-                                                         view, NULL);
+                        (GtkTreeCellDataFunc) trash_orig_path_cell_data_func,
+                        view, NULL);
             }
             else if (!strcmp (name, "starred"))
             {
                 gtk_tree_view_column_set_cell_data_func (column, cell,
-                                                         (GtkTreeCellDataFunc) starred_cell_data_func,
-                                                         view, NULL);
+                        (GtkTreeCellDataFunc) starred_cell_data_func,
+                        view, NULL);
             }
         }
         g_free (name);
@@ -2275,9 +2275,9 @@ create_and_set_up_tree_view (NautilusListView *view)
     nautilus_column_list_free (nautilus_columns);
 
     default_visible_columns = g_settings_get_strv (nautilus_list_view_preferences,
-                                                   NAUTILUS_PREFERENCES_LIST_VIEW_DEFAULT_VISIBLE_COLUMNS);
+                              NAUTILUS_PREFERENCES_LIST_VIEW_DEFAULT_VISIBLE_COLUMNS);
     default_column_order = g_settings_get_strv (nautilus_list_view_preferences,
-                                                NAUTILUS_PREFERENCES_LIST_VIEW_DEFAULT_COLUMN_ORDER);
+                           NAUTILUS_PREFERENCES_LIST_VIEW_DEFAULT_COLUMN_ORDER);
 
     /* Apply the default column order and visible columns, to get it
      * right most of the time. The metadata will be checked when a
@@ -2384,11 +2384,11 @@ get_visible_columns (NautilusListView *list_view)
 
     location = g_file_new_for_uri (uri);
     can_star_current_directory = nautilus_tag_manager_can_star_contents (list_view->details->tag_manager,
-                                                                         location);
+                                 location);
     is_starred = eel_uri_is_starred (uri);
 
     visible_columns = nautilus_file_get_metadata_list (file,
-                                                       NAUTILUS_METADATA_KEY_LIST_VIEW_VISIBLE_COLUMNS);
+                      NAUTILUS_METADATA_KEY_LIST_VIEW_VISIBLE_COLUMNS);
     if (visible_columns == NULL)
     {
         visible_columns = get_default_visible_columns_as_list (list_view);
@@ -2398,7 +2398,7 @@ get_visible_columns (NautilusListView *list_view)
     for (l = visible_columns; l != NULL; l = l->next)
     {
         if (g_strcmp0 (l->data, "starred") != 0 ||
-            (g_strcmp0 (l->data, "starred") == 0 && (can_star_current_directory || is_starred)))
+                (g_strcmp0 (l->data, "starred") == 0 && (can_star_current_directory || is_starred)))
         {
             g_ptr_array_add (res, l->data);
         }
@@ -2446,8 +2446,8 @@ get_column_order (NautilusListView *list_view)
     file = nautilus_files_view_get_directory_as_file (NAUTILUS_FILES_VIEW (list_view));
 
     column_order = nautilus_file_get_metadata_list
-                       (file,
-                       NAUTILUS_METADATA_KEY_LIST_VIEW_COLUMN_ORDER);
+                   (file,
+                    NAUTILUS_METADATA_KEY_LIST_VIEW_COLUMN_ORDER);
 
     if (column_order)
     {
@@ -2489,7 +2489,7 @@ check_allow_sort (NautilusListView *list_view)
         if (allow_sorting)
         {
             sort_column_id = nautilus_list_model_get_sort_column_id_from_attribute (list_view->details->model,
-                                                                                    g_quark_from_string (l->data));
+                             g_quark_from_string (l->data));
             /* Restore its original sorting id. We rely on that the keys of the hashmap
              * use the same string than the sort criterias */
             gtk_tree_view_column_set_sort_column_id (column, sort_column_id);
@@ -2534,22 +2534,22 @@ set_sort_order_from_metadata_and_preferences (NautilusListView *list_view)
     if (!(nautilus_file_is_in_recent (file) || nautilus_file_is_in_search (file)))
     {
         sort_attribute = nautilus_file_get_metadata (file,
-                                                     NAUTILUS_METADATA_KEY_LIST_VIEW_SORT_COLUMN,
-                                                     NULL);
+                         NAUTILUS_METADATA_KEY_LIST_VIEW_SORT_COLUMN,
+                         NULL);
         sort_column_id = nautilus_list_model_get_sort_column_id_from_attribute (list_view->details->model,
-                                                                                g_quark_from_string (sort_attribute));
+                         g_quark_from_string (sort_attribute));
         g_free (sort_attribute);
 
         if (sort_column_id == -1)
         {
             sort_column_id =
                 nautilus_list_model_get_sort_column_id_from_attribute (list_view->details->model,
-                                                                       g_quark_from_string (default_sort_order));
+                        g_quark_from_string (default_sort_order));
         }
 
         sort_reversed = nautilus_file_get_boolean_metadata (file,
-                                                            NAUTILUS_METADATA_KEY_LIST_VIEW_SORT_REVERSED,
-                                                            default_sort_reversed);
+                        NAUTILUS_METADATA_KEY_LIST_VIEW_SORT_REVERSED,
+                        default_sort_reversed);
     }
     else
     {
@@ -2557,7 +2557,7 @@ set_sort_order_from_metadata_and_preferences (NautilusListView *list_view)
          * of the change to not allow sorting on search and recent, or the
          * case that the user or some app modified directly the metadata */
         sort_column_id = nautilus_list_model_get_sort_column_id_from_attribute (list_view->details->model,
-                                                                                g_quark_from_string (default_sort_order));
+                         g_quark_from_string (default_sort_order));
         sort_reversed = default_sort_reversed;
     }
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_view->details->model),
@@ -2571,10 +2571,10 @@ get_default_zoom_level (void)
     NautilusListZoomLevel default_zoom_level;
 
     default_zoom_level = g_settings_get_enum (nautilus_list_view_preferences,
-                                              NAUTILUS_PREFERENCES_LIST_VIEW_DEFAULT_ZOOM_LEVEL);
+                         NAUTILUS_PREFERENCES_LIST_VIEW_DEFAULT_ZOOM_LEVEL);
 
     if (default_zoom_level < NAUTILUS_LIST_ZOOM_LEVEL_SMALL
-        || default_zoom_level > NAUTILUS_LIST_ZOOM_LEVEL_LARGER)
+            || default_zoom_level > NAUTILUS_LIST_ZOOM_LEVEL_LARGER)
     {
         default_zoom_level = NAUTILUS_LIST_ZOOM_LEVEL_STANDARD;
     }
@@ -2660,9 +2660,9 @@ typedef struct
 
 static void
 tree_selection_has_common_parent_foreach_func (GtkTreeModel *model,
-                                               GtkTreePath  *path,
-                                               GtkTreeIter  *iter,
-                                               gpointer      user_data)
+        GtkTreePath  *path,
+        GtkTreeIter  *iter,
+        gpointer      user_data)
 {
     HasCommonParentData *data;
     GtkTreePath *parent_path;
@@ -2774,7 +2774,7 @@ nautilus_list_view_get_backing_uri (NautilusFilesView *view)
         if (file != NULL)
         {
             if (nautilus_file_is_directory (file) &&
-                gtk_tree_view_row_expanded (tree_view, path))
+                    gtk_tree_view_row_expanded (tree_view, path))
             {
                 uri = nautilus_file_get_uri (file);
             }
@@ -2819,9 +2819,9 @@ nautilus_list_view_get_backing_uri (NautilusFilesView *view)
 
 static void
 nautilus_list_view_get_selection_foreach_func (GtkTreeModel *model,
-                                               GtkTreePath  *path,
-                                               GtkTreeIter  *iter,
-                                               gpointer      data)
+        GtkTreePath  *path,
+        GtkTreeIter  *iter,
+        gpointer      data)
 {
     GList **list;
     NautilusFile *file;
@@ -2853,9 +2853,9 @@ nautilus_list_view_get_selection (NautilusFilesView *view)
 
 static void
 nautilus_list_view_get_selection_for_file_transfer_foreach_func (GtkTreeModel *model,
-                                                                 GtkTreePath  *path,
-                                                                 GtkTreeIter  *iter,
-                                                                 gpointer      data)
+        GtkTreePath  *path,
+        GtkTreeIter  *iter,
+        gpointer      data)
 {
     NautilusFile *file;
     struct SelectionForeachData *selection_data;
@@ -2877,7 +2877,7 @@ nautilus_list_view_get_selection_for_file_transfer_foreach_func (GtkTreeModel *m
         while (gtk_tree_model_iter_parent (model, &parent, &child))
         {
             if (gtk_tree_selection_iter_is_selected (selection_data->selection,
-                                                     &parent))
+                    &parent))
             {
                 return;
             }
@@ -3203,14 +3203,14 @@ column_chooser_set_from_arrays (NautilusColumnChooser  *chooser,
                                 char                  **column_order)
 {
     g_signal_handlers_block_by_func
-        (chooser, G_CALLBACK (column_chooser_changed_callback), view);
+    (chooser, G_CALLBACK (column_chooser_changed_callback), view);
 
     nautilus_column_chooser_set_settings (chooser,
                                           visible_columns,
                                           column_order);
 
     g_signal_handlers_unblock_by_func
-        (chooser, G_CALLBACK (column_chooser_changed_callback), view);
+    (chooser, G_CALLBACK (column_chooser_changed_callback), view);
 }
 
 static void
@@ -3239,7 +3239,7 @@ column_chooser_use_default_callback (NautilusColumnChooser *chooser,
     char **default_order;
 
     file = nautilus_files_view_get_directory_as_file
-               (NAUTILUS_FILES_VIEW (view));
+           (NAUTILUS_FILES_VIEW (view));
 
     nautilus_file_set_metadata_list (file, NAUTILUS_METADATA_KEY_LIST_VIEW_COLUMN_ORDER, NULL);
     nautilus_file_set_metadata_list (file, NAUTILUS_METADATA_KEY_LIST_VIEW_VISIBLE_COLUMNS, NULL);
@@ -3296,7 +3296,7 @@ create_column_editor (NautilusListView *view)
                       view);
 
     column_chooser_set_from_settings
-        (NAUTILUS_COLUMN_CHOOSER (column_chooser), view);
+    (NAUTILUS_COLUMN_CHOOSER (column_chooser), view);
 
     return window;
 }
@@ -3369,7 +3369,7 @@ nautilus_list_view_bump_zoom_level (NautilusFilesView *view,
     new_level = list_view->details->zoom_level + zoom_increment;
 
     if (new_level >= NAUTILUS_LIST_ZOOM_LEVEL_SMALL &&
-        new_level <= NAUTILUS_LIST_ZOOM_LEVEL_LARGER)
+            new_level <= NAUTILUS_LIST_ZOOM_LEVEL_LARGER)
     {
         nautilus_list_view_zoom_to_level (view, new_level);
     }
@@ -3512,7 +3512,7 @@ nautilus_list_view_sort_directories_first_changed (NautilusFilesView *view)
     list_view = NAUTILUS_LIST_VIEW (view);
 
     nautilus_list_model_set_should_sort_directories_first (list_view->details->model,
-                                                           nautilus_files_view_should_sort_directories_first (view));
+            nautilus_files_view_should_sort_directories_first (view));
 }
 
 static int
@@ -3770,8 +3770,8 @@ get_rectangle_for_path (NautilusListView *list_view,
                                  list_view->details->file_name_column,
                                  rect);
     gtk_tree_view_convert_bin_window_to_widget_coords (tree_view,
-                                                       rect->x, rect->y,
-                                                       &rect->x, &rect->y);
+            rect->x, rect->y,
+            &rect->x, &rect->y);
 
     /* FIXME Due to smooth scrolling, we may get the cell area while the view is
      * still scrolling (and still outside the view), not at the final position
@@ -3783,8 +3783,8 @@ get_rectangle_for_path (NautilusListView *list_view,
      * widget coordinates and bin cooridinates.
      */
     gtk_tree_view_convert_bin_window_to_widget_coords (tree_view,
-                                                       0, 0,
-                                                       NULL, &header_height);
+            0, 0,
+            NULL, &header_height);
 
     rect->y = CLAMP (rect->y,
                      header_height,
@@ -3866,7 +3866,7 @@ nautilus_list_view_reveal_for_selection_context_menu (NautilusFilesView *view)
 
 static void
 nautilus_list_view_preview_selection_event (NautilusFilesView *view,
-                                            GtkDirectionType   direction)
+        GtkDirectionType   direction)
 {
     NautilusListView *list_view;
     GtkTreeView *tree_view;

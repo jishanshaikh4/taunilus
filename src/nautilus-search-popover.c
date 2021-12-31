@@ -26,7 +26,7 @@
 #include "nautilus-global-preferences.h"
 #include "nautilus-gtk4-helpers.h"
 
- #define SEARCH_FILTER_MAX_YEARS 5
+#define SEARCH_FILTER_MAX_YEARS 5
 
 struct _NautilusSearchPopover
 {
@@ -57,7 +57,7 @@ struct _NautilusSearchPopover
 };
 
 static void          show_date_selection_widgets (NautilusSearchPopover *popover,
-                                                  gboolean               visible);
+        gboolean               visible);
 
 static void          show_other_types_dialog (NautilusSearchPopover *popover);
 
@@ -371,7 +371,7 @@ search_fts_mode_changed (GtkToggleButton       *button,
                          NautilusSearchPopover *popover)
 {
     if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (popover->full_text_search_button)) &&
-        popover->fts_enabled == FALSE)
+            popover->fts_enabled == FALSE)
     {
         popover->fts_enabled = TRUE;
         g_settings_set_boolean (nautilus_preferences, NAUTILUS_PREFERENCES_FTS_ENABLED, TRUE);
@@ -643,10 +643,10 @@ show_other_types_dialog (NautilusSearchPopover *popover)
 
     renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("Name",
-                                                       renderer,
-                                                       "text",
-                                                       0,
-                                                       NULL);
+             renderer,
+             "text",
+             0,
+             NULL);
     gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
 
@@ -696,7 +696,7 @@ update_date_label (NautilusSearchPopover *popover,
 
 void
 nautilus_search_popover_set_fts_sensitive (NautilusSearchPopover *popover,
-                                           gboolean               sensitive)
+        gboolean               sensitive)
 {
     gtk_widget_set_sensitive (popover->full_text_search_button, sensitive);
     gtk_widget_set_sensitive (popover->filename_search_button, sensitive);
@@ -747,22 +747,22 @@ nautilus_search_popover_get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_QUERY:
-        {
-            g_value_set_object (value, self->query);
-        }
-        break;
+    case PROP_QUERY:
+    {
+        g_value_set_object (value, self->query);
+    }
+    break;
 
-        case PROP_FTS_ENABLED:
-        {
-            g_value_set_boolean (value, self->fts_enabled);
-        }
-        break;
+    case PROP_FTS_ENABLED:
+    {
+        g_value_set_boolean (value, self->fts_enabled);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -778,22 +778,22 @@ nautilus_search_popover_set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_QUERY:
-        {
-            nautilus_search_popover_set_query (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_QUERY:
+    {
+        nautilus_search_popover_set_query (self, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_FTS_ENABLED:
-        {
-            self->fts_enabled = g_value_get_boolean (value);
-        }
-        break;
+    case PROP_FTS_ENABLED:
+    {
+        self->fts_enabled = g_value_get_boolean (value);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -852,18 +852,18 @@ nautilus_search_popover_class_init (NautilusSearchPopoverClass *klass)
     g_object_class_install_property (object_class,
                                      PROP_QUERY,
                                      g_param_spec_object ("query",
-                                                          "Query of the popover",
-                                                          "The current query being edited",
-                                                          NAUTILUS_TYPE_QUERY,
-                                                          G_PARAM_READWRITE));
+                                             "Query of the popover",
+                                             "The current query being edited",
+                                             NAUTILUS_TYPE_QUERY,
+                                             G_PARAM_READWRITE));
 
     g_object_class_install_property (object_class,
                                      PROP_FTS_ENABLED,
                                      g_param_spec_boolean ("fts-enabled",
-                                                           "fts enabled",
-                                                           "fts enabled",
-                                                           FALSE,
-                                                           G_PARAM_READWRITE));
+                                             "fts enabled",
+                                             "fts enabled",
+                                             FALSE,
+                                             G_PARAM_READWRITE));
 
     gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/nautilus/ui/nautilus-search-popover.ui");
 
@@ -944,7 +944,7 @@ nautilus_search_popover_init (NautilusSearchPopover *self)
     }
 
     self->fts_enabled = g_settings_get_boolean (nautilus_preferences,
-                                                NAUTILUS_PREFERENCES_FTS_ENABLED);
+                        NAUTILUS_PREFERENCES_FTS_ENABLED);
     if (self->fts_enabled)
     {
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->full_text_search_button), TRUE);

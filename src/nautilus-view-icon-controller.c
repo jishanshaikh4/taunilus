@@ -144,7 +144,7 @@ get_sorts_constants_from_sort_type (NautilusFileSortType sort_type,
     for (i = 0; i < G_N_ELEMENTS (sorts_constants); i++)
     {
         if (sort_type == sorts_constants[i].sort_type
-            && reversed == sorts_constants[i].reversed)
+                && reversed == sorts_constants[i].reversed)
         {
             return &sorts_constants[i];
         }
@@ -162,7 +162,7 @@ get_sorts_constants_from_metadata_text (const char *metadata_name,
     for (i = 0; i < G_N_ELEMENTS (sorts_constants); i++)
     {
         if (g_strcmp0 (sorts_constants[i].metadata_name, metadata_name) == 0
-            && reversed == sorts_constants[i].reversed)
+                && reversed == sorts_constants[i].reversed)
         {
             return &sorts_constants[i];
         }
@@ -197,8 +197,8 @@ get_directory_sort_by (NautilusFile *file)
                                           default_sort->metadata_name);
 
     reversed = nautilus_file_get_boolean_metadata (file,
-                                                   NAUTILUS_METADATA_KEY_ICON_VIEW_SORT_REVERSED,
-                                                   default_sort->reversed);
+               NAUTILUS_METADATA_KEY_ICON_VIEW_SORT_REVERSED,
+               default_sort->reversed);
 
     return get_sorts_constants_from_metadata_text (sort_by, reversed);
 }
@@ -352,7 +352,7 @@ convert_files_to_item_models (NautilusViewIconController *self,
         NautilusViewItemModel *item_model;
 
         item_model = nautilus_view_item_model_new (NAUTILUS_FILE (l->data),
-                                                   get_icon_size_for_zoom_level (self->zoom_level));
+                     get_icon_size_for_zoom_level (self->zoom_level));
         g_queue_push_tail (models, item_model);
     }
 
@@ -504,7 +504,7 @@ real_bump_zoom_level (NautilusFilesView *files_view,
     new_level = self->zoom_level + zoom_increment;
 
     if (new_level >= NAUTILUS_GRID_ZOOM_LEVEL_SMALL &&
-        new_level <= NAUTILUS_GRID_ZOOM_LEVEL_LARGEST)
+            new_level <= NAUTILUS_GRID_ZOOM_LEVEL_LARGEST)
     {
         g_action_group_change_action_state (self->action_group,
                                             "zoom-to-level",
@@ -517,35 +517,35 @@ get_icon_size_for_zoom_level (NautilusGridZoomLevel zoom_level)
 {
     switch (zoom_level)
     {
-        case NAUTILUS_GRID_ZOOM_LEVEL_SMALL:
-        {
-            return NAUTILUS_GRID_ICON_SIZE_SMALL;
-        }
-        break;
+    case NAUTILUS_GRID_ZOOM_LEVEL_SMALL:
+    {
+        return NAUTILUS_GRID_ICON_SIZE_SMALL;
+    }
+    break;
 
-        case NAUTILUS_GRID_ZOOM_LEVEL_STANDARD:
-        {
-            return NAUTILUS_GRID_ICON_SIZE_STANDARD;
-        }
-        break;
+    case NAUTILUS_GRID_ZOOM_LEVEL_STANDARD:
+    {
+        return NAUTILUS_GRID_ICON_SIZE_STANDARD;
+    }
+    break;
 
-        case NAUTILUS_GRID_ZOOM_LEVEL_LARGE:
-        {
-            return NAUTILUS_GRID_ICON_SIZE_LARGE;
-        }
-        break;
+    case NAUTILUS_GRID_ZOOM_LEVEL_LARGE:
+    {
+        return NAUTILUS_GRID_ICON_SIZE_LARGE;
+    }
+    break;
 
-        case NAUTILUS_GRID_ZOOM_LEVEL_LARGER:
-        {
-            return NAUTILUS_GRID_ICON_SIZE_LARGER;
-        }
-        break;
+    case NAUTILUS_GRID_ZOOM_LEVEL_LARGER:
+    {
+        return NAUTILUS_GRID_ICON_SIZE_LARGER;
+    }
+    break;
 
-        case NAUTILUS_GRID_ZOOM_LEVEL_LARGEST:
-        {
-            return NAUTILUS_GRID_ICON_SIZE_LARGEST;
-        }
-        break;
+    case NAUTILUS_GRID_ZOOM_LEVEL_LARGEST:
+    {
+        return NAUTILUS_GRID_ICON_SIZE_LARGEST;
+    }
+    break;
     }
     g_return_val_if_reached (NAUTILUS_GRID_ICON_SIZE_STANDARD);
 }
@@ -556,7 +556,7 @@ get_default_zoom_level (void)
     NautilusGridZoomLevel default_zoom_level;
 
     default_zoom_level = g_settings_get_enum (nautilus_icon_view_preferences,
-                                              NAUTILUS_PREFERENCES_ICON_VIEW_DEFAULT_ZOOM_LEVEL);
+                         NAUTILUS_PREFERENCES_ICON_VIEW_DEFAULT_ZOOM_LEVEL);
 
     return default_zoom_level;
 }
@@ -577,8 +577,8 @@ set_captions_from_preferences (NautilusViewIconController *self)
     /* Reset array to zeros beforehand, as we may not refill all elements. */
     memset (&self->caption_attributes, 0, sizeof (self->caption_attributes));
     for (gint i = 0, quark_i = 0;
-         value[i] != NULL && quark_i < n_captions_for_zoom_level;
-         i++)
+            value[i] != NULL && quark_i < n_captions_for_zoom_level;
+            i++)
     {
         if (g_strcmp0 (value[i], "none") == 0)
         {
@@ -826,7 +826,9 @@ on_button_press_event (GtkGestureMultiPress *gesture,
             if (g_list_find (selection, selected_file) == NULL)
             {
                 nautilus_view_set_selection (NAUTILUS_VIEW (self),
-                                             &(GList){ .data = selected_file });
+                &(GList) {
+                    .data = selected_file
+                });
             }
         }
 
@@ -844,7 +846,7 @@ on_button_press_event (GtkGestureMultiPress *gesture,
         else if (button == GDK_BUTTON_SECONDARY)
         {
             nautilus_files_view_pop_up_selection_context_menu (NAUTILUS_FILES_VIEW (self),
-                                                               event);
+                    event);
         }
     }
     else
@@ -853,7 +855,7 @@ on_button_press_event (GtkGestureMultiPress *gesture,
         if (button == GDK_BUTTON_SECONDARY)
         {
             nautilus_files_view_pop_up_background_context_menu (NAUTILUS_FILES_VIEW (self),
-                                                                event);
+                    event);
         }
     }
 }
@@ -909,13 +911,13 @@ on_longpress_gesture_pressed_callback (GtkGestureLongPress *gesture,
     if (child_at_pos != NULL)
     {
         nautilus_files_view_pop_up_selection_context_menu (NAUTILUS_FILES_VIEW (self),
-                                                           event);
+                event);
     }
     else
     {
         nautilus_view_set_selection (NAUTILUS_VIEW (self), NULL);
         nautilus_files_view_pop_up_background_context_menu (NAUTILUS_FILES_VIEW (self),
-                                                            event);
+                event);
     }
 }
 
@@ -1401,7 +1403,7 @@ constructed (GObject *object)
     /* Compensating for the lack of event boxen to allow clicks outside the flow box. */
     self->multi_press_gesture = gtk_gesture_multi_press_new (GTK_WIDGET (content_widget));
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (self->multi_press_gesture),
-                                                GTK_PHASE_CAPTURE);
+            GTK_PHASE_CAPTURE);
     gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (self->multi_press_gesture),
                                    0);
     g_signal_connect (self->multi_press_gesture, "pressed",
@@ -1413,7 +1415,7 @@ constructed (GObject *object)
 
     longpress_gesture = gtk_gesture_long_press_new (GTK_WIDGET (self->view_ui));
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (longpress_gesture),
-                                                GTK_PHASE_CAPTURE);
+            GTK_PHASE_CAPTURE);
     gtk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (longpress_gesture),
                                        TRUE);
     g_signal_connect (longpress_gesture, "pressed",

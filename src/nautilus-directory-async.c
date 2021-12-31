@@ -171,14 +171,14 @@ static gboolean request_is_satisfied (NautilusDirectory *directory,
                                       NautilusFile      *file,
                                       Request            request);
 static void     cancel_loading_attributes (NautilusDirectory     *directory,
-                                           NautilusFileAttributes file_attributes);
+        NautilusFileAttributes file_attributes);
 static void     add_all_files_to_work_queue (NautilusDirectory *directory);
 static void     move_file_to_low_priority_queue (NautilusDirectory *directory,
-                                                 NautilusFile      *file);
+        NautilusFile      *file);
 static void     move_file_to_extension_queue (NautilusDirectory *directory,
-                                              NautilusFile      *file);
+        NautilusFile      *file);
 static void     nautilus_directory_invalidate_file_attributes (NautilusDirectory     *directory,
-                                                               NautilusFileAttributes file_attributes);
+        NautilusFileAttributes file_attributes);
 
 /* Some helpers for case-insensitive strings.
  * Move to nautilus-glib-extensions?
@@ -480,7 +480,7 @@ async_job_wake_up (void)
         }
         g_hash_table_remove (waiting_directories, value);
         nautilus_directory_async_state_changed
-            (NAUTILUS_DIRECTORY (value));
+        (NAUTILUS_DIRECTORY (value));
     }
     already_waking_up = FALSE;
 }
@@ -782,12 +782,12 @@ mime_db_changed_callback (GObject           *ignore,
 
 void
 nautilus_directory_monitor_add_internal (NautilusDirectory         *directory,
-                                         NautilusFile              *file,
-                                         gconstpointer              client,
-                                         gboolean                   monitor_hidden_files,
-                                         NautilusFileAttributes     file_attributes,
-                                         NautilusDirectoryCallback  callback,
-                                         gpointer                   callback_data)
+        NautilusFile              *file,
+        gconstpointer              client,
+        gboolean                   monitor_hidden_files,
+        NautilusFileAttributes     file_attributes,
+        NautilusDirectoryCallback  callback,
+        gpointer                   callback_data)
 {
     Monitor *monitor;
     GList *file_list;
@@ -844,7 +844,7 @@ nautilus_directory_monitor_add_internal (NautilusDirectory         *directory,
 
 
     if (REQUEST_WANTS_TYPE (monitor->request, REQUEST_FILE_INFO) &&
-        directory->details->mime_db_monitor == 0)
+            directory->details->mime_db_monitor == 0)
     {
         directory->details->mime_db_monitor =
             g_signal_connect_object (nautilus_signaller_get_current (),
@@ -922,8 +922,8 @@ should_skip_file (NautilusDirectory *directory,
     }
 
     if (!show_hidden_files &&
-        (g_file_info_get_is_hidden (info) ||
-         g_file_info_get_is_backup (info)))
+            (g_file_info_get_is_hidden (info) ||
+             g_file_info_get_is_backup (info)))
     {
         return TRUE;
     }
@@ -982,7 +982,7 @@ dequeue_pending_idle_callback (gpointer callback_data)
          * waiting for the idle function.
          */
         if (dir_load_state &&
-            !should_skip_file (directory, file_info))
+                !should_skip_file (directory, file_info))
         {
             dir_load_state->load_file_count += 1;
 
@@ -1035,7 +1035,7 @@ dequeue_pending_idle_callback (gpointer callback_data)
     if (directory->details->directory_loaded)
     {
         for (node = directory->details->file_list;
-             node != NULL; node = next)
+                node != NULL; node = next)
         {
             file = NAUTILUS_FILE (node->data);
             next = node->next;
@@ -1057,7 +1057,7 @@ dequeue_pending_idle_callback (gpointer callback_data)
     nautilus_file_list_free (added_files);
 
     if (directory->details->directory_loaded &&
-        !directory->details->directory_loaded_sent_notification)
+            !directory->details->directory_loaded_sent_notification)
     {
         /* Send the done_loading signal. */
         nautilus_directory_emit_done_loading (directory);
@@ -1074,7 +1074,7 @@ dequeue_pending_idle_callback (gpointer callback_data)
             file->details->mime_list_is_up_to_date = TRUE;
             g_list_free_full (file->details->mime_list, g_free);
             file->details->mime_list = istr_set_get_as_list
-                                           (dir_load_state->load_mime_list_hash);
+                                       (dir_load_state->load_mime_list_hash);
 
             nautilus_file_changed (file);
         }
@@ -1195,7 +1195,7 @@ directory_load_done (NautilusDirectory *directory,
          * about them to know whether they are really gone.
          */
         for (node = directory->details->file_list;
-             node != NULL; node = node->next)
+                node != NULL; node = node->next)
         {
             set_file_unconfirmed (NAUTILUS_FILE (node->data), FALSE);
         }
@@ -1218,8 +1218,8 @@ directory_load_done (NautilusDirectory *directory,
 
 void
 nautilus_directory_monitor_remove_internal (NautilusDirectory *directory,
-                                            NautilusFile      *file,
-                                            gconstpointer      client)
+        NautilusFile      *file,
+        gconstpointer      client)
 {
     g_assert (NAUTILUS_IS_DIRECTORY (directory));
     g_assert (file == NULL || NAUTILUS_IS_FILE (file));
@@ -1228,7 +1228,7 @@ nautilus_directory_monitor_remove_internal (NautilusDirectory *directory,
     remove_monitor (directory, file, client);
 
     if (directory->details->monitor != NULL
-        && g_hash_table_size (directory->details->monitor_table) == 0)
+            && g_hash_table_size (directory->details->monitor_table) == 0)
     {
         nautilus_monitor_cancel (directory->details->monitor);
         directory->details->monitor = NULL;
@@ -1241,7 +1241,7 @@ nautilus_directory_monitor_remove_internal (NautilusDirectory *directory,
 
 FileMonitors *
 nautilus_directory_remove_file_monitors (NautilusDirectory *directory,
-                                         NautilusFile      *file)
+        NautilusFile      *file)
 {
     GList *result, *node;
     Monitor *monitor;
@@ -1395,7 +1395,7 @@ ready_callback_call (NautilusDirectory   *directory,
     else if (callback->callback.directory != NULL)
     {
         if (directory == NULL ||
-            !REQUEST_WANTS_TYPE (callback->request, REQUEST_FILE_LIST))
+                !REQUEST_WANTS_TYPE (callback->request, REQUEST_FILE_LIST))
         {
             file_list = NULL;
         }
@@ -1415,12 +1415,12 @@ ready_callback_call (NautilusDirectory   *directory,
 
 void
 nautilus_directory_call_when_ready_internal (NautilusDirectory         *directory,
-                                             NautilusFile              *file,
-                                             NautilusFileAttributes     file_attributes,
-                                             gboolean                   wait_for_file_list,
-                                             NautilusDirectoryCallback  directory_callback,
-                                             NautilusFileCallback       file_callback,
-                                             gpointer                   callback_data)
+        NautilusFile              *file,
+        NautilusFileAttributes     file_attributes,
+        gboolean                   wait_for_file_list,
+        NautilusDirectoryCallback  directory_callback,
+        NautilusFileCallback       file_callback,
+        gpointer                   callback_data)
 {
     ReadyCallback callback;
 
@@ -1468,8 +1468,8 @@ nautilus_directory_call_when_ready_internal (NautilusDirectory         *director
 
     /* Add the new callback to the list. */
     directory->details->call_when_ready_list = g_list_prepend
-                                                   (directory->details->call_when_ready_list,
-                                                   g_memdup (&callback, sizeof (callback)));
+            (directory->details->call_when_ready_list,
+             g_memdup (&callback, sizeof (callback)));
     request_counter_add_request (directory->details->call_when_ready_counters,
                                  callback.request);
 
@@ -1488,8 +1488,8 @@ nautilus_directory_call_when_ready_internal (NautilusDirectory         *director
 
 gboolean
 nautilus_directory_check_if_ready_internal (NautilusDirectory      *directory,
-                                            NautilusFile           *file,
-                                            NautilusFileAttributes  file_attributes)
+        NautilusFile           *file,
+        NautilusFileAttributes  file_attributes)
 {
     Request request;
 
@@ -1508,7 +1508,7 @@ remove_callback_link_keep_data (NautilusDirectory *directory,
     callback = link->data;
 
     directory->details->call_when_ready_list = g_list_remove_link
-                                                   (directory->details->call_when_ready_list, link);
+            (directory->details->call_when_ready_list, link);
 
     request_counter_remove_request (directory->details->call_when_ready_counters,
                                     callback->request);
@@ -1528,10 +1528,10 @@ remove_callback_link (NautilusDirectory *directory,
 
 void
 nautilus_directory_cancel_callback_internal (NautilusDirectory         *directory,
-                                             NautilusFile              *file,
-                                             NautilusDirectoryCallback  directory_callback,
-                                             NautilusFileCallback       file_callback,
-                                             gpointer                   callback_data)
+        NautilusFile              *file,
+        NautilusDirectoryCallback  directory_callback,
+        NautilusFileCallback       file_callback,
+        gpointer                   callback_data)
 {
     ReadyCallback callback;
     GList *node;
@@ -1628,7 +1628,7 @@ new_files_callback (GObject      *source_object,
 
 void
 nautilus_directory_get_info_for_new_files (NautilusDirectory *directory,
-                                           GList             *location_list)
+        GList             *location_list)
 {
     NewFilesState *state;
     GFile *location;
@@ -1713,7 +1713,7 @@ nautilus_async_destroying_file (NautilusFile *file)
      * If so, make that NULL so it gets canceled right away.
      */
     if (directory->details->count_in_progress != NULL &&
-        directory->details->count_in_progress->count_file == file)
+            directory->details->count_in_progress->count_file == file)
     {
         directory->details->count_in_progress->count_file = NULL;
         changed = TRUE;
@@ -1724,7 +1724,7 @@ nautilus_async_destroying_file (NautilusFile *file)
         changed = TRUE;
     }
     if (directory->details->mime_list_in_progress != NULL &&
-        directory->details->mime_list_in_progress->mime_list_file == file)
+            directory->details->mime_list_in_progress->mime_list_file == file)
     {
         directory->details->mime_list_in_progress->mime_list_file = NULL;
         changed = TRUE;
@@ -1741,21 +1741,21 @@ nautilus_async_destroying_file (NautilusFile *file)
     }
 
     if (directory->details->thumbnail_state != NULL &&
-        directory->details->thumbnail_state->file == file)
+            directory->details->thumbnail_state->file == file)
     {
         directory->details->thumbnail_state->file = NULL;
         changed = TRUE;
     }
 
     if (directory->details->mount_state != NULL &&
-        directory->details->mount_state->file == file)
+            directory->details->mount_state->file == file)
     {
         directory->details->mount_state->file = NULL;
         changed = TRUE;
     }
 
     if (directory->details->filesystem_info_state != NULL &&
-        directory->details->filesystem_info_state->file == file)
+            directory->details->filesystem_info_state->file == file)
     {
         directory->details->filesystem_info_state->file = NULL;
         changed = TRUE;
@@ -1844,7 +1844,7 @@ lacks_mount (NautilusFile *file)
                 (file->details->type == G_FILE_TYPE_MOUNTABLE)
 
             )
-            );
+           );
 }
 
 static gboolean
@@ -1876,8 +1876,8 @@ request_is_satisfied (NautilusDirectory *directory,
                       Request            request)
 {
     if (REQUEST_WANTS_TYPE (request, REQUEST_FILE_LIST) &&
-        !(directory->details->directory_loaded &&
-          directory->details->directory_loaded_sent_notification))
+            !(directory->details->directory_loaded &&
+              directory->details->directory_loaded_sent_notification))
     {
         return FALSE;
     }
@@ -1958,7 +1958,7 @@ call_ready_callbacks_at_idle (gpointer callback_data)
     {
         /* Check if any callbacks are non-active and call them if they are. */
         for (node = directory->details->call_when_ready_list;
-             node != NULL; node = next)
+                node != NULL; node = next)
         {
             next = node->next;
             callback = node->data;
@@ -2012,12 +2012,12 @@ call_ready_callbacks (NautilusDirectory *directory)
 
     /* Check if any callbacks are satisifed and mark them for call them if they are. */
     for (node = directory->details->call_when_ready_list;
-         node != NULL; node = next)
+            node != NULL; node = next)
     {
         next = node->next;
         callback = node->data;
         if (callback->active &&
-            request_is_satisfied (directory, callback->file, callback->request))
+                request_is_satisfied (directory, callback->file, callback->request))
         {
             callback->active = FALSE;
             found_any = TRUE;
@@ -2051,17 +2051,17 @@ lookup_all_files_monitors (GHashTable *monitor_table)
 
 gboolean
 nautilus_directory_has_active_request_for_file (NautilusDirectory *directory,
-                                                NautilusFile      *file)
+        NautilusFile      *file)
 {
     GList *node;
     ReadyCallback *callback;
 
     for (node = directory->details->call_when_ready_list;
-         node != NULL; node = node->next)
+            node != NULL; node = node->next)
     {
         callback = node->data;
         if (callback->file == file ||
-            callback->file == NULL)
+                callback->file == NULL)
         {
             return TRUE;
         }
@@ -2166,7 +2166,7 @@ more_files_callback (GObject      *source_object,
 
     error = NULL;
     files = g_file_enumerator_next_files_finish (state->enumerator,
-                                                 res, &error);
+            res, &error);
 
     for (l = files; l != NULL; l = l->next)
     {
@@ -2220,7 +2220,7 @@ enumerate_children_callback (GObject      *source_object,
 
     error = NULL;
     enumerator = g_file_enumerate_children_finish (G_FILE (source_object),
-                                                   res, &error);
+                 res, &error);
 
     if (enumerator == NULL)
     {
@@ -2256,7 +2256,7 @@ start_monitoring_file_list (NautilusDirectory *directory)
     }
 
     if (directory->details->directory_loaded ||
-        directory->details->directory_load_in_progress != NULL)
+            directory->details->directory_load_in_progress != NULL)
     {
         return;
     }
@@ -2356,7 +2356,7 @@ nautilus_directory_invalidate_count_and_mime_list (NautilusDirectory *directory)
 
 static void
 nautilus_directory_invalidate_file_attributes (NautilusDirectory      *directory,
-                                               NautilusFileAttributes  file_attributes)
+        NautilusFileAttributes  file_attributes)
 {
     GList *node;
 
@@ -2365,19 +2365,19 @@ nautilus_directory_invalidate_file_attributes (NautilusDirectory      *directory
     for (node = directory->details->file_list; node != NULL; node = node->next)
     {
         nautilus_file_invalidate_attributes_internal (NAUTILUS_FILE (node->data),
-                                                      file_attributes);
+                file_attributes);
     }
 
     if (directory->details->as_file != NULL)
     {
         nautilus_file_invalidate_attributes_internal (directory->details->as_file,
-                                                      file_attributes);
+                file_attributes);
     }
 }
 
 void
 nautilus_directory_force_reload_internal (NautilusDirectory      *directory,
-                                          NautilusFileAttributes  file_attributes)
+        NautilusFileAttributes  file_attributes)
 {
     nautilus_profile_start (NULL);
 
@@ -2458,18 +2458,18 @@ is_needy (NautilusFile *file,
     if (directory->details->call_when_ready_counters[request_type_wanted] > 0)
     {
         for (node = directory->details->call_when_ready_list;
-             node != NULL; node = node->next)
+                node != NULL; node = node->next)
         {
             callback = node->data;
             if (callback->active &&
-                REQUEST_WANTS_TYPE (callback->request, request_type_wanted))
+                    REQUEST_WANTS_TYPE (callback->request, request_type_wanted))
             {
                 if (callback->file == file)
                 {
                     return TRUE;
                 }
                 if (callback->file == NULL
-                    && file != directory->details->as_file)
+                        && file != directory->details->as_file)
                 {
                     return TRUE;
                 }
@@ -2623,7 +2623,7 @@ count_more_files_callback (GObject      *source_object,
 
     error = NULL;
     files = g_file_enumerator_next_files_finish (state->enumerator,
-                                                 res, &error);
+            res, &error);
 
     state->file_count += count_non_skipped_files (files);
 
@@ -2678,7 +2678,7 @@ count_children_callback (GObject      *source_object,
 
     error = NULL;
     enumerator = g_file_enumerate_children_finish (G_FILE (source_object),
-                                                   res, &error);
+                 res, &error);
 
     if (enumerator == NULL)
     {
@@ -2837,7 +2837,7 @@ deep_count_one (DeepCountState *state,
             /* only if it is on the same filesystem */
             subdir = g_file_get_child (state->deep_count_location, g_file_info_get_name (info));
             state->deep_count_subdirectories = g_list_prepend
-                                                   (state->deep_count_subdirectories, subdir);
+                                               (state->deep_count_subdirectories, subdir);
         }
     }
     else
@@ -2897,7 +2897,7 @@ deep_count_next_dir (DeepCountState *state)
         /* Work on a new directory. */
         location = state->deep_count_subdirectories->data;
         state->deep_count_subdirectories = g_list_remove
-                                               (state->deep_count_subdirectories, location);
+                                           (state->deep_count_subdirectories, location);
         deep_count_load (state, location);
         g_object_unref (location);
     }
@@ -2945,7 +2945,7 @@ deep_count_more_files_callback (GObject      *source_object,
     g_assert (directory->details->deep_count_in_progress == state);
 
     files = g_file_enumerator_next_files_finish (state->enumerator,
-                                                 res, NULL);
+            res, NULL);
 
     for (l = files; l != NULL; l = l->next)
     {
@@ -3279,7 +3279,7 @@ mime_list_callback (GObject      *source_object,
 
     error = NULL;
     files = g_file_enumerator_next_files_finish (state->enumerator,
-                                                 res, &error);
+            res, &error);
 
     for (l = files; l != NULL; l = l->next)
     {
@@ -3339,7 +3339,7 @@ list_mime_enum_callback (GObject      *source_object,
 
     error = NULL;
     enumerator = g_file_enumerate_children_finish (G_FILE (source_object),
-                                                   res, &error);
+                 res, &error);
 
     if (enumerator == NULL)
     {
@@ -3603,7 +3603,7 @@ thumbnail_done (NautilusDirectory *directory,
         }
 
         if (thumb_mtime == 0 ||
-            thumb_mtime == file->details->mtime)
+                thumb_mtime == file->details->mtime)
         {
             file->details->thumbnail = g_object_ref (pixbuf);
             file->details->thumbnail_mtime = thumb_mtime;
@@ -3912,7 +3912,7 @@ find_enclosing_mount_callback (GObject      *source_object,
     }
 
     mount = g_file_find_enclosing_mount_finish (G_FILE (source_object),
-                                                res, NULL);
+            res, NULL);
 
     if (mount)
     {
@@ -4215,8 +4215,8 @@ extension_info_cancel (NautilusDirectory *directory)
         else
         {
             nautilus_info_provider_cancel_update
-                (directory->details->extension_info_provider,
-                directory->details->extension_info_in_progress);
+            (directory->details->extension_info_provider,
+             directory->details->extension_info_in_progress);
         }
 
         directory->details->extension_info_in_progress = NULL;
@@ -4280,7 +4280,7 @@ info_provider_idle_callback (gpointer user_data)
     directory = response->directory;
 
     if (response->handle != directory->details->extension_info_in_progress
-        || response->provider != directory->details->extension_info_provider)
+            || response->provider != directory->details->extension_info_provider)
     {
         g_warning ("Unexpected plugin response.  This probably indicates a bug in a Nautilus extension: handle=%p", response->handle);
     }
@@ -4358,15 +4358,15 @@ extension_info_start (NautilusDirectory *directory,
                            g_cclosure_marshal_generic);
 
     result = nautilus_info_provider_update_file_info
-                 (provider,
-                 NAUTILUS_FILE_INFO (file),
-                 update_complete,
-                 &handle);
+             (provider,
+              NAUTILUS_FILE_INFO (file),
+              update_complete,
+              &handle);
 
     g_closure_unref (update_complete);
 
     if (result == NAUTILUS_OPERATION_COMPLETE ||
-        result == NAUTILUS_OPERATION_FAILED)
+            result == NAUTILUS_OPERATION_FAILED)
     {
         finish_info_provider (directory, file, provider);
         async_job_end (directory, "extension info");
@@ -4520,7 +4520,7 @@ cancel_directory_count_for_file (NautilusDirectory *directory,
                                  NautilusFile      *file)
 {
     if (directory->details->count_in_progress != NULL &&
-        directory->details->count_in_progress->count_file == file)
+            directory->details->count_in_progress->count_file == file)
     {
         directory_count_cancel (directory);
     }
@@ -4541,7 +4541,7 @@ cancel_mime_list_for_file (NautilusDirectory *directory,
                            NautilusFile      *file)
 {
     if (directory->details->mime_list_in_progress != NULL &&
-        directory->details->mime_list_in_progress->mime_list_file == file)
+            directory->details->mime_list_in_progress->mime_list_file == file)
     {
         mime_list_cancel (directory);
     }
@@ -4562,7 +4562,7 @@ cancel_thumbnail_for_file (NautilusDirectory *directory,
                            NautilusFile      *file)
 {
     if (directory->details->thumbnail_state != NULL &&
-        directory->details->thumbnail_state->file == file)
+            directory->details->thumbnail_state->file == file)
     {
         thumbnail_cancel (directory);
     }
@@ -4573,7 +4573,7 @@ cancel_mount_for_file (NautilusDirectory *directory,
                        NautilusFile      *file)
 {
     if (directory->details->mount_state != NULL &&
-        directory->details->mount_state->file == file)
+            directory->details->mount_state->file == file)
     {
         mount_cancel (directory);
     }
@@ -4584,7 +4584,7 @@ cancel_filesystem_info_for_file (NautilusDirectory *directory,
                                  NautilusFile      *file)
 {
     if (directory->details->filesystem_info_state != NULL &&
-        directory->details->filesystem_info_state->file == file)
+            directory->details->filesystem_info_state->file == file)
     {
         filesystem_info_cancel (directory);
     }
@@ -4638,8 +4638,8 @@ cancel_loading_attributes (NautilusDirectory      *directory,
 
 void
 nautilus_directory_cancel_loading_file_attributes (NautilusDirectory      *directory,
-                                                   NautilusFile           *file,
-                                                   NautilusFileAttributes  file_attributes)
+        NautilusFile           *file,
+        NautilusFileAttributes  file_attributes)
 {
     Request request;
 
@@ -4681,7 +4681,7 @@ nautilus_directory_cancel_loading_file_attributes (NautilusDirectory      *direc
 
 void
 nautilus_directory_add_file_to_work_queue (NautilusDirectory *directory,
-                                           NautilusFile      *file)
+        NautilusFile      *file)
 {
     g_return_if_fail (file->details->directory == directory);
 
@@ -4706,7 +4706,7 @@ add_all_files_to_work_queue (NautilusDirectory *directory)
 
 void
 nautilus_directory_remove_file_from_work_queue (NautilusDirectory *directory,
-                                                NautilusFile      *file)
+        NautilusFile      *file)
 {
     nautilus_file_queue_remove (directory->details->high_priority_queue,
                                 file);

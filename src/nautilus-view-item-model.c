@@ -58,28 +58,28 @@ nautilus_view_item_model_get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_FILE:
-        {
-            g_value_set_object (value, self->file);
-        }
-        break;
+    case PROP_FILE:
+    {
+        g_value_set_object (value, self->file);
+    }
+    break;
 
-        case PROP_ICON_SIZE:
-        {
-            g_value_set_int (value, self->icon_size);
-        }
-        break;
+    case PROP_ICON_SIZE:
+    {
+        g_value_set_int (value, self->icon_size);
+    }
+    break;
 
-        case PROP_ITEM_UI:
-        {
-            g_value_set_object (value, self->item_ui);
-        }
-        break;
+    case PROP_ITEM_UI:
+    {
+        g_value_set_object (value, self->item_ui);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -93,28 +93,28 @@ nautilus_view_item_model_set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_FILE:
-        {
-            self->file = g_value_dup_object (value);
-        }
-        break;
+    case PROP_FILE:
+    {
+        self->file = g_value_dup_object (value);
+    }
+    break;
 
-        case PROP_ICON_SIZE:
-        {
-            self->icon_size = g_value_get_int (value);
-        }
-        break;
+    case PROP_ICON_SIZE:
+    {
+        self->icon_size = g_value_get_int (value);
+    }
+    break;
 
-        case PROP_ITEM_UI:
-        {
-            g_set_object (&self->item_ui, g_value_get_object (value));
-        }
-        break;
+    case PROP_ITEM_UI:
+    {
+        g_set_object (&self->item_ui, g_value_get_object (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -136,27 +136,27 @@ nautilus_view_item_model_class_init (NautilusViewItemModelClass *klass)
     g_object_class_install_property (object_class,
                                      PROP_ICON_SIZE,
                                      g_param_spec_int ("icon-size",
-                                                       "Icon size",
-                                                       "The size in pixels of the icon",
-                                                       NAUTILUS_GRID_ICON_SIZE_SMALL,
-                                                       NAUTILUS_GRID_ICON_SIZE_LARGEST,
-                                                       NAUTILUS_GRID_ICON_SIZE_LARGE,
-                                                       G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                             "Icon size",
+                                             "The size in pixels of the icon",
+                                             NAUTILUS_GRID_ICON_SIZE_SMALL,
+                                             NAUTILUS_GRID_ICON_SIZE_LARGEST,
+                                             NAUTILUS_GRID_ICON_SIZE_LARGE,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
     g_object_class_install_property (object_class,
                                      PROP_FILE,
                                      g_param_spec_object ("file",
-                                                          "File",
-                                                          "The file the icon item represents",
-                                                          NAUTILUS_TYPE_FILE,
-                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                                             "File",
+                                             "The file the icon item represents",
+                                             NAUTILUS_TYPE_FILE,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
     g_object_class_install_property (object_class,
                                      PROP_ITEM_UI,
                                      g_param_spec_object ("item-ui",
-                                                          "Item ui",
-                                                          "The UI that reprensents the item model",
-                                                          GTK_TYPE_WIDGET,
-                                                          G_PARAM_READWRITE));
+                                             "Item ui",
+                                             "The UI that reprensents the item model",
+                                             GTK_TYPE_WIDGET,
+                                             G_PARAM_READWRITE));
 
     signals[FILE_CHANGED] = g_signal_new ("file-changed",
                                           G_TYPE_FROM_CLASS (klass),

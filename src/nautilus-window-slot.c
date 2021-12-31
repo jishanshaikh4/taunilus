@@ -157,25 +157,25 @@ static void nautilus_window_slot_sync_actions (NautilusWindowSlot *self);
 static void nautilus_window_slot_connect_new_content_view (NautilusWindowSlot *self);
 static void nautilus_window_slot_disconnect_content_view (NautilusWindowSlot *self);
 static gboolean nautilus_window_slot_content_view_matches (NautilusWindowSlot *self,
-                                                           guint               id);
+        guint               id);
 static NautilusView *nautilus_window_slot_get_view_for_location (NautilusWindowSlot *self,
-                                                                 GFile              *location);
+        GFile              *location);
 static void nautilus_window_slot_set_content_view (NautilusWindowSlot *self,
-                                                   guint               id);
+        guint               id);
 static void nautilus_window_slot_set_loading (NautilusWindowSlot *self,
-                                              gboolean            loading);
+        gboolean            loading);
 char *nautilus_window_slot_get_location_uri (NautilusWindowSlot *self);
 static void nautilus_window_slot_set_search_visible (NautilusWindowSlot *self,
-                                                     gboolean            visible);
+        gboolean            visible);
 static gboolean nautilus_window_slot_get_search_visible (NautilusWindowSlot *self);
 static void nautilus_window_slot_set_location (NautilusWindowSlot *self,
-                                               GFile              *location);
+        GFile              *location);
 static void trash_state_changed_cb (NautilusTrashMonitor *monitor,
                                     gboolean              is_empty,
                                     gpointer              user_data);
 static void update_search_information (NautilusWindowSlot *self);
 static void real_set_extensions_background_menu (NautilusWindowSlot *self,
-                                                 GMenuModel         *menu);
+        GMenuModel         *menu);
 static GMenuModel *real_get_extensions_background_menu (NautilusWindowSlot *self);
 static void real_set_templates_menu (NautilusWindowSlot *self,
                                      GMenuModel         *menu);
@@ -197,7 +197,7 @@ free_navigation_state (gpointer data)
 
 void
 nautilus_window_slot_restore_navigation_state (NautilusWindowSlot      *self,
-                                               NautilusNavigationState *data)
+        NautilusNavigationState *data)
 {
     self->back_list = g_steal_pointer (&data->back_list);
 
@@ -246,7 +246,7 @@ nautilus_window_slot_get_navigation_state (NautilusWindowSlot *self)
 
 static NautilusView *
 nautilus_window_slot_get_view_for_location (NautilusWindowSlot *self,
-                                            GFile              *location)
+        GFile              *location)
 {
     g_autoptr (NautilusFile) file = NULL;
     NautilusView *view;
@@ -276,7 +276,7 @@ nautilus_window_slot_get_view_for_location (NautilusWindowSlot *self,
          * so the view mode of the current view will be the one search is using,
          * which is not the one we are interested in */
         if (self->view_mode_before_search == NAUTILUS_VIEW_INVALID_ID &&
-            NAUTILUS_IS_FILES_VIEW (self->content_view))
+                NAUTILUS_IS_FILES_VIEW (self->content_view))
         {
             self->view_mode_before_search = nautilus_view_get_view_id (self->content_view);
         }
@@ -325,7 +325,7 @@ nautilus_window_slot_get_view_for_location (NautilusWindowSlot *self,
 
 static gboolean
 nautilus_window_slot_content_view_matches (NautilusWindowSlot *self,
-                                           guint               id)
+        guint               id)
 {
     if (self->content_view == NULL)
     {
@@ -478,9 +478,9 @@ hide_query_editor (NautilusWindowSlot *self)
 
         nautilus_view_set_search_query (view, NULL);
         nautilus_window_slot_open_location_full (self,
-                                                 nautilus_view_get_location (view),
-                                                 0,
-                                                 selection);
+                nautilus_view_get_location (view),
+                0,
+                selection);
     }
 
     if (nautilus_window_slot_get_active (self))
@@ -558,7 +558,7 @@ show_query_editor (NautilusWindowSlot *self)
 
 static void
 nautilus_window_slot_set_search_visible (NautilusWindowSlot *self,
-                                         gboolean            visible)
+        gboolean            visible)
 {
     GAction *action;
 
@@ -621,7 +621,7 @@ nautilus_window_slot_handle_event (NautilusWindowSlot    *self,
                                          "search-visible");
 
     if (keyval == GDK_KEY_Escape ||
-        keyval == GDK_KEY_BackSpace)
+            keyval == GDK_KEY_BackSpace)
     {
         g_autoptr (GVariant) action_state = NULL;
 
@@ -642,9 +642,9 @@ nautilus_window_slot_handle_event (NautilusWindowSlot    *self,
     if (g_action_get_enabled (action))
     {
         retval = nautilus_query_editor_handle_event (self->query_editor,
-                                                     controller,
-                                                     keyval,
-                                                     state);
+                 controller,
+                 keyval,
+                 state);
     }
 
     if (retval)
@@ -667,7 +667,7 @@ nautilus_window_slot_remove_extra_location_widgets (NautilusWindowSlot *self)
 
 static void
 nautilus_window_slot_add_extra_location_widget (NautilusWindowSlot *self,
-                                                GtkWidget          *widget)
+        GtkWidget          *widget)
 {
     gtk_box_pack_start (GTK_BOX (self->extra_location_widgets),
                         widget, FALSE, TRUE, 0);
@@ -714,53 +714,53 @@ nautilus_window_slot_set_property (GObject      *object,
 
     switch (property_id)
     {
-        case PROP_ACTIVE:
-        {
-            nautilus_window_slot_set_active (self, g_value_get_boolean (value));
-        }
-        break;
+    case PROP_ACTIVE:
+    {
+        nautilus_window_slot_set_active (self, g_value_get_boolean (value));
+    }
+    break;
 
-        case PROP_WINDOW:
-        {
-            nautilus_window_slot_set_window (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_WINDOW:
+    {
+        nautilus_window_slot_set_window (self, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_LOCATION:
-        {
-            nautilus_window_slot_set_location (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_LOCATION:
+    {
+        nautilus_window_slot_set_location (self, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_SEARCHING:
-        {
-            nautilus_window_slot_set_searching (self, g_value_get_boolean (value));
-        }
-        break;
+    case PROP_SEARCHING:
+    {
+        nautilus_window_slot_set_searching (self, g_value_get_boolean (value));
+    }
+    break;
 
-        case PROP_EXTENSIONS_BACKGROUND_MENU:
-        {
-            real_set_extensions_background_menu (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_EXTENSIONS_BACKGROUND_MENU:
+    {
+        real_set_extensions_background_menu (self, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_TEMPLATES_MENU:
-        {
-            real_set_templates_menu (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_TEMPLATES_MENU:
+    {
+        real_set_templates_menu (self, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_SELECTION:
-        {
-            nautilus_window_slot_set_selection (self, g_value_get_pointer (value));
-        }
-        break;
+    case PROP_SELECTION:
+    {
+        nautilus_window_slot_set_selection (self, g_value_get_pointer (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+    }
+    break;
     }
 }
 
@@ -805,71 +805,71 @@ nautilus_window_slot_get_property (GObject    *object,
     NautilusWindowSlot *self = NAUTILUS_WINDOW_SLOT (object);
     switch (property_id)
     {
-        case PROP_ACTIVE:
-        {
-            g_value_set_boolean (value, nautilus_window_slot_get_active (self));
-        }
-        break;
+    case PROP_ACTIVE:
+    {
+        g_value_set_boolean (value, nautilus_window_slot_get_active (self));
+    }
+    break;
 
-        case PROP_WINDOW:
-        {
-            g_value_set_object (value, self->window);
-        }
-        break;
+    case PROP_WINDOW:
+    {
+        g_value_set_object (value, self->window);
+    }
+    break;
 
-        case PROP_ICON:
-        {
-            g_value_take_object (value, nautilus_window_slot_get_icon (self));
-        }
-        break;
+    case PROP_ICON:
+    {
+        g_value_take_object (value, nautilus_window_slot_get_icon (self));
+    }
+    break;
 
-        case PROP_TOOLBAR_MENU_SECTIONS:
-        {
-            g_value_set_object (value, nautilus_window_slot_get_toolbar_menu_sections (self));
-        }
-        break;
+    case PROP_TOOLBAR_MENU_SECTIONS:
+    {
+        g_value_set_object (value, nautilus_window_slot_get_toolbar_menu_sections (self));
+    }
+    break;
 
-        case PROP_EXTENSIONS_BACKGROUND_MENU:
-        {
-            g_value_set_object (value, real_get_extensions_background_menu (self));
-        }
-        break;
+    case PROP_EXTENSIONS_BACKGROUND_MENU:
+    {
+        g_value_set_object (value, real_get_extensions_background_menu (self));
+    }
+    break;
 
-        case PROP_TEMPLATES_MENU:
-        {
-            g_value_set_object (value, real_get_templates_menu (self));
-        }
-        break;
+    case PROP_TEMPLATES_MENU:
+    {
+        g_value_set_object (value, real_get_templates_menu (self));
+    }
+    break;
 
-        case PROP_LOADING:
-        {
-            g_value_set_boolean (value, nautilus_window_slot_get_loading (self));
-        }
-        break;
+    case PROP_LOADING:
+    {
+        g_value_set_boolean (value, nautilus_window_slot_get_loading (self));
+    }
+    break;
 
-        case PROP_LOCATION:
-        {
-            g_value_set_object (value, nautilus_window_slot_get_current_location (self));
-        }
-        break;
+    case PROP_LOCATION:
+    {
+        g_value_set_object (value, nautilus_window_slot_get_current_location (self));
+    }
+    break;
 
-        case PROP_SEARCHING:
-        {
-            g_value_set_boolean (value, nautilus_window_slot_get_searching (self));
-        }
-        break;
+    case PROP_SEARCHING:
+    {
+        g_value_set_boolean (value, nautilus_window_slot_get_searching (self));
+    }
+    break;
 
-        case PROP_TOOLTIP:
-        {
-            g_value_set_static_string (value, nautilus_window_slot_get_tooltip (self));
-        }
-        break;
+    case PROP_TOOLTIP:
+    {
+        g_value_set_static_string (value, nautilus_window_slot_get_tooltip (self));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+    }
+    break;
     }
 }
 
@@ -1146,7 +1146,7 @@ static void begin_location_change (NautilusWindowSlot        *slot,
 static void free_location_change (NautilusWindowSlot *self);
 static void end_location_change (NautilusWindowSlot *self);
 static void got_file_info_for_view_selection_callback (NautilusFile *file,
-                                                       gpointer      callback_data);
+        gpointer      callback_data);
 static gboolean setup_view (NautilusWindowSlot *self,
                             NautilusView       *view);
 static void load_new_location (NautilusWindowSlot *slot,
@@ -1158,9 +1158,9 @@ static void load_new_location (NautilusWindowSlot *slot,
 
 void
 nautilus_window_slot_open_location_full (NautilusWindowSlot *self,
-                                         GFile              *location,
-                                         NautilusOpenFlags   flags,
-                                         GList              *new_selection)
+        GFile              *location,
+        NautilusOpenFlags   flags,
+        GList              *new_selection)
 {
     GFile *old_location;
     g_autolist (NautilusFile) old_selection = NULL;
@@ -1173,7 +1173,7 @@ nautilus_window_slot_open_location_full (NautilusWindowSlot *self,
         old_selection = nautilus_view_get_selection (self->content_view);
     }
     if (old_location && g_file_equal (old_location, location) &&
-        nautilus_file_selection_equal (old_selection, new_selection))
+            nautilus_file_selection_equal (old_selection, new_selection))
     {
         goto done;
     }
@@ -1187,8 +1187,8 @@ done:
 
 static GList *
 check_select_old_location_containing_folder (GList *new_selection,
-                                             GFile *location,
-                                             GFile *previous_location)
+        GFile *location,
+        GFile *previous_location)
 {
     GFile *from_folder, *parent;
 
@@ -1196,7 +1196,7 @@ check_select_old_location_containing_folder (GList *new_selection,
      * a (grand)parent of the old location then we automatically
      * select the folder the previous location was in */
     if (new_selection == NULL && previous_location != NULL &&
-        g_file_has_prefix (previous_location, location))
+            g_file_has_prefix (previous_location, location))
     {
         from_folder = g_object_ref (previous_location);
         parent = g_file_get_parent (from_folder);
@@ -1261,8 +1261,8 @@ save_scroll_position_for_history (NautilusWindowSlot *self)
 {
     /* Set current_bookmark scroll pos */
     if (self->current_location_bookmark != NULL &&
-        self->content_view != NULL &&
-        NAUTILUS_IS_FILES_VIEW (self->content_view))
+            self->content_view != NULL &&
+            NAUTILUS_IS_FILES_VIEW (self->content_view))
     {
         char *current_pos;
 
@@ -1349,7 +1349,7 @@ nautilus_window_slot_set_location (NautilusWindowSlot *self,
     GFile *old_location;
 
     if (self->location &&
-        g_file_equal (location, self->location))
+            g_file_equal (location, self->location))
     {
         /* The location name could be updated even if the location
          * wasn't changed. This is the case for a search.
@@ -1549,9 +1549,9 @@ mount_not_mounted_callback (GObject      *source_object,
 
 static void
 nautilus_window_slot_display_view_selection_failure (NautilusWindow *window,
-                                                     NautilusFile   *file,
-                                                     GFile          *location,
-                                                     GError         *error)
+        NautilusFile   *file,
+        GFile          *location,
+        GError         *error)
 {
     char *error_message;
     char *detail_message;
@@ -1577,80 +1577,80 @@ nautilus_window_slot_display_view_selection_failure (NautilusWindow *window,
     {
         switch (error->code)
         {
-            case G_IO_ERROR_NOT_FOUND:
+        case G_IO_ERROR_NOT_FOUND:
+        {
+            file_path = g_file_get_path (location);
+            if (file_path != NULL)
             {
-                file_path = g_file_get_path (location);
-                if (file_path != NULL)
-                {
-                    detail_message = g_strdup_printf (_("Unable to find “%s”. Please check the spelling and try again."),
-                                                      file_path);
-                }
-                else
-                {
-                    detail_message = g_strdup (_("Unable to find the requested file. Please check the spelling and try again."));
-                }
-                g_free (file_path);
+                detail_message = g_strdup_printf (_("Unable to find “%s”. Please check the spelling and try again."),
+                                                  file_path);
             }
-            break;
+            else
+            {
+                detail_message = g_strdup (_("Unable to find the requested file. Please check the spelling and try again."));
+            }
+            g_free (file_path);
+        }
+        break;
 
-            case G_IO_ERROR_NOT_SUPPORTED:
+        case G_IO_ERROR_NOT_SUPPORTED:
+        {
+            scheme_string = g_file_get_uri_scheme (location);
+            if (scheme_string != NULL)
             {
-                scheme_string = g_file_get_uri_scheme (location);
-                if (scheme_string != NULL)
-                {
-                    detail_message = g_strdup_printf (_("“%s” locations are not supported."),
-                                                      scheme_string);
-                }
-                else
-                {
-                    detail_message = g_strdup (_("Unable to handle this kind of location."));
-                }
-                g_free (scheme_string);
+                detail_message = g_strdup_printf (_("“%s” locations are not supported."),
+                                                  scheme_string);
             }
-            break;
+            else
+            {
+                detail_message = g_strdup (_("Unable to handle this kind of location."));
+            }
+            g_free (scheme_string);
+        }
+        break;
 
-            case G_IO_ERROR_NOT_MOUNTED:
-            {
-                detail_message = g_strdup (_("Unable to access the requested location."));
-            }
-            break;
+        case G_IO_ERROR_NOT_MOUNTED:
+        {
+            detail_message = g_strdup (_("Unable to access the requested location."));
+        }
+        break;
 
-            case G_IO_ERROR_PERMISSION_DENIED:
-            {
-                detail_message = g_strdup (_("Don’t have permission to access the requested location."));
-            }
-            break;
+        case G_IO_ERROR_PERMISSION_DENIED:
+        {
+            detail_message = g_strdup (_("Don’t have permission to access the requested location."));
+        }
+        break;
 
-            case G_IO_ERROR_HOST_NOT_FOUND:
-            {
-                /* This case can be hit for user-typed strings like "foo" due to
-                 * the code that guesses web addresses when there's no initial "/".
-                 * But this case is also hit for legitimate web addresses when
-                 * the proxy is set up wrong.
-                 */
-                detail_message = g_strdup (_("Unable to find the requested location. Please check the spelling or the network settings."));
-            }
-            break;
+        case G_IO_ERROR_HOST_NOT_FOUND:
+        {
+            /* This case can be hit for user-typed strings like "foo" due to
+             * the code that guesses web addresses when there's no initial "/".
+             * But this case is also hit for legitimate web addresses when
+             * the proxy is set up wrong.
+             */
+            detail_message = g_strdup (_("Unable to find the requested location. Please check the spelling or the network settings."));
+        }
+        break;
 
-            case G_IO_ERROR_CONNECTION_REFUSED:
-            {
-                /* This case can be hit when server application is not installed
-                 * or is inactive in the system user is trying to connect to.
-                 */
-                detail_message = g_strdup (_("The server has refused the connection. Typically this means that the firewall is blocking access or that the remote service is not running."));
-            }
-            break;
+        case G_IO_ERROR_CONNECTION_REFUSED:
+        {
+            /* This case can be hit when server application is not installed
+             * or is inactive in the system user is trying to connect to.
+             */
+            detail_message = g_strdup (_("The server has refused the connection. Typically this means that the firewall is blocking access or that the remote service is not running."));
+        }
+        break;
 
-            case G_IO_ERROR_CANCELLED:
-            case G_IO_ERROR_FAILED_HANDLED:
-            {
-                goto done;
-            }
+        case G_IO_ERROR_CANCELLED:
+        case G_IO_ERROR_FAILED_HANDLED:
+        {
+            goto done;
+        }
 
-            default:
-            {
-            }
-            break;
+        default:
+        {
+        }
+        break;
         }
     }
 
@@ -1705,7 +1705,7 @@ handle_mount_if_needed (NautilusWindowSlot *self,
     }
 
     if (error && error->domain == G_IO_ERROR && error->code == G_IO_ERROR_NOT_MOUNTED &&
-        !self->tried_mount)
+            !self->tried_mount)
     {
         self->tried_mount = TRUE;
 
@@ -1737,7 +1737,7 @@ handle_regular_file_if_needed (NautilusWindowSlot *self,
     gboolean needs_regular_file_handling = FALSE;
     parent_file = nautilus_file_get_parent (file);
     if ((parent_file != NULL) &&
-        nautilus_file_get_file_type (file) == G_FILE_TYPE_REGULAR)
+            nautilus_file_get_file_type (file) == G_FILE_TYPE_REGULAR)
     {
         g_clear_pointer (&self->pending_selection, nautilus_file_list_free);
         g_clear_object (&self->pending_location);
@@ -1773,7 +1773,7 @@ handle_regular_file_if_needed (NautilusWindowSlot *self,
 
 static void
 got_file_info_for_view_selection_callback (NautilusFile *file,
-                                           gpointer      callback_data)
+        gpointer      callback_data)
 {
     GError *error = NULL;
     NautilusWindow *window;
@@ -1827,9 +1827,9 @@ got_file_info_for_view_selection_callback (NautilusFile *file,
                                  _("Unable to load location"));
         }
         nautilus_window_slot_display_view_selection_failure (window,
-                                                             file,
-                                                             location,
-                                                             error);
+                file,
+                location,
+                error);
 
         if (!gtk_widget_get_visible (GTK_WIDGET (window)))
         {
@@ -2018,8 +2018,8 @@ load_new_location (NautilusWindowSlot *self,
     }
 
     if (self->new_content_view != NULL && tell_new_content_view &&
-        (!tell_current_content_view ||
-         self->new_content_view != self->content_view))
+            (!tell_current_content_view ||
+             self->new_content_view != self->content_view))
     {
         view = self->new_content_view;
         nautilus_view_set_location (self->new_content_view, location);
@@ -2089,8 +2089,8 @@ free_location_change (NautilusWindowSlot *self)
     if (self->determine_view_file != NULL)
     {
         nautilus_file_cancel_call_when_ready
-            (self->determine_view_file,
-            got_file_info_for_view_selection_callback, self);
+        (self->determine_view_file,
+         got_file_info_for_view_selection_callback, self);
         self->determine_view_file = NULL;
     }
 }
@@ -2210,8 +2210,8 @@ nautilus_window_slot_force_reload (NautilusWindowSlot *self)
         }
     }
     begin_location_change
-        (self, location, location, selection,
-        NAUTILUS_LOCATION_CHANGE_RELOAD, 0, current_pos);
+    (self, location, location, selection,
+     NAUTILUS_LOCATION_CHANGE_RELOAD, 0, current_pos);
     g_free (current_pos);
     g_object_unref (location);
 }
@@ -2227,8 +2227,8 @@ nautilus_window_slot_queue_reload (NautilusWindowSlot *self)
     }
 
     if (self->pending_location != NULL
-        || self->content_view == NULL
-        || nautilus_view_is_loading (self->content_view))
+            || self->content_view == NULL
+            || nautilus_view_is_loading (self->content_view))
     {
         /* there is a reload in flight */
         self->needs_reload = TRUE;
@@ -2402,29 +2402,29 @@ update_history (NautilusWindowSlot         *self,
 {
     switch (type)
     {
-        case NAUTILUS_LOCATION_CHANGE_STANDARD:
-        {
-            handle_go_elsewhere (self, new_location);
-            return;
-        }
+    case NAUTILUS_LOCATION_CHANGE_STANDARD:
+    {
+        handle_go_elsewhere (self, new_location);
+        return;
+    }
 
-        case NAUTILUS_LOCATION_CHANGE_RELOAD:
-        {
-            /* for reload there is no work to do */
-            return;
-        }
+    case NAUTILUS_LOCATION_CHANGE_RELOAD:
+    {
+        /* for reload there is no work to do */
+        return;
+    }
 
-        case NAUTILUS_LOCATION_CHANGE_BACK:
-        {
-            handle_go_direction (self, new_location, FALSE);
-            return;
-        }
+    case NAUTILUS_LOCATION_CHANGE_BACK:
+    {
+        handle_go_direction (self, new_location, FALSE);
+        return;
+    }
 
-        case NAUTILUS_LOCATION_CHANGE_FORWARD:
-        {
-            handle_go_direction (self, new_location, TRUE);
-            return;
-        }
+    case NAUTILUS_LOCATION_CHANGE_FORWARD:
+    {
+        handle_go_direction (self, new_location, TRUE);
+        return;
+    }
     }
     g_return_if_fail (FALSE);
 }
@@ -2438,8 +2438,8 @@ typedef struct
 
 static void
 nautilus_window_slot_show_x_content_bar (NautilusWindowSlot *self,
-                                         GMount             *mount,
-                                         const char * const *x_content_types)
+        GMount             *mount,
+        const char * const *x_content_types)
 {
     GtkWidget *bar;
 
@@ -2496,15 +2496,15 @@ found_mount_cb (GObject      *source_object,
     }
 
     mount = g_file_find_enclosing_mount_finish (G_FILE (source_object),
-                                                res,
-                                                NULL);
+            res,
+            NULL);
     if (mount != NULL)
     {
         data->mount = mount;
         nautilus_get_x_content_types_for_mount_async (mount,
-                                                      found_content_type_cb,
-                                                      data->cancellable,
-                                                      data);
+                found_content_type_cb,
+                data->cancellable,
+                data);
         return;
     }
 
@@ -2566,7 +2566,7 @@ nautilus_window_slot_show_trash_bar (NautilusWindowSlot *self)
 
 static void
 nautilus_window_slot_show_special_location_bar (NautilusWindowSlot      *self,
-                                                NautilusSpecialLocation  special_location)
+        NautilusSpecialLocation  special_location)
 {
     GtkWidget *bar;
 
@@ -2735,7 +2735,7 @@ nautilus_window_slot_setup_extra_location_widgets (NautilusWindowSlot *self)
         file = nautilus_file_get (location);
 
         if (nautilus_should_use_templates_directory () &&
-            nautilus_file_is_user_special_directory (file, G_USER_DIRECTORY_TEMPLATES))
+                nautilus_file_is_user_special_directory (file, G_USER_DIRECTORY_TEMPLATES))
         {
             nautilus_window_slot_show_special_location_bar (self, NAUTILUS_SPECIAL_LOCATION_TEMPLATES);
         }
@@ -2831,17 +2831,17 @@ nautilus_window_slot_switch_new_content_view (NautilusWindowSlot *self)
         gtk_widget_set_vexpand (widget, TRUE);
         gtk_widget_show (widget);
         self->searching_binding = g_object_bind_property (self->content_view, "searching",
-                                                          self, "searching",
-                                                          G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+                                  self, "searching",
+                                  G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
         self->selection_binding = g_object_bind_property (self->content_view, "selection",
-                                                          self, "selection",
-                                                          G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+                                  self, "selection",
+                                  G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
         self->extensions_background_menu_binding = g_object_bind_property (self->content_view, "extensions-background-menu",
-                                                                           self, "extensions-background-menu",
-                                                                           G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+                self, "extensions-background-menu",
+                G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
         self->templates_menu_binding = g_object_bind_property (self->content_view, "templates-menu",
-                                                               self, "templates-menu",
-                                                               G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+                                       self, "templates-menu",
+                                       G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
         g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ICON]);
         g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_TOOLBAR_MENU_SECTIONS]);
         g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_EXTENSIONS_BACKGROUND_MENU]);
@@ -3192,9 +3192,9 @@ nautilus_window_slot_stop_loading (NautilusWindowSlot *self)
     nautilus_directory_unref (directory);
 
     if (self->pending_location != NULL &&
-        location != NULL &&
-        self->content_view != NULL &&
-        NAUTILUS_IS_FILES_VIEW (self->content_view))
+            location != NULL &&
+            self->content_view != NULL &&
+            NAUTILUS_IS_FILES_VIEW (self->content_view))
     {
         /* No need to tell the new view - either it is the
          * same as the old view, in which case it will already
@@ -3276,28 +3276,28 @@ nautilus_window_slot_get_icon (NautilusWindowSlot *self)
     current_view_id = nautilus_view_get_view_id (NAUTILUS_VIEW (self->content_view));
     switch (current_view_id)
     {
-        case NAUTILUS_VIEW_LIST_ID:
-        {
-            return nautilus_view_get_icon (NAUTILUS_VIEW_GRID_ID);
-        }
-        break;
+    case NAUTILUS_VIEW_LIST_ID:
+    {
+        return nautilus_view_get_icon (NAUTILUS_VIEW_GRID_ID);
+    }
+    break;
 
-        case NAUTILUS_VIEW_GRID_ID:
-        {
-            return nautilus_view_get_icon (NAUTILUS_VIEW_LIST_ID);
-        }
-        break;
+    case NAUTILUS_VIEW_GRID_ID:
+    {
+        return nautilus_view_get_icon (NAUTILUS_VIEW_LIST_ID);
+    }
+    break;
 
-        case NAUTILUS_VIEW_OTHER_LOCATIONS_ID:
-        {
-            return nautilus_view_get_icon (NAUTILUS_VIEW_OTHER_LOCATIONS_ID);
-        }
-        break;
+    case NAUTILUS_VIEW_OTHER_LOCATIONS_ID:
+    {
+        return nautilus_view_get_icon (NAUTILUS_VIEW_OTHER_LOCATIONS_ID);
+    }
+    break;
 
-        default:
-        {
-            return NULL;
-        }
+    default:
+    {
+        return NULL;
+    }
     }
 }
 
@@ -3315,28 +3315,28 @@ nautilus_window_slot_get_tooltip (NautilusWindowSlot *self)
     current_view_id = nautilus_view_get_view_id (NAUTILUS_VIEW (self->content_view));
     switch (current_view_id)
     {
-        case NAUTILUS_VIEW_LIST_ID:
-        {
-            return nautilus_view_get_tooltip (NAUTILUS_VIEW_GRID_ID);
-        }
-        break;
+    case NAUTILUS_VIEW_LIST_ID:
+    {
+        return nautilus_view_get_tooltip (NAUTILUS_VIEW_GRID_ID);
+    }
+    break;
 
-        case NAUTILUS_VIEW_GRID_ID:
-        {
-            return nautilus_view_get_tooltip (NAUTILUS_VIEW_LIST_ID);
-        }
-        break;
+    case NAUTILUS_VIEW_GRID_ID:
+    {
+        return nautilus_view_get_tooltip (NAUTILUS_VIEW_LIST_ID);
+    }
+    break;
 
-        case NAUTILUS_VIEW_OTHER_LOCATIONS_ID:
-        {
-            return nautilus_view_get_tooltip (NAUTILUS_VIEW_OTHER_LOCATIONS_ID);
-        }
-        break;
+    case NAUTILUS_VIEW_OTHER_LOCATIONS_ID:
+    {
+        return nautilus_view_get_tooltip (NAUTILUS_VIEW_OTHER_LOCATIONS_ID);
+    }
+    break;
 
-        default:
-        {
-            return NULL;
-        }
+    default:
+    {
+        return NULL;
+    }
     }
 }
 

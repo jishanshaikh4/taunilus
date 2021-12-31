@@ -81,17 +81,17 @@ nautilus_column_chooser_set_property (GObject      *object,
 
     switch (param_id)
     {
-        case PROP_FILE:
-        {
-            chooser->file = g_value_get_object (value);
-        }
-        break;
+    case PROP_FILE:
+    {
+        chooser->file = g_value_get_object (value);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, param_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, param_id, pspec);
+    }
+    break;
     }
 }
 
@@ -544,29 +544,29 @@ nautilus_column_chooser_class_init (NautilusColumnChooserClass *chooser_class)
     gtk_widget_class_bind_template_callback (widget_class, use_default_clicked_callback);
 
     signals[CHANGED] = g_signal_new
-                           ("changed",
-                           G_TYPE_FROM_CLASS (chooser_class),
-                           G_SIGNAL_RUN_LAST,
-                           0, NULL, NULL,
-                           g_cclosure_marshal_VOID__VOID,
-                           G_TYPE_NONE, 0);
+                       ("changed",
+                        G_TYPE_FROM_CLASS (chooser_class),
+                        G_SIGNAL_RUN_LAST,
+                        0, NULL, NULL,
+                        g_cclosure_marshal_VOID__VOID,
+                        G_TYPE_NONE, 0);
 
     signals[USE_DEFAULT] = g_signal_new
-                               ("use-default",
-                               G_TYPE_FROM_CLASS (chooser_class),
-                               G_SIGNAL_RUN_LAST,
-                               0, NULL, NULL,
-                               g_cclosure_marshal_VOID__VOID,
-                               G_TYPE_NONE, 0);
+                           ("use-default",
+                            G_TYPE_FROM_CLASS (chooser_class),
+                            G_SIGNAL_RUN_LAST,
+                            0, NULL, NULL,
+                            g_cclosure_marshal_VOID__VOID,
+                            G_TYPE_NONE, 0);
 
     g_object_class_install_property (oclass,
                                      PROP_FILE,
                                      g_param_spec_object ("file",
-                                                          "File",
-                                                          "The file this column chooser is for",
-                                                          NAUTILUS_TYPE_FILE,
-                                                          G_PARAM_CONSTRUCT_ONLY |
-                                                          G_PARAM_WRITABLE));
+                                             "File",
+                                             "The file this column chooser is for",
+                                             NAUTILUS_TYPE_FILE,
+                                             G_PARAM_CONSTRUCT_ONLY |
+                                             G_PARAM_WRITABLE));
 }
 
 static void

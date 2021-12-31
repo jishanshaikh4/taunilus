@@ -162,7 +162,7 @@ progress_persistence_handler_hide_notification (NautilusProgressPersistenceHandl
     }
 
     nautilus_application_withdraw_notification (self->app,
-                                                "progress");
+            "progress");
 }
 
 static void

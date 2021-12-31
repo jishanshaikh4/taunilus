@@ -47,7 +47,7 @@ update_icon (NautilusViewIconItemUi *self)
             NAUTILUS_FILE_ICON_FLAGS_USE_ONE_EMBLEM;
 
     icon_pixbuf = nautilus_file_get_icon_pixbuf (file, icon_size,
-                                                 TRUE, 1, flags);
+                  TRUE, 1, flags);
     gtk_image_set_from_pixbuf (GTK_IMAGE (self->icon), icon_pixbuf);
 
     gtk_widget_set_size_request (self->fixed_height_box, icon_size, icon_size);
@@ -60,7 +60,7 @@ update_icon (NautilusViewIconItemUi *self)
     style_context = gtk_widget_get_style_context (self->icon);
     thumbnail_path = nautilus_file_get_thumbnail_path (file);
     if (thumbnail_path != NULL &&
-        nautilus_file_should_show_thumbnail (file))
+            nautilus_file_should_show_thumbnail (file))
     {
         gtk_style_context_add_class (style_context, "thumbnail");
     }
@@ -147,14 +147,14 @@ get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_MODEL:
-        {
-            g_value_set_object (value, self->model);
-        }
-        break;
+    case PROP_MODEL:
+    {
+        g_value_set_object (value, self->model);
+    }
+    break;
 
-        default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
     }
 }
 
@@ -205,14 +205,14 @@ set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_MODEL:
-        {
-            set_model (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_MODEL:
+    {
+        set_model (self, g_value_get_object (value));
+    }
+    break;
 
-        default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
     }
 }
 
@@ -229,10 +229,10 @@ nautilus_view_icon_item_ui_class_init (NautilusViewIconItemUiClass *klass)
     g_object_class_install_property (object_class,
                                      PROP_MODEL,
                                      g_param_spec_object ("model",
-                                                          "Item model",
-                                                          "The item model that this UI reprensents",
-                                                          NAUTILUS_TYPE_VIEW_ITEM_MODEL,
-                                                          G_PARAM_READWRITE));
+                                             "Item model",
+                                             "The item model that this UI reprensents",
+                                             NAUTILUS_TYPE_VIEW_ITEM_MODEL,
+                                             G_PARAM_READWRITE));
 
     gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/nautilus/ui/nautilus-view-icon-item-ui.ui");
 
@@ -278,7 +278,7 @@ nautilus_view_icon_item_ui_set_model (NautilusViewIconItemUi *self,
 
 void
 nautilus_view_item_ui_set_caption_attributes (NautilusViewIconItemUi *self,
-                                              GQuark                 *attrs)
+        GQuark                 *attrs)
 {
     self->caption_attributes = attrs;
 }

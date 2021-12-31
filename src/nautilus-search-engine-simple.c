@@ -83,7 +83,7 @@ G_DEFINE_TYPE_WITH_CODE (NautilusSearchEngineSimple,
                          nautilus_search_engine_simple,
                          G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (NAUTILUS_TYPE_SEARCH_PROVIDER,
-                                                nautilus_search_provider_init))
+                                 nautilus_search_provider_init))
 
 static void
 finalize (GObject *object)
@@ -405,9 +405,9 @@ visit_directory (GFile            *dir,
         }
 
         if (recursive != NAUTILUS_QUERY_RECURSIVE_NEVER &&
-            g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY &&
-            is_recursive_search (NAUTILUS_SEARCH_ENGINE_TYPE_NON_INDEXED,
-                                 recursive, child))
+                g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY &&
+                is_recursive_search (NAUTILUS_SEARCH_ENGINE_TYPE_NON_INDEXED,
+                                     recursive, child))
         {
             id = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_ID_FILE);
             visited = FALSE;
@@ -463,7 +463,7 @@ search_thread_func (gpointer user_data)
     }
 
     while (!g_cancellable_is_cancelled (data->cancellable) &&
-           (dir = g_queue_pop_head (data->directories)) != NULL)
+            (dir = g_queue_pop_head (data->directories)) != NULL)
     {
         visit_directory (dir, data);
         g_object_unref (dir);
@@ -519,7 +519,7 @@ nautilus_search_engine_simple_stop (NautilusSearchProvider *provider)
 
 static void
 nautilus_search_engine_simple_set_query (NautilusSearchProvider *provider,
-                                         NautilusQuery          *query)
+        NautilusQuery          *query)
 {
     NautilusSearchEngineSimple *simple = NAUTILUS_SEARCH_ENGINE_SIMPLE (provider);
 
@@ -540,19 +540,19 @@ nautilus_search_engine_simple_is_running (NautilusSearchProvider *provider)
 
 static void
 nautilus_search_engine_simple_get_property (GObject    *object,
-                                            guint       arg_id,
-                                            GValue     *value,
-                                            GParamSpec *pspec)
+        guint       arg_id,
+        GValue     *value,
+        GParamSpec *pspec)
 {
     NautilusSearchEngineSimple *engine = NAUTILUS_SEARCH_ENGINE_SIMPLE (object);
 
     switch (arg_id)
     {
-        case PROP_RUNNING:
-        {
-            g_value_set_boolean (value, nautilus_search_engine_simple_is_running (NAUTILUS_SEARCH_PROVIDER (engine)));
-        }
-        break;
+    case PROP_RUNNING:
+    {
+        g_value_set_boolean (value, nautilus_search_engine_simple_is_running (NAUTILUS_SEARCH_PROVIDER (engine)));
+    }
+    break;
     }
 }
 

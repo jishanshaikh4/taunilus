@@ -78,21 +78,21 @@ struct _NautilusFileUndoInfoClass
 };
 
 void nautilus_file_undo_info_apply_async (NautilusFileUndoInfo           *self,
-                                          gboolean                        undo,
-                                          GtkWindow                      *parent_window,
-                                          NautilusFileOperationsDBusData *dbus_data,
-                                          GAsyncReadyCallback             callback,
-                                          gpointer                        user_data);
+        gboolean                        undo,
+        GtkWindow                      *parent_window,
+        NautilusFileOperationsDBusData *dbus_data,
+        GAsyncReadyCallback             callback,
+        gpointer                        user_data);
 gboolean nautilus_file_undo_info_apply_finish (NautilusFileUndoInfo *self,
-                                               GAsyncResult *res,
-                                               gboolean *user_cancel,
-                                               GError **error);
+        GAsyncResult *res,
+        gboolean *user_cancel,
+        GError **error);
 
 void nautilus_file_undo_info_get_strings (NautilusFileUndoInfo *self,
-                                          gchar **undo_label,
-                                          gchar **undo_description,
-                                          gchar **redo_label,
-                                          gchar **redo_description);
+        gchar **undo_label,
+        gchar **undo_description,
+        gchar **redo_label,
+        gchar **redo_description);
 
 NautilusFileUndoOp nautilus_file_undo_info_get_op_type (NautilusFileUndoInfo *self);
 
@@ -103,12 +103,12 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoExt, nautilus_file_undo_info_ext,
                       NautilusFileUndoInfo)
 
 NautilusFileUndoInfo *nautilus_file_undo_info_ext_new (NautilusFileUndoOp op_type,
-                                                       gint item_count,
-                                                       GFile *src_dir,
-                                                       GFile *target_dir);
+        gint item_count,
+        GFile *src_dir,
+        GFile *target_dir);
 void nautilus_file_undo_info_ext_add_origin_target_pair (NautilusFileUndoInfoExt *self,
-                                                         GFile                   *origin,
-                                                         GFile                   *target);
+        GFile                   *origin,
+        GFile                   *target);
 
 /* create new file/folder */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_CREATE nautilus_file_undo_info_create_get_type ()
@@ -118,9 +118,9 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoCreate, nautilus_file_undo_info_create
 
 NautilusFileUndoInfo *nautilus_file_undo_info_create_new (NautilusFileUndoOp op_type);
 void nautilus_file_undo_info_create_set_data (NautilusFileUndoInfoCreate *self,
-                                              GFile                      *file,
-                                              const char                 *template,
-                                              gint                        length);
+        GFile                      *file,
+        const char                 *template,
+        gint                        length);
 
 /* rename */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_RENAME nautilus_file_undo_info_rename_get_type ()
@@ -130,11 +130,11 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoRename, nautilus_file_undo_info_rename
 
 NautilusFileUndoInfo *nautilus_file_undo_info_rename_new (void);
 void nautilus_file_undo_info_rename_set_data_pre (NautilusFileUndoInfoRename *self,
-                                                  GFile                      *old_file,
-                                                  gchar                      *old_display_name,
-                                                  gchar                      *new_display_name);
+        GFile                      *old_file,
+        gchar                      *old_display_name,
+        gchar                      *new_display_name);
 void nautilus_file_undo_info_rename_set_data_post (NautilusFileUndoInfoRename *self,
-                                                   GFile                      *new_file);
+        GFile                      *new_file);
 
 /* batch rename */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_BATCH_RENAME nautilus_file_undo_info_batch_rename_get_type ()
@@ -144,9 +144,9 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoBatchRename, nautilus_file_undo_info_b
 
 NautilusFileUndoInfo *nautilus_file_undo_info_batch_rename_new (gint item_count);
 void nautilus_file_undo_info_batch_rename_set_data_pre (NautilusFileUndoInfoBatchRename *self,
-                                                        GList                           *old_files);
+        GList                           *old_files);
 void nautilus_file_undo_info_batch_rename_set_data_post (NautilusFileUndoInfoBatchRename *self,
-                                                         GList                           *new_files);
+        GList                           *new_files);
 
 /* starred files */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_STARRED         (nautilus_file_undo_info_starred_get_type ())
@@ -155,7 +155,7 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoStarred, nautilus_file_undo_info_starr
                       NautilusFileUndoInfo)
 
 NautilusFileUndoInfo *nautilus_file_undo_info_starred_new (GList   *files,
-                                                           gboolean starred);
+        gboolean starred);
 GList *nautilus_file_undo_info_starred_get_files (NautilusFileUndoInfoStarred *self);
 gboolean nautilus_file_undo_info_starred_is_starred (NautilusFileUndoInfoStarred *self);
 
@@ -167,7 +167,7 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoTrash, nautilus_file_undo_info_trash,
 
 NautilusFileUndoInfo *nautilus_file_undo_info_trash_new (gint item_count);
 void nautilus_file_undo_info_trash_add_file (NautilusFileUndoInfoTrash *self,
-                                             GFile                     *file);
+        GFile                     *file);
 GList *nautilus_file_undo_info_trash_get_files (NautilusFileUndoInfoTrash *self);
 
 /* recursive permissions */
@@ -177,13 +177,13 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoRecPermissions, nautilus_file_undo_inf
                       NautilusFileUndoInfo)
 
 NautilusFileUndoInfo *nautilus_file_undo_info_rec_permissions_new (GFile   *dest,
-                                                                   guint32 file_permissions,
-                                                                   guint32 file_mask,
-                                                                   guint32 dir_permissions,
-                                                                   guint32 dir_mask);
+        guint32 file_permissions,
+        guint32 file_mask,
+        guint32 dir_permissions,
+        guint32 dir_mask);
 void nautilus_file_undo_info_rec_permissions_add_file (NautilusFileUndoInfoRecPermissions *self,
-                                                       GFile                              *file,
-                                                       guint32                             permission);
+        GFile                              *file,
+        guint32                             permission);
 
 /* single file change permissions */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_PERMISSIONS nautilus_file_undo_info_permissions_get_type ()
@@ -192,8 +192,8 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoPermissions, nautilus_file_undo_info_p
                       NautilusFileUndoInfo)
 
 NautilusFileUndoInfo *nautilus_file_undo_info_permissions_new (GFile   *file,
-                                                               guint32  current_permissions,
-                                                               guint32  new_permissions);
+        guint32  current_permissions,
+        guint32  new_permissions);
 
 /* group and owner change */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_OWNERSHIP nautilus_file_undo_info_ownership_get_type ()
@@ -202,9 +202,9 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoOwnership, nautilus_file_undo_info_own
                       NautilusFileUndoInfo)
 
 NautilusFileUndoInfo *nautilus_file_undo_info_ownership_new (NautilusFileUndoOp  op_type,
-                                                             GFile              *file,
-                                                             const char         *current_data,
-                                                             const char         *new_data);
+        GFile              *file,
+        const char         *current_data,
+        const char         *new_data);
 
 /* extract */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_EXTRACT nautilus_file_undo_info_extract_get_type ()
@@ -213,9 +213,9 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoExtract, nautilus_file_undo_info_extra
                       NautilusFileUndoInfo)
 
 NautilusFileUndoInfo * nautilus_file_undo_info_extract_new (GList *sources,
-                                                            GFile *destination_directory);
+        GFile *destination_directory);
 void nautilus_file_undo_info_extract_set_outputs (NautilusFileUndoInfoExtract *self,
-                                                  GList                       *outputs);
+        GList                       *outputs);
 
 /* compress */
 #define NAUTILUS_TYPE_FILE_UNDO_INFO_COMPRESS nautilus_file_undo_info_compress_get_type ()
@@ -224,7 +224,7 @@ G_DECLARE_FINAL_TYPE (NautilusFileUndoInfoCompress, nautilus_file_undo_info_comp
                       NautilusFileUndoInfo)
 
 NautilusFileUndoInfo * nautilus_file_undo_info_compress_new (GList        *sources,
-                                                             GFile        *output,
-                                                             AutoarFormat  format,
-                                                             AutoarFilter  filter,
-                                                             const gchar  *passphrase);
+        GFile        *output,
+        AutoarFormat  format,
+        AutoarFilter  filter,
+        const gchar  *passphrase);

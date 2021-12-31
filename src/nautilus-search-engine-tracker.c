@@ -62,7 +62,7 @@ G_DEFINE_TYPE_WITH_CODE (NautilusSearchEngineTracker,
                          nautilus_search_engine_tracker,
                          G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (NAUTILUS_TYPE_SEARCH_PROVIDER,
-                                                nautilus_search_provider_init))
+                                 nautilus_search_provider_init))
 
 static void
 finalize (GObject *object)
@@ -97,7 +97,7 @@ check_pending_hits (NautilusSearchEngineTracker *tracker,
     DEBUG ("Tracker engine add hits");
 
     if (!force_send &&
-        g_queue_get_length (tracker->hits_pending) < BATCH_SIZE)
+            g_queue_get_length (tracker->hits_pending) < BATCH_SIZE)
     {
         return;
     }
@@ -275,8 +275,8 @@ query_callback (GObject      *object,
 
     connection = TRACKER_SPARQL_CONNECTION (object);
     cursor = tracker_sparql_connection_query_finish (connection,
-                                                     result,
-                                                     &error);
+             result,
+             &error);
 
     if (error != NULL)
     {
@@ -513,7 +513,7 @@ nautilus_search_engine_tracker_stop (NautilusSearchProvider *provider)
 
 static void
 nautilus_search_engine_tracker_set_query (NautilusSearchProvider *provider,
-                                          NautilusQuery          *query)
+        NautilusQuery          *query)
 {
     g_autoptr (GFile) location = NULL;
     NautilusSearchEngineTracker *tracker;
@@ -525,8 +525,8 @@ nautilus_search_engine_tracker_set_query (NautilusSearchProvider *provider,
 
     tracker->query = g_object_ref (query);
     tracker->recursive = is_recursive_search (NAUTILUS_SEARCH_ENGINE_TYPE_INDEXED,
-                                              nautilus_query_get_recursive (query),
-                                              location);
+                         nautilus_query_get_recursive (query),
+                         location);
 }
 
 static gboolean
@@ -550,24 +550,24 @@ nautilus_search_provider_init (NautilusSearchProviderInterface *iface)
 
 static void
 nautilus_search_engine_tracker_get_property (GObject    *object,
-                                             guint       prop_id,
-                                             GValue     *value,
-                                             GParamSpec *pspec)
+        guint       prop_id,
+        GValue     *value,
+        GParamSpec *pspec)
 {
     NautilusSearchProvider *self = NAUTILUS_SEARCH_PROVIDER (object);
 
     switch (prop_id)
     {
-        case PROP_RUNNING:
-        {
-            g_value_set_boolean (value, nautilus_search_engine_tracker_is_running (self));
-        }
-        break;
+    case PROP_RUNNING:
+    {
+        g_value_set_boolean (value, nautilus_search_engine_tracker_is_running (self));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 

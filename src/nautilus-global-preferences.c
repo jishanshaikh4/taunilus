@@ -62,7 +62,7 @@ nautilus_global_preferences_init (void)
     nautilus_list_view_preferences = g_settings_new ("org.gnome.nautilus.list-view");
     /* Some settings such as show hidden files are shared between Nautilus and GTK file chooser */
     gtk_filechooser_preferences = g_settings_new_with_path ("org.gtk.Settings.FileChooser",
-                                                            "/org/gtk/settings/file-chooser/");
+                                  "/org/gtk/settings/file-chooser/");
     gnome_lockdown_preferences = g_settings_new ("org.gnome.desktop.lockdown");
     gnome_background_preferences = g_settings_new ("org.gnome.desktop.background");
     gnome_interface_preferences = g_settings_new ("org.gnome.desktop.interface");

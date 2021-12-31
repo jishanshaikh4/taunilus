@@ -69,8 +69,8 @@ nautilus_file_conflict_dialog_set_text (NautilusFileConflictDialog *fcd,
 
 void
 nautilus_file_conflict_dialog_set_images (NautilusFileConflictDialog *fcd,
-                                          GdkPixbuf                  *destination_pixbuf,
-                                          GdkPixbuf                  *source_pixbuf)
+        GdkPixbuf                  *destination_pixbuf,
+        GdkPixbuf                  *source_pixbuf)
 {
     gtk_image_set_from_pixbuf (GTK_IMAGE (fcd->dest_image), destination_pixbuf);
     gtk_image_set_from_pixbuf (GTK_IMAGE (fcd->src_image), source_pixbuf);
@@ -78,8 +78,8 @@ nautilus_file_conflict_dialog_set_images (NautilusFileConflictDialog *fcd,
 
 void
 nautilus_file_conflict_dialog_set_file_labels (NautilusFileConflictDialog *fcd,
-                                               gchar                      *destination_label,
-                                               gchar                      *source_label)
+        gchar                      *destination_label,
+        gchar                      *source_label)
 {
     gtk_label_set_markup (GTK_LABEL (fcd->dest_label), destination_label);
     gtk_label_set_markup (GTK_LABEL (fcd->src_label), source_label);
@@ -87,14 +87,14 @@ nautilus_file_conflict_dialog_set_file_labels (NautilusFileConflictDialog *fcd,
 
 void
 nautilus_file_conflict_dialog_set_conflict_name (NautilusFileConflictDialog *fcd,
-                                                 gchar                      *conflict_name)
+        gchar                      *conflict_name)
 {
     fcd->conflict_name = g_strdup (conflict_name);
 }
 
 void
 nautilus_file_conflict_dialog_set_suggested_name (NautilusFileConflictDialog *fcd,
-                                                  gchar                      *suggested_name)
+        gchar                      *suggested_name)
 {
     fcd->suggested_name = g_strdup (suggested_name);
     gtk_entry_set_text (GTK_ENTRY (fcd->entry), suggested_name);
@@ -102,7 +102,7 @@ nautilus_file_conflict_dialog_set_suggested_name (NautilusFileConflictDialog *fc
 
 void
 nautilus_file_conflict_dialog_set_replace_button_label (NautilusFileConflictDialog *fcd,
-                                                        gchar                      *label)
+        gchar                      *label)
 {
     gtk_button_set_label (GTK_BUTTON (fcd->replace_button), label);
 }
@@ -130,7 +130,7 @@ entry_text_changed_cb (GtkEditable                *entry,
                        NautilusFileConflictDialog *dialog)
 {
     if (g_strcmp0 (gtk_entry_get_text (GTK_ENTRY (entry)), "") != 0 &&
-        g_strcmp0 (gtk_entry_get_text (GTK_ENTRY (entry)), dialog->conflict_name) != 0)
+            g_strcmp0 (gtk_entry_get_text (GTK_ENTRY (entry)), dialog->conflict_name) != 0)
     {
         gtk_widget_set_sensitive (dialog->rename_button, TRUE);
     }
@@ -301,7 +301,7 @@ NautilusFileConflictDialog *
 nautilus_file_conflict_dialog_new (GtkWindow *parent)
 {
     return NAUTILUS_FILE_CONFLICT_DIALOG (g_object_new (NAUTILUS_TYPE_FILE_CONFLICT_DIALOG,
-                                                        "transient-for", parent,
-                                                        "use-header-bar", TRUE,
-                                                        NULL));
+                                          "transient-for", parent,
+                                          "use-header-bar", TRUE,
+                                          NULL));
 }

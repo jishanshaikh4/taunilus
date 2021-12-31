@@ -102,7 +102,7 @@ update_fts_sensitivity (NautilusQueryEditor *editor)
                         !(nautilus_file_is_remote (file) &&
                           location_settings_search_get_recursive_for_location (editor->location) == NAUTILUS_QUERY_RECURSIVE_NEVER);
         nautilus_search_popover_set_fts_sensitive (NAUTILUS_SEARCH_POPOVER (editor->popover),
-                                                   fts_sensitive);
+                fts_sensitive);
     }
 }
 
@@ -173,22 +173,22 @@ nautilus_query_editor_get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_LOCATION:
-        {
-            g_value_set_object (value, editor->location);
-        }
-        break;
+    case PROP_LOCATION:
+    {
+        g_value_set_object (value, editor->location);
+    }
+    break;
 
-        case PROP_QUERY:
-        {
-            g_value_set_object (value, editor->query);
-        }
-        break;
+    case PROP_QUERY:
+    {
+        g_value_set_object (value, editor->query);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -204,22 +204,22 @@ nautilus_query_editor_set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_LOCATION:
-        {
-            nautilus_query_editor_set_location (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_LOCATION:
+    {
+        nautilus_query_editor_set_location (self, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_QUERY:
-        {
-            nautilus_query_editor_set_query (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_QUERY:
+    {
+        nautilus_query_editor_set_query (self, g_value_get_object (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -303,10 +303,10 @@ nautilus_query_editor_class_init (NautilusQueryEditorClass *class)
     g_object_class_install_property (gobject_class,
                                      PROP_LOCATION,
                                      g_param_spec_object ("location",
-                                                          "Location of the search",
-                                                          "The current location of the editor",
-                                                          G_TYPE_FILE,
-                                                          G_PARAM_READWRITE));
+                                             "Location of the search",
+                                             "The current location of the editor",
+                                             G_TYPE_FILE,
+                                             G_PARAM_READWRITE));
 
     /**
      * NautilusQueryEditor::query:
@@ -317,10 +317,10 @@ nautilus_query_editor_class_init (NautilusQueryEditorClass *class)
     g_object_class_install_property (gobject_class,
                                      PROP_QUERY,
                                      g_param_spec_object ("query",
-                                                          "Query of the search",
-                                                          "The query that the editor is handling",
-                                                          NAUTILUS_TYPE_QUERY,
-                                                          G_PARAM_READWRITE));
+                                             "Query of the search",
+                                             "The query that the editor is handling",
+                                             NAUTILUS_TYPE_QUERY,
+                                             G_PARAM_READWRITE));
 }
 
 GFile *
@@ -768,18 +768,18 @@ nautilus_query_editor_set_text (NautilusQueryEditor *self,
 
 static gboolean
 nautilus_gtk_search_entry_is_keynav_event (guint           keyval,
-                                           GdkModifierType state)
+        GdkModifierType state)
 {
     if (keyval == GDK_KEY_Tab || keyval == GDK_KEY_KP_Tab ||
-        keyval == GDK_KEY_Up || keyval == GDK_KEY_KP_Up ||
-        keyval == GDK_KEY_Down || keyval == GDK_KEY_KP_Down ||
-        keyval == GDK_KEY_Left || keyval == GDK_KEY_KP_Left ||
-        keyval == GDK_KEY_Right || keyval == GDK_KEY_KP_Right ||
-        keyval == GDK_KEY_Home || keyval == GDK_KEY_KP_Home ||
-        keyval == GDK_KEY_End || keyval == GDK_KEY_KP_End ||
-        keyval == GDK_KEY_Page_Up || keyval == GDK_KEY_KP_Page_Up ||
-        keyval == GDK_KEY_Page_Down || keyval == GDK_KEY_KP_Page_Down ||
-        ((state & (GDK_CONTROL_MASK | GDK_MOD1_MASK)) != 0))
+            keyval == GDK_KEY_Up || keyval == GDK_KEY_KP_Up ||
+            keyval == GDK_KEY_Down || keyval == GDK_KEY_KP_Down ||
+            keyval == GDK_KEY_Left || keyval == GDK_KEY_KP_Left ||
+            keyval == GDK_KEY_Right || keyval == GDK_KEY_KP_Right ||
+            keyval == GDK_KEY_Home || keyval == GDK_KEY_KP_Home ||
+            keyval == GDK_KEY_End || keyval == GDK_KEY_KP_End ||
+            keyval == GDK_KEY_Page_Up || keyval == GDK_KEY_KP_Page_Up ||
+            keyval == GDK_KEY_Page_Down || keyval == GDK_KEY_KP_Page_Down ||
+            ((state & (GDK_CONTROL_MASK | GDK_MOD1_MASK)) != 0))
     {
         return TRUE;
     }
@@ -801,8 +801,8 @@ nautilus_query_editor_handle_event (NautilusQueryEditor   *self,
 
     /* Conditions are copied straight from GTK. */
     if (nautilus_gtk_search_entry_is_keynav_event (keyval, state) ||
-        keyval == GDK_KEY_space ||
-        keyval == GDK_KEY_Menu)
+            keyval == GDK_KEY_space ||
+            keyval == GDK_KEY_Menu)
     {
         return GDK_EVENT_PROPAGATE;
     }

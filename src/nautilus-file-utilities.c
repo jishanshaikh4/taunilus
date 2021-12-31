@@ -127,7 +127,7 @@ nautilus_uri_parse (const char  *uri,
             if (c == '%')
             {
                 if (!(g_ascii_isxdigit (p[0]) ||
-                      g_ascii_isxdigit (p[1])))
+                        g_ascii_isxdigit (p[1])))
                 {
                     return FALSE;
                 }
@@ -139,9 +139,9 @@ nautilus_uri_parse (const char  *uri,
 
             /* unreserved /  sub-delims / : */
             if (!(g_ascii_isalnum (c) ||
-                  strchr (G_URI_OTHER_UNRESERVED, c) ||
-                  strchr (G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS, c) ||
-                  c == ':'))
+                    strchr (G_URI_OTHER_UNRESERVED, c) ||
+                    strchr (G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS, c) ||
+                    c == ':'))
             {
                 return FALSE;
             }
@@ -181,10 +181,10 @@ nautilus_uri_parse (const char  *uri,
 
             /* unreserved /  sub-delims */
             if (!(g_ascii_isalnum (c) ||
-                  strchr (G_URI_OTHER_UNRESERVED, c) ||
-                  strchr (G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS, c) ||
-                  c == ':' ||
-                  c == '.'))
+                    strchr (G_URI_OTHER_UNRESERVED, c) ||
+                    strchr (G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS, c) ||
+                    c == ':' ||
+                    c == '.'))
             {
                 goto error;
             }
@@ -197,10 +197,10 @@ nautilus_uri_parse (const char  *uri,
             c = *p++;
 
             if (c == ':' ||
-                c == '/' ||
-                c == '?' ||
-                c == '#' ||
-                c == '\0')
+                    c == '/' ||
+                    c == '?' ||
+                    c == '#' ||
+                    c == '\0')
             {
                 break;
             }
@@ -209,7 +209,7 @@ nautilus_uri_parse (const char  *uri,
             if (c == '%')
             {
                 if (!(g_ascii_isxdigit (p[0]) ||
-                      g_ascii_isxdigit (p[1])))
+                        g_ascii_isxdigit (p[1])))
                 {
                     goto error;
                 }
@@ -221,8 +221,8 @@ nautilus_uri_parse (const char  *uri,
 
             /* unreserved /  sub-delims */
             if (!(g_ascii_isalnum (c) ||
-                  strchr (G_URI_OTHER_UNRESERVED, c) ||
-                  strchr (G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS, c)))
+                    strchr (G_URI_OTHER_UNRESERVED, c) ||
+                    strchr (G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS, c)))
             {
                 goto error;
             }
@@ -246,9 +246,9 @@ nautilus_uri_parse (const char  *uri,
             c = *p++;
 
             if (c == '/' ||
-                c == '?' ||
-                c == '#' ||
-                c == '\0')
+                    c == '?' ||
+                    c == '#' ||
+                    c == '\0')
             {
                 break;
             }
@@ -562,7 +562,7 @@ nautilus_get_mounted_mount_for_root (GFile *location)
 
 GFile *
 nautilus_generate_unique_file_in_directory (GFile      *directory,
-                                            const char *basename)
+        const char *basename)
 {
     g_autofree char *basename_without_extension = NULL;
     const char *extension;
@@ -654,10 +654,10 @@ special_directory_get_icon (GUserDirectory directory,
         ICON_CASE (TEMPLATES);
         ICON_CASE (VIDEOS);
 
-        default:
-        {
-            return (symbolic) ? g_themed_icon_new (NAUTILUS_ICON_FOLDER) : g_themed_icon_new (NAUTILUS_ICON_FULLCOLOR_FOLDER);
-        }
+    default:
+    {
+        return (symbolic) ? g_themed_icon_new (NAUTILUS_ICON_FOLDER) : g_themed_icon_new (NAUTILUS_ICON_FULLCOLOR_FOLDER);
+    }
     }
 
 #undef ICON_CASE
@@ -697,7 +697,7 @@ nautilus_is_file_roller_installed (void)
 
 GHashTable *
 nautilus_trashed_files_get_original_directories (GList  *files,
-                                                 GList **unhandled_files)
+        GList **unhandled_files)
 {
     GHashTable *directories;
     NautilusFile *file, *original_file, *original_dir;
@@ -851,7 +851,7 @@ ensure_dirs_task_thread_func (GTask        *task,
 
 static void
 restore_files_ensure_parent_directories (GHashTable *original_dirs_hash,
-                                         GtkWindow  *parent_window)
+        GtkWindow  *parent_window)
 {
     RestoreFilesData *data;
     GTask *ensure_dirs_task;
@@ -932,9 +932,9 @@ get_types_cb (GObject      *source_object,
 
 void
 nautilus_get_x_content_types_for_mount_async (GMount                  *mount,
-                                              NautilusMountGetContent  callback,
-                                              GCancellable            *cancellable,
-                                              gpointer                 user_data)
+        NautilusMountGetContent  callback,
+        GCancellable            *cancellable,
+        gpointer                 user_data)
 {
     char **cached;
     GetContentTypesData *data;
@@ -1063,7 +1063,7 @@ get_message_for_two_content_types (const char * const *content_types)
 
     /* few combinations make sense */
     if (strcmp (content_types[0], "x-content/image-dcf") == 0
-        || strcmp (content_types[1], "x-content/image-dcf") == 0)
+            || strcmp (content_types[1], "x-content/image-dcf") == 0)
     {
         if (strcmp (content_types[0], "x-content/audio-player") == 0)
         {
@@ -1276,7 +1276,7 @@ nautilus_get_common_filename_prefix (GList *file_list,
 
 char *
 nautilus_get_common_filename_prefix_from_filenames (GList *filenames,
-                                                    int    min_required_len)
+        int    min_required_len)
 {
     GList *stripped_filenames = NULL;
     char *common_prefix;
@@ -1444,23 +1444,23 @@ location_settings_search_get_recursive (void)
 {
     switch (g_settings_get_enum (nautilus_preferences, "recursive-search"))
     {
-        case NAUTILUS_SPEED_TRADEOFF_ALWAYS:
-        {
-            return NAUTILUS_QUERY_RECURSIVE_ALWAYS;
-        }
-        break;
+    case NAUTILUS_SPEED_TRADEOFF_ALWAYS:
+    {
+        return NAUTILUS_QUERY_RECURSIVE_ALWAYS;
+    }
+    break;
 
-        case NAUTILUS_SPEED_TRADEOFF_LOCAL_ONLY:
-        {
-            return NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY;
-        }
-        break;
+    case NAUTILUS_SPEED_TRADEOFF_LOCAL_ONLY:
+    {
+        return NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY;
+    }
+    break;
 
-        case NAUTILUS_SPEED_TRADEOFF_NEVER:
-        {
-            return NAUTILUS_QUERY_RECURSIVE_NEVER;
-        }
-        break;
+    case NAUTILUS_SPEED_TRADEOFF_NEVER:
+    {
+        return NAUTILUS_QUERY_RECURSIVE_NEVER;
+    }
+    break;
     }
 
     return NAUTILUS_QUERY_RECURSIVE_ALWAYS;

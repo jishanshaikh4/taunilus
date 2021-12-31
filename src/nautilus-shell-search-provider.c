@@ -470,7 +470,7 @@ execute_search (NautilusShellSearchProvider  *self,
 
     /* don't attempt searches for a single character */
     if (g_strv_length (terms) == 1 &&
-        g_utf8_strlen (terms[0], -1) == 1)
+            g_utf8_strlen (terms[0], -1) == 1)
     {
         g_dbus_method_invocation_return_value (invocation, g_variant_new ("(as)", NULL));
         return;
@@ -659,8 +659,8 @@ result_list_attributes_ready_cb (GList    *file_list,
         if (gicon == NULL)
         {
             gicon = G_ICON (nautilus_file_get_icon_pixbuf (file, 128, TRUE,
-                                                           icon_scale,
-                                                           NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS));
+                            icon_scale,
+                            NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS));
         }
 
         g_variant_builder_add (&meta, "{sv}",
@@ -829,7 +829,7 @@ static void
 nautilus_shell_search_provider_init (NautilusShellSearchProvider *self)
 {
     self->metas_cache = g_hash_table_new_full (g_str_hash, g_str_equal,
-                                               g_free, (GDestroyNotify) g_variant_unref);
+                        g_free, (GDestroyNotify) g_variant_unref);
 
     self->skeleton = nautilus_shell_search_provider2_skeleton_new ();
 
@@ -862,12 +862,12 @@ nautilus_shell_search_provider_new (void)
 
 gboolean
 nautilus_shell_search_provider_register (NautilusShellSearchProvider  *self,
-                                         GDBusConnection              *connection,
-                                         GError                      **error)
+        GDBusConnection              *connection,
+        GError                      **error)
 {
     return g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (self->skeleton),
-                                             connection,
-                                             "/org/gnome/Nautilus" PROFILE "/SearchProvider", error);
+            connection,
+            "/org/gnome/Nautilus" PROFILE "/SearchProvider", error);
 }
 
 void

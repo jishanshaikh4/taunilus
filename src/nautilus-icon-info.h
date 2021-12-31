@@ -18,23 +18,23 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (NautilusIconInfo, nautilus_icon_info, NAUTILUS, ICON_INFO, GObject)
 
 NautilusIconInfo *    nautilus_icon_info_new_for_pixbuf               (GdkPixbuf         *pixbuf,
-								       int                scale);
+        int                scale);
 NautilusIconInfo *    nautilus_icon_info_lookup                       (GIcon             *icon,
-								       int                size,
-								       int                scale);
+        int                size,
+        int                scale);
 NautilusIconInfo *    nautilus_icon_info_lookup_from_name             (const char        *name,
-								       int                size,
-								       int                scale);
+        int                size,
+        int                scale);
 NautilusIconInfo *    nautilus_icon_info_lookup_from_path             (const char        *path,
-								       int                size,
-								       int                scale);
+        int                size,
+        int                scale);
 gboolean              nautilus_icon_info_is_fallback                  (NautilusIconInfo  *icon);
 GdkPixbuf *           nautilus_icon_info_get_pixbuf                   (NautilusIconInfo  *icon);
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault         (NautilusIconInfo  *icon);
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
-								       gsize              forced_size);
+        gsize              forced_size);
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_at_size           (NautilusIconInfo  *icon,
-								       gsize              forced_size);
+        gsize              forced_size);
 const char *          nautilus_icon_info_get_used_name                (NautilusIconInfo  *icon);
 
 void                  nautilus_icon_info_clear_caches                 (void);

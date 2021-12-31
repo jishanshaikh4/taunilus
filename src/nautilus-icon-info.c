@@ -237,8 +237,8 @@ schedule_reap_cache (void)
     if (reap_cache_timeout == 0)
     {
         reap_cache_timeout = g_timeout_add_seconds_full (0, 5,
-                                                         reap_cache,
-                                                         NULL, NULL);
+                             reap_cache,
+                             NULL, NULL);
     }
 }
 
@@ -370,9 +370,9 @@ nautilus_icon_info_lookup (GIcon *icon,
         if (stream)
         {
             pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
-                                                          size * scale, size * scale,
-                                                          TRUE,
-                                                          NULL, NULL);
+                     size * scale, size * scale,
+                     TRUE,
+                     NULL, NULL);
             g_input_stream_close (stream, NULL, NULL);
             g_object_unref (stream);
         }
@@ -406,7 +406,7 @@ nautilus_icon_info_lookup (GIcon *icon,
 
         icon_theme = gtk_icon_theme_get_default ();
         gtkicon_info = gtk_icon_theme_choose_icon_for_scale (icon_theme, (const char **) names,
-                                                             size, scale, GTK_ICON_LOOKUP_FORCE_SIZE);
+                       size, scale, GTK_ICON_LOOKUP_FORCE_SIZE);
 
         if (gtkicon_info == NULL)
         {
@@ -446,10 +446,10 @@ nautilus_icon_info_lookup (GIcon *icon,
         GtkIconInfo *gtk_icon_info;
 
         gtk_icon_info = gtk_icon_theme_lookup_by_gicon_for_scale (gtk_icon_theme_get_default (),
-                                                                  icon,
-                                                                  size,
-                                                                  scale,
-                                                                  GTK_ICON_LOOKUP_FORCE_SIZE);
+                        icon,
+                        size,
+                        scale,
+                        GTK_ICON_LOOKUP_FORCE_SIZE);
         if (gtk_icon_info != NULL)
         {
             pixbuf = gtk_icon_info_load_icon (gtk_icon_info, NULL);
@@ -545,7 +545,7 @@ nautilus_icon_info_get_pixbuf (NautilusIconInfo *icon)
 
 GdkPixbuf *
 nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo *icon,
-                                                 gsize             forced_size)
+        gsize             forced_size)
 {
     GdkPixbuf *pixbuf, *scaled_pixbuf;
     int w, h, s;
@@ -568,8 +568,8 @@ nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo *icon,
 
     scale = (double) forced_size / s;
     scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-                                             w * scale, h * scale,
-                                             GDK_INTERP_BILINEAR);
+                    w * scale, h * scale,
+                    GDK_INTERP_BILINEAR);
     g_object_unref (pixbuf);
     return scaled_pixbuf;
 }
@@ -600,8 +600,8 @@ nautilus_icon_info_get_pixbuf_at_size (NautilusIconInfo *icon,
     h = MAX (h * scale, 1);
 
     scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-                                             w, h,
-                                             GDK_INTERP_BILINEAR);
+                    w, h,
+                    GDK_INTERP_BILINEAR);
     g_object_unref (pixbuf);
     return scaled_pixbuf;
 }

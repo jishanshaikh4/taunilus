@@ -155,25 +155,25 @@ nautilus_progress_info_widget_constructed (GObject *obj)
 
 static void
 nautilus_progress_info_widget_set_property (GObject      *object,
-                                            guint         property_id,
-                                            const GValue *value,
-                                            GParamSpec   *pspec)
+        guint         property_id,
+        const GValue *value,
+        GParamSpec   *pspec)
 {
     NautilusProgressInfoWidget *self = NAUTILUS_PROGRESS_INFO_WIDGET (object);
 
     switch (property_id)
     {
-        case PROP_INFO:
-        {
-            self->priv->info = g_value_dup_object (value);
-        }
-        break;
+    case PROP_INFO:
+    {
+        self->priv->info = g_value_dup_object (value);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+    }
+    break;
     }
 }
 
@@ -211,7 +211,7 @@ nautilus_progress_info_widget_class_init (NautilusProgressInfoWidgetClass *klass
     g_object_class_install_properties (oclass, NUM_PROPERTIES, properties);
 
     gtk_widget_class_set_template_from_resource (widget_class,
-                                                 "/org/gnome/nautilus/ui/nautilus-progress-info-widget.ui");
+            "/org/gnome/nautilus/ui/nautilus-progress-info-widget.ui");
 
     gtk_widget_class_bind_template_child_private (widget_class, NautilusProgressInfoWidget, status);
     gtk_widget_class_bind_template_child_private (widget_class, NautilusProgressInfoWidget, details);

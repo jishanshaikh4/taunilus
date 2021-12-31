@@ -294,11 +294,11 @@ static void value_field_update (GtkLabel                 *field,
 static void properties_window_update (NautilusPropertiesWindow *self,
                                       GList                    *files);
 static void is_directory_ready_callback (NautilusFile *file,
-                                         gpointer      data);
+        gpointer      data);
 static void cancel_group_change_callback (GroupChange *change);
 static void cancel_owner_change_callback (OwnerChange *change);
 static void select_image_button_callback (GtkWidget                *widget,
-                                          NautilusPropertiesWindow *self);
+        NautilusPropertiesWindow *self);
 static void set_icon (const char               *icon_path,
                       NautilusPropertiesWindow *self);
 static void remove_pending (StartupData *data,
@@ -431,8 +431,8 @@ get_image_for_properties_window (NautilusPropertiesWindow  *self,
     if (!icon)
     {
         icon = nautilus_icon_info_lookup_from_name ("text-x-generic",
-                                                    NAUTILUS_GRID_ICON_SIZE_STANDARD,
-                                                    icon_scale);
+                NAUTILUS_GRID_ICON_SIZE_STANDARD,
+                icon_scale);
     }
 
     if (icon_name != NULL)
@@ -462,7 +462,7 @@ update_properties_window_icon (NautilusPropertiesWindow *self)
     }
 
     surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, gtk_widget_get_scale_factor (GTK_WIDGET (self)),
-                                                    gtk_widget_get_window (GTK_WIDGET (self)));
+              gtk_widget_get_window (GTK_WIDGET (self)));
     gtk_image_set_from_surface (GTK_IMAGE (self->icon_image), surface);
     gtk_image_set_from_surface (GTK_IMAGE (self->icon_button_image), surface);
 
@@ -513,12 +513,12 @@ reset_icon (NautilusPropertiesWindow *self)
 
 static void
 nautilus_properties_window_drag_data_received (GtkWidget        *widget,
-                                               GdkDragContext   *context,
-                                               int               x,
-                                               int               y,
-                                               GtkSelectionData *selection_data,
-                                               guint             info,
-                                               guint             time)
+        GdkDragContext   *context,
+        int               x,
+        int               y,
+        GtkSelectionData *selection_data,
+        guint             info,
+        guint             time)
 {
     g_auto (GStrv) uris = NULL;
     gboolean exactly_one;
@@ -643,7 +643,7 @@ update_name_field (NautilusPropertiesWindow *self)
 
     gtk_label_set_text_with_mnemonic (self->name_title_label,
                                       ngettext ("_Name", "_Names",
-                                                get_not_gone_original_file_count (self)));
+                                              get_not_gone_original_file_count (self)));
 
     if (is_multi_file_window (self))
     {
@@ -711,7 +711,7 @@ update_name_field (NautilusPropertiesWindow *self)
         set_name_field (self, original_name, current_name);
 
         if (original_name == NULL ||
-            g_strcmp0 (original_name, current_name) != 0)
+                g_strcmp0 (original_name, current_name) != 0)
         {
             g_object_set_data_full (G_OBJECT (self->name_field),
                                     "original_name",
@@ -728,7 +728,7 @@ name_field_restore_original_name (GtkWidget *name_field)
     g_autofree char *displayed_name = NULL;
 
     original_name = (const char *) g_object_get_data (G_OBJECT (name_field),
-                                                      "original_name");
+                    "original_name");
 
     if (!original_name)
     {
@@ -807,7 +807,7 @@ name_field_done_editing (GtkWidget                *name_field,
     else
     {
         original_name = (const char *) g_object_get_data (G_OBJECT (self->name_field),
-                                                          "original_name");
+                        "original_name");
         /* Don't rename if not changed since we read the display name.
          *  This is needed so that we don't save the display name to the
          *  file when nothing is changed */
@@ -925,17 +925,17 @@ clear_extension_pages (NautilusPropertiesWindow *self)
     GtkWidget *page;
 
     num_pages = gtk_notebook_get_n_pages
-                    (GTK_NOTEBOOK (self->notebook));
+                (GTK_NOTEBOOK (self->notebook));
 
     for (i = 0; i < num_pages; i++)
     {
         page = gtk_notebook_get_nth_page
-                   (GTK_NOTEBOOK (self->notebook), i);
+               (GTK_NOTEBOOK (self->notebook), i);
 
         if (GPOINTER_TO_INT (g_object_get_data (G_OBJECT (page), "is-extension-page")))
         {
             gtk_notebook_remove_page
-                (GTK_NOTEBOOK (self->notebook), i);
+            (GTK_NOTEBOOK (self->notebook), i);
             num_pages--;
             i--;
         }
@@ -1116,12 +1116,12 @@ properties_window_update (NautilusPropertiesWindow *self,
             }
         }
         if (changed_file == NULL ||
-            g_list_find (self->original_files, changed_file))
+                g_list_find (self->original_files, changed_file))
         {
             dirty_original = TRUE;
         }
         if (changed_file == NULL ||
-            g_list_find (self->target_files, changed_file))
+                g_list_find (self->target_files, changed_file))
         {
             dirty_target = TRUE;
         }
@@ -1264,8 +1264,8 @@ file_list_get_string_attribute (GList      *file_list,
             if (!nautilus_file_is_gone (file))
             {
                 return nautilus_file_get_string_attribute_with_default
-                           (file,
-                           attribute_name);
+                       (file,
+                        attribute_name);
             }
         }
         return g_strdup (_("unknown"));
@@ -1316,13 +1316,13 @@ value_field_update (GtkLabel                 *label,
 
     inconsistent_string = INCONSISTENT_STATE_STRING;
     attribute_value = file_list_get_string_attribute (file_list,
-                                                      attribute_name,
-                                                      inconsistent_string);
+                      attribute_name,
+                      inconsistent_string);
     if (!strcmp (attribute_name, "detailed_type") && strcmp (attribute_value, inconsistent_string))
     {
         g_autofree char *mime_type = file_list_get_string_attribute (file_list,
-                                                                     "mime_type",
-                                                                     inconsistent_string);
+                                     "mime_type",
+                                     inconsistent_string);
         if (strcmp (mime_type, inconsistent_string) && strcmp (mime_type, "inode/directory"))
         {
             g_autofree char *tmp = g_steal_pointer (&attribute_value);
@@ -1391,14 +1391,14 @@ schedule_group_change_timeout (GroupChange *change)
     change->timeout = 0;
 
     eel_timed_wait_start
-        ((EelCancelCallback) cancel_group_change_callback,
-        change,
-        _("Cancel Group Change?"),
-        change->window);
+    ((EelCancelCallback) cancel_group_change_callback,
+     change,
+     _("Cancel Group Change?"),
+     change->window);
 
     nautilus_file_set_group
-        (change->file, change->group,
-        (NautilusFileOperationCallback) group_change_callback, change);
+    (change->file, change->group,
+     (NautilusFileOperationCallback) group_change_callback, change);
 
     return FALSE;
 }
@@ -1507,8 +1507,8 @@ tree_model_entries_equal (GtkTreeModel *model,
                                 column, &val,
                                 -1);
             if ((val == NULL && l->data != NULL) ||
-                (val != NULL && l->data == NULL) ||
-                (val != NULL && strcmp (val, l->data)))
+                    (val != NULL && l->data == NULL) ||
+                    (val != NULL && strcmp (val, l->data)))
             {
                 return FALSE;
             }
@@ -1760,14 +1760,14 @@ schedule_owner_change_timeout (OwnerChange *change)
     change->timeout = 0;
 
     eel_timed_wait_start
-        ((EelCancelCallback) cancel_owner_change_callback,
-        change,
-        _("Cancel Owner Change?"),
-        change->window);
+    ((EelCancelCallback) cancel_owner_change_callback,
+     change,
+     _("Cancel Owner Change?"),
+     change->window);
 
     nautilus_file_set_owner
-        (change->file, change->owner,
-        (NautilusFileOperationCallback) owner_change_callback, change);
+    (change->file, change->owner,
+     (NautilusFileOperationCallback) owner_change_callback, change);
 
     return FALSE;
 }
@@ -2047,11 +2047,11 @@ directory_contents_value_field_update (NautilusPropertiesWindow *self)
         if (nautilus_file_is_directory (file))
         {
             file_status = nautilus_file_get_deep_counts (file,
-                                                         &directory_count,
-                                                         &file_count,
-                                                         &file_unreadable,
-                                                         &file_size,
-                                                         TRUE);
+                          &directory_count,
+                          &file_count,
+                          &file_unreadable,
+                          &file_size,
+                          TRUE);
             total_count += (file_count + directory_count);
             total_size += file_size;
 
@@ -2217,9 +2217,9 @@ static gboolean
 should_show_file_type (NautilusPropertiesWindow *self)
 {
     if (!is_multi_file_window (self)
-        && (nautilus_file_is_in_trash (get_target_file (self)) ||
-            is_network_directory (get_target_file (self)) ||
-            is_burn_directory (get_target_file (self))))
+            && (nautilus_file_is_in_trash (get_target_file (self)) ||
+                is_network_directory (get_target_file (self)) ||
+                is_burn_directory (get_target_file (self))))
     {
         return FALSE;
     }
@@ -2236,9 +2236,9 @@ should_show_location_info (NautilusPropertiesWindow *self)
     for (l = self->original_files; l != NULL; l = l->next)
     {
         if (nautilus_file_is_in_trash (NAUTILUS_FILE (l->data)) ||
-            is_root_directory (NAUTILUS_FILE (l->data)) ||
-            is_network_directory (NAUTILUS_FILE (l->data)) ||
-            is_burn_directory (NAUTILUS_FILE (l->data)))
+                is_root_directory (NAUTILUS_FILE (l->data)) ||
+                is_network_directory (NAUTILUS_FILE (l->data)) ||
+                is_burn_directory (NAUTILUS_FILE (l->data)))
         {
             return FALSE;
         }
@@ -2271,7 +2271,7 @@ should_show_accessed_date (NautilusPropertiesWindow *self)
      * consider whether it's useful for "trash:".
      */
     if (nautilus_file_list_are_all_folders (self->target_files)
-        || is_multi_file_window (self))
+            || is_multi_file_window (self))
     {
         return FALSE;
     }
@@ -2311,7 +2311,7 @@ static gboolean
 should_show_link_target (NautilusPropertiesWindow *self)
 {
     if (!is_multi_file_window (self)
-        && nautilus_file_is_symbolic_link (get_target_file (self)))
+            && nautilus_file_is_symbolic_link (get_target_file (self)))
     {
         return TRUE;
     }
@@ -2323,10 +2323,10 @@ static gboolean
 should_show_free_space (NautilusPropertiesWindow *self)
 {
     if (!is_multi_file_window (self)
-        && (nautilus_file_is_in_trash (get_target_file (self)) ||
-            is_network_directory (get_target_file (self)) ||
-            nautilus_file_is_in_recent (get_target_file (self)) ||
-            is_burn_directory (get_target_file (self))))
+            && (nautilus_file_is_in_trash (get_target_file (self)) ||
+                is_network_directory (get_target_file (self)) ||
+                nautilus_file_is_in_recent (get_target_file (self)) ||
+                is_burn_directory (get_target_file (self))))
     {
         return FALSE;
     }
@@ -2607,9 +2607,9 @@ open_in_disks (GtkButton                *button,
     g_autoptr (GAppInfo) app_info = NULL;
 
     app_info = g_app_info_create_from_commandline ("gnome-disks",
-                                                   NULL,
-                                                   G_APP_INFO_CREATE_NONE,
-                                                   NULL);
+               NULL,
+               G_APP_INFO_CREATE_NONE,
+               NULL);
 
     g_app_info_launch (app_info, NULL, NULL, &error);
 
@@ -2668,7 +2668,7 @@ setup_basic_page (NautilusPropertiesWindow *self)
     }
 
     if (is_multi_file_window (self) ||
-        nautilus_file_is_directory (get_target_file (self)))
+            nautilus_file_is_directory (get_target_file (self)))
     {
         gtk_widget_show (self->contents_title_label);
         gtk_widget_show (self->contents_value_label);
@@ -2733,8 +2733,8 @@ setup_basic_page (NautilusPropertiesWindow *self)
     }
 
     if (should_show_accessed_date (self)
-        || should_show_modified_date (self)
-        || should_show_created_date (self))
+            || should_show_modified_date (self)
+            || should_show_created_date (self))
     {
         gtk_widget_show (self->spacer_2);
     }
@@ -2776,7 +2776,7 @@ setup_basic_page (NautilusPropertiesWindow *self)
     }
 
     if (should_show_free_space (self)
-        && !should_show_volume_usage (self))
+            && !should_show_volume_usage (self))
     {
         gtk_widget_show (self->spacer_3);
         gtk_widget_show (self->free_space_title_label);
@@ -2829,8 +2829,8 @@ files_has_changable_permissions_directory (NautilusPropertiesWindow *self)
         NautilusFile *file;
         file = NAUTILUS_FILE (l->data);
         if (nautilus_file_is_directory (file) &&
-            nautilus_file_can_get_permissions (file) &&
-            nautilus_file_can_set_permissions (file))
+                nautilus_file_can_get_permissions (file) &&
+                nautilus_file_can_set_permissions (file))
         {
             changable = TRUE;
         }
@@ -2882,7 +2882,7 @@ static void
 end_long_operation (NautilusPropertiesWindow *self)
 {
     if (gtk_widget_get_window (GTK_WIDGET (self)) != NULL &&
-        self->long_operation_underway == 1)
+            self->long_operation_underway == 1)
     {
         /* finished !! */
         gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (self)), NULL);
@@ -2928,8 +2928,8 @@ update_permissions (NautilusPropertiesWindow *self,
         }
 
         if (!apply_to_both_folder_and_dir &&
-            ((nautilus_file_is_directory (file) && !is_folder) ||
-             (!nautilus_file_is_directory (file) && is_folder)))
+                ((nautilus_file_is_directory (file) && !is_folder) ||
+                 (!nautilus_file_is_directory (file) && is_folder)))
         {
             continue;
         }
@@ -2952,9 +2952,9 @@ update_permissions (NautilusPropertiesWindow *self,
         start_long_operation (self);
         g_object_ref (self);
         nautilus_file_set_permissions
-            (file, permissions,
-            permission_change_callback,
-            self);
+        (file, permissions,
+         permission_change_callback,
+         self);
     }
 }
 
@@ -2978,19 +2978,19 @@ initial_permission_state_consistent (NautilusPropertiesWindow *self,
         file = l->data;
 
         if (!both_folder_and_dir &&
-            ((nautilus_file_is_directory (file) && !is_folder) ||
-             (!nautilus_file_is_directory (file) && is_folder)))
+                ((nautilus_file_is_directory (file) && !is_folder) ||
+                 (!nautilus_file_is_directory (file) && is_folder)))
         {
             continue;
         }
 
         permissions = GPOINTER_TO_INT (g_hash_table_lookup (self->initial_permissions,
-                                                            file));
+                                       file));
 
         if (first)
         {
             if ((permissions & mask) != mask &&
-                (permissions & mask) != 0)
+                    (permissions & mask) != 0)
             {
                 /* Not fully on or off -> inconsistent */
                 return FALSE;
@@ -3018,14 +3018,14 @@ permission_button_toggled (GtkToggleButton          *button,
     gboolean on;
 
     permission_mask = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button),
-                                                          "permission"));
+                                       "permission"));
     is_folder = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button),
-                                                    "is-folder"));
+                                 "is-folder"));
     is_special = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button),
-                                                     "is-special"));
+                                  "is-special"));
 
     if (gtk_toggle_button_get_active (button)
-        && !gtk_toggle_button_get_inconsistent (button))
+            && !gtk_toggle_button_get_inconsistent (button))
     {
         /* Go to the initial state unless the initial state was
          *  consistent, or we support recursive apply */
@@ -3083,11 +3083,11 @@ permission_button_update (GtkToggleButton          *button,
     guint32 button_permission;
 
     button_permission = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button),
-                                                            "permission"));
+                                         "permission"));
     is_folder = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button),
-                                                    "is-folder"));
+                                 "is-folder"));
     is_special = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button),
-                                                     "is-special"));
+                                  "is-special"));
 
     all_set = TRUE;
     all_unset = TRUE;
@@ -3106,8 +3106,8 @@ permission_button_update (GtkToggleButton          *button,
         }
 
         if (!is_special &&
-            ((nautilus_file_is_directory (file) && !is_folder) ||
-             (!nautilus_file_is_directory (file) && is_folder)))
+                ((nautilus_file_is_directory (file) && !is_folder) ||
+                 (!nautilus_file_is_directory (file) && is_folder)))
         {
             continue;
         }
@@ -3757,7 +3757,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->owner_folder_access_combo),
                                      PERMISSION_USER, TRUE);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->owner_folder_access_combo);
+                                  self->owner_folder_access_combo);
         g_signal_connect (self->owner_folder_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
 
         gtk_widget_show (self->owner_file_access_label);
@@ -3765,7 +3765,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->owner_file_access_combo),
                                      PERMISSION_USER, FALSE);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->owner_file_access_combo);
+                                  self->owner_file_access_combo);
         g_signal_connect (self->owner_file_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
     }
     else
@@ -3775,7 +3775,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->owner_access_combo),
                                      PERMISSION_USER, has_directory);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->owner_access_combo);
+                                  self->owner_access_combo);
         g_signal_connect (self->owner_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
     }
 
@@ -3806,7 +3806,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->group_folder_access_combo),
                                      PERMISSION_GROUP, TRUE);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->group_folder_access_combo);
+                                  self->group_folder_access_combo);
         g_signal_connect (self->group_folder_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
 
         gtk_widget_show (self->group_file_access_label);
@@ -3814,7 +3814,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->group_file_access_combo),
                                      PERMISSION_GROUP, FALSE);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->group_file_access_combo);
+                                  self->group_file_access_combo);
         g_signal_connect (self->group_file_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
     }
     else
@@ -3824,7 +3824,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->group_access_combo),
                                      PERMISSION_GROUP, has_directory);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->group_access_combo);
+                                  self->group_access_combo);
         g_signal_connect (self->group_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
     }
 
@@ -3836,7 +3836,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->others_folder_access_combo),
                                      PERMISSION_OTHER, TRUE);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->others_folder_access_combo);
+                                  self->others_folder_access_combo);
         g_signal_connect (self->others_folder_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
 
         gtk_widget_show (self->others_file_access_label);
@@ -3844,7 +3844,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->others_file_access_combo),
                                      PERMISSION_OTHER, FALSE);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->others_file_access_combo);
+                                  self->others_file_access_combo);
         g_signal_connect (self->others_file_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
     }
     else
@@ -3854,7 +3854,7 @@ create_simple_permissions (NautilusPropertiesWindow *self,
         setup_permissions_combo_box (GTK_COMBO_BOX (self->others_access_combo),
                                      PERMISSION_OTHER, has_directory);
         self->permission_combos = g_list_prepend (self->permission_combos,
-                                                  self->others_access_combo);
+                                  self->others_access_combo);
         g_signal_connect (self->others_access_combo, "changed", G_CALLBACK (permission_combo_changed), self);
     }
 
@@ -3953,7 +3953,7 @@ on_change_permissions_response (GtkDialog                *dialog,
         file = NAUTILUS_FILE (l->data);
 
         if (nautilus_file_is_directory (file) &&
-            nautilus_file_can_set_permissions (file))
+                nautilus_file_can_set_permissions (file))
         {
             g_autofree gchar *uri = NULL;
 
@@ -3961,12 +3961,12 @@ on_change_permissions_response (GtkDialog                *dialog,
             start_long_operation (self);
             g_object_ref (self);
             nautilus_file_set_permissions_recursive (uri,
-                                                     file_permission,
-                                                     file_permission_mask,
-                                                     dir_permission,
-                                                     dir_permission_mask,
-                                                     set_recursive_permissions_done,
-                                                     self);
+                    file_permission,
+                    file_permission_mask,
+                    dir_permission,
+                    dir_permission_mask,
+                    set_recursive_permissions_done,
+                    self);
         }
     }
     g_clear_pointer (&self->change_permission_combos, g_list_free);
@@ -4089,39 +4089,39 @@ on_change_permissions_clicked (GtkWidget                *button,
     combo = GTK_COMBO_BOX (gtk_builder_get_object (change_permissions_builder, "file_owner_combo"));
     setup_permissions_combo_box (combo, PERMISSION_USER, FALSE);
     self->change_permission_combos = g_list_prepend (self->change_permission_combos,
-                                                     combo);
+                                     combo);
     set_active_from_umask (combo, PERMISSION_USER, FALSE);
 
     combo = GTK_COMBO_BOX (gtk_builder_get_object (change_permissions_builder, "folder_owner_combo"));
     setup_permissions_combo_box (combo, PERMISSION_USER, TRUE);
     self->change_permission_combos = g_list_prepend (self->change_permission_combos,
-                                                     combo);
+                                     combo);
     set_active_from_umask (combo, PERMISSION_USER, TRUE);
 
     /* Group Permissions */
     combo = GTK_COMBO_BOX (gtk_builder_get_object (change_permissions_builder, "file_group_combo"));
     setup_permissions_combo_box (combo, PERMISSION_GROUP, FALSE);
     self->change_permission_combos = g_list_prepend (self->change_permission_combos,
-                                                     combo);
+                                     combo);
     set_active_from_umask (combo, PERMISSION_GROUP, FALSE);
 
     combo = GTK_COMBO_BOX (gtk_builder_get_object (change_permissions_builder, "folder_group_combo"));
     setup_permissions_combo_box (combo, PERMISSION_GROUP, TRUE);
     self->change_permission_combos = g_list_prepend (self->change_permission_combos,
-                                                     combo);
+                                     combo);
     set_active_from_umask (combo, PERMISSION_GROUP, TRUE);
 
     /* Others Permissions */
     combo = GTK_COMBO_BOX (gtk_builder_get_object (change_permissions_builder, "file_other_combo"));
     setup_permissions_combo_box (combo, PERMISSION_OTHER, FALSE);
     self->change_permission_combos = g_list_prepend (self->change_permission_combos,
-                                                     combo);
+                                     combo);
     set_active_from_umask (combo, PERMISSION_OTHER, FALSE);
 
     combo = GTK_COMBO_BOX (gtk_builder_get_object (change_permissions_builder, "folder_other_combo"));
     setup_permissions_combo_box (combo, PERMISSION_OTHER, TRUE);
     self->change_permission_combos = g_list_prepend (self->change_permission_combos,
-                                                     combo);
+                                     combo);
     set_active_from_umask (combo, PERMISSION_OTHER, TRUE);
 
     g_signal_connect (dialog, "response", G_CALLBACK (on_change_permissions_response), self);
@@ -4210,7 +4210,7 @@ append_extension_pages (NautilusPropertiesWindow *self)
         provider = NAUTILUS_PROPERTY_PAGE_PROVIDER (p->data);
 
         pages = nautilus_property_page_provider_get_pages
-                    (provider, self->original_files);
+                (provider, self->original_files);
 
         for (l = pages; l != NULL; l = l->next)
         {
@@ -4249,7 +4249,7 @@ should_show_permissions (NautilusPropertiesWindow *self)
     for (l = self->original_files; l != NULL; l = l->next)
     {
         if (nautilus_file_is_in_trash (NAUTILUS_FILE (l->data)) ||
-            nautilus_file_is_in_recent (NAUTILUS_FILE (l->data)))
+                nautilus_file_is_in_recent (NAUTILUS_FILE (l->data)))
         {
             return FALSE;
         }
@@ -4704,7 +4704,7 @@ create_properties_window (StartupData *startup_data)
     GList *l;
 
     window = NAUTILUS_PROPERTIES_WINDOW (g_object_new (NAUTILUS_TYPE_PROPERTIES_WINDOW,
-                                                       NULL));
+                                         NULL));
 
     window->original_files = nautilus_file_list_copy (startup_data->original_files);
 
@@ -4901,9 +4901,9 @@ cancel_call_when_ready_callback (gpointer key,
                                  gpointer user_data)
 {
     nautilus_file_cancel_call_when_ready
-        (NAUTILUS_FILE (key),
-        is_directory_ready_callback,
-        user_data);
+    (NAUTILUS_FILE (key),
+     is_directory_ready_callback,
+     user_data);
 }
 
 static void
@@ -4920,7 +4920,7 @@ remove_pending (StartupData *startup_data,
     if (cancel_timed_wait)
     {
         eel_timed_wait_stop
-            (cancel_create_properties_window_callback, startup_data);
+        (cancel_create_properties_window_callback, startup_data);
     }
     if (startup_data->pending_key != NULL)
     {
@@ -5068,19 +5068,19 @@ nautilus_properties_window_present (GList                            *original_f
     }
 
     eel_timed_wait_start
-        (cancel_create_properties_window_callback,
-        startup_data,
-        _("Creating Properties window."),
-        parent_window == NULL ? NULL : GTK_WINDOW (parent_window));
+    (cancel_create_properties_window_callback,
+     startup_data,
+     _("Creating Properties window."),
+     parent_window == NULL ? NULL : GTK_WINDOW (parent_window));
 
     for (l = startup_data->target_files; l != NULL; l = next)
     {
         next = l->next;
         nautilus_file_call_when_ready
-            (NAUTILUS_FILE (l->data),
-            NAUTILUS_FILE_ATTRIBUTE_INFO,
-            is_directory_ready_callback,
-            startup_data);
+        (NAUTILUS_FILE (l->data),
+         NAUTILUS_FILE_ATTRIBUTE_INFO,
+         is_directory_ready_callback,
+         startup_data);
     }
 }
 
@@ -5180,7 +5180,7 @@ set_icon (const char               *icon_uri,
 
             /* ’Tis a little bit of a misnomer. Actually a path. */
             real_icon_uri = g_file_get_relative_path (icon_location,
-                                                      file_location);
+                            file_location);
 
             if (real_icon_uri == NULL)
             {
@@ -5199,34 +5199,34 @@ custom_icon_file_chooser_response_cb (GtkDialog                *dialog,
 {
     switch (response)
     {
-        case GTK_RESPONSE_NO:
+    case GTK_RESPONSE_NO:
+    {
+        reset_icon (self);
+    }
+    break;
+
+    case GTK_RESPONSE_OK:
+    {
+        g_autoptr (GFile) location = NULL;
+        g_autofree gchar *uri = NULL;
+
+        location = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+        if (location != NULL)
+        {
+            uri = g_file_get_uri (location);
+            set_icon (uri, self);
+        }
+        else
         {
             reset_icon (self);
         }
-        break;
+    }
+    break;
 
-        case GTK_RESPONSE_OK:
-        {
-            g_autoptr (GFile) location = NULL;
-            g_autofree gchar *uri = NULL;
-
-            location = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
-            if (location != NULL)
-            {
-                uri = g_file_get_uri (location);
-                set_icon (uri, self);
-            }
-            else
-            {
-                reset_icon (self);
-            }
-        }
-        break;
-
-        default:
-        {
-        }
-        break;
+    default:
+    {
+    }
+    break;
     }
 
     gtk_widget_hide (GTK_WIDGET (dialog));
@@ -5284,8 +5284,8 @@ select_image_button_callback (GtkWidget                *widget,
             if (image_location != NULL)
             {
                 gtk_file_chooser_set_current_folder_file (GTK_FILE_CHOOSER (dialog),
-                                                          image_location,
-                                                          NULL);
+                        image_location,
+                        NULL);
             }
         }
     }

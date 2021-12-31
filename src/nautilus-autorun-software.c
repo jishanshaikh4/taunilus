@@ -38,7 +38,7 @@ typedef struct
 } AutorunSoftwareDialogData;
 
 static void autorun_software_dialog_mount_unmounted (GMount                    *mount,
-                                                     AutorunSoftwareDialogData *data);
+        AutorunSoftwareDialogData *data);
 
 static void
 autorun_software_dialog_destroy (AutorunSoftwareDialogData *data)
@@ -54,7 +54,7 @@ autorun_software_dialog_destroy (AutorunSoftwareDialogData *data)
 
 static void
 autorun_software_dialog_mount_unmounted (GMount                    *mount,
-                                         AutorunSoftwareDialogData *data)
+        AutorunSoftwareDialogData *data)
 {
     autorun_software_dialog_destroy (data);
 }
@@ -80,7 +80,7 @@ _check_file (GFile      *mount_root,
     }
 
     if (must_be_executable &&
-        !g_file_info_get_attribute_boolean (file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
+            !g_file_info_get_attribute_boolean (file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
     {
         return FALSE;
     }
@@ -151,10 +151,10 @@ out:
     {
         GtkWidget *dialog;
         dialog = gtk_message_dialog_new_with_markup (NULL,         /* TODO: parent window? */
-                                                     0,
-                                                     GTK_MESSAGE_ERROR,
-                                                     GTK_BUTTONS_OK,
-                                                     _("Oops! There was a problem running this software."));
+                 0,
+                 GTK_MESSAGE_ERROR,
+                 GTK_BUTTONS_OK,
+                 _("Oops! There was a problem running this software."));
         gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s", error_string);
         /* This is required because we don't show dialogs in the
          *  window picker and if the window pops under another window
@@ -200,8 +200,8 @@ present_autorun_for_software_dialog (GMount *mount)
                                      _("“%s” contains software intended to be automatically started. Would you like to run it?"),
                                      mount_name);
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                              "%s",
-                                              _("If you don’t trust this location or aren’t sure, press Cancel."));
+            "%s",
+            _("If you don’t trust this location or aren’t sure, press Cancel."));
 
     /* This is required because we don't show dialogs in the
      *  window picker and if the window pops under another window

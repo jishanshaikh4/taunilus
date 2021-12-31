@@ -110,122 +110,142 @@ struct
     },
     {
         N_("Files"),
-        { "application/octet-stream",
-          "text/plain",
-          NULL}
+        {   "application/octet-stream",
+            "text/plain",
+            NULL
+        }
     },
     {
         N_("Folders"),
-        { "inode/directory",
-          NULL}
+        {   "inode/directory",
+            NULL
+        }
     },
-    { N_("Documents"),
-      { "application/rtf",
-        "application/msword",
-        "application/vnd.sun.xml.writer",
-        "application/vnd.sun.xml.writer.global",
-        "application/vnd.sun.xml.writer.template",
-        "application/vnd.oasis.opendocument.text",
-        "application/vnd.oasis.opendocument.text-template",
-        "application/x-abiword",
-        "application/x-applix-word",
-        "application/x-mswrite",
-        "application/docbook+xml",
-        "application/x-kword",
-        "application/x-kword-crypt",
-        "application/x-lyx",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        NULL}},
-    { N_("Illustration"),
-      { "application/illustrator",
-        "application/vnd.corel-draw",
-        "application/vnd.stardivision.draw",
-        "application/vnd.oasis.opendocument.graphics",
-        "application/x-dia-diagram",
-        "application/x-karbon",
-        "application/x-killustrator",
-        "application/x-kivio",
-        "application/x-kontour",
-        "application/x-wpg",
-        NULL}},
-    { N_("Music"),
-      { "application/ogg",
-        "audio/x-vorbis+ogg",
-        "audio/ac3",
-        "audio/basic",
-        "audio/midi",
-        "audio/x-flac",
-        "audio/mp4",
-        "audio/mpeg",
-        "audio/x-mpeg",
-        "audio/x-ms-asx",
-        "audio/x-pn-realaudio",
-        NULL}},
-    { N_("PDF / PostScript"),
-      { "application/pdf",
-        "application/postscript",
-        "application/x-dvi",
-        "image/x-eps",
-        "image/vnd.djvu+multipage",
-        NULL}},
-    { N_("Picture"),
-      { "application/vnd.oasis.opendocument.image",
-        "application/x-krita",
-        "image/bmp",
-        "image/cgm",
-        "image/gif",
-        "image/jpeg",
-        "image/jpeg2000",
-        "image/png",
-        "image/svg+xml",
-        "image/tiff",
-        "image/x-compressed-xcf",
-        "image/x-pcx",
-        "image/x-photo-cd",
-        "image/x-psd",
-        "image/x-tga",
-        "image/x-xcf",
-        NULL}},
-    { N_("Presentation"),
-      { "application/vnd.ms-powerpoint",
-        "application/vnd.sun.xml.impress",
-        "application/vnd.oasis.opendocument.presentation",
-        "application/x-magicpoint",
-        "application/x-kpresenter",
-        "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-        NULL}},
-    { N_("Spreadsheet"),
-      { "application/vnd.lotus-1-2-3",
-        "application/vnd.ms-excel",
-        "application/vnd.stardivision.calc",
-        "application/vnd.sun.xml.calc",
-        "application/vnd.oasis.opendocument.spreadsheet",
-        "application/x-applix-spreadsheet",
-        "application/x-gnumeric",
-        "application/x-kspread",
-        "application/x-kspread-crypt",
-        "application/x-quattropro",
-        "application/x-sc",
-        "application/x-siag",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        NULL}},
-    { N_("Text File"),
-      { "text/plain",
-        NULL}},
-    { N_("Video"),
-      { "video/mp4",
-        "video/3gpp",
-        "video/mpeg",
-        "video/quicktime",
-        "video/vivo",
-        "video/x-avi",
-        "video/x-mng",
-        "video/x-ms-asf",
-        "video/x-ms-wmv",
-        "video/x-msvideo",
-        "video/x-nsv",
-        "video/x-real-video",
-        NULL}}
+    {   N_("Documents"),
+        {   "application/rtf",
+            "application/msword",
+            "application/vnd.sun.xml.writer",
+            "application/vnd.sun.xml.writer.global",
+            "application/vnd.sun.xml.writer.template",
+            "application/vnd.oasis.opendocument.text",
+            "application/vnd.oasis.opendocument.text-template",
+            "application/x-abiword",
+            "application/x-applix-word",
+            "application/x-mswrite",
+            "application/docbook+xml",
+            "application/x-kword",
+            "application/x-kword-crypt",
+            "application/x-lyx",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            NULL
+        }
+    },
+    {   N_("Illustration"),
+        {   "application/illustrator",
+            "application/vnd.corel-draw",
+            "application/vnd.stardivision.draw",
+            "application/vnd.oasis.opendocument.graphics",
+            "application/x-dia-diagram",
+            "application/x-karbon",
+            "application/x-killustrator",
+            "application/x-kivio",
+            "application/x-kontour",
+            "application/x-wpg",
+            NULL
+        }
+    },
+    {   N_("Music"),
+        {   "application/ogg",
+            "audio/x-vorbis+ogg",
+            "audio/ac3",
+            "audio/basic",
+            "audio/midi",
+            "audio/x-flac",
+            "audio/mp4",
+            "audio/mpeg",
+            "audio/x-mpeg",
+            "audio/x-ms-asx",
+            "audio/x-pn-realaudio",
+            NULL
+        }
+    },
+    {   N_("PDF / PostScript"),
+        {   "application/pdf",
+            "application/postscript",
+            "application/x-dvi",
+            "image/x-eps",
+            "image/vnd.djvu+multipage",
+            NULL
+        }
+    },
+    {   N_("Picture"),
+        {   "application/vnd.oasis.opendocument.image",
+            "application/x-krita",
+            "image/bmp",
+            "image/cgm",
+            "image/gif",
+            "image/jpeg",
+            "image/jpeg2000",
+            "image/png",
+            "image/svg+xml",
+            "image/tiff",
+            "image/x-compressed-xcf",
+            "image/x-pcx",
+            "image/x-photo-cd",
+            "image/x-psd",
+            "image/x-tga",
+            "image/x-xcf",
+            NULL
+        }
+    },
+    {   N_("Presentation"),
+        {   "application/vnd.ms-powerpoint",
+            "application/vnd.sun.xml.impress",
+            "application/vnd.oasis.opendocument.presentation",
+            "application/x-magicpoint",
+            "application/x-kpresenter",
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+            NULL
+        }
+    },
+    {   N_("Spreadsheet"),
+        {   "application/vnd.lotus-1-2-3",
+            "application/vnd.ms-excel",
+            "application/vnd.stardivision.calc",
+            "application/vnd.sun.xml.calc",
+            "application/vnd.oasis.opendocument.spreadsheet",
+            "application/x-applix-spreadsheet",
+            "application/x-gnumeric",
+            "application/x-kspread",
+            "application/x-kspread-crypt",
+            "application/x-quattropro",
+            "application/x-sc",
+            "application/x-siag",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            NULL
+        }
+    },
+    {   N_("Text File"),
+        {   "text/plain",
+            NULL
+        }
+    },
+    {   N_("Video"),
+        {   "video/mp4",
+            "video/3gpp",
+            "video/mpeg",
+            "video/quicktime",
+            "video/vivo",
+            "video/x-avi",
+            "video/x-mng",
+            "video/x-ms-asf",
+            "video/x-ms-wmv",
+            "video/x-msvideo",
+            "video/x-nsv",
+            "video/x-real-video",
+            NULL
+        }
+    }
 };
 
 /* Number of seconds until cancel dialog shows up */
@@ -244,7 +264,7 @@ struct
 static void activate_files_internal (ActivateParameters *parameters);
 static void cancel_activate_callback (gpointer callback_data);
 static void activate_activation_uris_ready_callback (GList   *files,
-                                                     gpointer callback_data);
+        gpointer callback_data);
 static void activation_mount_mountables (ActivateParameters *parameters);
 static void activation_start_mountables (ActivateParameters *parameters);
 static void activate_callback (GList   *files,
@@ -488,8 +508,8 @@ nautilus_mime_get_default_application_for_files (GList *files)
         file = l->data;
 
         if (l->prev &&
-            file_compare_by_mime_type (file, l->prev->data) == 0 &&
-            file_compare_by_parent_uri (file, l->prev->data) == 0)
+                file_compare_by_mime_type (file, l->prev->data) == 0 &&
+                file_compare_by_parent_uri (file, l->prev->data) == 0)
         {
             continue;
         }
@@ -542,9 +562,9 @@ trash_or_delete_files (GtkWindow   *parent_window,
     locations = g_list_reverse (locations);
 
     nautilus_file_operations_trash_or_delete_async (locations,
-                                                    parent_window,
-                                                    NULL,
-                                                    NULL, NULL);
+            parent_window,
+            NULL,
+            NULL, NULL);
     g_list_free_full (locations, g_object_unref);
 }
 
@@ -768,7 +788,7 @@ list_to_parameters_foreach (GAppInfo  *application,
     uris = g_list_reverse (uris);
 
     parameters = application_launch_parameters_new
-                     (application, uris);
+                 (application, uris);
     *ret = g_list_prepend (*ret, parameters);
 }
 
@@ -799,10 +819,10 @@ make_activation_parameters (GList  *uris,
     *unhandled_uris = NULL;
 
     app_table = g_hash_table_new_full
-                    ((GHashFunc) mime_application_hash,
-                    (GEqualFunc) g_app_info_equal,
-                    (GDestroyNotify) g_object_unref,
-                    (GDestroyNotify) g_list_free);
+                ((GHashFunc) mime_application_hash,
+                 (GEqualFunc) g_app_info_equal,
+                 (GDestroyNotify) g_object_unref,
+                 (GDestroyNotify) g_list_free);
 
     for (l = uris; l != NULL; l = l->next)
     {
@@ -938,11 +958,11 @@ activation_start_timed_cancel (ActivateParameters *parameters)
 {
     parameters->timed_wait_active = TRUE;
     eel_timed_wait_start_with_duration
-        (DELAY_UNTIL_CANCEL_MSECS,
-        cancel_activate_callback,
-        parameters,
-        parameters->timed_wait_prompt,
-        parameters->parent_window);
+    (DELAY_UNTIL_CANCEL_MSECS,
+     cancel_activate_callback,
+     parameters,
+     parameters->timed_wait_prompt,
+     parameters->parent_window);
 }
 
 static void
@@ -1076,7 +1096,7 @@ activate_parameters_install_free (ActivateParametersInstall *parameters_install)
 
 static char *
 get_application_no_mime_type_handler_message (NautilusFile *file,
-                                              char         *uri)
+        char         *uri)
 {
     char *uri_for_display;
     char *name;
@@ -1192,7 +1212,7 @@ show_unhandled_type_error (ActivateParametersInstall *parameters)
                                          0,
                                          "%s", error_message);
         gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                                  _("The file is of an unknown type"));
+                _("The file is of an unknown type"));
     }
     else
     {
@@ -1205,7 +1225,7 @@ show_unhandled_type_error (ActivateParametersInstall *parameters)
                                          0,
                                          "%s", error_message);
         gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                                  "%s", text);
+                "%s", text);
 
         g_free (text);
     }
@@ -1232,8 +1252,8 @@ show_unhandled_type_error (ActivateParametersInstall *parameters)
 
 static void
 search_for_application_dbus_call_notify_cb (GDBusProxy   *proxy,
-                                            GAsyncResult *result,
-                                            gpointer      user_data)
+        GAsyncResult *result,
+        gpointer      user_data)
 {
     ActivateParametersInstall *parameters_install = user_data;
     GVariant *variant;
@@ -1243,7 +1263,7 @@ search_for_application_dbus_call_notify_cb (GDBusProxy   *proxy,
     if (variant == NULL)
     {
         if (!g_dbus_error_is_remote_error (error) ||
-            g_strcmp0 (g_dbus_error_get_remote_error (error), "org.freedesktop.PackageKit.Modify.Failed") == 0)
+                g_strcmp0 (g_dbus_error_get_remote_error (error), "org.freedesktop.PackageKit.Modify.Failed") == 0)
         {
             char *message;
 
@@ -1285,11 +1305,11 @@ search_for_application_mime_type (ActivateParametersInstall *parameters_install,
     g_dbus_proxy_call (parameters_install->proxy,
                        "InstallMimeTypes",
                        g_variant_new_parsed ("([%s], %s, %s, [{%s, %v}])",
-                                             mime_type,
-                                             "hide-confirm-search",
-                                             APPLICATION_ID,
-                                             "desktop-startup-id",
-                                             g_variant_new_take_string (desktop_startup_id)),
+                               mime_type,
+                               "hide-confirm-search",
+                               APPLICATION_ID,
+                               "desktop-startup-id",
+                               g_variant_new_take_string (desktop_startup_id)),
                        G_DBUS_CALL_FLAGS_NONE,
                        G_MAXINT /* no timeout */,
                        NULL /* cancellable */,
@@ -1353,7 +1373,7 @@ pk_proxy_appeared_cb (GObject      *source,
 
     mime_type = nautilus_file_get_mime_type (parameters_install->file);
     error_message = get_application_no_mime_type_handler_message (parameters_install->file,
-                                                                  parameters_install->uri);
+                    parameters_install->uri);
     /* use a custom dialog to prompt the user to install new software */
     dialog = gtk_message_dialog_new (parameters_install->parent_window,
                                      GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
@@ -1361,9 +1381,9 @@ pk_proxy_appeared_cb (GObject      *source,
                                      GTK_BUTTONS_NONE,
                                      "%s", error_message);
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                              _("There is no application installed for “%s” files. "
-                                                "Do you want to search for an application to open this file?"),
-                                              g_content_type_get_description (mime_type));
+            _("There is no application installed for “%s” files. "
+              "Do you want to search for an application to open this file?"),
+            g_content_type_get_description (mime_type));
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
     gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Cancel"), GTK_RESPONSE_CANCEL);
@@ -1512,41 +1532,41 @@ activate_files (ActivateParameters *parameters)
 
         switch (action)
         {
-            case ACTIVATION_ACTION_LAUNCH:
-            {
-                g_queue_push_tail (parameters->launch_files, file);
-            }
-            break;
+        case ACTIVATION_ACTION_LAUNCH:
+        {
+            g_queue_push_tail (parameters->launch_files, file);
+        }
+        break;
 
-            case ACTIVATION_ACTION_LAUNCH_IN_TERMINAL:
-            {
-                g_queue_push_tail (parameters->launch_in_terminal_files, file);
-            }
-            break;
+        case ACTIVATION_ACTION_LAUNCH_IN_TERMINAL:
+        {
+            g_queue_push_tail (parameters->launch_in_terminal_files, file);
+        }
+        break;
 
-            case ACTIVATION_ACTION_OPEN_IN_VIEW:
-            {
-                g_queue_push_tail (parameters->open_in_view_files, file);
-            }
-            break;
+        case ACTIVATION_ACTION_OPEN_IN_VIEW:
+        {
+            g_queue_push_tail (parameters->open_in_view_files, file);
+        }
+        break;
 
-            case ACTIVATION_ACTION_OPEN_IN_APPLICATION:
-            {
-                g_queue_push_tail (parameters->open_in_app_uris, location->uri);
-            }
-            break;
+        case ACTIVATION_ACTION_OPEN_IN_APPLICATION:
+        {
+            g_queue_push_tail (parameters->open_in_app_uris, location->uri);
+        }
+        break;
 
-            case ACTIVATION_ACTION_DO_NOTHING:
-            {
-            }
-            break;
+        case ACTIVATION_ACTION_DO_NOTHING:
+        {
+        }
+        break;
 
-            case ACTIVATION_ACTION_EXTRACT:
-            {
-                /* Extraction of files should be handled in the view */
-                g_assert_not_reached ();
-            }
-            break;
+        case ACTIVATION_ACTION_EXTRACT:
+        {
+            /* Extraction of files should be handled in the view */
+            g_assert_not_reached ();
+        }
+        break;
         }
     }
 
@@ -1574,7 +1594,7 @@ activate_files (ActivateParameters *parameters)
         else
         {
             parameters->open_in_app_parameters = make_activation_parameters (g_queue_peek_head_link (parameters->open_in_app_uris),
-                                                                             &parameters->unhandled_open_in_app_uris);
+                                                 &parameters->unhandled_open_in_app_uris);
             num_windows += g_list_length (parameters->open_in_app_parameters);
             num_windows += g_list_length (parameters->unhandled_open_in_app_uris);
         }
@@ -1584,7 +1604,7 @@ activate_files (ActivateParameters *parameters)
     num_windows += g_queue_get_length (parameters->launch_in_terminal_files);
 
     if (parameters->user_confirmation &&
-        num_tabs + num_windows > SILENT_OPEN_LIMIT)
+            num_tabs + num_windows > SILENT_OPEN_LIMIT)
     {
         GtkDialog *dialog;
 
@@ -1609,8 +1629,8 @@ activate_files_internal (ActivateParameters *parameters)
     GList *l;
 
     if (parameters->activation_directory &&
-        (!g_queue_is_empty (parameters->launch_files) ||
-         !g_queue_is_empty (parameters->launch_in_terminal_files)))
+            (!g_queue_is_empty (parameters->launch_files) ||
+             !g_queue_is_empty (parameters->launch_in_terminal_files)))
     {
         old_working_dir = g_get_current_dir ();
         g_chdir (parameters->activation_directory);
@@ -1659,8 +1679,8 @@ activate_files_internal (ActivateParameters *parameters)
     if (parameters->slot != NULL)
     {
         if ((parameters->flags & NAUTILUS_OPEN_FLAG_NEW_TAB) != 0 &&
-            g_settings_get_enum (nautilus_preferences, NAUTILUS_PREFERENCES_NEW_TAB_POSITION) ==
-            NAUTILUS_NEW_TAB_POSITION_AFTER_CURRENT_TAB)
+                g_settings_get_enum (nautilus_preferences, NAUTILUS_PREFERENCES_NEW_TAB_POSITION) ==
+                NAUTILUS_NEW_TAB_POSITION_AFTER_CURRENT_TAB)
         {
             /* When inserting N tabs after the current one,
              * we first open tab N, then tab N-1, ..., then tab 0.
@@ -1681,9 +1701,9 @@ activate_files_internal (ActivateParameters *parameters)
             uri = nautilus_file_get_activation_uri (file);
             location = g_file_new_for_uri (uri);
             if (g_file_is_native (location) &&
-                (nautilus_file_is_in_admin (file) ||
-                 !nautilus_file_can_read (file) ||
-                 !nautilus_file_can_execute (file)))
+                    (nautilus_file_is_in_admin (file) ||
+                     !nautilus_file_can_read (file) ||
+                     !nautilus_file_can_execute (file)))
             {
                 g_autofree gchar *file_path = NULL;
 
@@ -1699,7 +1719,7 @@ activate_files_internal (ActivateParameters *parameters)
              * in some cases. Until we figure out what's going on, continue to use the parameters->slot
              * to make splicit the window we want to use for activating the files */
             nautilus_application_open_location_full (NAUTILUS_APPLICATION (g_application_get_default ()),
-                                                     location_with_permissions, parameters->flags, NULL, NULL, parameters->slot);
+                    location_with_permissions, parameters->flags, NULL, NULL, parameters->slot);
         }
     }
 
@@ -1762,9 +1782,9 @@ activation_mount_not_mounted_callback (GObject      *source_object,
     if (!g_file_mount_enclosing_volume_finish (G_FILE (source_object), res, &error))
     {
         if (error->domain != G_IO_ERROR ||
-            (error->code != G_IO_ERROR_CANCELLED &&
-             error->code != G_IO_ERROR_FAILED_HANDLED &&
-             error->code != G_IO_ERROR_ALREADY_MOUNTED))
+                (error->code != G_IO_ERROR_CANCELLED &&
+                 error->code != G_IO_ERROR_FAILED_HANDLED &&
+                 error->code != G_IO_ERROR_ALREADY_MOUNTED))
         {
             show_dialog (_("Unable to access location"),
                          error->message,
@@ -1773,7 +1793,7 @@ activation_mount_not_mounted_callback (GObject      *source_object,
         }
 
         if (error->domain != G_IO_ERROR ||
-            error->code != G_IO_ERROR_ALREADY_MOUNTED)
+                error->code != G_IO_ERROR_ALREADY_MOUNTED)
         {
             loc = find_launch_location_for_file (parameters->locations,
                                                  file);
@@ -1789,7 +1809,7 @@ activation_mount_not_mounted_callback (GObject      *source_object,
     }
 
     parameters->not_mounted = g_list_delete_link (parameters->not_mounted,
-                                                  parameters->not_mounted);
+                              parameters->not_mounted);
     nautilus_file_unref (file);
 
     activation_mount_not_mounted (parameters);
@@ -1840,10 +1860,10 @@ activation_mount_not_mounted (ActivateParameters *parameters)
 
     files = get_file_list_for_launch_locations (parameters->locations);
     nautilus_file_list_call_when_ready
-        (files,
-        nautilus_mime_actions_get_required_file_attributes (),
-        &parameters->files_handle,
-        activate_callback, parameters);
+    (files,
+     nautilus_mime_actions_get_required_file_attributes (),
+     &parameters->files_handle,
+     activate_callback, parameters);
     nautilus_file_list_free (files);
 }
 
@@ -1882,7 +1902,7 @@ activate_callback (GList    *files,
             else
             {
                 parameters->not_mounted = g_list_prepend (parameters->not_mounted,
-                                                          nautilus_file_ref (file));
+                                          nautilus_file_ref (file));
             }
             continue;
         }
@@ -1901,7 +1921,7 @@ activate_callback (GList    *files,
 
 static void
 activate_activation_uris_ready_callback (GList    *files_ignore,
-                                         gpointer  callback_data)
+        gpointer  callback_data)
 {
     ActivateParameters *parameters = callback_data;
     GList *l, *next, *files;
@@ -1934,7 +1954,7 @@ activate_activation_uris_ready_callback (GList    *files_ignore,
         }
 
         if (nautilus_file_get_file_type (file) == G_FILE_TYPE_MOUNTABLE &&
-            !nautilus_file_has_activation_uri (file))
+                !nautilus_file_has_activation_uri (file))
         {
             /* Don't launch these... There is nothing we
              *  can do */
@@ -1971,10 +1991,10 @@ activate_activation_uris_ready_callback (GList    *files_ignore,
     /* get the parameters for the actual files */
     files = get_file_list_for_launch_locations (parameters->locations);
     nautilus_file_list_call_when_ready
-        (files,
-        nautilus_mime_actions_get_required_file_attributes (),
-        &parameters->files_handle,
-        activate_callback, parameters);
+    (files,
+     nautilus_mime_actions_get_required_file_attributes (),
+     &parameters->files_handle,
+     activate_callback, parameters);
     nautilus_file_list_free (files);
 }
 
@@ -2007,9 +2027,9 @@ activate_regular_files (ActivateParameters *parameters)
 
     files = get_file_list_for_launch_locations (parameters->locations);
     nautilus_file_list_call_when_ready
-        (files, nautilus_mime_actions_get_required_file_attributes (),
-        &parameters->files_handle,
-        activate_activation_uris_ready_callback, parameters);
+    (files, nautilus_mime_actions_get_required_file_attributes (),
+     &parameters->files_handle,
+     activate_activation_uris_ready_callback, parameters);
     nautilus_file_list_free (files);
 }
 
@@ -2034,7 +2054,7 @@ activation_mountable_mounted (NautilusFile *file,
         target_file = nautilus_file_get (result_location);
 
         location = find_launch_location_for_file (parameters->locations,
-                                                  file);
+                   file);
         if (location)
         {
             launch_location_update_from_file (location, target_file);
@@ -2046,11 +2066,11 @@ activation_mountable_mounted (NautilusFile *file,
         /* Remove failed file */
 
         if (error->domain != G_IO_ERROR ||
-            (error->code != G_IO_ERROR_FAILED_HANDLED &&
-             error->code != G_IO_ERROR_ALREADY_MOUNTED))
+                (error->code != G_IO_ERROR_FAILED_HANDLED &&
+                 error->code != G_IO_ERROR_ALREADY_MOUNTED))
         {
             location = find_launch_location_for_file (parameters->locations,
-                                                      file);
+                       file);
             if (location)
             {
                 parameters->locations =
@@ -2061,9 +2081,9 @@ activation_mountable_mounted (NautilusFile *file,
         }
 
         if (error->domain != G_IO_ERROR ||
-            (error->code != G_IO_ERROR_CANCELLED &&
-             error->code != G_IO_ERROR_FAILED_HANDLED &&
-             error->code != G_IO_ERROR_ALREADY_MOUNTED))
+                (error->code != G_IO_ERROR_CANCELLED &&
+                 error->code != G_IO_ERROR_FAILED_HANDLED &&
+                 error->code != G_IO_ERROR_ALREADY_MOUNTED))
         {
             show_dialog (_("Unable to access location"),
                          error->message,
@@ -2139,10 +2159,10 @@ activation_mountable_started (NautilusFile *file,
     {
         /* Remove failed file */
         if (error->domain != G_IO_ERROR ||
-            (error->code != G_IO_ERROR_FAILED_HANDLED))
+                (error->code != G_IO_ERROR_FAILED_HANDLED))
         {
             location = find_launch_location_for_file (parameters->locations,
-                                                      file);
+                       file);
             if (location)
             {
                 parameters->locations =
@@ -2153,8 +2173,8 @@ activation_mountable_started (NautilusFile *file,
         }
 
         if (error->domain != G_IO_ERROR ||
-            (error->code != G_IO_ERROR_CANCELLED &&
-             error->code != G_IO_ERROR_FAILED_HANDLED))
+                (error->code != G_IO_ERROR_CANCELLED &&
+                 error->code != G_IO_ERROR_FAILED_HANDLED))
         {
             show_dialog (_("Unable to start location"),
                          error->message,
@@ -2255,9 +2275,9 @@ nautilus_mime_activate_files (GtkWindow          *parent_window,
     else
     {
         parameters->timed_wait_prompt = g_strdup_printf (ngettext ("Opening %d item.",
-                                                                   "Opening %d items.",
-                                                                   file_count),
-                                                         file_count);
+                                        "Opening %d items.",
+                                        file_count),
+                                        file_count);
     }
 
 
@@ -2270,13 +2290,13 @@ nautilus_mime_activate_files (GtkWindow          *parent_window,
         if (nautilus_file_can_mount (file))
         {
             parameters->mountables = g_list_prepend (parameters->mountables,
-                                                     nautilus_file_ref (file));
+                                     nautilus_file_ref (file));
         }
 
         if (nautilus_file_can_start (file))
         {
             parameters->start_mountables = g_list_prepend (parameters->start_mountables,
-                                                           nautilus_file_ref (file));
+                                           nautilus_file_ref (file));
         }
     }
 

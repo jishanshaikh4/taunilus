@@ -62,8 +62,8 @@ G_DEFINE_TYPE (NautilusCompressDialogController, nautilus_compress_dialog_contro
 
 static gboolean
 nautilus_compress_dialog_controller_name_is_valid (NautilusFileNameWidgetController  *self,
-                                                   gchar                             *name,
-                                                   gchar                            **error_message)
+        gchar                             *name,
+        gchar                            **error_message)
 {
     gboolean is_valid;
 
@@ -115,8 +115,8 @@ nautilus_compress_dialog_controller_get_new_name (NautilusFileNameWidgetControll
     basename = NAUTILUS_FILE_NAME_WIDGET_CONTROLLER_CLASS (nautilus_compress_dialog_controller_parent_class)->get_new_name (controller);
     /* Do not check or add the extension if the name is invalid */
     valid_name = nautilus_compress_dialog_controller_name_is_valid (controller,
-                                                                    basename,
-                                                                    &error_message);
+                 basename,
+                 &error_message);
 
     if (!valid_name)
     {
@@ -157,44 +157,44 @@ update_selected_format (NautilusCompressDialogController *self,
 
     switch (format)
     {
-        case NAUTILUS_COMPRESSION_ZIP:
-        {
-            extension = ".zip";
-            active_label = self->zip_label;
-            active_checkmark = self->zip_checkmark;
-        }
-        break;
+    case NAUTILUS_COMPRESSION_ZIP:
+    {
+        extension = ".zip";
+        active_label = self->zip_label;
+        active_checkmark = self->zip_checkmark;
+    }
+    break;
 
-        case NAUTILUS_COMPRESSION_ENCRYPTED_ZIP:
-        {
-            extension = ".zip";
-            active_label = self->encrypted_zip_label;
-            active_checkmark = self->encrypted_zip_checkmark;
-            show_passphrase = TRUE;
-        }
-        break;
+    case NAUTILUS_COMPRESSION_ENCRYPTED_ZIP:
+    {
+        extension = ".zip";
+        active_label = self->encrypted_zip_label;
+        active_checkmark = self->encrypted_zip_checkmark;
+        show_passphrase = TRUE;
+    }
+    break;
 
-        case NAUTILUS_COMPRESSION_TAR_XZ:
-        {
-            extension = ".tar.xz";
-            active_label = self->tar_xz_label;
-            active_checkmark = self->tar_xz_checkmark;
-        }
-        break;
+    case NAUTILUS_COMPRESSION_TAR_XZ:
+    {
+        extension = ".tar.xz";
+        active_label = self->tar_xz_label;
+        active_checkmark = self->tar_xz_checkmark;
+    }
+    break;
 
-        case NAUTILUS_COMPRESSION_7ZIP:
-        {
-            extension = ".7z";
-            active_label = self->seven_zip_label;
-            active_checkmark = self->seven_zip_checkmark;
-        }
-        break;
+    case NAUTILUS_COMPRESSION_7ZIP:
+    {
+        extension = ".7z";
+        active_label = self->seven_zip_label;
+        active_checkmark = self->seven_zip_checkmark;
+    }
+    break;
 
-        default:
-        {
-            g_assert_not_reached ();
-        }
-        break;
+    default:
+    {
+        g_assert_not_reached ();
+    }
+    break;
     }
 
     self->extension = extension;
@@ -345,7 +345,7 @@ activate_button_on_sensitive_notify (GObject    *gobject,
     format = g_settings_get_enum (nautilus_compression_preferences,
                                   NAUTILUS_PREFERENCES_DEFAULT_COMPRESSION_FORMAT);
     if (format == NAUTILUS_COMPRESSION_ENCRYPTED_ZIP &&
-        (self->passphrase == NULL || self->passphrase[0] == '\0'))
+            (self->passphrase == NULL || self->passphrase[0] == '\0'))
     {
         /* Reset sensitivity of the activate_button if password is not set. */
         gtk_widget_set_sensitive (self->activate_button, FALSE);
@@ -364,42 +364,42 @@ popover_on_show (GtkWidget *widget,
                                   NAUTILUS_PREFERENCES_DEFAULT_COMPRESSION_FORMAT);
     switch (format)
     {
-        case NAUTILUS_COMPRESSION_ZIP:
-        {
-            gtk_widget_grab_focus (self->zip_row);
-        }
-        break;
+    case NAUTILUS_COMPRESSION_ZIP:
+    {
+        gtk_widget_grab_focus (self->zip_row);
+    }
+    break;
 
-        case NAUTILUS_COMPRESSION_ENCRYPTED_ZIP:
-        {
-            gtk_widget_grab_focus (self->encrypted_zip_row);
-        }
-        break;
+    case NAUTILUS_COMPRESSION_ENCRYPTED_ZIP:
+    {
+        gtk_widget_grab_focus (self->encrypted_zip_row);
+    }
+    break;
 
-        case NAUTILUS_COMPRESSION_TAR_XZ:
-        {
-            gtk_widget_grab_focus (self->tar_xz_row);
-        }
-        break;
+    case NAUTILUS_COMPRESSION_TAR_XZ:
+    {
+        gtk_widget_grab_focus (self->tar_xz_row);
+    }
+    break;
 
-        case NAUTILUS_COMPRESSION_7ZIP:
-        {
-            gtk_widget_grab_focus (self->seven_zip_row);
-        }
-        break;
+    case NAUTILUS_COMPRESSION_7ZIP:
+    {
+        gtk_widget_grab_focus (self->seven_zip_row);
+    }
+    break;
 
-        default:
-        {
-            g_assert_not_reached ();
-        }
-        break;
+    default:
+    {
+        g_assert_not_reached ();
+    }
+    break;
     }
 }
 
 NautilusCompressDialogController *
 nautilus_compress_dialog_controller_new (GtkWindow         *parent_window,
-                                         NautilusDirectory *destination_directory,
-                                         gchar             *initial_name)
+        NautilusDirectory *destination_directory,
+        gchar             *initial_name)
 {
     NautilusCompressDialogController *self;
     g_autoptr (GtkBuilder) builder = NULL;
@@ -482,9 +482,9 @@ nautilus_compress_dialog_controller_new (GtkWindow         *parent_window,
     self->seven_zip_row = seven_zip_row;
 
     self->response_handler_id = g_signal_connect (compress_dialog,
-                                                  "response",
-                                                  (GCallback) compress_dialog_controller_on_response,
-                                                  self);
+                                "response",
+                                (GCallback) compress_dialog_controller_on_response,
+                                self);
 
     g_signal_connect (self->zip_row, "activated",
                       G_CALLBACK (zip_row_on_activated), self);

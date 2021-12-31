@@ -255,7 +255,7 @@ nautilus_application_create_window (NautilusApplication *self,
     window = nautilus_window_new (screen);
 
     maximized = g_settings_get_boolean
-                    (nautilus_window_state, NAUTILUS_WINDOW_STATE_MAXIMIZED);
+                (nautilus_window_state, NAUTILUS_WINDOW_STATE_MAXIMIZED);
     if (maximized)
     {
         gtk_window_maximize (GTK_WINDOW (window));
@@ -303,7 +303,7 @@ get_window_slot_for_location (NautilusApplication *self,
     file = nautilus_file_get (location);
 
     if (!nautilus_file_is_directory (file) && !nautilus_file_is_other_locations (file) &&
-        g_file_has_parent (location, NULL))
+            g_file_has_parent (location, NULL))
     {
         location = g_file_get_parent (location);
     }
@@ -342,18 +342,18 @@ get_window_slot_for_location (NautilusApplication *self,
 
 void
 nautilus_application_open_location_full (NautilusApplication *self,
-                                         GFile               *location,
-                                         NautilusOpenFlags    flags,
-                                         GList               *selection,
-                                         NautilusWindow      *target_window,
-                                         NautilusWindowSlot  *target_slot)
+        GFile               *location,
+        NautilusOpenFlags    flags,
+        GList               *selection,
+        NautilusWindow      *target_window,
+        NautilusWindowSlot  *target_slot)
 {
     NAUTILUS_APPLICATION_CLASS (G_OBJECT_GET_CLASS (self))->open_location_full (self,
-                                                                                location,
-                                                                                flags,
-                                                                                selection,
-                                                                                target_window,
-                                                                                target_slot);
+            location,
+            flags,
+            selection,
+            target_window,
+            target_slot);
 }
 
 static void
@@ -600,8 +600,8 @@ do_cmdline_sanity_checks (NautilusApplication *self,
     gboolean retval = FALSE;
 
     if (g_variant_dict_contains (options, "check") &&
-        (g_variant_dict_contains (options, G_OPTION_REMAINING) ||
-         g_variant_dict_contains (options, "quit")))
+            (g_variant_dict_contains (options, G_OPTION_REMAINING) ||
+             g_variant_dict_contains (options, "quit")))
     {
         g_printerr ("%s\n",
                     _("--check cannot be used with other options."));
@@ -609,7 +609,7 @@ do_cmdline_sanity_checks (NautilusApplication *self,
     }
 
     if (g_variant_dict_contains (options, "quit") &&
-        g_variant_dict_contains (options, G_OPTION_REMAINING))
+            g_variant_dict_contains (options, G_OPTION_REMAINING))
     {
         g_printerr ("%s\n",
                     _("--quit cannot be used with URIs."));
@@ -618,7 +618,7 @@ do_cmdline_sanity_checks (NautilusApplication *self,
 
 
     if (g_variant_dict_contains (options, "select") &&
-        !g_variant_dict_contains (options, G_OPTION_REMAINING))
+            !g_variant_dict_contains (options, G_OPTION_REMAINING))
     {
         g_printerr ("%s\n",
                     _("--select must be used with at least an URI."));
@@ -690,8 +690,8 @@ action_new_window (GSimpleAction *action,
     home = g_file_new_for_path (g_get_home_dir ());
 
     nautilus_application_open_location_full (application, home,
-                                             NAUTILUS_OPEN_FLAG_NEW_WINDOW,
-                                             NULL, NULL, NULL);
+            NAUTILUS_OPEN_FLAG_NEW_WINDOW,
+            NULL, NULL, NULL);
 }
 
 static void
@@ -710,7 +710,7 @@ action_clone_window (GSimpleAction *action,
     current_view = nautilus_window_slot_get_current_view (active_slot);
 
     if (current_view != NULL &&
-        nautilus_view_is_searching (current_view))
+            nautilus_view_is_searching (current_view))
     {
         location = g_file_new_for_path (g_get_home_dir ());
     }
@@ -732,7 +732,7 @@ action_clone_window (GSimpleAction *action,
     }
 
     nautilus_application_open_location_full (NAUTILUS_APPLICATION (application), location,
-                                             NAUTILUS_OPEN_FLAG_NEW_WINDOW, NULL, NULL, NULL);
+            NAUTILUS_OPEN_FLAG_NEW_WINDOW, NULL, NULL, NULL);
 }
 
 static void
@@ -892,7 +892,7 @@ nautilus_init_application_actions (NautilusApplication *app)
 
 
     sidebar_action = g_action_map_lookup_action (G_ACTION_MAP (app),
-                                                 "show-hide-sidebar");
+                     "show-hide-sidebar");
     g_signal_connect (sidebar_action,
                       "notify::state",
                       G_CALLBACK (action_show_hide_sidebar),
@@ -1065,30 +1065,39 @@ nautilus_application_init (NautilusApplication *self)
     static const GOptionEntry options[] =
     {
 #ifndef NAUTILUS_OMIT_SELF_CHECK
-        { "check", 'c', 0, G_OPTION_ARG_NONE, NULL,
-          N_("Perform a quick set of self-check tests."), NULL },
+        {   "check", 'c', 0, G_OPTION_ARG_NONE, NULL,
+            N_("Perform a quick set of self-check tests."), NULL
+        },
 #endif
-        { "version", '\0', 0, G_OPTION_ARG_NONE, NULL,
-          N_("Show the version of the program."), NULL },
-        { "new-window", 'w', 0, G_OPTION_ARG_NONE, NULL,
-          N_("Always open a new window for browsing specified URIs"), NULL },
-        { "quit", 'q', 0, G_OPTION_ARG_NONE, NULL,
-          N_("Quit Nautilus."), NULL },
-        { "select", 's', 0, G_OPTION_ARG_NONE, NULL,
-          N_("Select specified URI in parent folder."), NULL },
+        {   "version", '\0', 0, G_OPTION_ARG_NONE, NULL,
+            N_("Show the version of the program."), NULL
+        },
+        {   "new-window", 'w', 0, G_OPTION_ARG_NONE, NULL,
+            N_("Always open a new window for browsing specified URIs"), NULL
+        },
+        {   "quit", 'q', 0, G_OPTION_ARG_NONE, NULL,
+            N_("Quit Nautilus."), NULL
+        },
+        {   "select", 's', 0, G_OPTION_ARG_NONE, NULL,
+            N_("Select specified URI in parent folder."), NULL
+        },
         { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_STRING_ARRAY, NULL, NULL, N_("[URI…]") },
 
         /* The following are old options which have no effect anymore. We keep
          * them around for compatibility reasons, e.g. not breaking old scripts.
          */
-        { "browser", '\0', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, NULL,
-          NULL, NULL },
-        { "geometry", 'g', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, NULL,
-          NULL, NULL },
-        { "no-default-window", 'n', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, NULL,
-          NULL, NULL },
-        { "no-desktop", '\0', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, NULL,
-          NULL, NULL },
+        {   "browser", '\0', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, NULL,
+            NULL, NULL
+        },
+        {   "geometry", 'g', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_STRING, NULL,
+            NULL, NULL
+        },
+        {   "no-default-window", 'n', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, NULL,
+            NULL, NULL
+        },
+        {   "no-desktop", '\0', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, NULL,
+            NULL, NULL
+        },
 
         { NULL }
     };
@@ -1097,9 +1106,9 @@ nautilus_application_init (NautilusApplication *self)
     priv = nautilus_application_get_instance_private (self);
 
     priv->notifications = g_hash_table_new_full (g_str_hash,
-                                                 g_str_equal,
-                                                 g_free,
-                                                 NULL);
+                          g_str_equal,
+                          g_free,
+                          NULL);
 
     priv->undo_manager = nautilus_file_undo_manager_new ();
 
@@ -1138,13 +1147,13 @@ theme_changed (GtkSettings *settings)
         }
 
         gtk_style_context_add_provider_for_screen (screen,
-                                                   GTK_STYLE_PROVIDER (provider),
-                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                GTK_STYLE_PROVIDER (provider),
+                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
     else if (provider != NULL)
     {
         gtk_style_context_remove_provider_for_screen (screen,
-                                                      GTK_STYLE_PROVIDER (provider));
+                GTK_STYLE_PROVIDER (provider));
         g_clear_object (&provider);
     }
 
@@ -1159,8 +1168,8 @@ theme_changed (GtkSettings *settings)
          * Use a higher priority here to avoid this problem.
          */
         gtk_style_context_add_provider_for_screen (screen,
-                                                   GTK_STYLE_PROVIDER (permanent_provider),
-                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION + 1);
+                GTK_STYLE_PROVIDER (permanent_provider),
+                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION + 1);
         g_object_unref (file);
     }
 
@@ -1206,7 +1215,7 @@ nautilus_application_send_notification (NautilusApplication *self,
 
 void
 nautilus_application_withdraw_notification (NautilusApplication *self,
-                                            const gchar         *notification_id)
+        const gchar         *notification_id)
 {
     NautilusApplicationPrivate *priv;
 
@@ -1379,7 +1388,7 @@ nautilus_application_dbus_unregister (GApplication    *app,
     if (priv->previewer_selection_id != 0)
     {
         nautilus_previewer_disconnect_selection_event (connection,
-                                                       priv->previewer_selection_id);
+                priv->previewer_selection_id);
         priv->previewer_selection_id = 0;
     }
 }
@@ -1468,11 +1477,11 @@ update_dbus_opened_locations (NautilusApplication *self)
     locations_array[locations_size] = NULL;
 
     nautilus_freedesktop_dbus_set_open_locations (priv->fdb_manager,
-                                                  (const gchar **) locations_array);
+            (const gchar **) locations_array);
 
     windows_to_locations = g_variant_ref_sink (g_variant_builder_end (&windows_to_locations_builder));
     nautilus_freedesktop_dbus_set_open_windows_with_locations (priv->fdb_manager,
-                                                               windows_to_locations);
+            windows_to_locations);
 
     g_free (locations_array);
     g_list_free_full (locations, g_free);
@@ -1559,7 +1568,7 @@ nautilus_application_window_removed (GtkApplication *app,
  * non main GApplication instance */
 static gint
 nautilus_application_handle_local_options (GApplication *app,
-                                           GVariantDict *options)
+        GVariantDict *options)
 {
     gchar *cwd;
 

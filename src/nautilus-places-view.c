@@ -73,25 +73,25 @@ open_location_cb (NautilusPlacesView         *view,
 
     switch (open_flags)
     {
-        case GTK_PLACES_OPEN_NEW_TAB:
-        {
-            flags = NAUTILUS_OPEN_FLAG_NEW_TAB |
-                    NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE;
-        }
-        break;
+    case GTK_PLACES_OPEN_NEW_TAB:
+    {
+        flags = NAUTILUS_OPEN_FLAG_NEW_TAB |
+                NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE;
+    }
+    break;
 
-        case GTK_PLACES_OPEN_NEW_WINDOW:
-        {
-            flags = NAUTILUS_OPEN_FLAG_NEW_WINDOW;
-        }
-        break;
+    case GTK_PLACES_OPEN_NEW_WINDOW:
+    {
+        flags = NAUTILUS_OPEN_FLAG_NEW_WINDOW;
+    }
+    break;
 
-        case GTK_PLACES_OPEN_NORMAL: /* fall-through */
-        default:
-        {
-            flags = 0;
-        }
-        break;
+    case GTK_PLACES_OPEN_NORMAL: /* fall-through */
+    default:
+    {
+        flags = 0;
+    }
+    break;
     }
 
     if (slot)
@@ -135,7 +135,7 @@ show_error_message_cb (NautilusGtkPlacesView *view,
                                      GTK_BUTTONS_CLOSE,
                                      "%s", primary);
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                              "%s", secondary);
+            "%s", secondary);
 
     g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
     gtk_widget_show_all (dialog);
@@ -165,33 +165,33 @@ nautilus_places_view_get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_LOCATION:
-        {
-            g_value_set_object (value, nautilus_view_get_location (view));
-        }
-        break;
+    case PROP_LOCATION:
+    {
+        g_value_set_object (value, nautilus_view_get_location (view));
+    }
+    break;
 
-        case PROP_SEARCH_QUERY:
-        {
-            g_value_set_object (value, nautilus_view_get_search_query (view));
-        }
-        break;
+    case PROP_SEARCH_QUERY:
+    {
+        g_value_set_object (value, nautilus_view_get_search_query (view));
+    }
+    break;
 
-        /* Collect all unused properties and do nothing. Ideally, this wouldn’t
-         * have to be done in the first place.
-         */
-        case PROP_SEARCHING:
-        case PROP_SELECTION:
-        case PROP_EXTENSIONS_BACKGROUND_MENU:
-        case PROP_TEMPLATES_MENU:
-        {
-        }
-        break;
+    /* Collect all unused properties and do nothing. Ideally, this wouldn’t
+     * have to be done in the first place.
+     */
+    case PROP_SEARCHING:
+    case PROP_SELECTION:
+    case PROP_EXTENSIONS_BACKGROUND_MENU:
+    case PROP_TEMPLATES_MENU:
+    {
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -205,22 +205,22 @@ nautilus_places_view_set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_LOCATION:
-        {
-            nautilus_view_set_location (view, g_value_get_object (value));
-        }
-        break;
+    case PROP_LOCATION:
+    {
+        nautilus_view_set_location (view, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_SEARCH_QUERY:
-        {
-            nautilus_view_set_search_query (view, g_value_get_object (value));
-        }
-        break;
+    case PROP_SEARCH_QUERY:
+    {
+        nautilus_view_set_search_query (view, g_value_get_object (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -254,7 +254,7 @@ nautilus_places_view_set_location (NautilusView *view,
         if (g_strcmp0 (uri, "other-locations:///") != 0)
         {
             nautilus_application_open_location_full (NAUTILUS_APPLICATION (g_application_get_default ()),
-                                                     location, 0, NULL, NULL, NULL);
+                    location, 0, NULL, NULL, NULL);
         }
         else
         {
@@ -393,7 +393,7 @@ nautilus_places_view_init (NautilusPlacesView *self)
     /* Places view */
     priv->places_view = nautilus_gtk_places_view_new ();
     nautilus_gtk_places_view_set_open_flags (NAUTILUS_GTK_PLACES_VIEW (priv->places_view),
-                                             GTK_PLACES_OPEN_NEW_TAB | GTK_PLACES_OPEN_NEW_WINDOW | GTK_PLACES_OPEN_NORMAL);
+            GTK_PLACES_OPEN_NEW_TAB | GTK_PLACES_OPEN_NEW_WINDOW | GTK_PLACES_OPEN_NORMAL);
     gtk_widget_set_hexpand (priv->places_view, TRUE);
     gtk_widget_set_vexpand (priv->places_view, TRUE);
     gtk_widget_show (priv->places_view);

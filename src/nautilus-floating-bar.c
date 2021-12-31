@@ -99,35 +99,35 @@ nautilus_floating_bar_get_property (GObject    *object,
 
     switch (property_id)
     {
-        case PROP_PRIMARY_LABEL:
-        {
-            g_value_set_string (value, self->primary_label);
-        }
-        break;
+    case PROP_PRIMARY_LABEL:
+    {
+        g_value_set_string (value, self->primary_label);
+    }
+    break;
 
-        case PROP_DETAILS_LABEL:
-        {
-            g_value_set_string (value, self->details_label);
-        }
-        break;
+    case PROP_DETAILS_LABEL:
+    {
+        g_value_set_string (value, self->details_label);
+    }
+    break;
 
-        case PROP_SHOW_SPINNER:
-        {
-            g_value_set_boolean (value, self->show_spinner);
-        }
-        break;
+    case PROP_SHOW_SPINNER:
+    {
+        g_value_set_boolean (value, self->show_spinner);
+    }
+    break;
 
-        case PROP_SHOW_STOP:
-        {
-            g_value_set_boolean (value, self->show_stop);
-        }
-        break;
+    case PROP_SHOW_STOP:
+    {
+        g_value_set_boolean (value, self->show_stop);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+    }
+    break;
     }
 }
 
@@ -141,35 +141,35 @@ nautilus_floating_bar_set_property (GObject      *object,
 
     switch (property_id)
     {
-        case PROP_PRIMARY_LABEL:
-        {
-            nautilus_floating_bar_set_primary_label (self, g_value_get_string (value));
-        }
-        break;
+    case PROP_PRIMARY_LABEL:
+    {
+        nautilus_floating_bar_set_primary_label (self, g_value_get_string (value));
+    }
+    break;
 
-        case PROP_DETAILS_LABEL:
-        {
-            nautilus_floating_bar_set_details_label (self, g_value_get_string (value));
-        }
-        break;
+    case PROP_DETAILS_LABEL:
+    {
+        nautilus_floating_bar_set_details_label (self, g_value_get_string (value));
+    }
+    break;
 
-        case PROP_SHOW_SPINNER:
-        {
-            nautilus_floating_bar_set_show_spinner (self, g_value_get_boolean (value));
-        }
-        break;
+    case PROP_SHOW_SPINNER:
+    {
+        nautilus_floating_bar_set_show_spinner (self, g_value_get_boolean (value));
+    }
+    break;
 
-        case PROP_SHOW_STOP:
-        {
-            nautilus_floating_bar_set_show_stop (self, g_value_get_boolean (value));
-        }
-        break;
+    case PROP_SHOW_STOP:
+    {
+        nautilus_floating_bar_set_show_stop (self, g_value_get_boolean (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+    }
+    break;
     }
 }
 
@@ -274,8 +274,8 @@ on_event_controller_motion_enter (GtkEventControllerMotion *controller,
     data->y_upper_limit = y_pos + gtk_widget_get_allocated_height (GTK_WIDGET (self));
 
     self->hover_timeout_id = g_timeout_add_full (G_PRIORITY_DEFAULT, HOVER_HIDE_TIMEOUT_INTERVAL,
-                                                 check_pointer_timeout, data,
-                                                 check_pointer_data_free);
+                             check_pointer_timeout, data,
+                             check_pointer_data_free);
 
     g_source_set_name_by_id (self->hover_timeout_id, "[nautilus-floating-bar] on_event_controller_motion_enter");
 }
@@ -317,7 +317,7 @@ on_parent_changed (GObject    *object,
         self->motion_controller = gtk_event_controller_motion_new (parent);
 
         gtk_event_controller_set_propagation_phase (self->motion_controller,
-                                                    GTK_PHASE_CAPTURE);
+                GTK_PHASE_CAPTURE);
         g_signal_connect (self->motion_controller, "enter",
                           G_CALLBACK (on_event_controller_motion_enter), self);
         g_signal_connect (self->motion_controller, "leave",
@@ -348,16 +348,16 @@ get_padding_and_border (GtkWidget *widget,
 
 static void
 nautilus_floating_bar_get_preferred_width (GtkWidget *widget,
-                                           gint      *minimum_size,
-                                           gint      *natural_size)
+        gint      *minimum_size,
+        gint      *natural_size)
 {
     GtkBorder border;
 
     get_padding_and_border (widget, &border);
 
     GTK_WIDGET_CLASS (nautilus_floating_bar_parent_class)->get_preferred_width (widget,
-                                                                                minimum_size,
-                                                                                natural_size);
+            minimum_size,
+            natural_size);
 
     *minimum_size += border.left + border.right;
     *natural_size += border.left + border.right;
@@ -365,18 +365,18 @@ nautilus_floating_bar_get_preferred_width (GtkWidget *widget,
 
 static void
 nautilus_floating_bar_get_preferred_width_for_height (GtkWidget *widget,
-                                                      gint       height,
-                                                      gint      *minimum_size,
-                                                      gint      *natural_size)
+        gint       height,
+        gint      *minimum_size,
+        gint      *natural_size)
 {
     GtkBorder border;
 
     get_padding_and_border (widget, &border);
 
     GTK_WIDGET_CLASS (nautilus_floating_bar_parent_class)->get_preferred_width_for_height (widget,
-                                                                                           height,
-                                                                                           minimum_size,
-                                                                                           natural_size);
+            height,
+            minimum_size,
+            natural_size);
 
     *minimum_size += border.left + border.right;
     *natural_size += border.left + border.right;
@@ -384,16 +384,16 @@ nautilus_floating_bar_get_preferred_width_for_height (GtkWidget *widget,
 
 static void
 nautilus_floating_bar_get_preferred_height (GtkWidget *widget,
-                                            gint      *minimum_size,
-                                            gint      *natural_size)
+        gint      *minimum_size,
+        gint      *natural_size)
 {
     GtkBorder border;
 
     get_padding_and_border (widget, &border);
 
     GTK_WIDGET_CLASS (nautilus_floating_bar_parent_class)->get_preferred_height (widget,
-                                                                                 minimum_size,
-                                                                                 natural_size);
+            minimum_size,
+            natural_size);
 
     *minimum_size += border.top + border.bottom;
     *natural_size += border.top + border.bottom;
@@ -401,18 +401,18 @@ nautilus_floating_bar_get_preferred_height (GtkWidget *widget,
 
 static void
 nautilus_floating_bar_get_preferred_height_for_width (GtkWidget *widget,
-                                                      gint       width,
-                                                      gint      *minimum_size,
-                                                      gint      *natural_size)
+        gint       width,
+        gint      *minimum_size,
+        gint      *natural_size)
 {
     GtkBorder border;
 
     get_padding_and_border (widget, &border);
 
     GTK_WIDGET_CLASS (nautilus_floating_bar_parent_class)->get_preferred_height_for_width (widget,
-                                                                                           width,
-                                                                                           minimum_size,
-                                                                                           natural_size);
+            width,
+            minimum_size,
+            natural_size);
 
     *minimum_size += border.top + border.bottom;
     *natural_size += border.top + border.bottom;
@@ -551,7 +551,7 @@ nautilus_floating_bar_class_init (NautilusFloatingBarClass *klass)
 
 void
 nautilus_floating_bar_set_primary_label (NautilusFloatingBar *self,
-                                         const gchar         *label)
+        const gchar         *label)
 {
     if (g_strcmp0 (self->primary_label, label) != 0)
     {
@@ -566,7 +566,7 @@ nautilus_floating_bar_set_primary_label (NautilusFloatingBar *self,
 
 void
 nautilus_floating_bar_set_details_label (NautilusFloatingBar *self,
-                                         const gchar         *label)
+        const gchar         *label)
 {
     if (g_strcmp0 (self->details_label, label) != 0)
     {

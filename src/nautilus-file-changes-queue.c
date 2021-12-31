@@ -302,42 +302,42 @@ nautilus_file_changes_consume_changes (gboolean consume_all)
         /* add the new change to the list */
         switch (change->kind)
         {
-            case CHANGE_FILE_ADDED:
-            {
-                additions = g_list_prepend (additions, change->from);
-            }
-            break;
+        case CHANGE_FILE_ADDED:
+        {
+            additions = g_list_prepend (additions, change->from);
+        }
+        break;
 
-            case CHANGE_FILE_CHANGED:
-            {
-                changes = g_list_prepend (changes, change->from);
-            }
-            break;
+        case CHANGE_FILE_CHANGED:
+        {
+            changes = g_list_prepend (changes, change->from);
+        }
+        break;
 
-            case CHANGE_FILE_REMOVED:
-            {
-                deletions = g_list_prepend (deletions, change->from);
-            }
-            break;
+        case CHANGE_FILE_REMOVED:
+        {
+            deletions = g_list_prepend (deletions, change->from);
+        }
+        break;
 
-            case CHANGE_FILE_MOVED:
-            {
-                nautilus_tag_manager_update_moved_uris (tag_manager,
-                                                        change->from,
-                                                        change->to);
+        case CHANGE_FILE_MOVED:
+        {
+            nautilus_tag_manager_update_moved_uris (tag_manager,
+                                                    change->from,
+                                                    change->to);
 
-                pair = g_new (GFilePair, 1);
-                pair->from = change->from;
-                pair->to = change->to;
-                moves = g_list_prepend (moves, pair);
-            }
-            break;
+            pair = g_new (GFilePair, 1);
+            pair->from = change->from;
+            pair->to = change->to;
+            moves = g_list_prepend (moves, pair);
+        }
+        break;
 
-            default:
-            {
-                g_assert_not_reached ();
-            }
-            break;
+        default:
+        {
+            g_assert_not_reached ();
+        }
+        break;
         }
 
         g_free (change);

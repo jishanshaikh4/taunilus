@@ -42,8 +42,8 @@ enum
 };
 
 static GQuark attribute_name_q,
-              attribute_modification_date_q,
-              attribute_date_modified_q;
+       attribute_modification_date_q,
+       attribute_date_modified_q;
 
 /* msec delay after Loading... dummy row turns into (empty) */
 #define LOADING_TO_EMPTY_DELAY 100
@@ -51,8 +51,8 @@ static GQuark attribute_name_q,
 static guint list_model_signals[LAST_SIGNAL] = { 0 };
 
 static int nautilus_list_model_file_entry_compare_func (gconstpointer a,
-                                                        gconstpointer b,
-                                                        gpointer      user_data);
+        gconstpointer b,
+        gpointer      user_data);
 static void nautilus_list_model_tree_model_init (GtkTreeModelIface *iface);
 static void nautilus_list_model_sortable_init (GtkTreeSortableIface *iface);
 
@@ -100,9 +100,9 @@ struct FileEntry
 
 G_DEFINE_TYPE_WITH_CODE (NautilusListModel, nautilus_list_model, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL,
-                                                nautilus_list_model_tree_model_init)
+                                 nautilus_list_model_tree_model_init)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_SORTABLE,
-                                                nautilus_list_model_sortable_init)
+                                 nautilus_list_model_sortable_init)
                          G_ADD_PRIVATE (NautilusListModel));
 
 static const GtkTargetEntry drag_types [] =
@@ -159,40 +159,40 @@ nautilus_list_model_get_column_type (GtkTreeModel *tree_model,
 
     switch (index)
     {
-        case NAUTILUS_LIST_MODEL_FILE_COLUMN:
-        {
-            return NAUTILUS_TYPE_FILE;
-        }
+    case NAUTILUS_LIST_MODEL_FILE_COLUMN:
+    {
+        return NAUTILUS_TYPE_FILE;
+    }
 
-        case NAUTILUS_LIST_MODEL_SUBDIRECTORY_COLUMN:
-        {
-            return NAUTILUS_TYPE_DIRECTORY;
-        }
+    case NAUTILUS_LIST_MODEL_SUBDIRECTORY_COLUMN:
+    {
+        return NAUTILUS_TYPE_DIRECTORY;
+    }
 
-        case NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN:
-        case NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN:
-        case NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN:
-        case NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN:
-        {
-            return CAIRO_GOBJECT_TYPE_SURFACE;
-        }
+    case NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN:
+    case NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN:
+    case NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN:
+    case NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN:
+    {
+        return CAIRO_GOBJECT_TYPE_SURFACE;
+    }
 
-        case NAUTILUS_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN:
-        {
-            return G_TYPE_BOOLEAN;
-        }
+    case NAUTILUS_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN:
+    {
+        return G_TYPE_BOOLEAN;
+    }
 
-        default:
+    default:
+    {
+        if (index < NAUTILUS_LIST_MODEL_NUM_COLUMNS + priv->columns->len)
         {
-            if (index < NAUTILUS_LIST_MODEL_NUM_COLUMNS + priv->columns->len)
-            {
-                return G_TYPE_STRING;
-            }
-            else
-            {
-                return G_TYPE_INVALID;
-            }
+            return G_TYPE_STRING;
         }
+        else
+        {
+            return G_TYPE_INVALID;
+        }
+    }
     }
 }
 
@@ -311,25 +311,25 @@ nautilus_list_model_get_icon_size_for_zoom_level (NautilusListZoomLevel zoom_lev
 {
     switch (zoom_level)
     {
-        case NAUTILUS_LIST_ZOOM_LEVEL_SMALL:
-        {
-            return NAUTILUS_LIST_ICON_SIZE_SMALL;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_SMALL:
+    {
+        return NAUTILUS_LIST_ICON_SIZE_SMALL;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_STANDARD:
-        {
-            return NAUTILUS_LIST_ICON_SIZE_STANDARD;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_STANDARD:
+    {
+        return NAUTILUS_LIST_ICON_SIZE_STANDARD;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_LARGE:
-        {
-            return NAUTILUS_LIST_ICON_SIZE_LARGE;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_LARGE:
+    {
+        return NAUTILUS_LIST_ICON_SIZE_LARGE;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_LARGER:
-        {
-            return NAUTILUS_LIST_ICON_SIZE_LARGER;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_LARGER:
+    {
+        return NAUTILUS_LIST_ICON_SIZE_LARGER;
+    }
     }
     g_return_val_if_reached (NAUTILUS_LIST_ICON_SIZE_STANDARD);
 }
@@ -362,126 +362,126 @@ nautilus_list_model_get_value (GtkTreeModel *tree_model,
 
     switch (column)
     {
-        case NAUTILUS_LIST_MODEL_FILE_COLUMN:
+    case NAUTILUS_LIST_MODEL_FILE_COLUMN:
+    {
+        g_value_init (value, NAUTILUS_TYPE_FILE);
+
+        g_value_set_object (value, file);
+    }
+    break;
+
+    case NAUTILUS_LIST_MODEL_SUBDIRECTORY_COLUMN:
+    {
+        g_value_init (value, NAUTILUS_TYPE_DIRECTORY);
+
+        g_value_set_object (value, file_entry->subdirectory);
+    }
+    break;
+
+    case NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN:
+    case NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN:
+    case NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN:
+    case NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN:
+    {
+        g_value_init (value, CAIRO_GOBJECT_TYPE_SURFACE);
+
+        if (file != NULL)
         {
-            g_value_init (value, NAUTILUS_TYPE_FILE);
+            zoom_level = nautilus_list_model_get_zoom_level_from_column_id (column);
+            icon_size = nautilus_list_model_get_icon_size_for_zoom_level (zoom_level);
+            icon_scale = nautilus_list_model_get_icon_scale (model);
 
-            g_value_set_object (value, file);
-        }
-        break;
+            flags = NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS |
+                    NAUTILUS_FILE_ICON_FLAGS_FORCE_THUMBNAIL_SIZE |
+                    NAUTILUS_FILE_ICON_FLAGS_USE_EMBLEMS |
+                    NAUTILUS_FILE_ICON_FLAGS_USE_ONE_EMBLEM;
 
-        case NAUTILUS_LIST_MODEL_SUBDIRECTORY_COLUMN:
-        {
-            g_value_init (value, NAUTILUS_TYPE_DIRECTORY);
-
-            g_value_set_object (value, file_entry->subdirectory);
-        }
-        break;
-
-        case NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN:
-        case NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN:
-        case NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN:
-        case NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN:
-        {
-            g_value_init (value, CAIRO_GOBJECT_TYPE_SURFACE);
-
-            if (file != NULL)
+            if (priv->drag_view != NULL)
             {
-                zoom_level = nautilus_list_model_get_zoom_level_from_column_id (column);
-                icon_size = nautilus_list_model_get_icon_size_for_zoom_level (zoom_level);
-                icon_scale = nautilus_list_model_get_icon_scale (model);
+                GtkTreePath *path_a, *path_b;
 
-                flags = NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS |
-                        NAUTILUS_FILE_ICON_FLAGS_FORCE_THUMBNAIL_SIZE |
-                        NAUTILUS_FILE_ICON_FLAGS_USE_EMBLEMS |
-                        NAUTILUS_FILE_ICON_FLAGS_USE_ONE_EMBLEM;
-
-                if (priv->drag_view != NULL)
+                gtk_tree_view_get_drag_dest_row (priv->drag_view,
+                                                 &path_a,
+                                                 NULL);
+                if (path_a != NULL)
                 {
-                    GtkTreePath *path_a, *path_b;
+                    path_b = gtk_tree_model_get_path (tree_model, iter);
 
-                    gtk_tree_view_get_drag_dest_row (priv->drag_view,
-                                                     &path_a,
-                                                     NULL);
-                    if (path_a != NULL)
+                    if (gtk_tree_path_compare (path_a, path_b) == 0)
                     {
-                        path_b = gtk_tree_model_get_path (tree_model, iter);
-
-                        if (gtk_tree_path_compare (path_a, path_b) == 0)
-                        {
-                            flags |= NAUTILUS_FILE_ICON_FLAGS_FOR_DRAG_ACCEPT;
-                        }
-
-                        gtk_tree_path_free (path_a);
-                        gtk_tree_path_free (path_b);
+                        flags |= NAUTILUS_FILE_ICON_FLAGS_FOR_DRAG_ACCEPT;
                     }
+
+                    gtk_tree_path_free (path_a);
+                    gtk_tree_path_free (path_b);
                 }
+            }
 
-                icon = nautilus_file_get_icon_pixbuf (file, icon_size, TRUE, icon_scale, flags);
+            icon = nautilus_file_get_icon_pixbuf (file, icon_size, TRUE, icon_scale, flags);
 
-                if (priv->highlight_files != NULL &&
+            if (priv->highlight_files != NULL &&
                     g_list_find_custom (priv->highlight_files,
                                         file, (GCompareFunc) nautilus_file_compare_location))
-                {
-                    rendered_icon = eel_create_spotlight_pixbuf (icon);
-
-                    if (rendered_icon != NULL)
-                    {
-                        g_object_unref (icon);
-                        icon = rendered_icon;
-                    }
-                }
-
-                surface = gdk_cairo_surface_create_from_pixbuf (icon, icon_scale, NULL);
-                g_value_take_boxed (value, surface);
-                g_object_unref (icon);
-            }
-        }
-        break;
-
-        case NAUTILUS_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN:
-        {
-            g_value_init (value, G_TYPE_BOOLEAN);
-
-            g_value_set_boolean (value, file != NULL && nautilus_file_can_rename (file));
-        }
-        break;
-
-        default:
-        {
-            if (column >= NAUTILUS_LIST_MODEL_NUM_COLUMNS && column < NAUTILUS_LIST_MODEL_NUM_COLUMNS + priv->columns->len)
             {
-                NautilusColumn *nautilus_column;
-                GQuark attribute;
-                nautilus_column = priv->columns->pdata[column - NAUTILUS_LIST_MODEL_NUM_COLUMNS];
+                rendered_icon = eel_create_spotlight_pixbuf (icon);
 
-                g_value_init (value, G_TYPE_STRING);
-                g_object_get (nautilus_column,
-                              "attribute_q", &attribute,
-                              NULL);
-                if (file != NULL)
+                if (rendered_icon != NULL)
                 {
-                    str = nautilus_file_get_string_attribute_with_default_q (file,
-                                                                             attribute);
-                    g_value_take_string (value, str);
-                }
-                else if (attribute == attribute_name_q)
-                {
-                    if (file_entry->parent->loaded)
-                    {
-                        g_value_set_string (value, _("(Empty)"));
-                    }
-                    else
-                    {
-                        g_value_set_string (value, _("Loading…"));
-                    }
+                    g_object_unref (icon);
+                    icon = rendered_icon;
                 }
             }
-            else
+
+            surface = gdk_cairo_surface_create_from_pixbuf (icon, icon_scale, NULL);
+            g_value_take_boxed (value, surface);
+            g_object_unref (icon);
+        }
+    }
+    break;
+
+    case NAUTILUS_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN:
+    {
+        g_value_init (value, G_TYPE_BOOLEAN);
+
+        g_value_set_boolean (value, file != NULL && nautilus_file_can_rename (file));
+    }
+    break;
+
+    default:
+    {
+        if (column >= NAUTILUS_LIST_MODEL_NUM_COLUMNS && column < NAUTILUS_LIST_MODEL_NUM_COLUMNS + priv->columns->len)
+        {
+            NautilusColumn *nautilus_column;
+            GQuark attribute;
+            nautilus_column = priv->columns->pdata[column - NAUTILUS_LIST_MODEL_NUM_COLUMNS];
+
+            g_value_init (value, G_TYPE_STRING);
+            g_object_get (nautilus_column,
+                          "attribute_q", &attribute,
+                          NULL);
+            if (file != NULL)
             {
-                g_assert_not_reached ();
+                str = nautilus_file_get_string_attribute_with_default_q (file,
+                        attribute);
+                g_value_take_string (value, str);
+            }
+            else if (attribute == attribute_name_q)
+            {
+                if (file_entry->parent->loaded)
+                {
+                    g_value_set_string (value, _("(Empty)"));
+                }
+                else
+                {
+                    g_value_set_string (value, _("Loading…"));
+                }
             }
         }
+        else
+        {
+            g_assert_not_reached ();
+        }
+    }
     }
 }
 
@@ -715,7 +715,7 @@ file_to_iter_cb (gpointer key,
 
 GList *
 nautilus_list_model_get_all_iters_for_file (NautilusListModel *model,
-                                            NautilusFile      *file)
+        NautilusFile      *file)
 {
     struct GetIters data;
     NautilusListModelPrivate *priv;
@@ -734,8 +734,8 @@ nautilus_list_model_get_all_iters_for_file (NautilusListModel *model,
 
 gboolean
 nautilus_list_model_get_first_iter_for_file (NautilusListModel *model,
-                                             NautilusFile      *file,
-                                             GtkTreeIter       *iter)
+        NautilusFile      *file,
+        GtkTreeIter       *iter)
 {
     GList *list;
     gboolean res;
@@ -756,9 +756,9 @@ nautilus_list_model_get_first_iter_for_file (NautilusListModel *model,
 
 gboolean
 nautilus_list_model_get_tree_iter_from_file (NautilusListModel *model,
-                                             NautilusFile      *file,
-                                             NautilusDirectory *directory,
-                                             GtkTreeIter       *iter)
+        NautilusFile      *file,
+        NautilusDirectory *directory,
+        GtkTreeIter       *iter)
 {
     GSequenceIter *ptr;
 
@@ -775,8 +775,8 @@ nautilus_list_model_get_tree_iter_from_file (NautilusListModel *model,
 
 static int
 nautilus_list_model_file_entry_compare_func (gconstpointer a,
-                                             gconstpointer b,
-                                             gpointer      user_data)
+        gconstpointer b,
+        gpointer      user_data)
 {
     FileEntry *file_entry1;
     FileEntry *file_entry2;
@@ -793,9 +793,9 @@ nautilus_list_model_file_entry_compare_func (gconstpointer a,
     if (file_entry1->file != NULL && file_entry2->file != NULL)
     {
         result = nautilus_file_compare_for_sort_by_attribute_q (file_entry1->file, file_entry2->file,
-                                                                priv->sort_attribute,
-                                                                priv->sort_directories_first,
-                                                                (priv->order == GTK_SORT_DESCENDING));
+                 priv->sort_attribute,
+                 priv->sort_directories_first,
+                 (priv->order == GTK_SORT_DESCENDING));
     }
     else if (file_entry1->file == NULL)
     {
@@ -819,9 +819,9 @@ nautilus_list_model_compare_func (NautilusListModel *model,
 
     priv = nautilus_list_model_get_instance_private (model);
     result = nautilus_file_compare_for_sort_by_attribute_q (file1, file2,
-                                                            priv->sort_attribute,
-                                                            priv->sort_directories_first,
-                                                            (priv->order == GTK_SORT_DESCENDING));
+             priv->sort_attribute,
+             priv->sort_directories_first,
+             (priv->order == GTK_SORT_DESCENDING));
 
     return result;
 }
@@ -977,7 +977,7 @@ add_dummy_row (NautilusListModel *model,
     dummy_file_entry = g_new0 (FileEntry, 1);
     dummy_file_entry->parent = parent_entry;
     dummy_file_entry->ptr = g_sequence_insert_sorted (parent_entry->files, dummy_file_entry,
-                                                      nautilus_list_model_file_entry_compare_func, model);
+                            nautilus_list_model_file_entry_compare_func, model);
     iter.stamp = priv->stamp;
     iter.user_data = dummy_file_entry->ptr;
 
@@ -1059,7 +1059,7 @@ nautilus_list_model_add_file (NautilusListModel *model,
 
 
     file_entry->ptr = g_sequence_insert_sorted (files, file_entry,
-                                                nautilus_list_model_file_entry_compare_func, model);
+                      nautilus_list_model_file_entry_compare_func, model);
 
     g_hash_table_insert (parent_hash, file, file_entry->ptr);
 
@@ -1237,7 +1237,7 @@ nautilus_list_model_remove (NautilusListModel *model,
 
     parent_file_entry = file_entry->parent;
     if (parent_file_entry && g_sequence_get_length (parent_file_entry->files) == 1 &&
-        file_entry->file != NULL)
+            file_entry->file != NULL)
     {
         /* this is the last non-dummy child, add a dummy node */
         /* We need to do this before removing the last file to avoid
@@ -1362,7 +1362,7 @@ nautilus_list_model_load_subdirectory (NautilusListModel  *model,
 
     file_entry = g_sequence_get (iter.user_data);
     if (file_entry->file == NULL ||
-        file_entry->subdirectory != NULL)
+            file_entry->subdirectory != NULL)
     {
         return FALSE;
     }
@@ -1377,8 +1377,8 @@ nautilus_list_model_load_subdirectory (NautilusListModel  *model,
     }
 
     file_entry->subdirectory = subdirectory,
-    g_hash_table_insert (priv->directory_reverse_map,
-                         subdirectory, file_entry->ptr);
+                g_hash_table_insert (priv->directory_reverse_map,
+                                     subdirectory, file_entry->ptr);
     file_entry->reverse_map = g_hash_table_new (g_direct_hash, g_direct_equal);
 
     /* Return a ref too */
@@ -1391,7 +1391,7 @@ nautilus_list_model_load_subdirectory (NautilusListModel  *model,
 /* removes all children of the subfolder and unloads the subdirectory */
 void
 nautilus_list_model_unload_subdirectory (NautilusListModel *model,
-                                         GtkTreeIter       *iter)
+        GtkTreeIter       *iter)
 {
     NautilusListModelPrivate *priv;
     GSequenceIter *child_ptr;
@@ -1402,7 +1402,7 @@ nautilus_list_model_unload_subdirectory (NautilusListModel *model,
 
     file_entry = g_sequence_get (iter->user_data);
     if (file_entry->file == NULL ||
-        file_entry->subdirectory == NULL)
+            file_entry->subdirectory == NULL)
     {
         return;
     }
@@ -1446,7 +1446,7 @@ nautilus_list_model_unload_subdirectory (NautilusListModel *model,
 
 void
 nautilus_list_model_set_should_sort_directories_first (NautilusListModel *model,
-                                                       gboolean           sort_directories_first)
+        gboolean           sort_directories_first)
 {
     NautilusListModelPrivate *priv;
 
@@ -1463,7 +1463,7 @@ nautilus_list_model_set_should_sort_directories_first (NautilusListModel *model,
 
 int
 nautilus_list_model_get_sort_column_id_from_attribute (NautilusListModel *model,
-                                                       GQuark             attribute)
+        GQuark             attribute)
 {
     NautilusListModelPrivate *priv;
     guint i;
@@ -1503,7 +1503,7 @@ nautilus_list_model_get_sort_column_id_from_attribute (NautilusListModel *model,
 
 GQuark
 nautilus_list_model_get_attribute_from_sort_column_id (NautilusListModel *model,
-                                                       int                sort_column_id)
+        int                sort_column_id)
 {
     NautilusListModelPrivate *priv;
     NautilusColumn *column;
@@ -1530,25 +1530,25 @@ nautilus_list_model_get_zoom_level_from_column_id (int column)
 {
     switch (column)
     {
-        case NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN:
-        {
-            return NAUTILUS_LIST_ZOOM_LEVEL_SMALL;
-        }
+    case NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN:
+    {
+        return NAUTILUS_LIST_ZOOM_LEVEL_SMALL;
+    }
 
-        case NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN:
-        {
-            return NAUTILUS_LIST_ZOOM_LEVEL_STANDARD;
-        }
+    case NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN:
+    {
+        return NAUTILUS_LIST_ZOOM_LEVEL_STANDARD;
+    }
 
-        case NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN:
-        {
-            return NAUTILUS_LIST_ZOOM_LEVEL_LARGE;
-        }
+    case NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN:
+    {
+        return NAUTILUS_LIST_ZOOM_LEVEL_LARGE;
+    }
 
-        case NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN:
-        {
-            return NAUTILUS_LIST_ZOOM_LEVEL_LARGER;
-        }
+    case NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN:
+    {
+        return NAUTILUS_LIST_ZOOM_LEVEL_LARGER;
+    }
     }
 
     g_return_val_if_reached (NAUTILUS_LIST_ZOOM_LEVEL_STANDARD);
@@ -1559,25 +1559,25 @@ nautilus_list_model_get_column_id_from_zoom_level (NautilusListZoomLevel zoom_le
 {
     switch (zoom_level)
     {
-        case NAUTILUS_LIST_ZOOM_LEVEL_SMALL:
-        {
-            return NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_SMALL:
+    {
+        return NAUTILUS_LIST_MODEL_SMALL_ICON_COLUMN;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_STANDARD:
-        {
-            return NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_STANDARD:
+    {
+        return NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_LARGE:
-        {
-            return NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_LARGE:
+    {
+        return NAUTILUS_LIST_MODEL_LARGE_ICON_COLUMN;
+    }
 
-        case NAUTILUS_LIST_ZOOM_LEVEL_LARGER:
-        {
-            return NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN;
-        }
+    case NAUTILUS_LIST_ZOOM_LEVEL_LARGER:
+    {
+        return NAUTILUS_LIST_MODEL_LARGER_ICON_COLUMN;
+    }
     }
 
     g_return_val_if_reached (NAUTILUS_LIST_MODEL_STANDARD_ICON_COLUMN);
@@ -1781,7 +1781,7 @@ nautilus_list_model_sortable_init (GtkTreeSortableIface *iface)
 
 void
 nautilus_list_model_subdirectory_done_loading (NautilusListModel *model,
-                                               NautilusDirectory *directory)
+        NautilusDirectory *directory)
 {
     NautilusListModelPrivate *priv;
     GtkTreeIter iter;
@@ -1810,7 +1810,7 @@ nautilus_list_model_subdirectory_done_loading (NautilusListModel *model,
      * otherwise, toggle loading at first added file to the model.
      */
     if (!nautilus_directory_is_not_empty (directory) &&
-        g_sequence_get_length (files) == 1)
+            g_sequence_get_length (files) == 1)
     {
         dummy_ptr = g_sequence_get_iter_at_pos (file_entry->files, 0);
         dummy_entry = g_sequence_get (dummy_ptr);
@@ -1855,7 +1855,7 @@ refresh_row (gpointer data,
 
 void
 nautilus_list_model_set_highlight_for_files (NautilusListModel *model,
-                                             GList             *files)
+        GList             *files)
 {
     NautilusListModelPrivate *priv;
 

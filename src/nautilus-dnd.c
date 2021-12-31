@@ -62,7 +62,7 @@ nautilus_drag_init (NautilusDragInfo     *drag_info,
                     gboolean              add_text_targets)
 {
     drag_info->target_list = gtk_target_list_new (drag_types,
-                                                  drag_type_count);
+                             drag_type_count);
 
     if (add_text_targets)
     {
@@ -327,7 +327,7 @@ nautilus_drag_items_local (const char  *target_uri_string,
     g_assert (selection_list);
 
     return nautilus_drag_file_local_internal (target_uri_string,
-                                              ((NautilusDragSelectionItem *) selection_list->data)->uri);
+            ((NautilusDragSelectionItem *) selection_list->data)->uri);
 }
 
 GdkDragAction
@@ -336,7 +336,7 @@ nautilus_drag_default_drop_action_for_netscape_url (GdkDragContext *context)
     /* Mozilla defaults to copy, but unless thats the
      *  only allowed thing (enforced by ctrl) we want to LINK */
     if (gdk_drag_context_get_suggested_action (context) == GDK_ACTION_COPY &&
-        gdk_drag_context_get_actions (context) != GDK_ACTION_COPY)
+            gdk_drag_context_get_actions (context) != GDK_ACTION_COPY)
     {
         return GDK_ACTION_LINK;
     }
@@ -418,7 +418,7 @@ nautilus_drag_get_source_data (GdkDragContext *context)
         if (NAUTILUS_IS_LIST_VIEW (view))
         {
             source_data = nautilus_list_view_dnd_get_drag_source_data (NAUTILUS_LIST_VIEW (view),
-                                                                       context);
+                          context);
         }
         else
         {
@@ -438,10 +438,10 @@ nautilus_drag_get_source_data (GdkDragContext *context)
 
 void
 nautilus_drag_default_drop_action_for_icons (GdkDragContext *context,
-                                             const char     *target_uri_string,
-                                             const GList    *items,
-                                             guint32         source_actions,
-                                             int            *action)
+        const char     *target_uri_string,
+        const GList    *items,
+        guint32         source_actions,
+        int            *action)
 {
     gboolean same_fs;
     gboolean target_is_source_parent;
@@ -539,7 +539,7 @@ nautilus_drag_default_drop_action_for_icons (GdkDragContext *context,
     source_deletable = source_is_deletable (dropped);
 
     if ((same_fs && source_deletable) || target_is_source_parent ||
-        g_file_has_uri_scheme (dropped, "trash"))
+            g_file_has_uri_scheme (dropped, "trash"))
     {
         if (actions & GDK_ACTION_MOVE)
         {
@@ -568,7 +568,7 @@ nautilus_drag_default_drop_action_for_icons (GdkDragContext *context,
 
 GdkDragAction
 nautilus_drag_default_drop_action_for_uri_list (GdkDragContext *context,
-                                                const char     *target_uri_string)
+        const char     *target_uri_string)
 {
     if (eel_uri_is_trash (target_uri_string) && (gdk_drag_context_get_actions (context) & GDK_ACTION_MOVE))
     {
@@ -676,23 +676,23 @@ nautilus_drag_drag_data_get_from_cache (GList            *cache,
 
     switch (info)
     {
-        case NAUTILUS_ICON_DND_GNOME_ICON_LIST:
-        {
-            func = add_one_gnome_icon;
-        }
-        break;
+    case NAUTILUS_ICON_DND_GNOME_ICON_LIST:
+    {
+        func = add_one_gnome_icon;
+    }
+    break;
 
-        case NAUTILUS_ICON_DND_URI_LIST:
-        case NAUTILUS_ICON_DND_TEXT:
-        {
-            func = add_one_uri;
-        }
-        break;
+    case NAUTILUS_ICON_DND_URI_LIST:
+    case NAUTILUS_ICON_DND_TEXT:
+    {
+        func = add_one_uri;
+    }
+    break;
 
-        default:
-        {
-            return FALSE;
-        }
+    default:
+    {
+        return FALSE;
+    }
     }
 
     result = g_string_new (NULL);
@@ -740,7 +740,7 @@ drop_action_activated_callback (GtkWidget *menu_item,
     damd = data;
 
     damd->chosen = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menu_item),
-                                                       "action"));
+                                    "action"));
 
     if (g_main_loop_is_running (damd->loop))
     {
@@ -845,8 +845,8 @@ nautilus_drag_autoscroll_in_scroll_region (GtkWidget *widget)
 
 void
 nautilus_drag_autoscroll_calculate_delta (GtkWidget *widget,
-                                          float     *x_scroll_delta,
-                                          float     *y_scroll_delta)
+        float     *x_scroll_delta,
+        float     *y_scroll_delta)
 {
     GtkAllocation allocation;
     GdkDisplay *display;
@@ -948,9 +948,9 @@ nautilus_drag_autoscroll_start (NautilusDragInfo *drag_info,
                                               + AUTOSCROLL_INITIAL_DELAY;
 
             drag_info->auto_scroll_timeout_id = g_timeout_add
-                                                    (AUTOSCROLL_TIMEOUT_INTERVAL,
-                                                    callback,
-                                                    user_data);
+                                                (AUTOSCROLL_TIMEOUT_INTERVAL,
+                                                 callback,
+                                                 user_data);
         }
     }
     else

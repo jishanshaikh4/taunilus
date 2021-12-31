@@ -64,7 +64,7 @@ G_DEFINE_TYPE_WITH_CODE (NautilusSearchEngine,
                          G_TYPE_OBJECT,
                          G_ADD_PRIVATE (NautilusSearchEngine)
                          G_IMPLEMENT_INTERFACE (NAUTILUS_TYPE_SEARCH_PROVIDER,
-                                                nautilus_search_provider_init))
+                                 nautilus_search_provider_init))
 
 static void
 nautilus_search_engine_set_query (NautilusSearchProvider *provider,
@@ -154,38 +154,38 @@ search_engine_start_real (NautilusSearchEngine       *engine,
 
     switch (target_engine)
     {
-        case NAUTILUS_SEARCH_ENGINE_TRACKER_ENGINE:
-        {
-            search_engine_start_real_tracker (engine);
-        }
-        break;
+    case NAUTILUS_SEARCH_ENGINE_TRACKER_ENGINE:
+    {
+        search_engine_start_real_tracker (engine);
+    }
+    break;
 
-        case NAUTILUS_SEARCH_ENGINE_RECENT_ENGINE:
-        {
-            search_engine_start_real_recent (engine);
-        }
-        break;
+    case NAUTILUS_SEARCH_ENGINE_RECENT_ENGINE:
+    {
+        search_engine_start_real_recent (engine);
+    }
+    break;
 
-        case NAUTILUS_SEARCH_ENGINE_MODEL_ENGINE:
-        {
-            search_engine_start_real_model (engine);
-        }
-        break;
+    case NAUTILUS_SEARCH_ENGINE_MODEL_ENGINE:
+    {
+        search_engine_start_real_model (engine);
+    }
+    break;
 
-        case NAUTILUS_SEARCH_ENGINE_SIMPLE_ENGINE:
-        {
-            search_engine_start_real_simple (engine);
-        }
-        break;
+    case NAUTILUS_SEARCH_ENGINE_SIMPLE_ENGINE:
+    {
+        search_engine_start_real_simple (engine);
+    }
+    break;
 
-        case NAUTILUS_SEARCH_ENGINE_ALL_ENGINES:
-        default:
-        {
-            search_engine_start_real_tracker (engine);
-            search_engine_start_real_recent (engine);
-            search_engine_start_real_model (engine);
-            search_engine_start_real_simple (engine);
-        }
+    case NAUTILUS_SEARCH_ENGINE_ALL_ENGINES:
+    default:
+    {
+        search_engine_start_real_tracker (engine);
+        search_engine_start_real_recent (engine);
+        search_engine_start_real_model (engine);
+        search_engine_start_real_simple (engine);
+    }
     }
 }
 
@@ -207,7 +207,7 @@ nautilus_search_engine_start_by_target (NautilusSearchProvider     *provider,
     if (priv->running)
     {
         if (num_finished == priv->providers_running &&
-            priv->restart)
+                priv->restart)
         {
             search_engine_start_real (engine, target_engine);
         }
@@ -248,7 +248,7 @@ nautilus_search_engine_start (NautilusSearchProvider *provider)
     if (priv->running)
     {
         if (num_finished == priv->providers_running &&
-            priv->restart)
+                priv->restart)
         {
             search_engine_start_real (engine, NAUTILUS_SEARCH_ENGINE_ALL_ENGINES);
         }
@@ -364,7 +364,7 @@ check_providers_status (NautilusSearchEngine *engine)
         }
         nautilus_search_provider_finished (NAUTILUS_SEARCH_PROVIDER (engine),
                                            priv->restart ? NAUTILUS_SEARCH_PROVIDER_STATUS_RESTARTING :
-                                                           NAUTILUS_SEARCH_PROVIDER_STATUS_NORMAL);
+                                           NAUTILUS_SEARCH_PROVIDER_STATUS_NORMAL);
     }
 
     priv->running = FALSE;
@@ -475,16 +475,16 @@ nautilus_search_engine_get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_RUNNING:
-        {
-            g_value_set_boolean (value, nautilus_search_engine_is_running (self));
-        }
-        break;
+    case PROP_RUNNING:
+    {
+        g_value_set_boolean (value, nautilus_search_engine_is_running (self));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
     }
 }
 
@@ -554,34 +554,34 @@ is_recursive_search (NautilusSearchEngineType  engine_type,
 {
     switch (recursive)
     {
-        case NAUTILUS_QUERY_RECURSIVE_NEVER:
-        {
-            return FALSE;
-        }
+    case NAUTILUS_QUERY_RECURSIVE_NEVER:
+    {
+        return FALSE;
+    }
 
-        case NAUTILUS_QUERY_RECURSIVE_ALWAYS:
-        {
-            return TRUE;
-        }
+    case NAUTILUS_QUERY_RECURSIVE_ALWAYS:
+    {
+        return TRUE;
+    }
 
-        case NAUTILUS_QUERY_RECURSIVE_INDEXED_ONLY:
-        {
-            return engine_type == NAUTILUS_SEARCH_ENGINE_TYPE_INDEXED;
-        }
+    case NAUTILUS_QUERY_RECURSIVE_INDEXED_ONLY:
+    {
+        return engine_type == NAUTILUS_SEARCH_ENGINE_TYPE_INDEXED;
+    }
 
-        case NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY:
-        {
-            g_autoptr (GFileInfo) file_system_info = NULL;
+    case NAUTILUS_QUERY_RECURSIVE_LOCAL_ONLY:
+    {
+        g_autoptr (GFileInfo) file_system_info = NULL;
 
-            file_system_info = g_file_query_filesystem_info (location,
-                                                             G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE,
-                                                             NULL, NULL);
-            if (file_system_info != NULL)
-            {
-                return !g_file_info_get_attribute_boolean (file_system_info,
-                                                           G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE);
-            }
+        file_system_info = g_file_query_filesystem_info (location,
+                           G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE,
+                           NULL, NULL);
+        if (file_system_info != NULL)
+        {
+            return !g_file_info_get_attribute_boolean (file_system_info,
+                    G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE);
         }
+    }
     }
 
     return TRUE;

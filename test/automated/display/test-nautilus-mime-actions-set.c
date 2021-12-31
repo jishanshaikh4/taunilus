@@ -158,25 +158,25 @@ main (int    argc,
     {
         puts ("short_list_applications");
         nautilus_mime_set_short_list_applications_for_file
-            (file, comma_separated_str_to_str_list (value));
+        (file, comma_separated_str_to_str_list (value));
     }
     else if (strcmp (field, "short_list_components") == 0)
     {
         puts ("short_list_components");
         nautilus_mime_set_short_list_components_for_file
-            (file, comma_separated_str_to_str_list (value));
+        (file, comma_separated_str_to_str_list (value));
     }
     else if (strcmp (field, "add_to_all_applicationss") == 0)
     {
         puts ("add_to_all_applications");
         nautilus_mime_extend_all_applications_for_file
-            (file, comma_separated_str_to_str_list (value));
+        (file, comma_separated_str_to_str_list (value));
     }
     else if (strcmp (field, "remove_from_all_applications") == 0)
     {
         puts ("remove_from_all_applications");
         nautilus_mime_remove_from_all_applications_for_file
-            (file, comma_separated_str_to_str_list (value));
+        (file, comma_separated_str_to_str_list (value));
     }
     else
     {

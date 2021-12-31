@@ -78,7 +78,7 @@ ensure_filmholes (void)
         filmholes_left = gdk_pixbuf_new_from_resource ("/org/gnome/nautilus/icons/filmholes.png", NULL);
     }
     if (filmholes_right == NULL &&
-        filmholes_left != NULL)
+            filmholes_left != NULL)
     {
         filmholes_right = gdk_pixbuf_flip (filmholes_left, TRUE);
     }
@@ -233,7 +233,7 @@ get_text_for_date_range (GPtrArray *date_range,
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wformat-nonliteral"
         label = g_strdup_printf (get_text_for_days_ago (days,
-                                                        prefix_with_since),
+                                 prefix_with_since),
                                  normalized);
 #pragma GCC diagnostic pop
     }
@@ -260,7 +260,7 @@ show_dialog (const gchar    *primary_text,
                                      "%s", primary_text);
 
     gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                              "%s", secondary_text);
+            "%s", secondary_text);
 
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 

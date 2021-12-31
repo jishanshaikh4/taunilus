@@ -141,8 +141,8 @@ change_numbering_order (GSimpleAction *action,
             gtk_label_set_label (GTK_LABEL (dialog->numbering_order_label),
                                  gettext (sorts_constants[i].label));
             dialog->selection = nautilus_batch_rename_dialog_sort (dialog->selection,
-                                                                   sorts_constants[i].sort_mode,
-                                                                   dialog->create_date);
+                                sorts_constants[i].sort_mode,
+                                dialog->create_date);
             break;
         }
     }
@@ -448,22 +448,22 @@ batch_rename_dialog_get_new_names (NautilusBatchRenameDialog *dialog)
     if (dialog->mode == NAUTILUS_BATCH_RENAME_DIALOG_REPLACE)
     {
         result = batch_rename_dialog_get_new_names_list (dialog->mode,
-                                                         selection,
-                                                         NULL,
-                                                         NULL,
-                                                         entry_text,
-                                                         replace_text);
+                 selection,
+                 NULL,
+                 NULL,
+                 entry_text,
+                 replace_text);
     }
     else
     {
         text_chunks = split_entry_text (dialog, entry_text);
 
         result = batch_rename_dialog_get_new_names_list (dialog->mode,
-                                                         selection,
-                                                         text_chunks,
-                                                         dialog->selection_metadata,
-                                                         entry_text,
-                                                         replace_text);
+                 selection,
+                 text_chunks,
+                 dialog->selection_metadata,
+                 entry_text,
+                 replace_text);
         g_list_free_full (text_chunks, string_free);
     }
 
@@ -863,10 +863,10 @@ update_conflict_row_background (NautilusBatchRenameDialog *dialog)
     duplicates = dialog->duplicates;
 
     for (l1 = dialog->listbox_labels_new,
-         l2 = dialog->listbox_labels_old,
-         l3 = dialog->listbox_icons;
-         l1 != NULL && l2 != NULL && l3 != NULL;
-         l1 = l1->next, l2 = l2->next, l3 = l3->next)
+            l2 = dialog->listbox_labels_old,
+            l3 = dialog->listbox_icons;
+            l1 != NULL && l2 != NULL && l3 != NULL;
+            l1 = l1->next, l2 = l2->next, l3 = l3->next)
     {
         GtkWidget *row1 = gtk_widget_get_parent (l1->data);
         GtkWidget *row2 = gtk_widget_get_parent (l2->data);
@@ -946,7 +946,7 @@ update_listbox (NautilusBatchRenameDialog *dialog)
         else
         {
             new_name = batch_rename_replace_label_text (old_name,
-                                                        gtk_entry_get_text (GTK_ENTRY (dialog->find_entry)));
+                       gtk_entry_get_text (GTK_ENTRY (dialog->find_entry)));
             gtk_label_set_markup (GTK_LABEL (label), new_name->str);
 
             g_string_free (new_name, TRUE);
@@ -1037,23 +1037,23 @@ check_conflict_for_files (NautilusBatchRenameDialog *dialog,
     current_directory = nautilus_directory_get_uri (directory);
 
     directory_files_table = g_hash_table_new_full (g_str_hash,
-                                                   g_str_equal,
-                                                   (GDestroyNotify) g_free,
-                                                   NULL);
+                            g_str_equal,
+                            (GDestroyNotify) g_free,
+                            NULL);
     new_names_table = g_hash_table_new_full (g_str_hash,
-                                             g_str_equal,
-                                             (GDestroyNotify) g_free,
-                                             (GDestroyNotify) g_free);
+                      g_str_equal,
+                      (GDestroyNotify) g_free,
+                      (GDestroyNotify) g_free);
     names_conflicts_table = g_hash_table_new_full (g_str_hash,
-                                                   g_str_equal,
-                                                   (GDestroyNotify) g_free,
-                                                   (GDestroyNotify) g_free);
+                            g_str_equal,
+                            (GDestroyNotify) g_free,
+                            (GDestroyNotify) g_free);
 
     /* names_conflicts_table is used for knowing which names from the list are not unique,
      * so that they can easily be reached when needed */
     for (l1 = dialog->new_names, l2 = dialog->selection;
-         l1 != NULL && l2 != NULL;
-         l1 = l1->next, l2 = l2->next)
+            l1 != NULL && l2 != NULL;
+            l1 = l1->next, l2 = l2->next)
     {
         new_name = l1->data;
         file = NAUTILUS_FILE (l2->data);
@@ -1106,12 +1106,12 @@ check_conflict_for_files (NautilusBatchRenameDialog *dialog,
         /* check for duplicate only if the parent of the current file is
          * the current directory and the name of the file has changed */
         if (g_strcmp0 (parent_uri, current_directory) == 0 &&
-            !g_string_equal (new_name, file_name))
+                !g_string_equal (new_name, file_name))
         {
             exists = GPOINTER_TO_INT (g_hash_table_lookup (directory_files_table, new_name->str));
 
             if (exists == TRUE &&
-                !file_name_conflicts_with_results (dialog->selection, dialog->new_names, new_name, parent_uri))
+                    !file_name_conflicts_with_results (dialog->selection, dialog->new_names, new_name, parent_uri))
             {
                 conflict_data = g_new (ConflictData, 1);
                 conflict_data->name = g_strdup (new_name->str);
@@ -1152,8 +1152,8 @@ check_conflict_for_files (NautilusBatchRenameDialog *dialog,
 
 static void
 on_directory_attributes_ready_for_conflicts_check (NautilusDirectory *conflict_directory,
-                                                   GList             *files,
-                                                   gpointer           callback_data)
+        GList             *files,
+        gpointer           callback_data)
 {
     NautilusBatchRenameDialog *self;
 
@@ -1313,7 +1313,7 @@ have_unallowed_character (NautilusBatchRenameDialog *dialog)
     }
 
     if (have_unallowed_character_slash || have_unallowed_character_dot || have_unallowed_character_dotdot
-        || have_empty_name)
+            || have_empty_name)
     {
         gtk_widget_set_sensitive (dialog->rename_button, FALSE);
         gtk_widget_set_sensitive (dialog->conflict_down, FALSE);
@@ -1453,8 +1453,8 @@ numbering_order_popover_closed (NautilusBatchRenameDialog *dialog)
 
 void
 nautilus_batch_rename_dialog_query_finished (NautilusBatchRenameDialog *dialog,
-                                             GHashTable                *hash_table,
-                                             GList                     *selection_metadata)
+        GHashTable                *hash_table,
+        GList                     *selection_metadata)
 {
     GMenuItem *first_created;
     GMenuItem *last_created;
@@ -1510,7 +1510,7 @@ nautilus_batch_rename_dialog_query_finished (NautilusBatchRenameDialog *dialog,
 
         metadata_type = tag_data->tag_constants.metadata_type;
         if (file_metadata->metadata[metadata_type] == NULL ||
-            file_metadata->metadata[metadata_type]->len <= 0)
+                file_metadata->metadata[metadata_type]->len <= 0)
         {
             disable_action (dialog, tag_data->tag_constants.action_name);
             tag_data->available = FALSE;
@@ -1772,7 +1772,7 @@ on_delete_text (GtkEditable *editable,
 
     self = NAUTILUS_BATCH_RENAME_DIALOG (user_data);
     intersecting_tags = get_tags_intersecting_sorted (self, start_position,
-                                                      end_position, TEXT_WAS_DELETED);
+                        end_position, TEXT_WAS_DELETED);
     if (intersecting_tags)
     {
         gint last_tag_end_position;
@@ -1836,7 +1836,7 @@ on_insert_text (GtkEditable *editable,
     start_position = *(int *) position;
     end_position = start_position + g_utf8_strlen (new_text, -1);
     intersecting_tags = get_tags_intersecting_sorted (self, start_position,
-                                                      end_position, TEXT_WAS_INSERTED);
+                        end_position, TEXT_WAS_INSERTED);
     if (!intersecting_tags)
     {
         g_signal_handlers_block_by_func (editable, (gpointer) on_insert_text, user_data);
@@ -2069,7 +2069,7 @@ connect_to_pointer_motion_events (NautilusBatchRenameDialog *self,
                       G_CALLBACK (on_event_controller_motion_motion), self);
 
     self->motion_controllers = g_list_prepend (self->motion_controllers,
-                                               controller);
+                               controller);
 }
 
 static void
@@ -2118,9 +2118,9 @@ nautilus_batch_rename_dialog_init (NautilusBatchRenameDialog *self)
     self->rename_clicked = FALSE;
 
     self->tag_info_table = g_hash_table_new_full (g_str_hash,
-                                                  g_str_equal,
-                                                  (GDestroyNotify) g_free,
-                                                  (GDestroyNotify) g_free);
+                           g_str_equal,
+                           (GDestroyNotify) g_free,
+                           (GDestroyNotify) g_free);
 
     for (i = 0; i < G_N_ELEMENTS (numbering_tags_constants); i++)
     {

@@ -149,7 +149,7 @@ set_copy_move_dialog_text (FileConflictDialogData *data)
     if (destination_is_directory)
     {
         if (nautilus_file_is_symbolic_link (data->source)
-            && !nautilus_file_is_symbolic_link (data->destination))
+                && !nautilus_file_is_symbolic_link (data->destination))
         {
             primary_text = g_strdup_printf (_("You are trying to replace the destination folder “%s” with a symbolic link."),
                                             destination_name);
@@ -227,20 +227,20 @@ set_images (FileConflictDialogData *data)
     GdkPixbuf *destination_pixbuf;
 
     destination_pixbuf = nautilus_file_get_icon_pixbuf (data->destination,
-                                                        NAUTILUS_GRID_ICON_SIZE_SMALL,
-                                                        TRUE,
-                                                        1,
-                                                        NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS);
+                         NAUTILUS_GRID_ICON_SIZE_SMALL,
+                         TRUE,
+                         1,
+                         NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS);
 
     source_pixbuf = nautilus_file_get_icon_pixbuf (data->source,
-                                                   NAUTILUS_GRID_ICON_SIZE_SMALL,
-                                                   TRUE,
-                                                   1,
-                                                   NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS);
+                    NAUTILUS_GRID_ICON_SIZE_SMALL,
+                    TRUE,
+                    1,
+                    NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS);
 
     nautilus_file_conflict_dialog_set_images (data->dialog,
-                                              destination_pixbuf,
-                                              source_pixbuf);
+            destination_pixbuf,
+            source_pixbuf);
 
     g_object_unref (destination_pixbuf);
     g_object_unref (source_pixbuf);
@@ -267,17 +267,17 @@ set_file_labels (FileConflictDialogData *data)
 
     destination_mime_type = nautilus_file_get_mime_type (data->destination);
     should_show_type = !nautilus_file_is_mime_type (data->source,
-                                                    destination_mime_type);
+                       destination_mime_type);
 
     destination_date = nautilus_file_get_string_attribute_with_default (data->destination,
-                                                                        "date_modified");
+                       "date_modified");
     destination_size = nautilus_file_get_string_attribute_with_default (data->destination,
-                                                                        "size");
+                       "size");
 
     if (should_show_type)
     {
         destination_type = nautilus_file_get_string_attribute_with_default (data->destination,
-                                                                            "type");
+                           "type");
     }
 
     destination_label = g_string_new (NULL);
@@ -300,14 +300,14 @@ set_file_labels (FileConflictDialogData *data)
     g_string_append_printf (destination_label, "%s %s", _("Last modified:"), destination_date);
 
     source_date = nautilus_file_get_string_attribute_with_default (data->source,
-                                                                   "date_modified");
+                  "date_modified");
     source_size = nautilus_file_get_string_attribute_with_default (data->source,
-                                                                   "size");
+                  "size");
 
     if (should_show_type)
     {
         source_type = nautilus_file_get_string_attribute_with_default (data->source,
-                                                                       "type");
+                      "type");
     }
 
     source_label = g_string_new (NULL);
@@ -332,8 +332,8 @@ set_file_labels (FileConflictDialogData *data)
     g_string_append_printf (source_label, "%s %s", _("Last modified:"), source_date);
 
     nautilus_file_conflict_dialog_set_file_labels (data->dialog,
-                                                   destination_label->str,
-                                                   source_label->str);
+            destination_label->str,
+            source_label->str);
 
     g_string_free (destination_label, TRUE);
     g_string_free (source_label, TRUE);
@@ -347,10 +347,10 @@ set_conflict_and_suggested_names (FileConflictDialogData *data)
     conflict_name = nautilus_file_get_edit_name (data->destination);
 
     nautilus_file_conflict_dialog_set_conflict_name (data->dialog,
-                                                     conflict_name);
+            conflict_name);
 
     nautilus_file_conflict_dialog_set_suggested_name (data->dialog,
-                                                      data->suggestion);
+            data->suggestion);
 }
 
 static void
@@ -364,7 +364,7 @@ set_replace_button_label (FileConflictDialogData *data)
     if (destination_is_directory)
     {
         if (nautilus_file_is_symbolic_link (data->source)
-            && !nautilus_file_is_symbolic_link (data->destination))
+                && !nautilus_file_is_symbolic_link (data->destination))
         {
             nautilus_file_conflict_dialog_disable_replace (data->dialog);
             nautilus_file_conflict_dialog_disable_apply_to_all (data->dialog);
@@ -372,7 +372,7 @@ set_replace_button_label (FileConflictDialogData *data)
         else if (source_is_directory)
         {
             nautilus_file_conflict_dialog_set_replace_button_label (data->dialog,
-                                                                    _("Merge"));
+                    _("Merge"));
         }
     }
 }
@@ -422,9 +422,9 @@ copy_move_conflict_on_file_list_ready (GList    *files,
     nautilus_file_monitor_add (data->destination, data, NAUTILUS_FILE_ATTRIBUTES_FOR_ICON);
 
     data->source_handler_id = g_signal_connect (data->source, "changed",
-                                                G_CALLBACK (file_icons_changed), data);
+                              G_CALLBACK (file_icons_changed), data);
     data->destination_handler_id = g_signal_connect (data->destination, "changed",
-                                                     G_CALLBACK (file_icons_changed), data);
+                                   G_CALLBACK (file_icons_changed), data);
 }
 
 static void
@@ -585,10 +585,10 @@ open_file_in_application (gpointer user_data)
     data = user_data;
     mime_type = nautilus_file_get_mime_type (data->file);
     dialog = gtk_app_chooser_dialog_new_for_content_type (data->parent_window,
-                                                          GTK_DIALOG_MODAL |
-                                                          GTK_DIALOG_DESTROY_WITH_PARENT |
-                                                          GTK_DIALOG_USE_HEADER_BAR,
-                                                          mime_type);
+             GTK_DIALOG_MODAL |
+             GTK_DIALOG_DESTROY_WITH_PARENT |
+             GTK_DIALOG_USE_HEADER_BAR,
+             mime_type);
     heading = _("Password-protected archives are not yet supported. "
                 "This list contains applications that can open the archive.");
 
@@ -638,7 +638,7 @@ on_request_passphrase_cb (GtkDialog *dialog,
     PassphraseRequestData *data = user_data;
 
     if (response_id != GTK_RESPONSE_CANCEL &&
-        response_id != GTK_RESPONSE_DELETE_EVENT)
+            response_id != GTK_RESPONSE_DELETE_EVENT)
     {
         data->passphrase = g_strdup (gtk_entry_get_text (data->passphrase_entry));
     }

@@ -69,7 +69,7 @@ content_bar_response_cb (GtkInfoBar *infobar,
     }
 
     if (bar->x_content_types == NULL ||
-        bar->mount == NULL)
+            bar->mount == NULL)
     {
         return;
     }
@@ -86,7 +86,7 @@ content_bar_response_cb (GtkInfoBar *infobar,
 
 static void
 nautilus_x_content_bar_set_x_content_types (NautilusXContentBar *bar,
-                                            const char * const  *x_content_types)
+        const char * const  *x_content_types)
 {
     char *message = NULL;
     guint num_types;
@@ -125,23 +125,23 @@ nautilus_x_content_bar_set_x_content_types (NautilusXContentBar *bar,
 
     switch (num_types)
     {
-        case 1:
-        {
-            message = get_message_for_content_type (bar->x_content_types[0]);
-        }
-        break;
+    case 1:
+    {
+        message = get_message_for_content_type (bar->x_content_types[0]);
+    }
+    break;
 
-        case 2:
-        {
-            message = get_message_for_two_content_types ((const char * const *) bar->x_content_types);
-        }
-        break;
+    case 2:
+    {
+        message = get_message_for_two_content_types ((const char * const *) bar->x_content_types);
+    }
+    break;
 
-        default:
-        {
-            message = g_strdup (_("Open with:"));
-        }
-        break;
+    default:
+    {
+        message = g_strdup (_("Open with:"));
+    }
+    break;
     }
 
     gtk_label_set_text (GTK_LABEL (bar->label), message);
@@ -228,23 +228,23 @@ nautilus_x_content_bar_set_property (GObject      *object,
 
     switch (prop_id)
     {
-        case PROP_MOUNT:
-        {
-            nautilus_x_content_bar_set_mount (bar, G_MOUNT (g_value_get_object (value)));
-        }
-        break;
+    case PROP_MOUNT:
+    {
+        nautilus_x_content_bar_set_mount (bar, G_MOUNT (g_value_get_object (value)));
+    }
+    break;
 
-        case PROP_X_CONTENT_TYPES:
-        {
-            nautilus_x_content_bar_set_x_content_types (bar, g_value_get_boxed (value));
-        }
-        break;
+    case PROP_X_CONTENT_TYPES:
+    {
+        nautilus_x_content_bar_set_x_content_types (bar, g_value_get_boxed (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+    break;
     }
 }
 
@@ -258,23 +258,23 @@ nautilus_x_content_bar_get_property (GObject    *object,
 
     switch (prop_id)
     {
-        case PROP_MOUNT:
-        {
-            g_value_set_object (value, bar->mount);
-        }
-        break;
+    case PROP_MOUNT:
+    {
+        g_value_set_object (value, bar->mount);
+    }
+    break;
 
-        case PROP_X_CONTENT_TYPES:
-        {
-            g_value_set_boxed (value, &bar->x_content_types);
-        }
-        break;
+    case PROP_X_CONTENT_TYPES:
+    {
+        g_value_set_boxed (value, &bar->x_content_types);
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+    break;
     }
 }
 
@@ -314,10 +314,10 @@ nautilus_x_content_bar_class_init (NautilusXContentBarClass *klass)
     g_object_class_install_property (object_class,
                                      PROP_X_CONTENT_TYPES,
                                      g_param_spec_boxed ("x-content-types",
-                                                         "The x-content types for the cluebar",
-                                                         "The x-content types for the cluebar",
-                                                         G_TYPE_STRV,
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                             "The x-content types for the cluebar",
+                                             "The x-content types for the cluebar",
+                                             G_TYPE_STRV,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 }
 
 static void

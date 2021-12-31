@@ -40,7 +40,7 @@ vfs_file_monitor_add (NautilusFile           *file,
     directory = nautilus_file_get_directory (file);
 
     nautilus_directory_monitor_add_internal (directory, file, client, TRUE,
-                                             attributes, NULL, NULL);
+            attributes, NULL, NULL);
 }
 
 static void
@@ -65,7 +65,7 @@ vfs_file_call_when_ready (NautilusFile           *file,
     directory = nautilus_file_get_directory (file);
 
     nautilus_directory_call_when_ready_internal (directory, file, file_attributes,
-                                                 FALSE, NULL, callback, callback_data);
+            FALSE, NULL, callback, callback_data);
 }
 
 static void
@@ -78,7 +78,7 @@ vfs_file_cancel_call_when_ready (NautilusFile         *file,
     directory = nautilus_file_get_directory (file);
 
     nautilus_directory_cancel_callback_internal (directory, file, NULL,
-                                                 callback, callback_data);
+            callback, callback_data);
 }
 
 static gboolean
@@ -90,7 +90,7 @@ vfs_file_check_if_ready (NautilusFile           *file,
     directory = nautilus_file_get_directory (file);
 
     return nautilus_directory_check_if_ready_internal (directory, file,
-                                                       file_attributes);
+            file_attributes);
 }
 
 static void
@@ -237,75 +237,75 @@ vfs_file_get_date (NautilusFile     *file,
 
     switch (date_type)
     {
-        case NAUTILUS_DATE_TYPE_ACCESSED:
+    case NAUTILUS_DATE_TYPE_ACCESSED:
+    {
+        /* Before we have info on a file, the date is unknown. */
+        if (atime == 0)
         {
-            /* Before we have info on a file, the date is unknown. */
-            if (atime == 0)
-            {
-                return FALSE;
-            }
-            if (date != NULL)
-            {
-                *date = atime;
-            }
-            return TRUE;
+            return FALSE;
         }
+        if (date != NULL)
+        {
+            *date = atime;
+        }
+        return TRUE;
+    }
 
-        case NAUTILUS_DATE_TYPE_MODIFIED:
+    case NAUTILUS_DATE_TYPE_MODIFIED:
+    {
+        /* Before we have info on a file, the date is unknown. */
+        if (mtime == 0)
         {
-            /* Before we have info on a file, the date is unknown. */
-            if (mtime == 0)
-            {
-                return FALSE;
-            }
-            if (date != NULL)
-            {
-                *date = mtime;
-            }
-            return TRUE;
+            return FALSE;
         }
+        if (date != NULL)
+        {
+            *date = mtime;
+        }
+        return TRUE;
+    }
 
-        case NAUTILUS_DATE_TYPE_CREATED:
+    case NAUTILUS_DATE_TYPE_CREATED:
+    {
+        /* Before we have info on a file, the date is unknown. */
+        if (btime == 0)
         {
-            /* Before we have info on a file, the date is unknown. */
-            if (btime == 0)
-            {
-                return FALSE;
-            }
-            if (date != NULL)
-            {
-                *date = btime;
-            }
-            return TRUE;
+            return FALSE;
         }
+        if (date != NULL)
+        {
+            *date = btime;
+        }
+        return TRUE;
+    }
 
-        case NAUTILUS_DATE_TYPE_TRASHED:
+    case NAUTILUS_DATE_TYPE_TRASHED:
+    {
+        /* Before we have info on a file, the date is unknown. */
+        if (trash_time == 0)
         {
-            /* Before we have info on a file, the date is unknown. */
-            if (trash_time == 0)
-            {
-                return FALSE;
-            }
-            if (date != NULL)
-            {
-                *date = trash_time;
-            }
-            return TRUE;
+            return FALSE;
         }
+        if (date != NULL)
+        {
+            *date = trash_time;
+        }
+        return TRUE;
+    }
 
-        case NAUTILUS_DATE_TYPE_RECENCY:
+    case NAUTILUS_DATE_TYPE_RECENCY:
+    {
+        /* Before we have info on a file, the date is unknown. */
+        if (recency == 0)
         {
-            /* Before we have info on a file, the date is unknown. */
-            if (recency == 0)
-            {
-                return FALSE;
-            }
-            if (date != NULL)
-            {
-                *date = recency;
-            }
-            return TRUE;
+            return FALSE;
         }
+        if (date != NULL)
+        {
+            *date = recency;
+        }
+        return TRUE;
+    }
     }
     return FALSE;
 }
@@ -347,7 +347,7 @@ vfs_file_mount_callback (GObject      *source_object,
 
     error = NULL;
     mounted_on = g_file_mount_mountable_finish (G_FILE (source_object),
-                                                res, &error);
+                 res, &error);
     nautilus_file_operation_complete (op, mounted_on, error);
     if (mounted_on)
     {
@@ -416,12 +416,12 @@ vfs_file_unmount_callback (GObject      *source_object,
 
     error = NULL;
     unmounted = g_file_unmount_mountable_with_operation_finish (G_FILE (source_object),
-                                                                res, &error);
+                res, &error);
 
     if (!unmounted &&
-        error->domain == G_IO_ERROR &&
-        (error->code == G_IO_ERROR_FAILED_HANDLED ||
-         error->code == G_IO_ERROR_CANCELLED))
+            error->domain == G_IO_ERROR &&
+            (error->code == G_IO_ERROR_FAILED_HANDLED ||
+             error->code == G_IO_ERROR_CANCELLED))
     {
         g_error_free (error);
         error = NULL;
@@ -453,11 +453,11 @@ vfs_file_unmount (NautilusFile                  *file,
 
     location = nautilus_file_get_location (file);
     g_file_unmount_mountable_with_operation (location,
-                                             G_MOUNT_UNMOUNT_NONE,
-                                             mount_op,
-                                             op->cancellable,
-                                             vfs_file_unmount_callback,
-                                             op);
+            G_MOUNT_UNMOUNT_NONE,
+            mount_op,
+            op->cancellable,
+            vfs_file_unmount_callback,
+            op);
     g_object_unref (location);
 }
 
@@ -474,12 +474,12 @@ vfs_file_eject_callback (GObject      *source_object,
 
     error = NULL;
     ejected = g_file_eject_mountable_with_operation_finish (G_FILE (source_object),
-                                                            res, &error);
+              res, &error);
 
     if (!ejected &&
-        error->domain == G_IO_ERROR &&
-        (error->code == G_IO_ERROR_FAILED_HANDLED ||
-         error->code == G_IO_ERROR_CANCELLED))
+            error->domain == G_IO_ERROR &&
+            (error->code == G_IO_ERROR_FAILED_HANDLED ||
+             error->code == G_IO_ERROR_CANCELLED))
     {
         g_error_free (error);
         error = NULL;
@@ -532,12 +532,12 @@ vfs_file_start_callback (GObject      *source_object,
 
     error = NULL;
     started = g_file_start_mountable_finish (G_FILE (source_object),
-                                             res, &error);
+              res, &error);
 
     if (!started &&
-        error->domain == G_IO_ERROR &&
-        (error->code == G_IO_ERROR_FAILED_HANDLED ||
-         error->code == G_IO_ERROR_CANCELLED))
+            error->domain == G_IO_ERROR &&
+            (error->code == G_IO_ERROR_FAILED_HANDLED ||
+             error->code == G_IO_ERROR_CANCELLED))
     {
         g_error_free (error);
         error = NULL;
@@ -610,9 +610,9 @@ vfs_file_stop_callback (GObject      *source_object,
                                             res, &error);
 
     if (!stopped &&
-        error->domain == G_IO_ERROR &&
-        (error->code == G_IO_ERROR_FAILED_HANDLED ||
-         error->code == G_IO_ERROR_CANCELLED))
+            error->domain == G_IO_ERROR &&
+            (error->code == G_IO_ERROR_FAILED_HANDLED ||
+             error->code == G_IO_ERROR_CANCELLED))
     {
         g_error_free (error);
         error = NULL;
@@ -668,9 +668,9 @@ vfs_file_poll_callback (GObject      *source_object,
                                             res, &error);
 
     if (!stopped &&
-        error->domain == G_IO_ERROR &&
-        (error->code == G_IO_ERROR_FAILED_HANDLED ||
-         error->code == G_IO_ERROR_CANCELLED))
+            error->domain == G_IO_ERROR &&
+            (error->code == G_IO_ERROR_FAILED_HANDLED ||
+             error->code == G_IO_ERROR_CANCELLED))
     {
         g_error_free (error);
         error = NULL;

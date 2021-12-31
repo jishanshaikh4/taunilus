@@ -94,8 +94,8 @@ switch_location (NautilusDragSlotProxyInfo *drag_info)
 
     location = nautilus_file_get_location (drag_info->target_file);
     nautilus_application_open_location_full (NAUTILUS_APPLICATION (g_application_get_default ()),
-                                             location, NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE,
-                                             NULL, NAUTILUS_WINDOW (window), NULL);
+            location, NAUTILUS_OPEN_FLAG_DONT_MAKE_ACTIVE,
+            NULL, NAUTILUS_WINDOW (window), NULL);
     g_object_unref (location);
 }
 
@@ -128,8 +128,8 @@ slot_proxy_check_switch_location_timer (NautilusDragSlotProxyInfo *drag_info,
     }
 
     drag_info->switch_location_timer = g_timeout_add (HOVER_TIMEOUT,
-                                                      slot_proxy_switch_location_timer,
-                                                      drag_info);
+                                       slot_proxy_switch_location_timer,
+                                       drag_info);
 }
 
 static void
@@ -227,14 +227,14 @@ slot_proxy_drag_motion (GtkWidget      *widget,
     }
 
     if (drag_info->have_data &&
-        drag_info->have_valid_data)
+            drag_info->have_valid_data)
     {
         if (drag_info->info == NAUTILUS_ICON_DND_GNOME_ICON_LIST)
         {
             nautilus_drag_default_drop_action_for_icons (context, target_uri,
-                                                         drag_info->data.selection_list,
-                                                         0,
-                                                         &action);
+                    drag_info->data.selection_list,
+                    0,
+                    &action);
         }
         else if (drag_info->info == NAUTILUS_ICON_DND_URI_LIST)
         {
@@ -367,7 +367,7 @@ slot_proxy_handle_drop (GtkWidget                 *widget,
     GFile *location;
 
     if (!drag_info->have_data ||
-        !drag_info->have_valid_data)
+            !drag_info->have_valid_data)
     {
         gtk_drag_finish (context, FALSE, FALSE, time);
         drag_info_clear (drag_info);
@@ -418,17 +418,17 @@ slot_proxy_handle_drop (GtkWidget                 *widget,
             g_assert (uri_list != NULL);
 
             nautilus_files_view_drop_proxy_received_uris (target_view,
-                                                          uri_list,
-                                                          target_uri,
-                                                          gdk_drag_context_get_selected_action (context));
+                    uri_list,
+                    target_uri,
+                    gdk_drag_context_get_selected_action (context));
             g_list_free_full (uri_list, g_free);
         }
         else if (drag_info->info == NAUTILUS_ICON_DND_URI_LIST)
         {
             nautilus_files_view_drop_proxy_received_uris (target_view,
-                                                          drag_info->data.uri_list,
-                                                          target_uri,
-                                                          gdk_drag_context_get_selected_action (context));
+                    drag_info->data.uri_list,
+                    target_uri,
+                    gdk_drag_context_get_selected_action (context));
         }
 
         gtk_drag_finish (context, TRUE, FALSE, time);

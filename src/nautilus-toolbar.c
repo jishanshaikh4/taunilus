@@ -131,7 +131,7 @@ static GParamSpec *properties[NUM_PROPERTIES] = { NULL, };
 G_DEFINE_TYPE (NautilusToolbar, nautilus_toolbar, HDY_TYPE_HEADER_BAR);
 
 static void nautilus_toolbar_set_window_slot_real (NautilusToolbar    *self,
-                                                   NautilusWindowSlot *slot);
+        NautilusWindowSlot *slot);
 static void update_operations (NautilusToolbar *self);
 
 static void
@@ -141,10 +141,10 @@ toolbar_update_appearance (NautilusToolbar *self)
 
     show_location_entry = self->show_location_entry ||
                           g_settings_get_boolean (nautilus_preferences,
-                                                  NAUTILUS_PREFERENCES_ALWAYS_USE_LOCATION_ENTRY);
+                                  NAUTILUS_PREFERENCES_ALWAYS_USE_LOCATION_ENTRY);
 
     if (self->window_slot != NULL &&
-        nautilus_window_slot_get_searching (self->window_slot))
+            nautilus_window_slot_get_searching (self->window_slot))
     {
         gtk_stack_set_visible_child_name (GTK_STACK (self->toolbar_switcher), "search");
     }
@@ -227,27 +227,27 @@ show_menu (NautilusToolbar *self,
     menu = gtk_menu_new ();
 
     direction = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (widget),
-                                                     "nav-direction"));
+                                  "nav-direction"));
 
     switch (direction)
     {
-        case NAUTILUS_NAVIGATION_DIRECTION_FORWARD:
-        {
-            fill_menu (self, menu, FALSE);
-        }
-        break;
+    case NAUTILUS_NAVIGATION_DIRECTION_FORWARD:
+    {
+        fill_menu (self, menu, FALSE);
+    }
+    break;
 
-        case NAUTILUS_NAVIGATION_DIRECTION_BACK:
-        {
-            fill_menu (self, menu, TRUE);
-        }
-        break;
+    case NAUTILUS_NAVIGATION_DIRECTION_BACK:
+    {
+        fill_menu (self, menu, TRUE);
+    }
+    break;
 
-        default:
-        {
-            g_assert_not_reached ();
-        }
-        break;
+    default:
+    {
+        g_assert_not_reached ();
+    }
+    break;
     }
 
     gtk_menu_attach_to_widget (GTK_MENU (menu), GTK_WIDGET (self->window), NULL);
@@ -348,9 +348,9 @@ should_hide_operations_button (NautilusToolbar *self)
     for (l = progress_infos; l != NULL; l = l->next)
     {
         if (nautilus_progress_info_get_total_elapsed_time (l->data) +
-            nautilus_progress_info_get_remaining_time (l->data) > OPERATION_MINIMUM_TIME &&
-            !nautilus_progress_info_get_is_cancelled (l->data) &&
-            !nautilus_progress_info_get_is_finished (l->data))
+                nautilus_progress_info_get_remaining_time (l->data) > OPERATION_MINIMUM_TIME &&
+                !nautilus_progress_info_get_is_cancelled (l->data) &&
+                !nautilus_progress_info_get_is_finished (l->data))
         {
             return FALSE;
         }
@@ -444,8 +444,8 @@ add_operations_button_attention_style (NautilusToolbar *self)
     gtk_style_context_add_class (style_context,
                                  "nautilus-operations-button-needs-attention");
     self->operations_button_attention_timeout_id = g_timeout_add (NEEDS_ATTENTION_ANIMATION_TIMEOUT,
-                                                                  (GSourceFunc) on_remove_operations_button_attention_style_timeout,
-                                                                  self);
+            (GSourceFunc) on_remove_operations_button_attention_style_timeout,
+            self);
 }
 
 static void
@@ -487,13 +487,13 @@ on_progress_info_finished (NautilusToolbar      *self,
      * operation is a trash operation, which we already show a diferent kind of
      * notification */
     if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->operations_button)) &&
-        folder_to_open != NULL)
+            folder_to_open != NULL)
     {
         add_operations_button_attention_style (self);
         main_label = nautilus_progress_info_get_status (info);
         nautilus_window_show_operation_notification (self->window,
-                                                     main_label,
-                                                     folder_to_open);
+                main_label,
+                folder_to_open);
         g_free (main_label);
     }
 
@@ -541,7 +541,7 @@ update_operations (NautilusToolbar *self)
     g_list_free (progress_infos);
 
     if (should_show_progress_button &&
-        !gtk_revealer_get_reveal_child (GTK_REVEALER (self->operations_revealer)))
+            !gtk_revealer_get_reveal_child (GTK_REVEALER (self->operations_revealer)))
     {
         add_operations_button_attention_style (self);
         gtk_revealer_set_reveal_child (GTK_REVEALER (self->operations_revealer),
@@ -605,7 +605,7 @@ on_progress_info_started_timeout (NautilusToolbar *self)
     progress_infos = nautilus_progress_info_manager_get_all_infos (self->progress_manager);
     filtered_progress_infos = get_filtered_progress_infos (self);
     if (!nautilus_progress_manager_are_all_infos_finished_or_cancelled (self->progress_manager) &&
-        g_list_length (progress_infos) != g_list_length (filtered_progress_infos))
+            g_list_length (progress_infos) != g_list_length (filtered_progress_infos))
     {
         g_list_free (filtered_progress_infos);
         return G_SOURCE_CONTINUE;
@@ -747,7 +747,7 @@ on_operations_button_toggled (NautilusToolbar *self,
     else
     {
         nautilus_progress_manager_remove_viewer (self->progress_manager,
-                                                 G_OBJECT (self));
+                G_OBJECT (self));
     }
 }
 
@@ -908,7 +908,7 @@ nautilus_toolbar_constructed (GObject *object)
     gtk_box_append (GTK_BOX (self->location_entry_container),
                     self->location_entry);
     self->location_entry_close_button = gtk_button_new_from_icon_name ("window-close-symbolic",
-                                                                       GTK_ICON_SIZE_BUTTON);
+                                        GTK_ICON_SIZE_BUTTON);
     gtk_box_append (GTK_BOX (self->location_entry_container),
                     self->location_entry_close_button);
     g_signal_connect (self->location_entry_close_button, "clicked",
@@ -1002,23 +1002,23 @@ nautilus_toolbar_get_property (GObject    *object,
 
     switch (property_id)
     {
-        case PROP_SHOW_LOCATION_ENTRY:
-        {
-            g_value_set_boolean (value, self->show_location_entry);
-        }
-        break;
+    case PROP_SHOW_LOCATION_ENTRY:
+    {
+        g_value_set_boolean (value, self->show_location_entry);
+    }
+    break;
 
-        case PROP_SEARCHING:
-        {
-            g_value_set_boolean (value, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->search_button)));
-        }
-        break;
+    case PROP_SEARCHING:
+    {
+        g_value_set_boolean (value, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->search_button)));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+    }
+    break;
     }
 }
 
@@ -1085,46 +1085,46 @@ nautilus_toolbar_set_property (GObject      *object,
 
     switch (property_id)
     {
-        case PROP_WINDOW:
+    case PROP_WINDOW:
+    {
+        if (self->window != NULL)
         {
-            if (self->window != NULL)
-            {
-                g_signal_handlers_disconnect_by_func (self->window,
-                                                      on_window_focus_changed, self);
-            }
-            self->window = g_value_get_object (value);
-            if (self->window != NULL)
-            {
-                g_signal_connect (self->window, "notify::has-focus",
-                                  G_CALLBACK (on_window_focus_changed), self);
-            }
+            g_signal_handlers_disconnect_by_func (self->window,
+                                                  on_window_focus_changed, self);
         }
-        break;
+        self->window = g_value_get_object (value);
+        if (self->window != NULL)
+        {
+            g_signal_connect (self->window, "notify::has-focus",
+                              G_CALLBACK (on_window_focus_changed), self);
+        }
+    }
+    break;
 
-        case PROP_SHOW_LOCATION_ENTRY:
-        {
-            nautilus_toolbar_set_show_location_entry (self, g_value_get_boolean (value));
-        }
-        break;
+    case PROP_SHOW_LOCATION_ENTRY:
+    {
+        nautilus_toolbar_set_show_location_entry (self, g_value_get_boolean (value));
+    }
+    break;
 
-        case PROP_WINDOW_SLOT:
-        {
-            nautilus_toolbar_set_window_slot (self, g_value_get_object (value));
-        }
-        break;
+    case PROP_WINDOW_SLOT:
+    {
+        nautilus_toolbar_set_window_slot (self, g_value_get_object (value));
+    }
+    break;
 
-        case PROP_SEARCHING:
-        {
-            gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->search_button),
-                                          g_value_get_boolean (value));
-        }
-        break;
+    case PROP_SEARCHING:
+    {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->search_button),
+                                      g_value_get_boolean (value));
+    }
+    break;
 
-        default:
-        {
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        }
-        break;
+    default:
+    {
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+    }
+    break;
     }
 }
 
@@ -1222,7 +1222,7 @@ nautilus_toolbar_class_init (NautilusToolbarClass *klass)
     g_object_class_install_properties (oclass, NUM_PROPERTIES, properties);
 
     gtk_widget_class_set_template_from_resource (widget_class,
-                                                 "/org/gnome/nautilus/ui/nautilus-toolbar.ui");
+            "/org/gnome/nautilus/ui/nautilus-toolbar.ui");
 
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_button);
     gtk_widget_class_bind_template_child (widget_class, NautilusToolbar, operations_icon);
@@ -1273,7 +1273,7 @@ nautilus_toolbar_get_location_entry (NautilusToolbar *self)
 
 void
 nautilus_toolbar_set_show_location_entry (NautilusToolbar *self,
-                                          gboolean         show_location_entry)
+        gboolean         show_location_entry)
 {
     if (show_location_entry != self->show_location_entry)
     {
@@ -1296,14 +1296,14 @@ box_remove_all_children (GtkBox *box)
 
 static void
 slot_on_extensions_background_menu_changed (NautilusToolbar    *self,
-                                            GParamSpec         *param,
-                                            NautilusWindowSlot *slot)
+        GParamSpec         *param,
+        NautilusWindowSlot *slot)
 {
     g_autoptr (GMenuModel) menu = NULL;
 
     menu = nautilus_window_slot_get_extensions_background_menu (slot);
     nautilus_path_bar_set_extensions_background_menu (NAUTILUS_PATH_BAR (self->path_bar),
-                                                      menu);
+            menu);
 }
 
 static void
@@ -1350,8 +1350,8 @@ on_slot_toolbar_menu_sections_changed (NautilusToolbar    *self,
     }
 
     gtk_widget_set_sensitive (self->view_button, (new_sections->extended_section != NULL ||
-                                                  new_sections->zoom_section != NULL ||
-                                                  new_sections->supports_undo_redo));
+                              new_sections->zoom_section != NULL ||
+                              new_sections->supports_undo_redo));
 }
 
 
@@ -1370,9 +1370,9 @@ disconnect_toolbar_menu_sections_change_handler (NautilusToolbar *self)
 
 static gboolean
 nautilus_toolbar_view_toggle_icon_transform_to (GBinding     *binding,
-                                                const GValue *from_value,
-                                                GValue       *to_value,
-                                                gpointer      user_data)
+        const GValue *from_value,
+        GValue       *to_value,
+        gpointer      user_data)
 {
     GIcon *icon;
 
@@ -1390,9 +1390,9 @@ nautilus_toolbar_view_toggle_icon_transform_to (GBinding     *binding,
 
 static gboolean
 nautilus_toolbar_view_toggle_tooltip_transform_to (GBinding     *binding,
-                                                   const GValue *from_value,
-                                                   GValue       *to_value,
-                                                   gpointer      user_data)
+        const GValue *from_value,
+        GValue       *to_value,
+        gpointer      user_data)
 {
     const gchar *tooltip;
 
@@ -1426,24 +1426,24 @@ nautilus_toolbar_set_window_slot_real (NautilusToolbar    *self,
                            self);
 
         self->icon_binding = g_object_bind_property_full (self->window_slot, "icon",
-                                                          self->view_toggle_icon, "gicon",
-                                                          G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE,
-                                                          (GBindingTransformFunc) nautilus_toolbar_view_toggle_icon_transform_to,
-                                                          NULL,
-                                                          self,
-                                                          NULL);
+                             self->view_toggle_icon, "gicon",
+                             G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE,
+                             (GBindingTransformFunc) nautilus_toolbar_view_toggle_icon_transform_to,
+                             NULL,
+                             self,
+                             NULL);
 
         self->tooltip_binding = g_object_bind_property_full (self->window_slot, "tooltip",
-                                                             self->view_toggle_button, "tooltip-text",
-                                                             G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE,
-                                                             (GBindingTransformFunc) nautilus_toolbar_view_toggle_tooltip_transform_to,
-                                                             NULL,
-                                                             self,
-                                                             NULL);
+                                self->view_toggle_button, "tooltip-text",
+                                G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE,
+                                (GBindingTransformFunc) nautilus_toolbar_view_toggle_tooltip_transform_to,
+                                NULL,
+                                self,
+                                NULL);
 
         self->search_binding = g_object_bind_property (self->window_slot, "searching",
-                                                       self, "searching",
-                                                       G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+                               self, "searching",
+                               G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
 
         on_slot_toolbar_menu_sections_changed (self, NULL, self->window_slot);
         g_signal_connect_swapped (self->window_slot, "notify::toolbar-menu-sections",

@@ -38,10 +38,10 @@
 #define AFTER_ALL_TABS -1
 
 static int  nautilus_notebook_insert_page (GtkNotebook *notebook,
-                                           GtkWidget   *child,
-                                           GtkWidget   *tab_label,
-                                           GtkWidget   *menu_label,
-                                           int          position);
+        GtkWidget   *child,
+        GtkWidget   *tab_label,
+        GtkWidget   *menu_label,
+        int          position);
 
 enum
 {
@@ -168,7 +168,7 @@ button_press_cb (GtkGestureMultiPress *gesture,
     }
 
     if (button == GDK_BUTTON_SECONDARY &&
-        (state & gtk_accelerator_get_default_mod_mask ()) == 0)
+            (state & gtk_accelerator_get_default_mod_mask ()) == 0)
     {
         /* switch to the page the mouse is over, but don't consume the event */
         gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook), tab_clicked);
@@ -204,7 +204,7 @@ nautilus_notebook_init (NautilusNotebook *notebook)
     notebook->multi_press_gesture = gtk_gesture_multi_press_new (GTK_WIDGET (notebook));
 
     gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (notebook->multi_press_gesture),
-                                                GTK_PHASE_CAPTURE);
+            GTK_PHASE_CAPTURE);
     gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (notebook->multi_press_gesture), 0);
 
     g_signal_connect (notebook->multi_press_gesture, "pressed", G_CALLBACK (button_press_cb), NULL);
@@ -409,10 +409,10 @@ nautilus_notebook_insert_page (GtkNotebook *gnotebook,
     g_assert (GTK_IS_WIDGET (tab_widget));
 
     position = GTK_NOTEBOOK_CLASS (nautilus_notebook_parent_class)->insert_page (gnotebook,
-                                                                                 tab_widget,
-                                                                                 tab_label,
-                                                                                 menu_label,
-                                                                                 position);
+               tab_widget,
+               tab_label,
+               menu_label,
+               position);
 
     gtk_notebook_set_show_tabs (gnotebook,
                                 gtk_notebook_get_n_pages (gnotebook) > 1);
@@ -460,7 +460,7 @@ nautilus_notebook_add_tab (NautilusNotebook   *notebook,
 
 void
 nautilus_notebook_reorder_current_child_relative (NautilusNotebook *notebook,
-                                                  int               offset)
+        int               offset)
 {
     GtkNotebook *gnotebook;
     GtkWidget *child;
@@ -482,7 +482,7 @@ nautilus_notebook_reorder_current_child_relative (NautilusNotebook *notebook,
 
 static gboolean
 nautilus_notebook_is_valid_relative_position (NautilusNotebook *notebook,
-                                              int               offset)
+        int               offset)
 {
     GtkNotebook *gnotebook;
     int page;
@@ -493,8 +493,8 @@ nautilus_notebook_is_valid_relative_position (NautilusNotebook *notebook,
     page = gtk_notebook_get_current_page (gnotebook);
     n_pages = gtk_notebook_get_n_pages (gnotebook) - 1;
     if (page < 0 ||
-        (offset < 0 && page < -offset) ||
-        (offset > 0 && page > n_pages - offset))
+            (offset < 0 && page < -offset) ||
+            (offset > 0 && page > n_pages - offset))
     {
         return FALSE;
     }
@@ -504,7 +504,7 @@ nautilus_notebook_is_valid_relative_position (NautilusNotebook *notebook,
 
 gboolean
 nautilus_notebook_can_reorder_current_child_relative (NautilusNotebook *notebook,
-                                                      int               offset)
+        int               offset)
 {
     g_return_val_if_fail (NAUTILUS_IS_NOTEBOOK (notebook), FALSE);
 
